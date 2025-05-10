@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FY Calculators for India</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #FF9933, #138808, #000080);
+            min-height: 100vh;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(255, 153, 51, 0.3);
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin: 20px 0;
+            color: #fff;
+            background: linear-gradient(45deg, #FF9933, #FFFFFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .calc-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 153, 51, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            text-decoration: none;
+            color: #e6f0ff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .calc-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #FF9933, #FFFFFF);
+            color: #000;
+        }
+        .calc-card h2 {
+            font-size: 1.4em;
+            margin: 10px 0;
+        }
+        .calc-card p {
+            font-size: 1em;
+            margin: 10px 0;
+            color: #d4e4ff;
+        }
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.6em; }
+            .calc-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FY Calculators for India</h1>
+        <div class="grid">
+            <a href="simple-interest.html" class="calc-card">
+                <h2>Simple Interest</h2>
+                <p>Calculate interest on a principal amount.</p>
+            </a>
+            <a href="fixed-deposit.html" class="calc-card">
+                <h2>Fixed Deposit (FD)</h2>
+                <p>Compute maturity amount and interest for FD.</p>
+            </a>
+            <a href="recurring-deposit.html" class="calc-card">
+                <h2>Recurring Deposit (RD)</h2>
+                <p>Calculate maturity for monthly deposits.</p>
+            </a>
+            <a href="income-tax.html" class="calc-card">
+                <h2>Income Tax</h2>
+                <p>Estimate tax based on FY 2025-26 slabs.</p>
+            </a>
+            <a href="educational-loan.html" class="calc-card">
+                <h2>Educational Loan</h2>
+                <p>Calculate EMI and interest for education loans.</p>
+            </a>
+            <a href="personal-loan.html" class="calc-card">
+                <h2>Personal Loan</h2>
+                <p>Compute EMI and interest for personal loans.</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

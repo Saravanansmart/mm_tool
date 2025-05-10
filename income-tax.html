@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tax Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #FF9933, #138808, #000080);
+            min-height: 100vh;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(255, 153, 51, 0.3);
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin: 20px 0;
+            color: #fff;
+            background: linear-gradient(45deg, #FF9933, #FFFFFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 153, 51, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        .section h2 {
+            font-size: 1.4em;
+            margin: 10px 0;
+            color: #e6f0ff;
+        }
+        label {
+            font-size: 1em;
+            margin: 6px;
+            color: #e6f0ff;
+        }
+        input, select {
+            font-size: 1em;
+            padding: 8px;
+            margin: 6px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            width: 90px;
+            transition: box-shadow 0.3s ease;
+        }
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 153, 51, 0.5);
+        }
+        button {
+            font-size: 1em;
+            padding: 8px 16px;
+            margin: 6px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #FF9933, #FFFFFF);
+            color: #000;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 153, 51, 0.6);
+        }
+        .results {
+            font-size: 1em;
+            margin-top: 10px;
+            color: #e6f0ff;
+        }
+        .note {
+            font-size: 0.9em;
+            color: #d4e4ff;
+            margin: 6px;
+        }
+        .regime-info {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 14px;
+            margin: 10px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 153, 51, 0.25);
+            font-size: 0.9em;
+            color: #d4e4ff;
+        }
+        .regime-info h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #e6f0ff;
+        }
+        .regime-info ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            color: #e6f0ff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .back-link:hover {
+            color: #FF9933;
+        }
+        #deductionInput {
+            display: none;
+        }
+        @media (max-width: 600px) {
+            input, select { width: 65px; }
+            .section { padding: 10px; }
+            h1 { font-size: 1.6em; }
+            .regime-info { font-size: 0.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Income Tax Calculator</h1>
+        <div class="section">
+            <h2>Income Tax</h2>
+            <label>Annual Taxable Income (₹):</label><input type="number" id="taxIncome" min="0" value="1000000">
+            <label>Tax Regime:</label>
+            <select id="taxRegime" onchange="toggleDeductionInput(); calcTax(this.value)">
+                <option value="new" selected>New Regime</option>
+                <option value="old">Old Regime</option>
+            </select>
+            <label id="deductionLabel">Total Deductions (₹):</label><input type="number" id="deductionInput" min="0" max="225000" value="0">
+            <button onclick="calcTax(document.getElementById('taxRegime').value)">Calculate</button>
+            <div class="note">Enter income in ₹ (e.g., 1000000 for 10 Lakh). For Old Regime, include deductions (e.g., 80C up to ₹1,50,000, 80D up to ₹25,000, standard ₹50,000). Tax prorated for FY 2025-26 (April 1–March 31).</div>
+            <div class="results" id="taxResult"></div>
+        </div>
+        <div class="regime-info">
+            <h3>Tax Regimes (FY 2025-26)</h3>
+            <p><strong>New Regime:</strong> Simplified with lower tax rates, only ₹75,000 standard deduction. Ideal for minimal investments.</p>
+            <ul>
+                <li>₹0 – ₹3,00,000: 0%</li>
+                <li>₹3,00,001 – ₹7,00,000: 5%</li>
+                <li>₹7,00,001 – ₹10,00,000: 10%</li>
+                <li>₹10,00,001 – ₹12,00,000: 15%</li>
+                <li>₹12,00,001 – ₹15,00,000: 20%</li>
+                <li>₹15,00,001+: 30%</li>
+            </ul>
+            <p><strong>Old Regime:</strong> Higher rates but allows deductions (e.g., ₹1,50,000 under 80C, ₹25,000 under 80D, ₹50,000 standard). Suits those with investments or loans.</p>
+            <ul>
+                <li>₹0 – ₹2,50,000: 0%</li>
+                <li>₹2,50,001 – ₹5,00,000: 5%</li>
+                <li>₹5,00,001 – ₹10,00,000: 20%</li>
+                <li>₹10,00,001+: 30%</li>
+            </ul>
+            <p><strong>Notes:</strong> Both regimes include 4% cess. New regime is default with minimal deductions. Old regime reduces taxable income via deductions (max ₹2,25,000 here). Surcharges excluded for simplicity.</p>
+        </div>
+        <a href="index.html" class="back-link">Back to Calculators</a>
+    </div>
+    <script>
+        function formatIndianNumber(num) {
+            if (isNaN(num)) return "0";
+            num = Math.round(num * 100) / 100;
+            let str = num.toFixed(2).toString();
+            let [integer, decimal] = str.split('.');
+            let lastThree = integer.slice(-3);
+            let otherDigits = integer.slice(0, -3);
+            if (otherDigits) {
+                lastThree = ',' + lastThree;
+            }
+            let result = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree;
+            return result + '.' + decimal;
+        }
+
+        function getFYFraction() {
+            let now = new Date();
+            let year = now.getFullYear();
+            let fyStart = new Date(year, 3, 1); // April 1
+            if (now < fyStart) {
+                fyStart = new Date(year - 1, 3, 1);
+            }
+            let fyEnd = new Date(fyStart.getFullYear() + 1, 2, 31); // March 31
+            let msPerDay = 1000 * 60 * 60 * 24;
+            let totalDays = Math.floor((fyEnd - fyStart) / msPerDay) + 1;
+            let daysPassed = Math.floor((now - fyStart) / msPerDay);
+            return daysPassed / totalDays;
+        }
+
+        function toggleDeductionInput() {
+            let regime = document.getElementById('taxRegime').value;
+            let deductionInput = document.getElementById('deductionInput');
+            let deductionLabel = document.getElementById('deductionLabel');
+            if (regime === 'old') {
+                deductionInput.style.display = 'inline-block';
+                deductionLabel.style.display = 'inline-block';
+            } else {
+                deductionInput.style.display = 'none';
+                deductionLabel.style.display = 'none';
+            }
+        }
+
+        function calcTax(regime) {
+            let fyFraction = getFYFraction();
+            let income = parseFloat(document.getElementById('taxIncome').value);
+            if (isNaN(income) || income < 0) {
+                alert('Invalid income. Use positive numbers.');
+                return;
+            }
+            let deductions = 0;
+            let taxableIncome = 0;
+
+            if (regime === 'new') {
+                deductions = 75000; // Standard deduction
+                taxableIncome = Math.max(0, income - deductions) * fyFraction;
+            } else if (regime === 'old') {
+                deductions = parseFloat(document.getElementById('deductionInput').value) || 0;
+                if (isNaN(deductions) || deductions < 0) {
+                    alert('Invalid deductions. Use positive numbers.');
+                    return;
+                }
+                deductions = Math.min(deductions, 225000); // Cap at ₹2,25,000
+                taxableIncome = Math.max(0, income - deductions) * fyFraction;
+            }
+
+            let tax = 0;
+            if (regime === 'new') {
+                if (taxableIncome <= 300000) {
+                    tax = 0;
+                } else if (taxableIncome <= 700000) {
+                    tax = (taxableIncome - 300000) * 0.05;
+                } else if (taxableIncome <= 1000000) {
+                    tax = 20000 + (taxableIncome - 700000) * 0.10;
+                } else if (taxableIncome <= 1200000) {
+                    tax = 50000 + (taxableIncome - 1000000) * 0.15;
+                } else if (taxableIncome <= 1500000) {
+                    tax = 80000 + (taxableIncome - 1200000) * 0.20;
+                } else {
+                    tax = 140000 + (taxableIncome - 1500000) * 0.30;
+                }
+            } else if (regime === 'old') {
+                if (taxableIncome <= 250000) {
+                    tax = 0;
+                } else if (taxableIncome <= 500000) {
+                    tax = (taxableIncome - 250000) * 0.05;
+                } else if (taxableIncome <= 1000000) {
+                    tax = 12500 + (taxableIncome - 500000) * 0.20;
+                } else {
+                    tax = 112500 + (taxableIncome - 1000000) * 0.30;
+                }
+            }
+
+            let cess = tax * 0.04;
+            let totalTax = tax + cess;
+            document.getElementById('taxResult').innerHTML = `Prorated Income: ₹${formatIndianNumber(taxableIncome)}, Tax (incl. 4% cess): ₹${formatIndianNumber(totalTax)}`;
+        }
+
+        // Initialize deduction input visibility
+        window.onload = toggleDeductionInput;
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Loan Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #FF9933, #138808, #000080);
+            min-height: 100vh;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(255, 153, 51, 0.3);
+        }
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin: 20px 0;
+            color: #fff;
+            background: linear-gradient(45deg, #FF9933, #FFFFFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 16px;
+            margin: 10px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 153, 51, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        .section h2 {
+            font-size: 1.4em;
+            margin: 10px 0;
+            color: #e6f0ff;
+        }
+        label {
+            font-size: 1em;
+            margin: 6px;
+            color: #e6f0ff;
+        }
+        input {
+            font-size: 1em;
+            padding: 8px;
+            margin: 6px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            width: 90px;
+            transition: box-shadow 0.3s ease;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 153, 51, 0.5);
+        }
+        button {
+            font-size: 1em;
+            padding: 8px 16px;
+            margin: 6px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #FF9933, #FFFFFF);
+            color: #000;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 153, 51, 0.6);
+        }
+        .results {
+            font-size: 1em;
+            margin-top: 10px;
+            color: #e6f0ff;
+        }
+        .note {
+            font-size: 0.9em;
+            color: #d4e4ff;
+            margin: 6px;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            color: #e6f0ff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .back-link:hover {
+            color: #FF9933;
+        }
+        @media (max-width: 600px) {
+            input { width: 65px; }
+            .section { padding: 10px; }
+            h1 { font-size: 1.6em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Educational Loan Calculator</h1>
+        <div class="section">
+            <h2>Educational Loan</h2>
+            <label>Loan Amount (₹):</label><input type="number" id="eduLoanAmount" min="0" value="500000">
+            <label>Annual Interest Rate (%):</label><input type="number" id="eduLoanRate" min="0" step="0.1" value="9">
+            <label>Duration (Years):</label><input type="number" id="eduYears" min="0" value="1">
+            <label>Duration (Months):</label><input type="number" id="eduMonths" min="0" value="0">
+            <button onclick="calcEduLoan()">Calculate</button>
+            <div class="note">Enter amount in ₹ (e.g., 500000 for 5 Lakh). EMI and interest calculated for specified duration.</div>
+            <div class="results" id="eduLoanResult"></div>
+        </div>
+        <a href="index.html" class="back-link">Back to Calculators</a>
+    </div>
+    <script>
+        function formatIndianNumber(num) {
+            if (isNaN(num)) return "0";
+            num = Math.round(num * 100) / 100;
+            let str = num.toFixed(2).toString();
+            let [integer, decimal] = str.split('.');
+            let lastThree = integer.slice(-3);
+            let otherDigits = integer.slice(0, -3);
+            if (otherDigits) {
+                lastThree = ',' + lastThree;
+            }
+            let result = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree;
+            return result + '.' + decimal;
+        }
+
+        function getDuration(yearsId, monthsId) {
+            let years = parseFloat(document.getElementById(yearsId).value) || 0;
+            let months = parseFloat(document.getElementById(monthsId).value) || 0;
+            if (years < 0 || months < 0) {
+                alert('Invalid duration. Use non-negative numbers.');
+                return null;
+            }
+            return years + months / 12;
+        }
+
+        function calcEduLoan() {
+            let duration = getDuration('eduYears', 'eduMonths');
+            if (duration === null) return;
+            if (duration === 0) {
+                alert('Duration must be greater than 0 for Educational Loan.');
+                return;
+            }
+            let amount = parseFloat(document.getElementById('eduLoanAmount').value);
+            let rate = parseFloat(document.getElementById('eduLoanRate').value);
+            if (isNaN(amount) || amount < 0 || isNaN(rate) || rate < 0) {
+                alert('Invalid inputs for Educational Loan. Use positive numbers.');
+                return;
+            }
+            let monthlyRate = rate / 100 / 12;
+            let months = Math.floor(duration * 12);
+            let emi = amount * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+            let totalInterest = emi * months - amount;
+            document.getElementById('eduLoanResult').innerHTML = `EMI: ₹${formatIndianNumber(emi)}, Total Interest: ₹${formatIndianNumber(totalInterest)}`;
+        }
+    </script>
+</body>
+</html>
