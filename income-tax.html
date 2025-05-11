@@ -160,6 +160,12 @@
         .back-link:hover {
             color: #FF6F00;
         }
+        .results-card {
+            display: none;
+        }
+        .results-card.visible {
+            display: block;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
@@ -290,7 +296,7 @@
             </div>
             <div class="note">Enter income in ₹ (e.g., 1000000 for 10 Lakh). For Old Regime, include deductions (e.g., 80C up to ₹1,50,000, 80D up to ₹25,000, standard ₹50,000). Tax prorated for FY 2025-26 (April 1–March 31).</div>
         </div>
-        <div class="card">
+        <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="taxResult"></div>
         </div>
@@ -413,6 +419,7 @@
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
                 errorMessage.style.display = 'block';
+                document.querySelector('.results-card').classList.add('visible');
                 calcButton.disabled = true;
                 return false;
             }
@@ -469,6 +476,7 @@
             let cess = tax * 0.04;
             let totalTax = tax + cess;
             document.getElementById('taxResult').innerHTML = `Prorated Income: ₹${formatIndianNumber(taxableIncome)}, Tax (incl. 4% cess): ₹${formatIndianNumber(totalTax)}`;
+            document.querySelector('.results-card').classList.add('visible');
         }
 
         function resetForm() {
@@ -477,6 +485,7 @@
             document.getElementById('deductionInput').value = '0';
             document.getElementById('taxResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
+            document.querySelector('.results-card').classList.remove('visible');
             document.getElementById('calcButton').disabled = true;
             toggleDeductionInput();
             validateInputs();

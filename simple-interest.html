@@ -142,6 +142,12 @@
         .back-link:hover {
             color: #FF6F00;
         }
+        .results-card {
+            display: none;
+        }
+        .results-card.visible {
+            display: block;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
@@ -264,7 +270,7 @@
             </div>
             <div class="note">Enter amount in ₹ (e.g., 100000 for 1 Lakh). Interest calculated for specified duration.</div>
         </div>
-        <div class="card">
+        <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="siResult"></div>
         </div>
@@ -326,12 +332,12 @@
 
             let errors = [];
 
-            if (isNaN(principal) || principal < 0) {
-                errors.push('Please enter a valid principal amount.');
+            if (isNaN(principal) || principal <= 0) {
+                errors.push('Please enter a valid principal amount (greater than 0).');
                 principalInput.classList.add('error');
             }
-            if (isNaN(rate) || rate < 0) {
-                errors.push('Please enter a valid interest rate.');
+            if (isNaN(rate) || rate <= 0) {
+                errors.push('Please enter a valid interest rate (greater than 0).');
                 rateInput.classList.add('error');
             }
             if (isNaN(years) || years < 0) {
@@ -351,6 +357,7 @@
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
                 errorMessage.style.display = 'block';
+                document.querySelector('.results-card').classList.add('visible');
                 calcButton.disabled = true;
                 return false;
             }
@@ -371,6 +378,7 @@
             let interest = principal * rate * duration / 100;
             let amount = principal + interest;
             document.getElementById('siResult').innerHTML = `Amount: ₹${formatIndianNumber(amount)}, Interest: ₹${formatIndianNumber(interest)}`;
+            document.querySelector('.results-card').classList.add('visible');
         }
 
         function resetForm() {
@@ -380,6 +388,7 @@
             document.getElementById('siMonths').value = '0';
             document.getElementById('siResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
+            document.querySelector('.results-card').classList.remove('visible');
             document.getElementById('calcButton').disabled = true;
             validateInputs();
         }

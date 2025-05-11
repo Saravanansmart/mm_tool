@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal Loan EMI calculator for India. Compute monthly EMI for FY 2025-26.">
-    <meta name="keywords" content="personal loan calculator, India, FY 2025-26, EMI, loan repayment">
+    <meta name="description" content="Personal Loan EMI calculator for India. Calculate loan EMI for FY 2025-26.">
+    <meta name="keywords" content="personal loan calculator, India, FY 2025-26, EMI, interest">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Personal Loan Calculator</title>
+    <title>Personal Loan EMI Calculator</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -142,6 +142,12 @@
         .back-link:hover {
             color: #FF6F00;
         }
+        .results-card {
+            display: none;
+        }
+        .results-card.visible {
+            display: block;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
@@ -236,37 +242,33 @@
 </head>
 <body>
     <div class="container">
-        <h1>Personal Loan Calculator</h1>
+        <h1>Personal Loan EMI Calculator</h1>
         <a href="index.html" class="back-link">Back to Calculators</a>
         <div class="card">
-            <h2>Personal Loan EMI</h2>
+            <h2>Personal Loan</h2>
             <div class="input-group">
                 <div>
-                    <label for="perPrincipal">Loan Amount (₹):</label>
-                    <input type="number" id="perPrincipal" min="0" value="500000">
+                    <label for="personalLoanAmount">Loan Amount (₹):</label>
+                    <input type="number" id="personalLoanAmount" min="0" value="300000">
                 </div>
                 <div>
-                    <label for="perRate">Annual Interest Rate (%):</label>
-                    <input type="number" id="perRate" min="0" step="0.1" value="10">
+                    <label for="personalLoanRate">Annual Interest Rate (%):</label>
+                    <input type="number" id="personalLoanRate" min="0" step="0.1" value="10">
                 </div>
                 <div>
-                    <label for="perYears">Loan Tenure (Years):</label>
-                    <input type="number" id="perYears" min="0" value="3">
+                    <label for="personalLoanYears">Loan Tenure (Years):</label>
+                    <input type="number" id="personalLoanYears" min="0" value="3">
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcEMI()" disabled>Calculate</button>
+                <button id="calcButton" onclick="calcPersonalLoan()" disabled>Calculate</button>
                 <button onclick="resetForm()">Reset</button>
             </div>
-            <div class="note">Enter loan amount in ₹ (e.g., 500000 for 5 Lakh). EMI calculated using the reducing balance method.</div>
+            <div class="note">Enter loan amount in ₹ (e.g., 300000 for 3 Lakh). EMI calculated using standard formula for specified tenure.</div>
         </div>
-        <div class="card">
+        <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
-            <div class="results" id="perResult"></div>
-        </div>
-        <div class="card">
-            <h2>About EMI Calculation</h2>
-            <div class="note">EMI is calculated using the formula: EMI = [P × r × (1 + r)^n] / [(1 + r)^n - 1], where P is the loan amount, r is the monthly rate (annual rate / 12 / 100), and n is the number of months. Total interest is (EMI × tenure in months) - loan amount.</div>
+            <div class="results" id="personalLoanResult"></div>
         </div>
     </div>
     <div id="disclaimerModal" class="modal">
@@ -285,7 +287,7 @@
     </div>
     <footer class="footer">
         <div class="footer-links">
-            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> | 
+            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
             <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
         </div>
         <p class="rights-reserved">© 2025 Financial Calculators. All Rights Reserved.</p>
@@ -306,16 +308,16 @@
         }
 
         function validateInputs() {
-            let principal = parseFloat(document.getElementById('perPrincipal').value);
-            let rate = parseFloat(document.getElementById('perRate').value);
-            let years = parseFloat(document.getElementById('perYears').value);
+            let amount = parseFloat(document.getElementById('personalLoanAmount').value);
+            let rate = parseFloat(document.getElementById('personalLoanRate').value);
+            let years = parseFloat(document.getElementById('personalLoanYears').value);
             let errorMessage = document.getElementById('errorMessage');
             let calcButton = document.getElementById('calcButton');
-            let principalInput = document.getElementById('perPrincipal');
-            let rateInput = document.getElementById('perRate');
-            let yearsInput = document.getElementById('perYears');
+            let amountInput = document.getElementById('personalLoanAmount');
+            let rateInput = document.getElementById('personalLoanRate');
+            let yearsInput = document.getElementById('personalLoanYears');
 
-            principalInput.classList.remove('error');
+            amountInput.classList.remove('error');
             rateInput.classList.remove('error');
             yearsInput.classList.remove('error');
             errorMessage.style.display = 'none';
@@ -323,22 +325,23 @@
 
             let errors = [];
 
-            if (isNaN(principal) || principal < 0) {
-                errors.push('Please enter a valid loan amount.');
-                principalInput.classList.add('error');
+            if (isNaN(amount) || amount <= 0) {
+                errors.push('Please enter a valid loan amount (greater than 0).');
+                amountInput.classList.add('error');
             }
-            if (isNaN(rate) || rate < 0) {
-                errors.push('Please enter a valid interest rate.');
+            if (isNaN(rate) || rate <= 0) {
+                errors.push('Please enter a valid interest rate (greater than 0).');
                 rateInput.classList.add('error');
             }
             if (isNaN(years) || years <= 0) {
-                errors.push('Please enter a valid tenure (greater than 0).');
+                errors.push('Please enter a valid loan tenure (greater than 0).');
                 yearsInput.classList.add('error');
             }
 
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
                 errorMessage.style.display = 'block';
+                document.querySelector('.results-card').classList.add('visible');
                 calcButton.disabled = true;
                 return false;
             }
@@ -347,28 +350,30 @@
             return true;
         }
 
-        function calcEMI() {
+        function calcPersonalLoan() {
             if (!validateInputs()) return;
 
-            let principal = parseFloat(document.getElementById('perPrincipal').value);
-            let rate = parseFloat(document.getElementById('perRate').value) / 12 / 100;
-            let years = parseFloat(document.getElementById('perYears').value);
-            let n = years * 12;
+            let amount = parseFloat(document.getElementById('personalLoanAmount').value);
+            let rate = parseFloat(document.getElementById('personalLoanRate').value) / 100 / 12;
+            let years = parseFloat(document.getElementById('personalLoanYears').value);
+            let months = years * 12;
 
-            let emi = principal * rate * Math.pow(1 + rate, n) / (Math.pow(1 + rate, n) - 1);
-            let totalPayment = emi * n;
-            let totalInterest = totalPayment - principal;
+            let emi = amount * rate * Math.pow(1 + rate, months) / (Math.pow(1 + rate, months) - 1);
+            let totalPayment = emi * months;
+            let totalInterest = totalPayment - amount;
 
-            document.getElementById('perResult').innerHTML = `Monthly EMI: ₹${formatIndianNumber(emi)}, Total Interest: ₹${formatIndianNumber(totalInterest)}, Total Payment: ₹${formatIndianNumber(totalPayment)}`;
+            document.getElementById('personalLoanResult').innerHTML = `Monthly EMI: ₹${formatIndianNumber(emi)}, Total Interest: ₹${formatIndianNumber(totalInterest)}, Total Payment: ₹${formatIndianNumber(totalPayment)}`;
+            document.querySelector('.results-card').classList.add('visible');
         }
 
         function resetForm() {
-            document.getElementById('perPrincipal').value = '500000';
-            document.getElementById('perRate').value = '10';
-            document.getElementById('perYears').value = '3';
-            document.getElementById('perResult').innerHTML = '';
+            document.getElementById('personalLoanAmount').value = '300000';
+            document.getElementById('personalLoanRate').value = '10';
+            document.getElementById('personalLoanYears').value = '3';
+            document.getElementById('personalLoanResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
-            document.getElementById('calcButton').disabled = true;
+            document.querySelector('.results-card').classList.remove('visible');
+            document.getElementById('calcButton').disabled = true | true;
             validateInputs();
         }
 
@@ -377,6 +382,7 @@
             modal.style.display = 'flex';
             modal.classList.add('show');
         }
+
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.style.display = 'none';
@@ -385,9 +391,9 @@
 
         window.onload = function() {
             validateInputs();
-            document.getElementById('perPrincipal').addEventListener('input', validateInputs);
-            document.getElementById('perRate').addEventListener('input', validateInputs);
-            document.getElementById('perYears').addEventListener('input', validateInputs);
+            document.getElementById('personalLoanAmount').addEventListener('input', validateInputs);
+            document.getElementById('personalLoanRate').addEventListener('input', validateInputs);
+            document.getElementById('personalLoanYears').addEventListener('input', validateInputs);
         };
     </script>
 </body>

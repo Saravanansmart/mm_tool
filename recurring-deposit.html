@@ -142,6 +142,12 @@
         .back-link:hover {
             color: #FF6F00;
         }
+        .results-card {
+            display: none;
+        }
+        .results-card.visible {
+            display: block;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
@@ -264,7 +270,7 @@
             </div>
             <div class="note">Enter monthly deposit in ₹ (e.g., 5000). RD interest compounded quarterly for specified duration.</div>
         </div>
-        <div class="card">
+        <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="rdResult"></div>
         </div>
@@ -284,12 +290,12 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('termsModal')">×</span>
             <h3>Terms and Conditions</h3>
-            <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
+            <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to invalid data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
         </div>
     </div>
     <footer class="footer">
         <div class="footer-links">
-            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> | 
+            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
             <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
         </div>
         <p class="rights-reserved">© 2025 Financial Calculators. All Rights Reserved.</p>
@@ -355,6 +361,7 @@
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
                 errorMessage.style.display = 'block';
+                document.querySelector('.results-card').classList.add('visible');
                 calcButton.disabled = true;
                 return false;
             }
@@ -384,6 +391,7 @@
             let interest = maturity - invested;
 
             document.getElementById('rdResult').innerHTML = `Maturity: ₹${formatIndianNumber(maturity)}, Interest: ₹${formatIndianNumber(interest)}, Invested: ₹${formatIndianNumber(invested)}`;
+            document.querySelector('.results-card').classList.add('visible');
         }
 
         function resetForm() {
@@ -393,6 +401,7 @@
             document.getElementById('rdMonths').value = '0';
             document.getElementById('rdResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
+            document.querySelector('.results-card').classList.remove('visible');
             document.getElementById('calcButton').disabled = true;
             validateInputs();
         }
@@ -402,6 +411,7 @@
             modal.style.display = 'flex';
             modal.classList.add('show');
         }
+
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.style.display = 'none';

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Educational Loan EMI calculator for India. Compute monthly EMI for FY 2025-26.">
-    <meta name="keywords" content="educational loan calculator, India, FY 2025-26, EMI, loan repayment">
+    <meta name="description" content="Educational Loan EMI calculator for India. Calculate loan EMI for FY 2025-26.">
+    <meta name="keywords" content="educational loan calculator, India, FY 2025-26, EMI, interest">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Educational Loan Calculator</title>
+    <title>Educational Loan EMI Calculator</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -142,6 +142,12 @@
         .back-link:hover {
             color: #FF6F00;
         }
+        .results-card {
+            display: none;
+        }
+        .results-card.visible {
+            display: block;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
@@ -236,37 +242,33 @@
 </head>
 <body>
     <div class="container">
-        <h1>Educational Loan Calculator</h1>
+        <h1>Educational Loan EMI Calculator</h1>
         <a href="index.html" class="back-link">Back to Calculators</a>
         <div class="card">
-            <h2>Educational Loan EMI</h2>
+            <h2>Educational Loan</h2>
             <div class="input-group">
                 <div>
-                    <label for="eduPrincipal">Loan Amount (₹):</label>
-                    <input type="number" id="eduPrincipal" min="0" value="500000">
+                    <label for="eduLoanAmount">Loan Amount (₹):</label>
+                    <input type="number" id="eduLoanAmount" min="0" value="500000">
                 </div>
                 <div>
-                    <label for="eduRate">Annual Interest Rate (%):</label>
-                    <input type="number" id="eduRate" min="0" step="0.1" value="8">
+                    <label for="eduLoanRate">Annual Interest Rate (%):</label>
+                    <input type="number" id="eduLoanRate" min="0" step="0.1" value="8">
                 </div>
                 <div>
-                    <label for="eduYears">Loan Tenure (Years):</label>
-                    <input type="number" id="eduYears" min="0" value="5">
+                    <label for="eduLoanYears">Loan Tenure (Years):</label>
+                    <input type="number" id="eduLoanYears" min="0" value="5">
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcEMI()" disabled>Calculate</button>
+                <button id="calcButton" onclick="calcEduLoan()" disabled>Calculate</button>
                 <button onclick="resetForm()">Reset</button>
             </div>
-            <div class="note">Enter loan amount in ₹ (e.g., 500000 for 5 Lakh). EMI calculated using the reducing balance method.</div>
+            <div class="note">Enter loan amount in ₹ (e.g., 500000 for 5 Lakh). EMI calculated using standard formula for specified tenure.</div>
         </div>
-        <div class="card">
+        <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
-            <div class="results" id="eduResult"></div>
-        </div>
-        <div class="card">
-            <h2>About EMI Calculation</h2>
-            <div class="note">EMI is calculated using the formula: EMI = [P × r × (1 + r)^n] / [(1 + r)^n - 1], where P is the loan amount, r is the monthly rate (annual rate / 12 / 100), and n is the number of months. Total interest is (EMI × tenure in months) - loan amount.</div>
+            <div class="results" id="eduLoanResult"></div>
         </div>
     </div>
     <div id="disclaimerModal" class="modal">
@@ -285,7 +287,7 @@
     </div>
     <footer class="footer">
         <div class="footer-links">
-            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> | 
+            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
             <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
         </div>
         <p class="rights-reserved">© 2025 Financial Calculators. All Rights Reserved.</p>
@@ -306,16 +308,16 @@
         }
 
         function validateInputs() {
-            let principal = parseFloat(document.getElementById('eduPrincipal').value);
-            let rate = parseFloat(document.getElementById('eduRate').value);
-            let years = parseFloat(document.getElementById('eduYears').value);
+            let amount = parseFloat(document.getElementById('eduLoanAmount').value);
+            let rate = parseFloat(document.getElementById('eduLoanRate').value);
+            let years = parseFloat(document.getElementById('eduLoanYears').value);
             let errorMessage = document.getElementById('errorMessage');
             let calcButton = document.getElementById('calcButton');
-            let principalInput = document.getElementById('eduPrincipal');
-            let rateInput = document.getElementById('eduRate');
-            let yearsInput = document.getElementById('eduYears');
+            let amountInput = document.getElementById('eduLoanAmount');
+            let rateInput = document.getElementById('eduLoanRate');
+            let yearsInput = document.getElementById('eduLoanYears');
 
-            principalInput.classList.remove('error');
+            amountInput.classList.remove('error');
             rateInput.classList.remove('error');
             yearsInput.classList.remove('error');
             errorMessage.style.display = 'none';
@@ -323,22 +325,23 @@
 
             let errors = [];
 
-            if (isNaN(principal) || principal < 0) {
-                errors.push('Please enter a valid loan amount.');
-                principalInput.classList.add('error');
+            if (isNaN(amount) || amount <= 0) {
+                errors.push('Please enter a valid loan amount (greater than 0).');
+                amountInput.classList.add('error');
             }
-            if (isNaN(rate) || rate < 0) {
-                errors.push('Please enter a valid interest rate.');
+            if (isNaN(rate) || rate <= 0) {
+                errors.push('Please enter a valid interest rate (greater than 0).');
                 rateInput.classList.add('error');
             }
             if (isNaN(years) || years <= 0) {
-                errors.push('Please enter a valid tenure (greater than 0).');
+                errors.push('Please enter a valid loan tenure (greater than 0).');
                 yearsInput.classList.add('error');
             }
 
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
                 errorMessage.style.display = 'block';
+                document.querySelector('.results-card').classList.add('visible');
                 calcButton.disabled = true;
                 return false;
             }
@@ -347,27 +350,29 @@
             return true;
         }
 
-        function calcEMI() {
+        function calcEduLoan() {
             if (!validateInputs()) return;
 
-            let principal = parseFloat(document.getElementById('eduPrincipal').value);
-            let rate = parseFloat(document.getElementById('eduRate').value) / 12 / 100;
-            let years = parseFloat(document.getElementById('eduYears').value);
-            let n = years * 12;
+            let amount = parseFloat(document.getElementById('eduLoanAmount').value);
+            let rate = parseFloat(document.getElementById('eduLoanRate').value) / 100 / 12;
+            let years = parseFloat(document.getElementById('eduLoanYears').value);
+            let months = years * 12;
 
-            let emi = principal * rate * Math.pow(1 + rate, n) / (Math.pow(1 + rate, n) - 1);
-            let totalPayment = emi * n;
-            let totalInterest = totalPayment - principal;
+            let emi = amount * rate * Math.pow(1 + rate, months) / (Math.pow(1 + rate, months) - 1);
+            let totalPayment = emi * months;
+            let totalInterest = totalPayment - amount;
 
-            document.getElementById('eduResult').innerHTML = `Monthly EMI: ₹${formatIndianNumber(emi)}, Total Interest: ₹${formatIndianNumber(totalInterest)}, Total Payment: ₹${formatIndianNumber(totalPayment)}`;
+            document.getElementById('eduLoanResult').innerHTML = `Monthly EMI: ₹${formatIndianNumber(emi)}, Total Interest: ₹${formatIndianNumber(totalInterest)}, Total Payment: ₹${formatIndianNumber(totalPayment)}`;
+            document.querySelector('.results-card').classList.add('visible');
         }
 
         function resetForm() {
-            document.getElementById('eduPrincipal').value = '500000';
-            document.getElementById('eduRate').value = '8';
-            document.getElementById('eduYears').value = '5';
-            document.getElementById('eduResult').innerHTML = '';
+            document.getElementById('eduLoanAmount').value = '500000';
+            document.getElementById('eduLoanRate').value = '8';
+            document.getElementById('eduLoanYears').value = '5';
+            document.getElementById('eduLoanResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
+            document.querySelector('.results-card').classList.remove('visible');
             document.getElementById('calcButton').disabled = true;
             validateInputs();
         }
@@ -377,6 +382,7 @@
             modal.style.display = 'flex';
             modal.classList.add('show');
         }
+
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.style.display = 'none';
@@ -385,9 +391,9 @@
 
         window.onload = function() {
             validateInputs();
-            document.getElementById('eduPrincipal').addEventListener('input', validateInputs);
-            document.getElementById('eduRate').addEventListener('input', validateInputs);
-            document.getElementById('eduYears').addEventListener('input', validateInputs);
+            document.getElementById('eduLoanAmount').addEventListener('input', validateInputs);
+            document.getElementById('eduLoanRate').addEventListener('input', validateInputs);
+            document.getElementById('eduLoanYears').addEventListener('input', validateInputs);
         };
     </script>
 </body>
