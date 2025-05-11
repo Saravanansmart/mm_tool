@@ -9,129 +9,287 @@
     <meta name="author" content="Financial Calculators">
     <title>Fixed Deposit Calculator</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
-        body {
-            font-family: 'Roboto', sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        * {
             margin: 0;
-            background: linear-gradient(135deg, #FF9933, #138808, #000080);
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #E8EAF6, #F5F7FA);
             min-height: 100vh;
-            color: #fff;
-            text-shadow: 0 1px 2px rgba(255, 153, 51, 0.3);
+            color: #212121;
+            display: flex;
+            flex-direction: column;
         }
         .container {
-            max-width: 500px;
+            max-width: 800px;
             margin: 20px auto;
-            padding: 10px;
+            padding: 20px;
+            flex: 1;
         }
         h1 {
-            font-size: 2.2em;
+            font-size: 2.5em;
+            font-weight: 700;
             text-align: center;
             margin: 20px 0;
-            color: #fff;
-            background: linear-gradient(45deg, #FF9933, #FFFFFF);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #1A237E;
         }
-        .section {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 16px;
-            margin: 10px 0;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 153, 51, 0.25);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E0E0E0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .section:hover {
+        .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
-        .section h2 {
-            font-size: 1.4em;
+        h2 {
+            font-size: 1.5em;
+            font-weight: 600;
             margin: 10px 0;
-            color: #e6f0ff;
+            color: #1A237E;
         }
         label {
             font-size: 1em;
-            margin: 6px;
-            color: #e6f0ff;
+            font-weight: 400;
+            margin: 8px 0;
+            display: block;
+            color: #212121;
         }
         input {
             font-size: 1em;
-            padding: 8px;
-            margin: 6px;
-            border: none;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #E0E0E0;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.25);
-            color: #fff;
-            width: 90px;
-            transition: box-shadow 0.3s ease;
+            background: #F5F5F5;
+            color: #212121;
+            width: 100%;
+            max-width: 200px;
+            transition: border 0.2s ease, box-shadow 0.2s ease;
         }
         input:focus {
             outline: none;
-            box-shadow: 0 0 10px rgba(255, 153, 51, 0.5);
+            border: 1px solid #FF6F00;
+            box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
+        }
+        input.error {
+            border: 1px solid #D32F2F;
+            box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
         }
         button {
             font-size: 1em;
-            padding: 8px 16px;
-            margin: 6px;
+            font-weight: 700;
+            padding: 10px 20px;
+            margin: 8px 0;
             border: none;
             border-radius: 8px;
-            background: linear-gradient(45deg, #FF9933, #FFFFFF);
-            color: #000;
+            background: #FF6F00;
+            color: #FFFFFF;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
         button:hover {
+            background: #F57C00;
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 153, 51, 0.6);
+            box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
+        }
+        button:disabled {
+            background: #B0BEC5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
         .results {
             font-size: 1em;
-            margin-top: 10px;
-            color: #e6f0ff;
+            margin-top: 15px;
+            color: #212121;
+            font-weight: 400;
+        }
+        .error-message {
+            font-size: 0.9em;
+            color: #D32F2F;
+            margin: 8px 0;
+            display: none;
         }
         .note {
             font-size: 0.9em;
-            color: #d4e4ff;
-            margin: 6px;
+            color: #616161;
+            margin: 8px 0;
+            line-height: 1.5;
         }
         .back-link {
             display: block;
             text-align: center;
             margin: 20px 0;
-            color: #e6f0ff;
+            color: #1A237E;
             text-decoration: none;
             font-size: 1em;
+            font-weight: 600;
         }
         .back-link:hover {
-            color: #FF9933;
+            color: #FF6F00;
         }
-        @media (max-width: 600px) {
-            input { width: 65px; }
-            .section { padding: 10px; }
-            h1 { font-size: 1.6em; }
+        .footer {
+            background: #1A237E;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .footer-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1em;
+            font-weight: 400;
+        }
+        .footer-links a:hover {
+            color: #FF6F00;
+        }
+        .rights-reserved {
+            font-size: 0.9em;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: scaleIn 0.3s ease;
+        }
+        .modal-content {
+            background: #FFFFFF;
+            max-width: 500px;
+            width: 90%;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            color: #212121;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+        .modal-content h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 10px 0;
+            color: #1A237E;
+        }
+        .modal-content p {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5em;
+            color: #212121;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close:hover {
+            color: #FF6F00;
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .container { padding: 10px; }
+            .card { padding: 15px; }
+            input { max-width: 100%; }
+            .input-group { flex-direction: column; gap: 10px; }
+            button { width: 100%; max-width: 200px; }
+            .footer { padding: 15px; font-size: 0.9em; }
+            .rights-reserved { font-size: 0.8em; }
+            .modal-content { padding: 15px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Fixed Deposit Calculator</h1>
-        <div class="section">
+        <div class="card">
             <h2>Fixed Deposit (FD)</h2>
-            <label>Principal Amount (₹):</label><input type="number" id="fdPrincipal" min="0" value="100000">
-            <label>Annual Interest Rate (%):</label><input type="number" id="fdRate" min="0" step="0.1" value="6">
-            <label>Duration (Years):</label><input type="number" id="fdYears" min="0" value="1">
-            <label>Duration (Months):</label><input type="number" id="fdMonths" min="0" value="0">
-            <button onclick="calcFD()">Calculate</button>
+            <div class="input-group">
+                <div>
+                    <label for="fdPrincipal">Principal Amount (₹):</label>
+                    <input type="number" id="fdPrincipal" min="0" value="100000">
+                </div>
+                <div>
+                    <label for="fdRate">Annual Interest Rate (%):</label>
+                    <input type="number" id="fdRate" min="0" step="0.1" value="6">
+                </div>
+                <div>
+                    <label for="fdYears">Duration (Years):</label>
+                    <input type="number" id="fdYears" min="0" value="1">
+                </div>
+                <div>
+                    <label for="fdMonths">Duration (Months):</label>
+                    <input type="number" id="fdMonths" min="0" value="0">
+                </div>
+            </div>
+            <div class="input-group">
+                <button id="calcButton" onclick="calcFD()" disabled>Calculate</button>
+                <button onclick="resetForm()">Reset</button>
+            </div>
             <div class="note">Enter amount in ₹ (e.g., 100000 for 1 Lakh). FD interest compounded quarterly for specified duration.</div>
+        </div>
+        <div class="card">
+            <div class="error-message" id="errorMessage"></div>
             <div class="results" id="fdResult"></div>
         </div>
         <a href="index.html" class="back-link">Back to Calculators</a>
     </div>
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
+            <h3>Disclaimer</h3>
+            <p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or tax professional before making decisions. We are not liable for any losses or damages arising from the use of these calculators.</p>
+        </div>
+    </div>
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('termsModal')">×</span>
+            <h3>Terms and Conditions</h3>
+            <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> | 
+            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
+        </div>
+        <p class="rights-reserved">© 2025 Financial Calculators. All Rights Reserved.</p>
+    </footer>
     <script>
         function formatIndianNumber(num) {
             if (isNaN(num)) return "0";
@@ -147,34 +305,104 @@
             return result + '.' + decimal;
         }
 
-        function getDuration(yearsId, monthsId) {
-            let years = parseFloat(document.getElementById(yearsId).value) || 0;
-            let months = parseFloat(document.getElementById(monthsId).value) || 0;
-            if (years < 0 || months < 0) {
-                alert('Invalid duration. Use non-negative numbers.');
-                return null;
+        function validateInputs() {
+            let principal = parseFloat(document.getElementById('fdPrincipal').value);
+            let rate = parseFloat(document.getElementById('fdRate').value);
+            let years = parseFloat(document.getElementById('fdYears').value) || 0;
+            let months = parseFloat(document.getElementById('fdMonths').value) || 0;
+            let errorMessage = document.getElementById('errorMessage');
+            let calcButton = document.getElementById('calcButton');
+            let principalInput = document.getElementById('fdPrincipal');
+            let rateInput = document.getElementById('fdRate');
+            let yearsInput = document.getElementById('fdYears');
+            let monthsInput = document.getElementById('fdMonths');
+
+            principalInput.classList.remove('error');
+            rateInput.classList.remove('error');
+            yearsInput.classList.remove('error');
+            monthsInput.classList.remove('error');
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
+
+            let errors = [];
+
+            if (isNaN(principal) || principal < 0) {
+                errors.push('Please enter a valid principal amount.');
+                principalInput.classList.add('error');
             }
-            return years + months / 12;
+            if (isNaN(rate) || rate < 0) {
+                errors.push('Please enter a valid interest rate.');
+                rateInput.classList.add('error');
+            }
+            if (isNaN(years) || years < 0) {
+                errors.push('Please enter a valid number of years.');
+                yearsInput.classList.add('error');
+            }
+            if (isNaN(months) || months < 0) {
+                errors.push('Please enter a valid number of months.');
+                monthsInput.classList.add('error');
+            }
+            if ((years === 0 && months === 0) || isNaN(years + months)) {
+                errors.push('Duration must be greater than 0.');
+                yearsInput.classList.add('error');
+                monthsInput.classList.add('error');
+            }
+
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                calcButton.disabled = true;
+                return false;
+            }
+
+            calcButton.disabled = false;
+            return true;
         }
 
         function calcFD() {
-            let duration = getDuration('fdYears', 'fdMonths');
-            if (duration === null) return;
-            if (duration === 0) {
-                alert('Duration must be greater than 0 for FD.');
-                return;
-            }
+            if (!validateInputs()) return;
+
             let principal = parseFloat(document.getElementById('fdPrincipal').value);
             let rate = parseFloat(document.getElementById('fdRate').value);
-            if (isNaN(principal) || principal < 0 || isNaN(rate) || rate < 0) {
-                alert('Invalid inputs for FD. Use positive numbers.');
-                return;
-            }
-            let n = 4; // Quarterly compounding
+            let years = parseFloat(document.getElementById('fdYears').value) || 0;
+            let months = parseFloat(document.getElementById('fdMonths').value) || 0;
+            let duration = years + months / 12;
+            let n = 4;
+
             let amount = principal * Math.pow(1 + rate / 100 / n, n * duration);
             let interest = amount - principal;
             document.getElementById('fdResult').innerHTML = `Maturity: ₹${formatIndianNumber(amount)}, Interest: ₹${formatIndianNumber(interest)}`;
         }
+
+        function resetForm() {
+            document.getElementById('fdPrincipal').value = '100000';
+            document.getElementById('fdRate').value = '6';
+            document.getElementById('fdYears').value = '1';
+            document.getElementById('fdMonths').value = '0';
+            document.getElementById('fdResult').innerHTML = '';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('calcButton').disabled = true;
+            validateInputs();
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
+            modal.classList.add('show');
+        }
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+            modal.classList.remove('show');
+        }
+
+        window.onload = function() {
+            validateInputs();
+            document.getElementById('fdPrincipal').addEventListener('input', validateInputs);
+            document.getElementById('fdRate').addEventListener('input', validateInputs);
+            document.getElementById('fdYears').addEventListener('input', validateInputs);
+            document.getElementById('fdMonths').addEventListener('input', validateInputs);
+        };
     </script>
 </body>
 </html>

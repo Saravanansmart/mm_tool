@@ -9,111 +9,140 @@
     <meta name="author" content="Financial Calculators">
     <title>Income Tax Calculator</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
-        body {
-            font-family: 'Roboto', sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        * {
             margin: 0;
-            background: linear-gradient(135deg, #FF9933, #138808, #000080);
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #E8EAF6, #F5F7FA);
             min-height: 100vh;
-            color: #fff;
-            text-shadow: 0 1px 2px rgba(255, 153, 51, 0.3);
+            color: #212121;
+            display: flex;
+            flex-direction: column;
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 20px auto;
-            padding: 10px;
+            padding: 20px;
+            flex: 1;
         }
         h1 {
-            font-size: 2.2em;
+            font-size: 2.5em;
+            font-weight: 700;
             text-align: center;
             margin: 20px 0;
-            color: #fff;
-            background: linear-gradient(45deg, #FF9933, #FFFFFF);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #1A237E;
         }
-        .section {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 153, 51, 0.25);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E0E0E0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .section:hover {
+        .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
-        .section h2 {
-            font-size: 1.4em;
+        h2 {
+            font-size: 1.5em;
+            font-weight: 600;
             margin: 10px 0;
-            color: #e6f0ff;
+            color: #1A237E;
         }
         label {
             font-size: 1em;
-            margin: 6px;
-            color: #e6f0ff;
+            font-weight: 400;
+            margin: 8px 0;
+            display: block;
+            color: #212121;
         }
         input, select {
             font-size: 1em;
-            padding: 8px;
-            margin: 6px;
-            border: none;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #E0E0E0;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.25);
-            color: #fff;
-            width: 90px;
-            transition: box-shadow 0.3s ease;
+            background: #F5F5F5;
+            color: #212121;
+            width: 100%;
+            max-width: 200px;
+            transition: border 0.2s ease, box-shadow 0.2s ease;
         }
         input:focus, select:focus {
             outline: none;
-            box-shadow: 0 0 10px rgba(255, 153, 51, 0.5);
+            border: 1px solid #FF6F00;
+            box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
+        }
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23212121" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+        }
+        input.error, select.error {
+            border: 1px solid #D32F2F;
+            box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
         }
         button {
             font-size: 1em;
-            padding: 8px 16px;
-            margin: 6px;
+            font-weight: 700;
+            padding: 10px 20px;
+            margin: 8px 0;
             border: none;
             border-radius: 8px;
-            background: linear-gradient(45deg, #FF9933, #FFFFFF);
-            color: #000;
+            background: #FF6F00;
+            color: #FFFFFF;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
         button:hover {
+            background: #F57C00;
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 153, 51, 0.6);
+            box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
+        }
+        button:disabled {
+            background: #B0BEC5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
         .results {
             font-size: 1em;
-            margin-top: 10px;
-            color: #e6f0ff;
+            margin-top: 15px;
+            color: #212121;
+            font-weight: 400;
+        }
+        .error-message {
+            font-size: 0.9em;
+            color: #D32F2F;
+            margin: 8px 0;
+            display: none;
         }
         .note {
             font-size: 0.9em;
-            color: #d4e4ff;
-            margin: 6px;
-        }
-        .regime-info {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 14px;
-            margin: 10px 0;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 153, 51, 0.25);
-            font-size: 0.9em;
-            color: #d4e4ff;
+            color: #616161;
+            margin: 8px 0;
+            line-height: 1.5;
         }
         .regime-info h3 {
             font-size: 1.2em;
+            font-weight: 600;
             margin: 10px 0;
-            color: #e6f0ff;
+            color: #1A237E;
         }
         .regime-info ul {
             margin: 10px 0;
@@ -123,41 +152,148 @@
             display: block;
             text-align: center;
             margin: 20px 0;
-            color: #e6f0ff;
+            color: #1A237E;
             text-decoration: none;
             font-size: 1em;
+            font-weight: 600;
         }
         .back-link:hover {
-            color: #FF9933;
+            color: #FF6F00;
         }
-        #deductionInput {
+        .footer {
+            background: #1A237E;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .footer-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1em;
+            font-weight: 400;
+        }
+        .footer-links a:hover {
+            color: #FF6F00;
+        }
+        .rights-reserved {
+            font-size: 0.9em;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+        .modal {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: scaleIn 0.3s ease;
         }
-        @media (max-width: 600px) {
-            input, select { width: 65px; }
-            .section { padding: 10px; }
-            h1 { font-size: 1.6em; }
-            .regime-info { font-size: 0.8em; }
+        .modal-content {
+            background: #FFFFFF;
+            max-width: 500px;
+            width: 90%;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            color: #212121;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+        .modal-content h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 10px 0;
+            color: #1A237E;
+        }
+        .modal-content p {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5em;
+            color: #212121;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close:hover {
+            color: #FF6F00;
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        #deductionInput, #deductionLabel {
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+        #deductionInput.visible, #deductionLabel.visible {
+            display: block;
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .container { padding: 10px; }
+            .card { padding: 15px; }
+            input, select { max-width: 100%; }
+            .input-group { flex-direction: column; gap: 10px; }
+            button { width: 100%; max-width: 200px; }
+            .footer { padding: 15px; font-size: 0.9em; }
+            .rights-reserved { font-size: 0.8em; }
+            .modal-content { padding: 15px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Income Tax Calculator</h1>
-        <div class="section">
+        <div class="card">
             <h2>Income Tax</h2>
-            <label>Annual Taxable Income (₹):</label><input type="number" id="taxIncome" min="0" value="1000000">
-            <label>Tax Regime:</label>
-            <select id="taxRegime" onchange="toggleDeductionInput(); calcTax(this.value)">
-                <option value="new" selected>New Regime</option>
-                <option value="old">Old Regime</option>
-            </select>
-            <label id="deductionLabel">Total Deductions (₹):</label><input type="number" id="deductionInput" min="0" max="225000" value="0">
-            <button onclick="calcTax(document.getElementById('taxRegime').value)">Calculate</button>
+            <div class="input-group">
+                <div>
+                    <label for="taxIncome">Annual Taxable Income (₹):</label>
+                    <input type="number" id="taxIncome" min="0" value="1000000">
+                </div>
+                <div>
+                    <label for="taxRegime">Tax Regime:</label>
+                    <select id="taxRegime" onchange="toggleDeductionInput()">
+                        <option value="" disabled selected>Select Regime</option>
+                        <option value="new">New Regime</option>
+                        <option value="old">Old Regime</option>
+                    </select>
+                </div>
+                <div>
+                    <label id="deductionLabel" for="deductionInput">Total Deductions (₹):</label>
+                    <input type="number" id="deductionInput" min="0" max="225000" value="0">
+                </div>
+            </div>
+            <div class="input-group">
+                <button id="calcButton" onclick="calcTax()" disabled>Calculate</button>
+                <button onclick="resetForm()">Reset</button>
+            </div>
             <div class="note">Enter income in ₹ (e.g., 1000000 for 10 Lakh). For Old Regime, include deductions (e.g., 80C up to ₹1,50,000, 80D up to ₹25,000, standard ₹50,000). Tax prorated for FY 2025-26 (April 1–March 31).</div>
+        </div>
+        <div class="card">
+            <div class="error-message" id="errorMessage"></div>
             <div class="results" id="taxResult"></div>
         </div>
-        <div class="regime-info">
+        <div class="card regime-info">
             <h3>Tax Regimes (FY 2025-26)</h3>
             <p><strong>New Regime:</strong> Simplified with lower tax rates, only ₹75,000 standard deduction. Ideal for minimal investments.</p>
             <ul>
@@ -179,6 +315,27 @@
         </div>
         <a href="index.html" class="back-link">Back to Calculators</a>
     </div>
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
+            <h3>Disclaimer</h3>
+            <p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or tax professional before making decisions. We are not liable for any losses or damages arising from the use of these calculators.</p>
+        </div>
+    </div>
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('termsModal')">×</span>
+            <h3>Terms and Conditions</h3>
+            <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> | 
+            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
+        </div>
+        <p class="rights-reserved">© 2025 Financial Calculators. All Rights Reserved.</p>
+    </footer>
     <script>
         function formatIndianNumber(num) {
             if (isNaN(num)) return "0";
@@ -197,11 +354,11 @@
         function getFYFraction() {
             let now = new Date();
             let year = now.getFullYear();
-            let fyStart = new Date(year, 3, 1); // April 1
+            let fyStart = new Date(year, 3, 1);
             if (now < fyStart) {
                 fyStart = new Date(year - 1, 3, 1);
             }
-            let fyEnd = new Date(fyStart.getFullYear() + 1, 2, 31); // March 31
+            let fyEnd = new Date(fyStart.getFullYear() + 1, 2, 31);
             let msPerDay = 1000 * 60 * 60 * 24;
             let totalDays = Math.floor((fyEnd - fyStart) / msPerDay) + 1;
             let daysPassed = Math.floor((now - fyStart) / msPerDay);
@@ -213,34 +370,72 @@
             let deductionInput = document.getElementById('deductionInput');
             let deductionLabel = document.getElementById('deductionLabel');
             if (regime === 'old') {
-                deductionInput.style.display = 'inline-block';
-                deductionLabel.style.display = 'inline-block';
+                deductionInput.classList.add('visible');
+                deductionLabel.classList.add('visible');
             } else {
-                deductionInput.style.display = 'none';
-                deductionLabel.style.display = 'none';
+                deductionInput.classList.remove('visible');
+                deductionLabel.classList.remove('visible');
             }
+            validateInputs();
         }
 
-        function calcTax(regime) {
+        function validateInputs() {
+            let income = parseFloat(document.getElementById('taxIncome').value);
+            let regime = document.getElementById('taxRegime').value;
+            let deductions = parseFloat(document.getElementById('deductionInput').value) || 0;
+            let errorMessage = document.getElementById('errorMessage');
+            let calcButton = document.getElementById('calcButton');
+            let taxIncomeInput = document.getElementById('taxIncome');
+            let taxRegimeSelect = document.getElementById('taxRegime');
+            let deductionInput = document.getElementById('deductionInput');
+
+            taxIncomeInput.classList.remove('error');
+            taxRegimeSelect.classList.remove('error');
+            deductionInput.classList.remove('error');
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
+
+            let errors = [];
+
+            if (isNaN(income) || income < 0) {
+                errors.push('Please enter a valid income.');
+                taxIncomeInput.classList.add('error');
+            }
+            if (!regime) {
+                errors.push('Please select a tax regime.');
+                taxRegimeSelect.classList.add('error');
+            }
+            if (regime === 'old' && (isNaN(deductions) || deductions < 0 || deductions > 225000)) {
+                errors.push('Deductions must be between ₹0 and ₹2,25,000.');
+                deductionInput.classList.add('error');
+            }
+
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                calcButton.disabled = true;
+                return false;
+            }
+
+            calcButton.disabled = false;
+            return true;
+        }
+
+        function calcTax() {
+            if (!validateInputs()) return;
+
             let fyFraction = getFYFraction();
             let income = parseFloat(document.getElementById('taxIncome').value);
-            if (isNaN(income) || income < 0) {
-                alert('Invalid income. Use positive numbers.');
-                return;
-            }
+            let regime = document.getElementById('taxRegime').value;
             let deductions = 0;
             let taxableIncome = 0;
 
             if (regime === 'new') {
-                deductions = 75000; // Standard deduction
+                deductions = 75000;
                 taxableIncome = Math.max(0, income - deductions) * fyFraction;
             } else if (regime === 'old') {
                 deductions = parseFloat(document.getElementById('deductionInput').value) || 0;
-                if (isNaN(deductions) || deductions < 0) {
-                    alert('Invalid deductions. Use positive numbers.');
-                    return;
-                }
-                deductions = Math.min(deductions, 225000); // Cap at ₹2,25,000
+                deductions = Math.min(deductions, 225000);
                 taxableIncome = Math.max(0, income - deductions) * fyFraction;
             }
 
@@ -276,8 +471,35 @@
             document.getElementById('taxResult').innerHTML = `Prorated Income: ₹${formatIndianNumber(taxableIncome)}, Tax (incl. 4% cess): ₹${formatIndianNumber(totalTax)}`;
         }
 
-        // Initialize deduction input visibility
-        window.onload = toggleDeductionInput;
+        function resetForm() {
+            document.getElementById('taxIncome').value = '1000000';
+            document.getElementById('taxRegime').value = '';
+            document.getElementById('deductionInput').value = '0';
+            document.getElementById('taxResult').innerHTML = '';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('calcButton').disabled = true;
+            toggleDeductionInput();
+            validateInputs();
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
+            modal.classList.add('show');
+        }
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+            modal.classList.remove('show');
+        }
+
+        window.onload = function() {
+            toggleDeductionInput();
+            validateInputs();
+            document.getElementById('taxIncome').addEventListener('input', validateInputs);
+            document.getElementById('taxRegime').addEventListener('change', validateInputs);
+            document.getElementById('deductionInput').addEventListener('input', validateInputs);
+        };
     </script>
 </body>
 </html>
