@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Financial calculators for India: Income Tax, Fixed Deposit, Loans, and more for FY 2025-26.">
-    <meta name="keywords" content="financial calculators, India, FY 2025-26, income tax, fixed deposit, loan EMI">
+    <meta name="description" content="Financial Calculators for India: Income Tax, Simple Interest, Fixed Deposit, Recurring Deposit, Educational Loan, Personal Loan for FY 2025-26.">
+    <meta name="keywords" content="financial calculators, India, FY 2025-26, income tax, simple interest, fixed deposit, recurring deposit, educational loan, personal loan">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Calculators in India</title>
+    <title>Financial Calculators</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -24,9 +24,9 @@
             flex-direction: column;
         }
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 20px auto;
-            padding: 20px;
+            padding: 20px 20px 40px;
             flex: 1;
         }
         h1 {
@@ -38,7 +38,7 @@
         }
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin: 20px 0;
         }
@@ -49,32 +49,53 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border: 1px solid #E0E0E0;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
-        .card a {
-            font-size: 1.1em;
+        .card h2 {
+            font-size: 1.5em;
             font-weight: 600;
+            margin-bottom: 10px;
             color: #1A237E;
+        }
+        .card p {
+            font-size: 1em;
+            color: #616161;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .card a {
+            display: inline-block;
+            font-size: 1em;
+            font-weight: 700;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #FF6F00;
+            color: #FFFFFF;
+            text-align: center;
             text-decoration: none;
-            display: block;
-            transition: color 0.2s ease;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
         .card a:hover {
-            color: #FF6F00;
+            background: #F57C00;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
         }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
             text-align: center;
             padding: 20px;
-            position: fixed;
-            bottom: 0;
             width: 100%;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
         }
         .footer-links a {
             color: #FFFFFF;
@@ -145,11 +166,18 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
+        @media (max-width: 1024px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
-            .container { padding: 10px; }
+            .container { padding: 10px 10px 30px; }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
             .card { padding: 15px; }
-            .card-grid { grid-template-columns: 1fr; }
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
@@ -158,14 +186,38 @@
 </head>
 <body>
     <div class="container">
-        <h1>Calculators in India</h1>
+        <h1>Financial Calculators</h1>
         <div class="card-grid">
-            <div class="card"><a href="income-tax.html">Income Tax Calculator</a></div>
-            <div class="card"><a href="simple-interest.html">Simple Interest Calculator</a></div>
-            <div class="card"><a href="fixed-deposit.html">Fixed Deposit Calculator</a></div>
-            <div class="card"><a href="recurring-deposit.html">Recurring Deposit Calculator</a></div>
-            <div class="card"><a href="educational-loan.html">Educational Loan Calculator</a></div>
-            <div class="card"><a href="personal-loan.html">Personal Loan Calculator</a></div>
+            <div class="card">
+                <h2>Income Tax Calculator</h2>
+                <p>Calculate income tax for FY 2025-26 under New or Old Regime, including deductions.</p>
+                <a href="income-tax.html">Calculate Now</a>
+            </div>
+            <div class="card">
+                <h2>Simple Interest Calculator</h2>
+                <p>Compute simple interest for loans or investments for FY 2025-26.</p>
+                <a href="simple-interest.html">Calculate Now</a>
+            </div>
+            <div class="card">
+                <h2>Fixed Deposit Calculator</h2>
+                <p>Calculate maturity amount and interest for fixed deposits with quarterly compounding.</p>
+                <a href="fixed-deposit.html">Calculate Now</a>
+            </div>
+            <div class="card">
+                <h2>Recurring Deposit Calculator</h2>
+                <p>Estimate maturity value and interest for recurring deposits with monthly contributions.</p>
+                <a href="recurring-deposit.html">Calculate Now</a>
+            </div>
+            <div class="card">
+                <h2>Educational Loan EMI Calculator</h2>
+                <p>Calculate monthly EMI, total interest, and payment for educational loans.</p>
+                <a href="educational-loan.html">Calculate Now</a>
+            </div>
+            <div class="card">
+                <h2>Personal Loan EMI Calculator</h2>
+                <p>Determine monthly EMI, total interest, and payment for personal loans.</p>
+                <a href="personal-loan.html">Calculate Now</a>
+            </div>
         </div>
     </div>
     <div id="disclaimerModal" class="modal">
@@ -190,11 +242,26 @@
         <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
     </footer>
     <script>
+        function formatIndianNumber(num) {
+            if (isNaN(num)) return "0";
+            num = Math.round(num * 100) / 100;
+            let str = num.toFixed(2).toString();
+            let [integer, decimal] = str.split('.');
+            let lastThree = integer.slice(-3);
+            let otherDigits = integer.slice(0, -3);
+            if (otherDigits) {
+                lastThree = ',' + lastThree;
+            }
+            let result = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree;
+            return result + '.' + decimal;
+        }
+
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.style.display = 'flex';
             modal.classList.add('show');
         }
+
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.style.display = 'none';
