@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="PPF Calculator for India. Calculate Public Provident Fund maturity for FY 2025-26.">
-<meta name="keywords" content="PPF calculator, India, FY 2025-26, Public Provident Fund, tax-saving">
+    <meta name="description" content="PPF Calculator for India. Calculate Public Provident Fund maturity for FY 2025-26.">
+    <meta name="keywords" content="PPF calculator, India, FY 2025-26, Public Provident Fund, tax-saving">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Public Provident Fund Calculator</title>
+    <title>PPF Calculator</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -62,7 +62,7 @@
             display: block;
             color: #212121;
         }
-        input {
+        input, select {
             font-size: 1em;
             padding: 10px;
             margin: 8px 0;
@@ -73,13 +73,22 @@
             width: 100%;
             max-width: 200px;
             transition: border 0.2s ease, box-shadow 0.2s ease;
+            font-family: 'Inter', sans-serif;
         }
-        input:focus {
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23212121" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+            cursor: pointer;
+        }
+        input:focus, select:focus {
             outline: none;
             border: 1px solid #FF6F00;
             box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
         }
-        input.error {
+        input.error, select.error {
             border: 1px solid #D32F2F;
             box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
         }
@@ -229,7 +238,7 @@
             h1 { font-size: 2em; }
             .container { padding: 10px 10px 30px; }
             .card { padding: 15px; }
-            input { max-width: 100%; }
+            input, select { max-width: 100%; }
             .input-group { flex-direction: column; gap: 10px; }
             button { width: 100%; max-width: 200px; }
             .footer { padding: 15px; font-size: 0.9em; }
@@ -243,35 +252,35 @@
         <h1>PPF Calculator</h1>
         <a href="index.html" class="back-link">Back to Calculators</a>
         <div class="card">
-    <h2>Public Provident Fund</h2>
-    <div class="input-group">
-        <div>
-            <label for="annualInvestment">Annual Investment (₹):</label>
-            <input type="number" id="annualInvestment" min="500" max="150000" value="100000">
+            <h2>Public Provident Fund</h2>
+            <div class="input-group">
+                <div>
+                    <label for="annualInvestment">Annual Investment (₹):</label>
+                    <input type="number" id="annualInvestment" min="500" max="150000" value="100000">
+                </div>
+                <div>
+                    <label for="tenure">Tenure (Years):</label>
+                    <select id="tenure">
+                        <option value="15" selected>15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="interestRate">Interest Rate (%):</label>
+                    <input type="number" id="interestRate" min="0" step="0.1" value="7.1">
+                </div>
+            </div>
+            <div class="input-group">
+                <button id="calcButton" onclick="calcPPF()" disabled>Calculate</button>
+                <button onclick="resetForm()">Reset</button>
+            </div>
+            <div class="note">Enter annual investment in ₹ (500 to 1,50,000). Maturity calculated with annual compounding. PPF interest is tax-free.</div>
         </div>
-        <div>
-            <label for="tenure">Tenure (Years):</label>
-            <select id="tenure">
-                <option value="15" selected>15</option>
-                <option value="20">20</option>
-                <option value="25">25</option>
-            </select>
+        <div class="card results-card">
+            <div class="error-message" id="errorMessage"></div>
+            <div class="results" id="ppfResult"></div>
         </div>
-        <div>
-            <label for="interestRate">Interest Rate (%):</label>
-            <input type="number" id="interestRate" min="0" step="0.1" value="7.1">
-        </div>
-    </div>
-    <div class="input-group">
-        <button id="calcButton" onclick="calcPPF()" disabled>Calculate</button>
-        <button onclick="resetForm()">Reset</button>
-    </div>
-    <div class="note">Enter annual investment in ₹ (500 to 1,50,000). Maturity calculated with annual compounding. PPF interest is tax-free.</div>
-</div>
-<div class="card results-card">
-    <div class="error-message" id="errorMessage"></div>
-    <div class="results" id="ppfResult"></div>
-</div>
     </div>
     <div id="disclaimerModal" class="modal">
         <div class="modal-content">
@@ -310,70 +319,72 @@
         }
 
         function validateInputs() {
-    let investment = parseFloat(document.getElementById('annualInvestment').value);
-    let rate = parseFloat(document.getElementById('interestRate').value);
-    let tenure = parseFloat(document.getElementById('tenure').value);
-    let errorMessage = document.getElementById('errorMessage');
-    let calcButton = document.getElementById('calcButton');
-    let investmentInput = document.getElementById('annualInvestment');
-    let rateInput = document.getElementById('interestRate');
+            let investment = parseFloat(document.getElementById('annualInvestment').value);
+            let rate = parseFloat(document.getElementById('interestRate').value);
+            let tenure = parseFloat(document.getElementById('tenure').value);
+            let errorMessage = document.getElementById('errorMessage');
+            let calcButton = document.getElementById('calcButton');
+            let investmentInput = document.getElementById('annualInvestment');
+            let rateInput = document.getElementById('interestRate');
+            let tenureInput = document.getElementById('tenure');
 
-    investmentInput.classList.remove('error');
-    rateInput.classList.remove('error');
-    errorMessage.style.display = 'none';
-    errorMessage.innerHTML = '';
+            investmentInput.classList.remove('error');
+            rateInput.classList.remove('error');
+            tenureInput.classList.remove('error');
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
 
-    let errors = [];
+            let errors = [];
 
-    if (isNaN(investment) || investment < 500 || investment > 150000) {
-        errors.push('Please enter a valid annual investment (500 to 1,50,000).');
-        investmentInput.classList.add('error');
-    }
-    if (isNaN(rate) || rate <= 0) {
-        errors.push('Please enter a valid interest rate (greater than 0).');
-        rateInput.classList.add('error');
-    }
+            if (isNaN(investment) || investment < 500 || investment > 150000) {
+                errors.push('Please enter a valid annual investment (500 to 1,50,000).');
+                investmentInput.classList.add('error');
+            }
+            if (isNaN(rate) || rate <= 0) {
+                errors.push('Please enter a valid interest rate (greater than 0).');
+                rateInput.classList.add('error');
+            }
 
-    if (errors.length > 0) {
-        errorMessage.innerHTML = errors.join('<br>');
-        errorMessage.style.display = 'block';
-        document.querySelector('.results-card').classList.add('visible');
-        calcButton.disabled = true;
-        return false;
-    }
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                document.querySelector('.results-card').classList.add('visible');
+                calcButton.disabled = true;
+                return false;
+            }
 
-    calcButton.disabled = false;
-    return true;
-}
+            calcButton.disabled = false;
+            return true;
+        }
 
-function calcPPF() {
-    if (!validateInputs()) return;
+        function calcPPF() {
+            if (!validateInputs()) return;
 
-    let investment = parseFloat(document.getElementById('annualInvestment').value);
-    let rate = parseFloat(document.getElementById('interestRate').value) / 100;
-    let tenure = parseFloat(document.getElementById('tenure').value);
+            let investment = parseFloat(document.getElementById('annualInvestment').value);
+            let rate = parseFloat(document.getElementById('interestRate').value) / 100;
+            let tenure = parseFloat(document.getElementById('tenure').value);
 
-    let futureValue = 0;
-    for (let t = 1; t <= tenure; t++) {
-        futureValue += investment * Math.pow(1 + rate, tenure - t + 1);
-    }
-    let totalInvested = investment * tenure;
-    let interest = futureValue - totalInvested;
+            let futureValue = 0;
+            for (let t = 1; t <= tenure; t++) {
+                futureValue += investment * Math.pow(1 + rate, tenure - t + 1);
+            }
+            let totalInvested = investment * tenure;
+            let interest = futureValue - totalInvested;
 
-    document.getElementById('ppfResult').innerHTML = `Maturity Amount: ₹${formatIndianNumber(futureValue)}, Total Invested: ₹${formatIndianNumber(totalInvested)}, Interest Earned: ₹${formatIndianNumber(interest)}`;
-    document.querySelector('.results-card').classList.add('visible');
-}
+            document.getElementById('ppfResult').innerHTML = `Maturity Amount: ₹${formatIndianNumber(futureValue)}, Total Invested: ₹${formatIndianNumber(totalInvested)}, Interest Earned: ₹${formatIndianNumber(interest)}`;
+            document.querySelector('.results-card').classList.add('visible');
+        }
 
-function resetForm() {
-    document.getElementById('annualInvestment').value = '100000';
-    document.getElementById('tenure').value = '15';
-    document.getElementById('interestRate').value = '7.1';
-    document.getElementById('ppfResult').innerHTML = '';
-    document.getElementById('errorMessage').style.display = 'none';
-    document.querySelector('.results-card').classList.remove('visible');
-    document.getElementById('calcButton').disabled = true;
-    validateInputs();
-}
+        function resetForm() {
+            document.getElementById('annualInvestment').value = '100000';
+            document.getElementById('tenure').value = '15';
+            document.getElementById('interestRate').value = '7.1';
+            document.getElementById('ppfResult').innerHTML = '';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.querySelector('.results-card').classList.remove('visible');
+            document.getElementById('calcButton').disabled = true;
+            validateInputs();
+        }
 
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
@@ -389,8 +400,8 @@ function resetForm() {
 
         window.onload = function() {
             validateInputs();
-            document.getElementById('monthlyInvestment').addEventListener('input', validateInputs);
-            document.getElementById('returnRate').addEventListener('input', validateInputs);
+            document.getElementById('annualInvestment').addEventListener('input', validateInputs);
+            document.getElementById('interestRate').addEventListener('input', validateInputs);
             document.getElementById('tenure').addEventListener('input', validateInputs);
         };
     </script>
