@@ -1,392 +1,607 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GYW0708DQY');
-</script>
-				<meta charset="UTF-8">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<meta name="description" content="Gratuity Calculator for India. Calculate gratuity amount for FY 2025-26.">
-<meta name="keywords" content="gratuity calculator, India, FY 2025-26, employee benefits">
-				<meta name="robots" content="index, follow">
-				<meta name="author" content="Financial Calculators">
-				<title>HRA Exemption Calculator</title>
-				<style>
-								@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-								* {
-												margin: 0;
-												padding: 0;
-												box-sizing: border-box;
-								}
-								body {
-												font-family: 'Inter', sans-serif;
-												background: linear-gradient(180deg, #E8EAF6, #F5F7FA);
-												min-height: 100vh;
-												color: #212121;
-												display: flex;
-												flex-direction: column;
-								}
-								.container {
-												max-width: 800px;
-												margin: 20px auto;
-												padding: 20px 20px 40px;
-												flex: 1;
-								}
-								h1 {
-												font-size: 2.5em;
-												font-weight: 700;
-												text-align: center;
-												margin: 20px 0;
-												color: #1A237E;
-								}
-								.card {
-												background: #FFFFFF;
-												border-radius: 12px;
-												padding: 20px;
-												margin: 20px 0;
-												box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-												border: 1px solid #E0E0E0;
-												transition: transform 0.2s ease, box-shadow 0.2s ease;
-								}
-								.card:hover {
-												transform: translateY(-5px);
-												box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-								}
-								h2 {
-												font-size: 1.5em;
-												font-weight: 600;
-												margin: 10px 0;
-												color: #1A237E;
-								}
-								label {
-												font-size: 1em;
-												font-weight: 400;
-												margin: 8px 0;
-												display: block;
-												color: #212121;
-								}
-								input {
-												font-size: 1em;
-												padding: 10px;
-												margin: 8px 0;
-												border: 1px solid #E0E0E0;
-												border-radius: 8px;
-												background: #F5F5F5;
-												color: #212121;
-												width: 100%;
-												max-width: 200px;
-												transition: border 0.2s ease, box-shadow 0.2s ease;
-								}
-								input:focus {
-												outline: none;
-												border: 1px solid #FF6F00;
-												box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
-								}
-								input.error {
-												border: 1px solid #D32F2F;
-												box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
-								}
-								.input-group {
-												display: flex;
-												flex-wrap: wrap;
-												gap: 15px;
-												align-items: center;
-								}
-								button {
-												font-size: 1em;
-												font-weight: 700;
-												padding: 10px 20px;
-												margin: 8px 0;
-												border: none;
-												border-radius: 8px;
-												background: #FF6F00;
-												color: #FFFFFF;
-												cursor: pointer;
-												transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-								}
-								button:hover {
-												background: #F57C00;
-												transform: scale(1.05);
-												box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
-								}
-								button:disabled {
-												background: #B0BEC5;
-												cursor: not-allowed;
-												transform: none;
-												box-shadow: none;
-								}
-								.results {
-												font-size: 1em;
-												margin-top: 15px;
-												color: #212121;
-												font-weight: 400;
-								}
-								.error-message {
-												font-size: 0.9em;
-												color: #D32F2F;
-												margin: 8px 0;
-												display: none;
-								}
-								.note {
-												font-size: 0.9em;
-												color: #616161;
-												margin: 8px 0;
-												line-height: 1.5;
-								}
-								.back-link {
-												display: block;
-												text-align: center;
-												margin: 20px 0;
-												color: #1A237E;
-												text-decoration: none;
-												font-size: 1em;
-												font-weight: 600;
-								}
-								.back-link:hover {
-												color: #FF6F00;
-								}
-								.results-card {
-												display: none;
-								}
-								.results-card.visible {
-												display: block;
-								}
-								.footer {
-												background: #1A237E;
-												color: #FFFFFF;
-												text-align: center;
-												padding: 20px;
-												width: 100%;
-												margin-top: auto;
-								}
-								.footer-links a {
-												color: #FFFFFF;
-												text-decoration: none;
-												margin: 0 10px;
-												font-size: 1em;
-												font-weight: 400;
-								}
-								.footer-links a:hover {
-												color: #FF6F00;
-								}
-								.rights-reserved {
-												font-size: 0.9em;
-												margin-top: 10px;
-												opacity: 0.8;
-								}
-								.modal {
-												display: none;
-												position: fixed;
-												top: 0;
-												left: 0;
-												width: 100%;
-												height: 100%;
-												background: rgba(0, 0, 0, 0.5);
-												justify-content: center;
-												align-items: center;
-												z-index: 1000;
-												animation: scaleIn 0.3s ease;
-								}
-								.modal-content {
-												background: #FFFFFF;
-												max-width: 500px;
-												width: 90%;
-												padding: 20px;
-												border-radius: 12px;
-												box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-												color: #212121;
-												position: relative;
-												transform: scale(0.95);
-												transition: transform 0.2s ease;
-								}
-								.modal.show .modal-content {
-												transform: scale(1);
-								}
-								.modal-content h3 {
-												font-size: 1.5em;
-												font-weight: 600;
-												margin: 10px 0;
-												color: #1A237E;
-								}
-								.modal-content p {
-												font-size: 0.9em;
-												line-height: 1.5;
-								}
-								.close {
-												position: absolute;
-												top: 15px;
-												right: 15px;
-												font-size: 1.5em;
-												color: #212121;
-												cursor: pointer;
-												transition: color 0.2s ease;
-								}
-								.close:hover {
-												color: #FF6F00;
-								}
-								@keyframes scaleIn {
-												from { opacity: 0; transform: scale(0.9); }
-												to { opacity: 1; transform: scale(1); }
-								}
-								@media (max-width: 768px) {
-												h1 { font-size: 2em; }
-												.container { padding: 10px 10px 30px; }
-												.card { padding: 15px; }
-												input { max-width: 100%; }
-												.input-group { flex-direction: column; gap: 10px; }
-												button { width: 100%; max-width: 200px; }
-												.footer { padding: 15px; font-size: 0.9em; }
-												.rights-reserved { font-size: 0.8em; }
-												.modal-content { padding: 15px; }
-								}
-				</style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GYW0708DQY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate your gratuity amount for FY 2025-26 in India with our free Gratuity Calculator. Estimate your employee benefits based on salary and service years.">
+    <meta name="keywords" content="gratuity calculator India, gratuity calculation 2025, employee gratuity FY 2025-26, gratuity benefits">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Financial Calculators">
+    <title>Gratuity Calculator India FY 2025-26 - Calculate Employee Benefits</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #E8EAF6, #F5F7FA);
+            min-height: 100vh;
+            color: #212121;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        .nav-menu a:hover {
+            color: #FF6F00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #FFFFFF;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #212121;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background: #F5F7FA;
+            color: #FF6F00;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px 20px 40px;
+            flex: 1;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0;
+            color: #1A237E;
+        }
+        .intro-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .intro-section p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E0E0E0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+        h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 10px 0;
+            color: #1A237E;
+        }
+        label {
+            font-size: 1em;
+            font-weight: 400;
+            margin: 8px 0;
+            display: block;
+            color: #212121;
+        }
+        input {
+            font-size: 1em;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            background: #F5F5F5;
+            color: #212121;
+            width: 100%;
+            max-width: 200px;
+            transition: border 0.2s ease, box-shadow 0.2s ease;
+        }
+        input:focus {
+            outline: none;
+            border: 1px solid #FF6F00;
+            box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
+        }
+        input.error {
+            border: 1px solid #D32F2F;
+            box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        button {
+            font-size: 1em;
+            font-weight: 700;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            background: #FF6F00;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        button:hover {
+            background: #F57C00;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
+        }
+        button:disabled {
+            background: #B0BEC5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .results {
+            font-size: 1em;
+            margin-top: 15px;
+            color: #212121;
+            font-weight: 400;
+        }
+        .error-message {
+            font-size: 0.9em;
+            color: #D32F2F;
+            margin: 8px 0;
+            display: none;
+        }
+        .note {
+            font-size: 0.9em;
+            color: #616161;
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            color: #1A237E;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: #FF6F00;
+        }
+        .results-card {
+            display: none;
+        }
+        .results-card.visible {
+            display: block;
+        }
+        .faq-section {
+            margin: 40px 0;
+        }
+        .faq-section h2 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            margin: 20px 0;
+        }
+        .faq-item h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1A237E;
+            margin-bottom: 10px;
+        }
+        .faq-item p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+        }
+        .footer {
+            background: #1A237E;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: auto;
+        }
+        .footer-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1em;
+            font-weight: 400;
+        }
+        .footer-links a:hover {
+            color: #FF6F00;
+        }
+        .rights-reserved {
+            font-size: 0.9em;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: scaleIn 0.3s ease;
+        }
+        .modal-content {
+            background: #FFFFFF;
+            max-width: 500px;
+            width: 90%;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            color: #212121;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+        .modal-content h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 10px 0;
+            color: #1A237E;
+        }
+        .modal-content p {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5em;
+            color: #212121;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close:hover {
+            color: #FF6F00;
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 1024px) {
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .container { padding: 10px 10px 30px; }
+            .card { padding: 15px; }
+            input { max-width: 100%; }
+            .input-group { flex-direction: column; gap: 10px; }
+            button { width: 100%; max-width: 200px; }
+            .footer { padding: 15px; font-size: 0.9em; }
+            .rights-reserved { font-size: 0.8em; }
+            .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
+        }
+    </style>
+    <!-- Schema Markup for Web Application and FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Gratuity Calculator India",
+      "description": "Calculate your gratuity amount for FY 2025-26 in India with our free Gratuity Calculator. Estimate employee benefits based on salary and years of service.",
+      "url": "https://yourwebsite.com/gratuity.html",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Gratuity Calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Gratuity Calculator is an online tool that estimates the gratuity amount an employee is entitled to in India based on their basic salary, dearness allowance (DA), and years of service. It is applicable for employees with 5 or more years of service."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is gratuity calculated in India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gratuity is calculated using the formula: Gratuity = (15/26) × (Basic Salary + DA) × Years of Service. The years are rounded up, and the tax-exempt amount is capped at ₹20,00,000 for FY 2025-26."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is eligible for gratuity in India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Employees who have completed at least 5 years of continuous service with an employer in India are eligible for gratuity under the Payment of Gratuity Act, 1972. This applies to both private and public sector employees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the gratuity amount tax-free for FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gratuity is tax-exempt up to ₹20,00,000 or the calculated amount, whichever is lower, for FY 2025-26. Any amount above this limit is taxable. Consult a tax professional for personalized advice."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
-				<div class="container">
-								<h1>HRA Calculator</h1>
-								<a href="index.html" class="back-link">Back to Calculators</a>
-								<div class="card">
-				<h2>Gratuity</h2>
-				<div class="input-group">
-								<div>
-												<label for="basicDA">Basic Salary + DA (₹/month):</label>
-												<input type="number" id="basicDA" min="0" value="50000">
-								</div>
-								<div>
-												<label for="yearsService">Years of Service:</label>
-												<input type="number" id="yearsService" min="5" value="10">
-								</div>
-				</div>
-				<div class="input-group">
-								<button id="calcButton" onclick="calcGratuity()" disabled>Calculate</button>
-								<button onclick="resetForm()">Reset</button>
-				</div>
-				<div class="note">Enter basic salary + DA in ₹ per month. Gratuity calculated for employees with 5+ years of service.</div>
-</div>
-<div class="card results-card">
-				<div class="error-message" id="errorMessage"></div>
-				<div class="results" id="gratuityResult"></div>
-</div>
-				</div>
-				<div id="disclaimerModal" class="modal">
-								<div class="modal-content">
-												<span class="close" onclick="closeModal('disclaimerModal')">×</span>
-												<h3>Disclaimer</h3>
-												<p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or tax professional before making decisions. We are not liable for any losses or damages arising from the use of these calculators.</p>
-								</div>
-				</div>
-				<div id="termsModal" class="modal">
-								<div class="modal-content">
-												<span class="close" onclick="closeModal('termsModal')">×</span>
-												<h3>Terms and Conditions</h3>
-												<p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
-								</div>
-				</div>
-				<footer class="footer">
-								<div class="footer-links">
-												<a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
-												<a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
-								</div>
-								<p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
-				</footer>
-				<script>
-								function formatIndianNumber(num) {
-												if (isNaN(num)) return "0";
-												num = Math.round(num * 100) / 100;
-												let str = num.toFixed(2).toString();
-												let [integer, decimal] = str.split('.');
-												let lastThree = integer.slice(-3);
-												let otherDigits = integer.slice(0, -3);
-												if (otherDigits) {
-																lastThree = ',' + lastThree;
-												}
-												let result = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree;
-												return result + '.' + decimal;
-								}
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="/index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Gratuity Calculator FY 2025-26</h1>
+        <div class="intro-section">
+            <p>Estimate your gratuity amount for FY 2025-26 with our free Gratuity Calculator tailored for employees in India. Enter your basic salary, dearness allowance (DA), and years of service to calculate your entitled benefits under the Payment of Gratuity Act, 1972. Plan your finances with accurate and instant results.</p>
+            <p>Gratuity is a valuable employee benefit for those with 5 or more years of service. Our tool simplifies the calculation process, providing both the total gratuity and the tax-exempt amount (up to ₹20,00,000). Whether you're in the private or public sector, use our calculator to understand your gratuity entitlement for FY 2025-26.</p>
+        </div>
+        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
+        <div class="card">
+            <h2>Gratuity Calculator</h2>
+            <div class="input-group">
+                <div>
+                    <label for="basicDA">Basic Salary + DA (₹/month):</label>
+                    <input type="number" id="basicDA" min="0" value="50000">
+                </div>
+                <div>
+                    <label for="yearsService">Years of Service:</label>
+                    <input type="number" id="yearsService" min="5" value="10">
+                </div>
+            </div>
+            <div class="input-group">
+                <button id="calcButton" onclick="calcGratuity()" disabled>Calculate</button>
+                <button onclick="resetForm()">Reset</button>
+            </div>
+            <div class="note">Enter basic salary + DA in ₹ per month. Gratuity calculated for employees with 5+ years of service. Tax-exempt amount capped at ₹20,00,000.</div>
+        </div>
+        <div class="card results-card">
+            <div class="error-message" id="errorMessage"></div>
+            <div class="results" id="gratuityResult"></div>
+        </div>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What is a Gratuity Calculator?</h3>
+                <p>A Gratuity Calculator is an online tool that estimates the gratuity amount an employee is entitled to in India based on their basic salary, dearness allowance (DA), and years of service. It is applicable for employees with 5 or more years of service.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is gratuity calculated in India?</h3>
+                <p>Gratuity is calculated using the formula: Gratuity = (15/26) × (Basic Salary + DA) × Years of Service. The years are rounded up, and the tax-exempt amount is capped at ₹20,00,000 for FY 2025-26.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Who is eligible for gratuity in India?</h3>
+                <p>Employees who have completed at least 5 years of continuous service with an employer in India are eligible for gratuity under the Payment of Gratuity Act, 1972. This applies to both private and public sector employees.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is the gratuity amount tax-free for FY 2025-26?</h3>
+                <p>Gratuity is tax-exempt up to ₹20,00,000 or the calculated amount, whichever is lower, for FY 2025-26. Any amount above this limit is taxable. Consult a tax professional for personalized advice.</p>
+            </div>
+        </div>
+    </div>
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
+            <h3>Disclaimer</h3>
+            <p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or tax professional before making decisions. We are not liable for any losses or damages arising from the use of these calculators.</p>
+        </div>
+    </div>
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('termsModal')">×</span>
+            <h3>Terms and Conditions</h3>
+            <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
+            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
+        </div>
+        <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function formatIndianNumber(num) {
+            if (isNaN(num)) return "0";
+            num = Math.round(num * 100) / 100;
+            let str = num.toFixed(2).toString();
+            let [integer, decimal] = str.split('.');
+            let lastThree = integer.slice(-3);
+            let otherDigits = integer.slice(0, -3);
+            if (otherDigits) {
+                lastThree = ',' + lastThree;
+            }
+            let result = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree;
+            return result + '.' + decimal;
+        }
 
-							function validateInputs() {
-				let basicDA = parseFloat(document.getElementById('basicDA').value);
-				let yearsService = parseFloat(document.getElementById('yearsService').value);
-				let errorMessage = document.getElementById('errorMessage');
-				let calcButton = document.getElementById('calcButton');
-				let basicDAInput = document.getElementById('basicDA');
-				let yearsServiceInput = document.getElementById('yearsService');
+        function validateInputs() {
+            let basicDA = parseFloat(document.getElementById('basicDA').value);
+            let yearsService = parseFloat(document.getElementById('yearsService').value);
+            let errorMessage = document.getElementById('errorMessage');
+            let calcButton = document.getElementById('calcButton');
+            let basicDAInput = document.getElementById('basicDA');
+            let yearsServiceInput = document.getElementById('yearsService');
 
-				basicDAInput.classList.remove('error');
-				yearsServiceInput.classList.remove('error');
-				errorMessage.style.display = 'none';
-				errorMessage.innerHTML = '';
+            basicDAInput.classList.remove('error');
+            yearsServiceInput.classList.remove('error');
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
 
-				let errors = [];
+            let errors = [];
 
-				if (isNaN(basicDA) || basicDA <= 0) {
-								errors.push('Please enter a valid basic salary + DA (greater than 0).');
-								basicDAInput.classList.add('error');
-				}
-				if (isNaN(yearsService) || yearsService < 5) {
-								errors.push('Please enter valid years of service (5 or greater).');
-								yearsServiceInput.classList.add('error');
-				}
+            if (isNaN(basicDA) || basicDA <= 0) {
+                errors.push('Please enter a valid basic salary + DA (greater than 0).');
+                basicDAInput.classList.add('error');
+            }
+            if (isNaN(yearsService) || yearsService < 5) {
+                errors.push('Please enter valid years of service (5 or greater).');
+                yearsServiceInput.classList.add('error');
+            }
 
-				if (errors.length > 0) {
-								errorMessage.innerHTML = errors.join('<br>');
-								errorMessage.style.display = 'block';
-								document.querySelector('.results-card').classList.add('visible');
-								calcButton.disabled = true;
-								return false;
-				}
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                document.querySelector('.results-card').classList.add('visible');
+                calcButton.disabled = true;
+                return false;
+            }
 
-				calcButton.disabled = false;
-				return true;
-}
+            calcButton.disabled = false;
+            return true;
+        }
 
-function calcGratuity() {
-				if (!validateInputs()) return;
+        function calcGratuity() {
+            if (!validateInputs()) return;
 
-				let basicDA = parseFloat(document.getElementById('basicDA').value);
-				let yearsService = parseFloat(document.getElementById('yearsService').value);
-				let yearsRounded = Math.ceil(yearsService);
+            let basicDA = parseFloat(document.getElementById('basicDA').value);
+            let yearsService = parseFloat(document.getElementById('yearsService').value);
+            let yearsRounded = Math.ceil(yearsService);
 
-				let gratuity = (15 / 26) * basicDA * yearsRounded;
-				let taxExempt = Math.min(gratuity, 2000000);
+            let gratuity = (15 / 26) * basicDA * yearsRounded;
+            let taxExempt = Math.min(gratuity, 2000000);
 
-				document.getElementById('gratuityResult').innerHTML = `Gratuity Amount: ₹${formatIndianNumber(gratuity)}, Tax-Exempt Amount: ₹${formatIndianNumber(taxExempt)}`;
-				document.querySelector('.results-card').classList.add('visible');
-}
+            document.getElementById('gratuityResult').innerHTML = `Gratuity Amount: ₹${formatIndianNumber(gratuity)}, Tax-Exempt Amount: ₹${formatIndianNumber(taxExempt)}`;
+            document.querySelector('.results-card').classList.add('visible');
 
-function resetForm() {
-				document.getElementById('basicDA').value = '50000';
-				document.getElementById('yearsService').value = '10';
-				document.getElementById('gratuityResult').innerHTML = '';
-				document.getElementById('errorMessage').style.display = 'none';
-				document.querySelector('.results-card').classList.remove('visible');
-				document.getElementById('calcButton').disabled = true;
-				validateInputs();
-}
-								function openModal(modalId) {
-												const modal = document.getElementById(modalId);
-												modal.style.display = 'flex';
-												modal.classList.add('show');
-								}
+            // Track gratuity calculation event
+            gtag('event', 'calculate_gratuity', {
+                'event_category': 'Calculator',
+                'event_label': 'Gratuity Calculator'
+            });
+        }
 
-								function closeModal(modalId) {
-												const modal = document.getElementById(modalId);
-												modal.style.display = 'none';
-												modal.classList.remove('show');
-								}
+        function resetForm() {
+            document.getElementById('basicDA').value = '50000';
+            document.getElementById('yearsService').value = '10';
+            document.getElementById('gratuityResult').innerHTML = '';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.querySelector('.results-card').classList.remove('visible');
+            document.getElementById('calcButton').disabled = true;
+            validateInputs();
+        }
 
-								window.onload = function() {
-												validateInputs();
-												document.getElementById('monthlyInvestment').addEventListener('input', validateInputs);
-												document.getElementById('returnRate').addEventListener('input', validateInputs);
-												document.getElementById('tenure').addEventListener('input', validateInputs);
-								};
-				</script>
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
+            modal.classList.add('show');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+            modal.classList.remove('show');
+        }
+
+        window.onload = function() {
+            validateInputs();
+            document.getElementById('basicDA').addEventListener('input', validateInputs);
+            document.getElementById('yearsService').addEventListener('input', validateInputs);
+        };
+    </script>
 </body>
 </html>

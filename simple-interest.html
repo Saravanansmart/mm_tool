@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GYW0708DQY');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GYW0708DQY');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate Simple Interest for FY 2025-26 in India. Easy online tool for savings, loans, and financial planning.">
-    <meta name="keywords" content="simple interest calculator, India, FY 2025-26, interest calculation, financial planning">
+    <meta name="description" content="Calculate simple interest for FY 2025-26 with our free Simple Interest Calculator for India. Estimate interest earned or paid on savings, short-term FDs, or loans.">
+    <meta name="keywords" content="simple interest calculator India, simple interest calculator 2025, interest calculator FY 2025-26, financial planning, savings calculator">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Simple Interest Calculator FY 2025-26</title>
+    <title>Simple Interest Calculator India FY 2025-26</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -32,6 +31,69 @@
             display: flex;
             flex-direction: column;
         }
+        header {
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        .nav-menu a:hover {
+            color: #FF6F00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #FFFFFF;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #212121;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background: #F5F7FA;
+            color: #FF6F00;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -44,6 +106,16 @@
             text-align: center;
             margin: 20px 0;
             color: #1A237E;
+        }
+        .intro-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .intro-section p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
         .card {
             background: #FFFFFF;
@@ -70,10 +142,17 @@
             margin: 8px 0;
             display: block;
             color: #212121;
+            position: relative;
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
         }
         input {
             font-size: 1em;
-            padding: 10px;
+            padding: 10px 10px 10px 30px;
             margin: 8px 0;
             border: 1px solid #E0E0E0;
             border-radius: 8px;
@@ -92,11 +171,48 @@
             border: 1px solid #D32F2F;
             box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
         }
-        .input-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
+        .input-icon {
+            position: relative;
+        }
+        .input-icon::before {
+            content: '₹';
+            position: absolute;
+            left: 10px;
+            top: 70%;
+            transform: translateY(-50%);
+            color: #616161;
+            font-size: 1em;
+        }
+        .input-icon.percent::before {
+            content: '%';
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+            outline: none;
+        }
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 10;
+        }
+        .tooltip:hover::after, .tooltip:focus::after {
+            opacity: 1;
+            visibility: visible;
         }
         button {
             font-size: 1em;
@@ -109,6 +225,7 @@
             color: #FFFFFF;
             cursor: pointer;
             transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 48px;
         }
         button:hover {
             background: #F57C00;
@@ -121,11 +238,28 @@
             transform: none;
             box-shadow: none;
         }
+        button.loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #FFFFFF;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         .results {
             font-size: 1em;
             margin-top: 15px;
             color: #212121;
             font-weight: 400;
+            line-height: 1.6;
         }
         .error-message {
             font-size: 0.9em;
@@ -157,15 +291,35 @@
         .results-card.visible {
             display: block;
         }
+        .faq-section {
+            margin: 40px 0;
+        }
+        .faq-section h2 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            margin: 20px 0;
+        }
+        .faq-item h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1A237E;
+            margin-bottom: 10px;
+        }
+        .faq-item p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
             text-align: center;
             padding: 20px;
-            position: fixed;
-            bottom: 0;
             width: 100%;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
         }
         .footer-links a {
             color: #FFFFFF;
@@ -182,22 +336,6 @@
             margin-top: 10px;
             opacity: 0.8;
         }
-         .input-icon {
-            position: relative;
-        }
-        .input-icon::before {
-            content: '₹';
-            position: absolute;
-            left: 10px;
-            top: 70%;
-            transform: translateY(-50%);
-            color: #616161;
-            font-size: 1em;
-        }
-        .input-icon.percent::before {
-            content: '%';
-        }
-
         .modal {
             display: none;
             position: fixed;
@@ -252,6 +390,24 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
+        .progress-bar {
+            width: 100%;
+            background: #E0E0E0;
+            border-radius: 8px;
+            height: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: #FF6F00;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        @media (max-width: 1024px) {
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .container { padding: 10px; }
@@ -262,61 +418,175 @@
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
         }
     </style>
+    <!-- Schema Markup for Web Application and FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Simple Interest Calculator India",
+      "description": "Calculate simple interest for FY 2025-26 with our free Simple Interest Calculator for India. Estimate interest earned or paid on savings, short-term FDs, or loans.",
+      "url": "https://yourwebsite.com/simple-interest.html",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Simple Interest Calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Simple Interest Calculator is an online tool that estimates the interest earned or paid on a principal amount, based on the annual interest rate and duration, using the formula I = P * R * T / 100."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is simple interest calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simple interest is calculated using the formula I = P * R * T / 100, where I is the interest, P is the principal amount, R is the annual interest rate, and T is the time in years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is simple interest used for in FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In FY 2025-26, simple interest is used for short-term fixed deposits (e.g., <6 months), certain savings accounts, and some loans where interest is not compounded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is simple interest taxable in FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, simple interest from investments like fixed deposits is taxable under the investor’s income tax slab in FY 2025-26. TDS may apply if interest exceeds ₹40,000 (₹50,000 for senior citizens) annually."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="/index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <h1>Simple Interest Calculator</h1>
-        <a href="index.html" class="back-link">Back to Calculators</a>
+        <h1>Simple Interest Calculator FY 2025-26</h1>
+        <div class="intro-section">
+            <p>Calculate simple interest for FY 2025-26 with our free Simple Interest Calculator, tailored for Indian users. Estimate interest earned on savings or short-term fixed deposits, or interest paid on loans, by entering your principal amount, annual interest rate, and duration.</p>
+            <p>Simple interest is ideal for short-term financial planning, offering straightforward calculations for secure investments or loan agreements. Use our tool to make informed decisions for FY 2025-26!</p>
+        </div>
+        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
         <div class="card">
-            <h2>Simple Interest</h2>
+            <h2>Simple Interest Calculator</h2>
+            <div class="progress-bar">
+                <div class="progress" id="siProgress"></div>
+            </div>
             <div class="input-group">
                 <div class="input-icon">
-                    <label for="siPrincipal">Principal Amount (₹): <span class="tooltip" data-tooltip="Initial investment or loan amount">?</span></label>
-                    <input type="number" id="ciPrincipal" min="0" value="100000" aria-label="Principal Amount in Rupees">
+                    <label for="siPrincipal">Principal Amount (₹): <span class="tooltip" data-tooltip="Initial investment or loan amount" tabindex="0">?</span></label>
+                    <input type="number" id="siPrincipal" min="100" value="100000" aria-label="Principal Amount in Rupees">
                 </div>
                 <div class="input-icon percent">
-                    <label for="siRate">Annual Interest Rate (%): <span class="tooltip" data-tooltip="Annual interest rate (e.g., 5 for 5%)">?</span></label>
-                    <input type="number" id="ciRate" min="0" step="0.1" value="5" aria-label="Annual Interest Rate in Percent">
+                    <label for="siRate">Annual Interest Rate (%): <span class="tooltip" data-tooltip="Annual interest rate (e.g., 5 for 5%)" tabindex="0">?</span></label>
+                    <input type="number" id="siRate" min="1" max="20" step="0.1" value="5" aria-label="Annual Interest Rate in Percent">
                 </div>
                 <div>
-                    <label for="siYears">Duration (Years):</label>
-                    <input type="number" id="siYears" min="0" value="1">
+                    <label for="siYears">Duration (Years): <span class="tooltip" data-tooltip="Number of years for investment/loan" tabindex="0">?</span></label>
+                    <input type="number" id="siYears" min="0" max="30" value="1" aria-label="Duration in Years">
                 </div>
                 <div>
-                    <label for="siMonths">Duration (Months):</label>
-                    <input type="number" id="siMonths" min="0" value="0">
+                    <label for="siMonths">Duration (Months): <span class="tooltip" data-tooltip="Additional months (0-11)" tabindex="0">?</span></label>
+                    <input type="number" id="siMonths" min="0" max="11" value="0" aria-label="Duration in Months">
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcSI()" disabled>Calculate</button>
-                <button onclick="resetForm()">Reset</button>
+                <button id="calcButton" onclick="calcSI()" disabled aria-label="Calculate Simple Interest">Calculate</button>
+                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
             </div>
-            <div class="note">Enter amount in ₹ (e.g., 100000 for 1 Lakh). Interest calculated for specified duration.</div>
+            <div class="note">Enter principal amount in ₹ (minimum ₹100). Interest is calculated using the simple interest formula (I = P * R * T / 100). Interest may be taxable depending on the investment type (e.g., FD interest). Consult a financial advisor for FY 2025-26 planning.</div>
         </div>
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="siResult"></div>
         </div>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What is a Simple Interest Calculator?</h3>
+                <p>A Simple Interest Calculator is an online tool that estimates the interest earned or paid on a principal amount, based on the annual interest rate and duration, using the formula I = P * R * T / 100.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is simple interest calculated?</h3>
+                <p>Simple interest is calculated using the formula I = P * R * T / 100, where I is the interest, P is the principal amount, R is the annual interest rate, and T is the time in years.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is simple interest used for in FY 2025-26?</h3>
+                <p>In FY 2025-26, simple interest is used for short-term fixed deposits (e.g., <6 months), certain savings accounts, and some loans where interest is not compounded.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is simple interest taxable in FY 2025-26?</h3>
+                <p>Yes, simple interest from investments like fixed deposits is taxable under the investor’s income tax slab in FY 2025-26. TDS may apply if interest exceeds ₹40,000 (₹50,000 for senior citizens) annually.</p>
+            </div>
+        </div>
     </div>
     <div id="disclaimerModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
+            <span class="close" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
             <h3>Disclaimer</h3>
             <p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or tax professional before making decisions. We are not liable for any losses or damages arising from the use of these calculators.</p>
         </div>
     </div>
     <div id="termsModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('termsModal')">×</span>
+            <span class="close" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
             <h3>Terms and Conditions</h3>
             <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
         </div>
     </div>
     <footer class="footer">
         <div class="footer-links">
-            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> | 
+            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
             <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
         </div>
         <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
@@ -336,11 +606,21 @@
             return result + '.' + decimal;
         }
 
+        function updateProgress() {
+            const inputs = ['siPrincipal', 'siRate', 'siYears', 'siMonths'];
+            let filled = inputs.reduce((count, id) => {
+                let value = document.getElementById(id).value;
+                return count + (value && parseFloat(value) >= 0 ? 1 : 0);
+            }, 0);
+            document.getElementById('siProgress').style.width = `${(filled / inputs.length) * 100}%`;
+        }
+
         function validateInputs() {
             let principal = parseFloat(document.getElementById('siPrincipal').value);
             let rate = parseFloat(document.getElementById('siRate').value);
             let years = parseFloat(document.getElementById('siYears').value) || 0;
             let months = parseFloat(document.getElementById('siMonths').value) || 0;
+            let totalMonths = (years * 12) + months;
             let errorMessage = document.getElementById('errorMessage');
             let calcButton = document.getElementById('calcButton');
             let principalInput = document.getElementById('siPrincipal');
@@ -357,24 +637,24 @@
 
             let errors = [];
 
-            if (isNaN(principal) || principal <= 0) {
-                errors.push('Please enter a valid principal amount (greater than 0).');
+            if (isNaN(principal) || principal < 100) {
+                errors.push('Please enter a valid principal amount (minimum ₹100).');
                 principalInput.classList.add('error');
             }
-            if (isNaN(rate) || rate <= 0) {
-                errors.push('Please enter a valid interest rate (greater than 0).');
+            if (isNaN(rate) || rate < 1 || rate > 20) {
+                errors.push('Please enter a valid interest rate (1% to 20%).');
                 rateInput.classList.add('error');
             }
-            if (isNaN(years) || years < 0) {
-                errors.push('Please enter a valid number of years.');
+            if (isNaN(years) || years < 0 || years > 30) {
+                errors.push('Please enter a valid number of years (0 to 30).');
                 yearsInput.classList.add('error');
             }
-            if (isNaN(months) || months < 0) {
-                errors.push('Please enter a valid number of months.');
+            if (isNaN(months) || months < 0 || months > 11) {
+                errors.push('Please enter a valid number of months (0 to 11).');
                 monthsInput.classList.add('error');
             }
-            if ((years === 0 && months === 0) || isNaN(years + months)) {
-                errors.push('Duration must be greater than 0.');
+            if (totalMonths < 1) {
+                errors.push('Total duration must be at least 1 month.');
                 yearsInput.classList.add('error');
                 monthsInput.classList.add('error');
             }
@@ -394,16 +674,38 @@
         function calcSI() {
             if (!validateInputs()) return;
 
-            let principal = parseFloat(document.getElementById('siPrincipal').value);
-            let rate = parseFloat(document.getElementById('siRate').value);
-            let years = parseFloat(document.getElementById('siYears').value) || 0;
-            let months = parseFloat(document.getElementById('siMonths').value) || 0;
-            let duration = years + months / 12;
+            let calcButton = document.getElementById('calcButton');
+            calcButton.classList.add('loading');
+            setTimeout(() => {
+                let principal = parseFloat(document.getElementById('siPrincipal').value);
+                let rate = parseFloat(document.getElementById('siRate').value);
+                let years = parseFloat(document.getElementById('siYears').value) || 0;
+                let months = parseFloat(document.getElementById('siMonths').value) || 0;
+                let duration = years + months / 12;
 
-            let interest = principal * rate * duration / 100;
-            let amount = principal + interest;
-            document.getElementById('siResult').innerHTML = `Amount: ₹${formatIndianNumber(amount)}, Interest: ₹${formatIndianNumber(interest)}`;
-            document.querySelector('.results-card').classList.add('visible');
+                let interest = principal * rate * duration / 100;
+                interest = Math.round(interest * 100) / 100;
+                let amount = principal + interest;
+                amount = Math.round(amount * 100) / 100;
+
+                let result = `
+                    <strong>Simple Interest Results:</strong><br>
+                    Principal Amount: ₹${formatIndianNumber(principal)}<br>
+                    Annual Interest Rate: ${rate}%<br>
+                    Duration: ${years} Years, ${months} Months<br>
+                    Interest Earned/Paid: ₹${formatIndianNumber(interest)}<br>
+                    Total Amount: ₹${formatIndianNumber(amount)}
+                `;
+                document.getElementById('siResult').innerHTML = result;
+                document.querySelector('.results-card').classList.add('visible');
+                calcButton.classList.remove('loading');
+
+                // Track calculation event
+                gtag('event', 'calculate_si', {
+                    'event_category': 'Calculator',
+                    'event_label': 'Simple Interest Calculator'
+                });
+            }, 300);
         }
 
         function resetForm() {
@@ -415,6 +717,7 @@
             document.getElementById('errorMessage').style.display = 'none';
             document.querySelector('.results-card').classList.remove('visible');
             document.getElementById('calcButton').disabled = true;
+            updateProgress();
             validateInputs();
         }
 
@@ -423,6 +726,7 @@
             modal.style.display = 'flex';
             modal.classList.add('show');
         }
+
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.style.display = 'none';
@@ -430,11 +734,22 @@
         }
 
         window.onload = function() {
+            updateProgress();
             validateInputs();
-            document.getElementById('siPrincipal').addEventListener('input', validateInputs);
-            document.getElementById('siRate').addEventListener('input', validateInputs);
-            document.getElementById('siYears').addEventListener('input', validateInputs);
-            document.getElementById('siMonths').addEventListener('input', validateInputs);
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', () => {
+                    validateInputs();
+                    updateProgress();
+                });
+            });
+            // Make tooltips keyboard-accessible
+            document.querySelectorAll('.tooltip').forEach(tooltip => {
+                tooltip.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        tooltip.focus();
+                    }
+                });
+            });
         };
     </script>
 </body>

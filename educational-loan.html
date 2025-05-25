@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GYW0708DQY');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Educational Loan EMI calculator for India. Calculate loan EMI for FY 2025-26.">
-    <meta name="keywords" content="educational loan calculator, India, FY 2025-26, EMI, interest">
+    <meta name="description" content="Calculate your Educational Loan EMI for FY 2025-26 with our free India Student Loan EMI Calculator. Estimate monthly EMI, total interest, and repayment schedule for loans from ₹50,000 to ₹50 lakh, including moratorium period.">
+    <meta name="keywords" content="educational loan EMI calculator India, student loan calculator 2025, EMI calculator, educational loan interest, FY 2025-26, moratorium period">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Educational Loan EMI Calculator</title>
+    <title>Educational Loan EMI Calculator India FY 2025-26</title>
+    <!-- Include Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -32,6 +33,69 @@
             display: flex;
             flex-direction: column;
         }
+        header {
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        .nav-menu a:hover {
+            color: #FF6F00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #FFFFFF;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #212121;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background: #F5F7FA;
+            color: #FF6F00;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -44,6 +108,16 @@
             text-align: center;
             margin: 20px 0;
             color: #1A237E;
+        }
+        .intro-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .intro-section p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
         .card {
             background: #FFFFFF;
@@ -71,7 +145,7 @@
             display: block;
             color: #212121;
         }
-        input {
+        input, select {
             font-size: 1em;
             padding: 10px;
             margin: 8px 0;
@@ -83,12 +157,20 @@
             max-width: 200px;
             transition: border 0.2s ease, box-shadow 0.2s ease;
         }
-        input:focus {
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23212121" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+            cursor: pointer;
+        }
+        input:focus, select:focus {
             outline: none;
             border: 1px solid #FF6F00;
             box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
         }
-        input.error {
+        input.error, select.error {
             border: 1px solid #D32F2F;
             box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
         }
@@ -97,6 +179,34 @@
             flex-wrap: wrap;
             gap: 15px;
             align-items: center;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+            outline: none;
+        }
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 10;
+        }
+        .tooltip:hover::after, .tooltip:focus::after {
+            opacity: 1;
+            visibility: visible;
         }
         button {
             font-size: 1em;
@@ -109,6 +219,7 @@
             color: #FFFFFF;
             cursor: pointer;
             transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 48px;
         }
         button:hover {
             background: #F57C00;
@@ -121,11 +232,28 @@
             transform: none;
             box-shadow: none;
         }
+        button.loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #FFFFFF;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         .results {
             font-size: 1em;
             margin-top: 15px;
             color: #212121;
             font-weight: 400;
+            line-height: 1.6;
         }
         .error-message {
             font-size: 0.9em;
@@ -157,15 +285,68 @@
         .results-card.visible {
             display: block;
         }
+        .repayment-schedule {
+            margin-top: 20px;
+            display: none;
+        }
+        .repayment-schedule.visible {
+            display: block;
+        }
+        .repayment-schedule table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .repayment-schedule th, .repayment-schedule td {
+            border: 1px solid #E0E0E0;
+            padding: 8px;
+            text-align: right;
+            font-size: 0.9em;
+        }
+        .repayment-schedule th {
+            background: #F5F5F5;
+            color: #1A237E;
+            font-weight: 600;
+        }
+        .toggle-schedule {
+            font-size: 0.9em;
+            color: #1A237E;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .toggle-schedule:hover {
+            color: #FF6F00;
+        }
+        .faq-section {
+            margin: 40px 0;
+        }
+        .faq-section h2 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            margin: 20px 0;
+        }
+        .faq-item h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1A237E;
+            margin-bottom: 10px;
+        }
+        .faq-item p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
             text-align: center;
             padding: 20px;
-            position: fixed;
-            bottom: 0;
             width: 100%;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
         }
         .footer-links a {
             color: #FFFFFF;
@@ -232,64 +413,238 @@
         .close:hover {
             color: #FF6F00;
         }
+        .progress-bar {
+            width: 100%;
+            background: #E0E0E0;
+            border-radius: 8px;
+            height: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: #FF6F00;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        .chart-container {
+            max-width: 400px;
+            margin: 20px auto;
+            height: 300px;
+        }
         @keyframes scaleIn {
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 1024px) {
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
         }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .container { padding: 10px; }
             .card { padding: 15px; }
-            input { max-width: 100%; }
+            input, select { max-width: 100%; }
             .input-group { flex-direction: column; gap: 10px; }
             button { width: 100%; max-width: 200px; }
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
+            .repayment-schedule table { font-size: 0.8em; }
+            .repayment-schedule th, .repayment-schedule td { padding: 6px; }
+            .chart-container { max-width: 100%; height: 250px; }
         }
     </style>
+    <!-- Schema Markup for Web Application and FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Educational Loan EMI Calculator India FY 2025-26",
+      "description": "Calculate your Educational Loan EMI for FY 2025-26 with our free India Student Loan EMI Calculator. Estimate monthly EMI, total interest, and repayment schedule for loans from ₹50,000 to ₹50 lakh, including moratorium period.",
+      "url": "https://yourwebsite.com/educational-loan.html",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is educational loan EMI calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EMI is calculated using the formula: EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is the loan amount (plus capitalized interest during moratorium), r is the monthly interest rate, and n is the repayment months."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a moratorium period in educational loans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A moratorium period is a repayment holiday during the study period plus a grace period (typically 6–12 months). Interest accrues and is added to the principal for EMI calculation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a typical interest rate for educational loans in India in 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Educational loan interest rates in India for FY 2025-26 typically range from 6% to 15% per annum, depending on the lender, course, and institution."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the maximum tenure for an educational loan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Educational loans in India usually have repayment tenures from 1 to 15 years (12 to 180 months) after the moratorium period."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="/index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <h1>Educational Loan EMI Calculator</h1>
-        <a href="index.html" class="back-link">Back to Calculators</a>
+        <h1>Educational Loan EMI Calculator FY 2025-26</h1>
+        <div class="intro-section">
+            <p>Plan your educational loan with our free EMI Calculator for FY 2025-26, tailored for Indian students. Estimate your monthly EMI, total interest, and repayment schedule for loans from ₹50,000 to ₹50 lakh, including moratorium period for study and grace periods.</p>
+            <p>Enter your loan amount, interest rate, tenure, and moratorium period to get started. Our tool provides a detailed repayment schedule and a visual breakdown of principal and interest.</p>
+        </div>
+        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
         <div class="card">
-            <h2>Educational Loan</h2>
+            <h2>Calculate Your Educational Loan EMI</h2>
+            <div class="progress-bar">
+                <div class="progress" id="loanProgress"></div>
+            </div>
             <div class="input-group">
                 <div>
-                    <label for="eduLoanAmount">Loan Amount (₹):</label>
-                    <input type="number" id="eduLoanAmount" min="0" value="500000">
+                    <label for="eduLoanAmount">Loan Amount (₹): <span class="tooltip" data-tooltip="Principal for education expenses (₹50,000 to ₹50 lakh)" tabindex="0">?</span></label>
+                    <input type="number" id="eduLoanAmount" min="50000" max="5000000" value="500000" aria-label="Loan Amount in Rupees">
                 </div>
                 <div>
-                    <label for="eduLoanRate">Annual Interest Rate (%):</label>
-                    <input type="number" id="eduLoanRate" min="0" step="0.1" value="8">
+                    <label for="eduLoanRate">Annual Interest Rate (%): <span class="tooltip" data-tooltip="Annual interest rate (typically 6–15%)" tabindex="0">?</span></label>
+                    <input type="number" id="eduLoanRate" min="6" max="15" step="0.01" value="8" aria-label="Annual Interest Rate in Percent">
                 </div>
                 <div>
-                    <label for="eduLoanYears">Loan Tenure (Years):</label>
-                    <input type="number" id="eduLoanYears" min="0" value="5">
+                    <label for="eduLoanTenure">Repayment Tenure: <span class="tooltip" data-tooltip="Repayment duration after moratorium (1–15 years or 12–180 months)" tabindex="0">?</span></label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <input type="number" id="eduLoanTenure" min="1" max="15" step="0.1" value="5" aria-label="Loan Repayment Tenure">
+                        <select id="tenureUnit" aria-label="Select Tenure Unit">
+                            <option value="years" selected>Years</option>
+                            <option value="months">Months</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="moratoriumPeriod">Moratorium Period: <span class="tooltip" data-tooltip="Study period + grace period (0–5 years); interest accrues" tabindex="0">?</span></label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <input type="number" id="moratoriumPeriod" min="0" max="5" step="0.1" value="0" aria-label="Moratorium Period">
+                        <select id="moratoriumUnit" aria-label="Select Moratorium Unit">
+                            <option value="years" selected>Years</option>
+                            <option value="months">Months</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcEduLoan()" disabled>Calculate</button>
-                <button onclick="resetForm()">Reset</button>
+                <button id="calcButton" onclick="calcEduLoan()" disabled aria-label="Calculate Loan EMI">Calculate</button>
+                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
             </div>
-            <div class="note">Enter loan amount in ₹ (e.g., 500000 for 5 Lakh). EMI calculated using standard formula for specified tenure.</div>
+            <div class="note">Enter loan amount in ₹ (e.g., 5,00,000 for 5 Lakh), annual interest rate (6–15%), repayment tenure (1–15 years or 12–180 months), and moratorium period (0–5 years). Interest during moratorium is capitalized. EMI is calculated using the reducing balance method: EMI = P × r × (1+r)^n / ((1+r)^n - 1). Results are estimates; consult your lender for exact terms.</div>
         </div>
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="eduLoanResult"></div>
+            <div class="chart-container">
+                <canvas id="emiChart"></canvas>
+            </div>
+            <div class="repayment-schedule" id="repaymentSchedule">
+                <span class="toggle-schedule" onclick="toggleSchedule()">Show Repayment Schedule</span>
+                <table id="scheduleTable">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>EMI (₹)</th>
+                            <th>Principal (₹)</th>
+                            <th>Interest (₹)</th>
+                            <th>Balance (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>How is educational loan EMI calculated?</h3>
+                <p>EMI is calculated using the formula: EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is the loan amount (plus capitalized interest during moratorium), r is the monthly interest rate, and n is the repayment months.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is a moratorium period in educational loans?</h3>
+                <p>A moratorium period is a repayment holiday during the study period plus a grace period (typically 6–12 months). Interest accrues and is added to the principal for EMI calculation.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is a typical interest rate for educational loans in India in 2025?</h3>
+                <p>Educational loan interest rates in India for FY 2025-26 typically range from 6% to 15% per annum, depending on the lender, course, and institution.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the maximum tenure for an educational loan?</h3>
+                <p>Educational loans in India usually have repayment tenures from 1 to 15 years (12 to 180 months) after the moratorium period.</p>
+            </div>
         </div>
     </div>
     <div id="disclaimerModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
+            <span class="close" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
             <h3>Disclaimer</h3>
             <p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or tax professional before making decisions. We are not liable for any losses or damages arising from the use of these calculators.</p>
         </div>
     </div>
     <div id="termsModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('termsModal')">×</span>
+            <span class="close" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
             <h3>Terms and Conditions</h3>
             <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
         </div>
@@ -302,6 +657,75 @@
         <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
     </footer>
     <script>
+        // Chart.js Configuration
+        const chartConfig = {
+            type: 'pie',
+            data: {
+                labels: ['Principal', 'Interest'],
+                datasets: [{
+                    data: [0, 0],
+                    backgroundColor: ['#1A237E', '#FF6F00'],
+                    borderColor: ['#FFFFFF', '#FFFFFF'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: '#212121',
+                            font: {
+                                size: 14,
+                                family: "'Inter', sans-serif"
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Loan EMI Breakdown',
+                        color: '#1A237E',
+                        font: {
+                            size: 16,
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                }
+            }
+        };
+
+        // Initialize Chart
+        let emiChart;
+        window.onload = function() {
+            const ctx = document.getElementById('emiChart').getContext('2d');
+            emiChart = new Chart(ctx, chartConfig);
+            updateProgress();
+            validateInputs();
+            document.querySelectorAll('input, select').forEach(input => {
+                input.addEventListener('input', () => {
+                    validateInputs();
+                    updateProgress();
+                });
+            });
+            document.querySelectorAll('.tooltip').forEach(tooltip => {
+                tooltip.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        tooltip.focus();
+                    }
+                });
+            });
+            document.querySelectorAll('.faq-item h3').forEach(item => {
+                item.addEventListener('click', () => {
+                    gtag('event', 'faq_click', {
+                        'event_category': 'FAQ',
+                        'event_label': item.textContent
+                    });
+                });
+            });
+        };
+
         function formatIndianNumber(num) {
             if (isNaN(num)) return "0";
             num = Math.round(num * 100) / 100;
@@ -316,35 +740,56 @@
             return result + '.' + decimal;
         }
 
+        function updateProgress() {
+            const inputs = ['eduLoanAmount', 'eduLoanRate', 'eduLoanTenure', 'tenureUnit', 'moratoriumPeriod', 'moratoriumUnit'];
+            let filled = inputs.reduce((count, id) => {
+                let value = document.getElementById(id).value;
+                return count + (value !== '' ? 1 : 0);
+            }, 0);
+            document.getElementById('loanProgress').style.width = `${(filled / inputs.length) * 100}%`;
+        }
+
         function validateInputs() {
             let amount = parseFloat(document.getElementById('eduLoanAmount').value);
             let rate = parseFloat(document.getElementById('eduLoanRate').value);
-            let years = parseFloat(document.getElementById('eduLoanYears').value);
+            let tenure = parseFloat(document.getElementById('eduLoanTenure').value);
+            let tenureUnit = document.getElementById('tenureUnit').value;
+            let moratorium = parseFloat(document.getElementById('moratoriumPeriod').value) || 0;
+            let moratoriumUnit = document.getElementById('moratoriumUnit').value;
+            let repaymentMonths = tenureUnit === 'years' ? tenure * 12 : tenure;
+            let moratoriumMonths = moratoriumUnit === 'years' ? moratorium * 12 : moratorium;
+
             let errorMessage = document.getElementById('errorMessage');
             let calcButton = document.getElementById('calcButton');
             let amountInput = document.getElementById('eduLoanAmount');
             let rateInput = document.getElementById('eduLoanRate');
-            let yearsInput = document.getElementById('eduLoanYears');
+            let tenureInput = document.getElementById('eduLoanTenure');
+            let moratoriumInput = document.getElementById('moratoriumPeriod');
 
             amountInput.classList.remove('error');
             rateInput.classList.remove('error');
-            yearsInput.classList.remove('error');
+            tenureInput.classList.remove('error');
+            moratoriumInput.classList.remove('error');
             errorMessage.style.display = 'none';
             errorMessage.innerHTML = '';
 
             let errors = [];
 
-            if (isNaN(amount) || amount <= 0) {
-                errors.push('Please enter a valid loan amount (greater than 0).');
+            if (isNaN(amount) || amount < 50000 || amount > 5000000) {
+                errors.push('Please enter a valid loan amount (₹50,000 to ₹50 lakh).');
                 amountInput.classList.add('error');
             }
-            if (isNaN(rate) || rate <= 0) {
-                errors.push('Please enter a valid interest rate (greater than 0).');
+            if (isNaN(rate) || rate < 6 || rate > 15) {
+                errors.push('Please enter a valid interest rate (6% to 15%).');
                 rateInput.classList.add('error');
             }
-            if (isNaN(years) || years <= 0) {
-                errors.push('Please enter a valid loan tenure (greater than 0).');
-                yearsInput.classList.add('error');
+            if (isNaN(tenure) || repaymentMonths < 12 || repaymentMonths > 180) {
+                errors.push('Please enter a valid repayment tenure (12 to 180 months).');
+                tenureInput.classList.add('error');
+            }
+            if (isNaN(moratorium) || moratoriumMonths < 0 || moratoriumMonths > 60) {
+                errors.push('Please enter a valid moratorium period (0 to 60 months).');
+                moratoriumInput.classList.add('error');
             }
 
             if (errors.length > 0) {
@@ -359,30 +804,140 @@
             return true;
         }
 
+        function calculateMoratoriumInterest(amount, rate, moratoriumMonths) {
+            let monthlyRate = rate / 100 / 12;
+            let interest = 0;
+            let principal = amount;
+            for (let i = 0; i < moratoriumMonths; i++) {
+                interest += principal * monthlyRate;
+                principal += principal * monthlyRate;
+            }
+            return { capitalizedPrincipal: principal, totalMoratoriumInterest: interest };
+        }
+
+        function generateRepaymentSchedule(amount, rate, repaymentMonths) {
+            let monthlyRate = rate / 100 / 12;
+            let emi = amount * monthlyRate * Math.pow(1 + monthlyRate, repaymentMonths) / (Math.pow(1 + monthlyRate, repaymentMonths) - 1);
+            let balance = amount;
+            let schedule = [];
+
+            for (let month = 1; month <= repaymentMonths; month++) {
+                let interest = balance * monthlyRate;
+                let principal = emi - interest;
+                balance -= principal;
+                if (balance < 0) balance = 0;
+                schedule.push({
+                    month,
+                    emi: Math.round(emi),
+                    principal: Math.round(principal),
+                    interest: Math.round(interest),
+                    balance: Math.round(balance)
+                });
+            }
+
+            return schedule;
+        }
+
         function calcEduLoan() {
             if (!validateInputs()) return;
 
-            let amount = parseFloat(document.getElementById('eduLoanAmount').value);
-            let rate = parseFloat(document.getElementById('eduLoanRate').value) / 100 / 12;
-            let years = parseFloat(document.getElementById('eduLoanYears').value);
-            let months = years * 12;
+            let calcButton = document.getElementById('calcButton');
+            calcButton.classList.add('loading');
+            setTimeout(() => {
+                let amount = parseFloat(document.getElementById('eduLoanAmount').value);
+                let rate = parseFloat(document.getElementById('eduLoanRate').value);
+                let tenure = parseFloat(document.getElementById('eduLoanTenure').value);
+                let tenureUnit = document.getElementById('tenureUnit').value;
+                let moratorium = parseFloat(document.getElementById('moratoriumPeriod').value) || 0;
+                let moratoriumUnit = document.getElementById('moratoriumUnit').value;
+                let repaymentMonths = tenureUnit === 'years' ? Math.round(tenure * 12) : Math.round(tenure);
+                let moratoriumMonths = moratoriumUnit === 'years' ? Math.round(moratorium * 12) : Math.round(moratorium);
 
-            let emi = amount * rate * Math.pow(1 + rate, months) / (Math.pow(1 + rate, months) - 1);
-            let totalPayment = emi * months;
-            let totalInterest = totalPayment - amount;
+                let monthlyRate = rate / 100 / 12;
+                let { capitalizedPrincipal, totalMoratoriumInterest } = calculateMoratoriumInterest(amount, rate, moratoriumMonths);
+                let emi = capitalizedPrincipal * monthlyRate * Math.pow(1 + monthlyRate, repaymentMonths) / (Math.pow(1 + monthlyRate, repaymentMonths) - 1);
+                emi = Math.round(emi);
+                let totalPayment = emi * repaymentMonths;
+                let totalInterest = totalPayment - amount + totalMoratoriumInterest;
 
-            document.getElementById('eduLoanResult').innerHTML = `Monthly EMI: ₹${formatIndianNumber(emi)}, Total Interest: ₹${formatIndianNumber(totalInterest)}, Total Payment: ₹${formatIndianNumber(totalPayment)}`;
-            document.querySelector('.results-card').classList.add('visible');
+                // Update Result
+                let result = `
+                    <strong>Educational Loan EMI Details:</strong><br>
+                    Monthly EMI: ₹${formatIndianNumber(emi)}<br>
+                    Moratorium Interest: ₹${formatIndianNumber(totalMoratoriumInterest)}<br>
+                    Total Interest: ₹${formatIndianNumber(totalInterest)}<br>
+                    Total Payment: ₹${formatIndianNumber(totalPayment + totalMoratoriumInterest)}<br>
+                    Annual EMI Cost: ₹${formatIndianNumber(emi * 12)}
+                `;
+                document.getElementById('eduLoanResult').innerHTML = result;
+
+                // Update Chart
+                emiChart.data.datasets[0].data = [amount, totalInterest];
+                emiChart.update();
+
+                // Generate Repayment Schedule
+                let schedule = generateRepaymentSchedule(capitalizedPrincipal, rate, repaymentMonths);
+                let tbody = document.querySelector('#scheduleTable tbody');
+                tbody.innerHTML = '';
+                schedule.forEach(row => {
+                    let tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${row.month}</td>
+                        <td>₹${formatIndianNumber(row.emi)}</td>
+                        <td>₹${formatIndianNumber(row.principal)}</td>
+                        <td>₹${formatIndianNumber(row.interest)}</td>
+                        <td>₹${formatIndianNumber(row.balance)}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                document.querySelector('.results-card').classList.add('visible');
+                document.querySelector('.repayment-schedule').style.display = 'block';
+                document.querySelector('.repayment-schedule').classList.remove('visible');
+                document.querySelector('.toggle-schedule').textContent = 'Show Repayment Schedule';
+                calcButton.classList.remove('loading');
+
+                // Track calculation event
+                gtag('event', 'calculate_emi', {
+                    'event_category': 'Calculator',
+                    'event_label': 'Educational Loan EMI Calculator'
+                });
+            }, 300);
+        }
+
+        function toggleSchedule() {
+            let schedule = document.querySelector('.repayment-schedule');
+            let toggle = document.querySelector('.toggle-schedule');
+            let table = document.querySelector('#scheduleTable');
+            if (schedule.classList.contains('visible')) {
+                schedule.classList.remove('visible');
+                table.style.display = 'none';
+                toggle.textContent = 'Show Repayment Schedule';
+            } else {
+                schedule.classList.add('visible');
+                table.style.display = 'table';
+                toggle.textContent = 'Hide Repayment Schedule';
+            }
         }
 
         function resetForm() {
             document.getElementById('eduLoanAmount').value = '500000';
             document.getElementById('eduLoanRate').value = '8';
-            document.getElementById('eduLoanYears').value = '5';
+            document.getElementById('eduLoanTenure').value = '5';
+            document.getElementById('tenureUnit').value = 'years';
+            document.getElementById('moratoriumPeriod').value = '0';
+            document.getElementById('moratoriumUnit').value = 'years';
             document.getElementById('eduLoanResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
             document.querySelector('.results-card').classList.remove('visible');
+            document.querySelector('.repayment-schedule').style.display = 'none';
+            document.querySelector('.repayment-schedule').classList.remove('visible');
+            document.querySelector('.toggle-schedule').textContent = 'Show Repayment Schedule';
             document.getElementById('calcButton').disabled = true;
+            document.querySelector('#scheduleTable tbody').innerHTML = '';
+            emiChart.data.datasets[0].data = [0, 0];
+            emiChart.update();
+            updateProgress();
             validateInputs();
         }
 
@@ -397,13 +952,6 @@
             modal.style.display = 'none';
             modal.classList.remove('show');
         }
-
-        window.onload = function() {
-            validateInputs();
-            document.getElementById('eduLoanAmount').addEventListener('input', validateInputs);
-            document.getElementById('eduLoanRate').addEventListener('input', validateInputs);
-            document.getElementById('eduLoanYears').addEventListener('input', validateInputs);
-        };
     </script>
 </body>
 </html>

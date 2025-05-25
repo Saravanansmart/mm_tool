@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GYW0708DQY');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GYW0708DQY');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="NPS Calculator for India. Calculate retirement corpus and pension for FY 2025-26.">
-<meta name="keywords" content="NPS calculator, India, FY 2025-26, National Pension System, retirement">
+    <meta name="description" content="Calculate your NPS retirement corpus and pension for FY 2025-26 in India with our free National Pension System Calculator. Plan your retirement with ease.">
+    <meta name="keywords" content="NPS calculator India, NPS retirement corpus 2025, National Pension System calculator, FY 2025-26, retirement planning">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>National Pension System Calculator</title>
+    <title>NPS Calculator India FY 2025-26 - Plan Your Retirement</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -32,6 +31,69 @@
             display: flex;
             flex-direction: column;
         }
+        header {
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        .nav-menu a:hover {
+            color: #FF6F00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #FFFFFF;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #212121;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background: #F5F7FA;
+            color: #FF6F00;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -44,6 +106,16 @@
             text-align: center;
             margin: 20px 0;
             color: #1A237E;
+        }
+        .intro-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .intro-section p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
         .card {
             background: #FFFFFF;
@@ -157,6 +229,28 @@
         .results-card.visible {
             display: block;
         }
+        .faq-section {
+            margin: 40px 0;
+        }
+        .faq-section h2 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            margin: 20px 0;
+        }
+        .faq-item h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1A237E;
+            margin-bottom: 10px;
+        }
+        .faq-item p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
@@ -234,6 +328,10 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
+        @media (max-width: 1024px) {
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .container { padding: 10px 10px 30px; }
@@ -244,53 +342,164 @@
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
         }
     </style>
+    <!-- Schema Markup for Web Application and FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "NPS Calculator India",
+      "description": "Calculate your NPS retirement corpus and pension for FY 2025-26 in India with our free National Pension System Calculator. Plan your retirement with ease.",
+      "url": "https://yourwebsite.com/nps.html",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an NPS Calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An NPS Calculator is an online tool that estimates the retirement corpus and monthly pension under the National Pension System (NPS) in India, based on monthly contributions, age, expected returns, and annuity purchase percentage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the NPS corpus calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The NPS corpus is calculated using the compound interest formula for monthly contributions over the investment period. At retirement, a minimum of 40% of the corpus is used to purchase an annuity, and the rest is paid as a lump sum."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who can invest in NPS in India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Indian citizens aged 18 to 70 years, including salaried and self-employed individuals, can invest in NPS. It is designed to build a retirement corpus through market-linked investments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are NPS returns guaranteed for FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, NPS returns are market-linked and not guaranteed. The calculator uses an assumed return rate (e.g., 10%) for estimation. Actual returns depend on market performance."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="/index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <h1>NPS Calculator</h1>
-        <a href="index.html" class="back-link">Back to Calculators</a>
+        <h1>NPS Calculator FY 2025-26</h1>
+        <div class="intro-section">
+            <p>Plan your retirement with our free NPS Calculator for FY 2025-26, designed for Indian investors. Estimate your National Pension System (NPS) retirement corpus and monthly pension by entering your monthly contribution, age, expected return rate, and annuity details.</p>
+            <p>NPS is a government-backed scheme that helps you build a substantial retirement fund through market-linked investments. Our tool simplifies complex calculations, providing accurate estimates to help you make informed decisions for FY 2025-26. Start planning your financial future today!</p>
+        </div>
+        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
         <div class="card">
-    <h2>National Pension System</h2>
-    <div class="input-group">
-        <div>
-            <label for="monthlyContribution">Monthly Contribution (₹):</label>
-            <input type="number" id="monthlyContribution" min="0" value="5000">
+            <h2>NPS Calculator</h2>
+            <div class="input-group">
+                <div>
+                    <label for="monthlyContribution">Monthly Contribution (₹):</label>
+                    <input type="number" id="monthlyContribution" min="0" value="5000">
+                </div>
+                <div>
+                    <label for="currentAge">Current Age (Years):</label>
+                    <input type="number" id="currentAge" min="18" value="30">
+                </div>
+                <div>
+                    <label for="retirementAge">Retirement Age (Years):</label>
+                    <input type="number" id="retirementAge" min="18" value="60">
+                </div>
+            </div>
+            <div class="input-group">
+                <div>
+                    <label for="returnRate">Expected Return Rate (%):</label>
+                    <input type="number" id="returnRate" min="0" step="0.1" value="10">
+                </div>
+                <div>
+                    <label for="annuityPercent">Annuity Purchase (%):</label>
+                    <input type="number" id="annuityPercent" min="40" value="40">
+                </div>
+                <div>
+                    <label for="annuityRate">Annuity Return Rate (%):</label>
+                    <input type="number" id="annuityRate" min="0" step="0.1" value="6">
+                </div>
+            </div>
+            <div class="input-group">
+                <button id="calcButton" onclick="calcNPS()" disabled>Calculate</button>
+                <button onclick="resetForm()">Reset</button>
+            </div>
+            <div class="note">Enter monthly contribution in ₹ (minimum ₹500 for Tier I). NPS returns are market-linked and subject to risks. At least 40% of the corpus must be used for annuity purchase at retirement.</div>
         </div>
-        <div>
-            <label for="currentAge">Current Age (Years):</label>
-            <input type="number" id="currentAge" min="18" value="30">
+        <div class="card results-card">
+            <div class="error-message" id="errorMessage"></div>
+            <div class="results" id="npsResult"></div>
         </div>
-        <div>
-            <label for="retirementAge">Retirement Age (Years):</label>
-            <input type="number" id="retirementAge" min="18" value="60">
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What is an NPS Calculator?</h3>
+                <p>An NPS Calculator is an online tool that estimates the retirement corpus and monthly pension under the National Pension System (NPS) in India, based on monthly contributions, age, expected returns, and annuity purchase percentage.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is the NPS corpus calculated?</h3>
+                <p>The NPS corpus is calculated using the compound interest formula for monthly contributions over the investment period. At retirement, a minimum of 40% of the corpus is used to purchase an annuity, and the rest is paid as a lump sum.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Who can invest in NPS in India?</h3>
+                <p>Indian citizens aged 18 to 70 years, including salaried and self-employed individuals, can invest in NPS. It is designed to build a retirement corpus through market-linked investments.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Are NPS returns guaranteed for FY 2025-26?</h3>
+                <p>No, NPS returns are market-linked and not guaranteed. The calculator uses an assumed return rate (e.g., 10%) for estimation. Actual returns depend on market performance.</p>
+            </div>
         </div>
-    </div>
-    <div class="input-group">
-        <div>
-            <label for="returnRate">Expected Return Rate (%):</label>
-            <input type="number" id="returnRate" min="0" step="0.1" value="10">
-        </div>
-        <div>
-            <label for="annuityPercent">Annuity Purchase (%):</label>
-            <input type="number" id="annuityPercent" min="40" value="40">
-        </div>
-        <div>
-            <label for="annuityRate">Annuity Return Rate (%):</label>
-            <input type="number" id="annuityRate" min="0" step="0.1" value="6">
-        </div>
-    </div>
-    <div class="input-group">
-        <button id="calcButton" onclick="calcNPS()" disabled>Calculate</button>
-        <button onclick="resetForm()">Reset</button>
-    </div>
-    <div class="note">Enter monthly contribution in ₹ (e.g., 5000). NPS returns are market-linked and subject to risks.</div>
-</div>
-<div class="card results-card">
-    <div class="error-message" id="errorMessage"></div>
-    <div class="results" id="npsResult"></div>
-</div>
     </div>
     <div id="disclaimerModal" class="modal">
         <div class="modal-content">
@@ -328,102 +537,113 @@
             return result + '.' + decimal;
         }
 
-       function validateInputs() {
-    let contribution = parseFloat(document.getElementById('monthlyContribution').value);
-    let currentAge = parseFloat(document.getElementById('currentAge').value);
-    let retirementAge = parseFloat(document.getElementById('retirementAge').value);
-    let returnRate = parseFloat(document.getElementById('returnRate').value);
-    let annuityPercent = parseFloat(document.getElementById('annuityPercent').value);
-    let annuityRate = parseFloat(document.getElementById('annuityRate').value);
-    let errorMessage = document.getElementById('errorMessage');
-    let calcButton = document.getElementById('calcButton');
-    let contributionInput = document.getElementById('monthlyContribution');
-    let currentAgeInput = document.getElementById('currentAge');
-    let retirementAgeInput = document.getElementById('retirementAge');
-    let returnRateInput = document.getElementById('returnRate');
-    let annuityPercentInput = document.getElementById('annuityPercent');
-    let annuityRateInput = document.getElementById('annuityRate');
+        function validateInputs() {
+            let contribution = parseFloat(document.getElementById('monthlyContribution').value);
+            let currentAge = parseFloat(document.getElementById('currentAge').value);
+            let retirementAge = parseFloat(document.getElementById('retirementAge').value);
+            let returnRate = parseFloat(document.getElementById('returnRate').value);
+            let annuityPercent = parseFloat(document.getElementById('annuityPercent').value);
+            let annuityRate = parseFloat(document.getElementById('annuityRate').value);
+            let errorMessage = document.getElementById('errorMessage');
+            let calcButton = document.getElementById('calcButton');
+            let contributionInput = document.getElementById('monthlyContribution');
+            let currentAgeInput = document.getElementById('currentAge');
+            let retirementAgeInput = document.getElementById('retirementAge');
+            let returnRateInput = document.getElementById('returnRate');
+            let annuityPercentInput = document.getElementById('annuityPercent');
+            let annuityRateInput = document.getElementById('annuityRate');
 
-    contributionInput.classList.remove('error');
-    currentAgeInput.classList.remove('error');
-    retirementAgeInput.classList.remove('error');
-    returnRateInput.classList.remove('error');
-    annuityPercentInput.classList.remove('error');
-    annuityRateInput.classList.remove('error');
-    errorMessage.style.display = 'none';
-    errorMessage.innerHTML = '';
+            contributionInput.classList.remove('error');
+            currentAgeInput.classList.remove('error');
+            retirementAgeInput.classList.remove('error');
+            returnRateInput.classList.remove('error');
+            annuityPercentInput.classList.remove('error');
+            annuityRateInput.classList.remove('error');
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
 
-    let errors = [];
+            let errors = [];
 
-    if (isNaN(contribution) || contribution <= 0) {
-        errors.push('Please enter a valid monthly contribution (greater than 0).');
-        contributionInput.classList.add('error');
-    }
-    if (isNaN(currentAge) || currentAge < 18 || currentAge >= retirementAge) {
-        errors.push('Please enter a valid current age (18 or above, less than retirement age).');
-        currentAgeInput.classList.add('error');
-    }
-    if (isNaN(retirementAge) || retirementAge <= currentAge || retirementAge > 60) {
-        errors.push('Please enter a valid retirement age (greater than current age, up to 60).');
-        retirementAgeInput.classList.add('error');
-    }
-    if (isNaN(returnRate) || returnRate <= 0) {
-        errors.push('Please enter a valid return rate (greater than 0).');
-        returnRateInput.classList.add('error');
-    }
-    if (isNaN(annuityPercent) || annuityPercent < 40) {
-        errors.push('Please enter a valid annuity purchase percentage (40 or above).');
-        annuityPercentInput.classList.add('error');
-    }
-    if (isNaN(annuityRate) || annuityRate <= 0) {
-        errors.push('Please enter a valid annuity return rate (greater than 0).');
-        annuityRateInput.classList.add('error');
-    }
+            if (isNaN(contribution) || contribution < 500) {
+                errors.push('Please enter a valid monthly contribution (minimum ₹500 for Tier I).');
+                contributionInput.classList.add('error');
+            }
+            if (isNaN(currentAge) || currentAge < 18 || currentAge >= retirementAge) {
+                errors.push('Please enter a valid current age (18 or above, less than retirement age).');
+                currentAgeInput.classList.add('error');
+            }
+            if (isNaN(retirementAge) || retirementAge <= currentAge || retirementAge > 70) {
+                errors.push('Please enter a valid retirement age (greater than current age, up to 70).');
+                retirementAgeInput.classList.add('error');
+            }
+            if (isNaN(returnRate) || returnRate <= 0 || returnRate > 15) {
+                errors.push('Please enter a valid return rate (greater than 0, up to 15%).');
+                returnRateInput.classList.add('error');
+            }
+            if (isNaN(annuityPercent) || annuityPercent < 40 || annuityPercent > 100) {
+                errors.push('Please enter a valid annuity purchase percentage (40 to 100%).');
+                annuityPercentInput.classList.add('error');
+            }
+            if (isNaN(annuityRate) || annuityRate <= 0 || annuityRate > 10) {
+                errors.push('Please enter a valid annuity return rate (greater than 0, up to 10%).');
+                annuityRateInput.classList.add('error');
+            }
 
-    if (errors.length > 0) {
-        errorMessage.innerHTML = errors.join('<br>');
-        errorMessage.style.display = 'block';
-        document.querySelector('.results-card').classList.add('visible');
-        calcButton.disabled = true;
-        return false;
-    }
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                document.querySelector('.results-card').classList.add('visible');
+                calcButton.disabled = true;
+                return false;
+            }
 
-    calcButton.disabled = false;
-    return true;
-}
+            calcButton.disabled = false;
+            return true;
+        }
 
-function calcNPS() {
-    if (!validateInputs()) return;
+        function calcNPS() {
+            if (!validateInputs()) return;
 
-    let contribution = parseFloat(document.getElementById('monthlyContribution').value);
-    let currentAge = parseFloat(document.getElementById('currentAge').value);
-    let retirementAge = parseFloat(document.getElementById('retirementAge').value);
-    let returnRate = parseFloat(document.getElementById('returnRate').value) / 100 / 12;
-    let annuityPercent = parseFloat(document.getElementById('annuityPercent').value) / 100;
-    let annuityRate = parseFloat(document.getElementById('annuityRate').value) / 100 / 12;
-    let months = (retirementAge - currentAge) * 12;
+            let contribution = parseFloat(document.getElementById('monthlyContribution').value);
+            let currentAge = parseFloat(document.getElementById('currentAge').value);
+            let retirementAge = parseFloat(document.getElementById('retirementAge').value);
+            let returnRate = parseFloat(document.getElementById('returnRate').value) / 100;
+            let annuityPercent = parseFloat(document.getElementById('annuityPercent').value) / 100;
+            let annuityRate = parseFloat(document.getElementById('annuityRate').value) / 100;
+            let months = (retirementAge - currentAge) * 12;
 
-    let corpus = contribution * (((Math.pow(1 + returnRate, months) - 1) / returnRate) * (1 + returnRate));
-    let annuityAmount = corpus * annuityPercent * annuityRate;
-    let lumpSum = corpus * (1 - annuityPercent);
+            // Calculate corpus using monthly compound interest
+            let monthlyRate = returnRate / 12;
+            let corpus = contribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
 
-    document.getElementById('npsResult').innerHTML = `Retirement Corpus: ₹${formatIndianNumber(corpus)}, Monthly Pension: ₹${formatIndianNumber(annuityAmount)}, Lump Sum: ₹${formatIndianNumber(lumpSum)}`;
-    document.querySelector('.results-card').classList.add('visible');
-}
+            // Calculate annuity and lump sum
+            let annuityCorpus = corpus * annuityPercent;
+            let monthlyPension = annuityCorpus * (annuityRate / 12);
+            let lumpSum = corpus * (1 - annuityPercent);
 
-function resetForm() {
-    document.getElementById('monthlyContribution').value = '5000';
-    document.getElementById('currentAge').value = '30';
-    document.getElementById('retirementAge').value = '60';
-    document.getElementById('returnRate').value = '10';
-    document.getElementById('annuityPercent').value = '40';
-    document.getElementById('annuityRate').value = '6';
-    document.getElementById('npsResult').innerHTML = '';
-    document.getElementById('errorMessage').style.display = 'none';
-    document.querySelector('.results-card').classList.remove('visible');
-    document.getElementById('calcButton').disabled = true;
-    validateInputs();
-}
+            document.getElementById('npsResult').innerHTML = `Retirement Corpus: ₹${formatIndianNumber(corpus)}, Monthly Pension: ₹${formatIndianNumber(monthlyPension)}, Lump Sum: ₹${formatIndianNumber(lumpSum)}`;
+            document.querySelector('.results-card').classList.add('visible');
+
+            // Track NPS calculation event
+            gtag('event', 'calculate_nps', {
+                'event_category': 'Calculator',
+                'event_label': 'NPS Calculator'
+            });
+        }
+
+        function resetForm() {
+            document.getElementById('monthlyContribution').value = '5000';
+            document.getElementById('currentAge').value = '30';
+            document.getElementById('retirementAge').value = '60';
+            document.getElementById('returnRate').value = '10';
+            document.getElementById('annuityPercent').value = '40';
+            document.getElementById('annuityRate').value = '6';
+            document.getElementById('npsResult').innerHTML = '';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.querySelector('.results-card').classList.remove('visible');
+            document.getElementById('calcButton').disabled = true;
+            validateInputs();
+        }
 
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
@@ -439,9 +659,12 @@ function resetForm() {
 
         window.onload = function() {
             validateInputs();
-            document.getElementById('monthlyInvestment').addEventListener('input', validateInputs);
+            document.getElementById('monthlyContribution').addEventListener('input', validateInputs);
+            document.getElementById('currentAge').addEventListener('input', validateInputs);
+            document.getElementById('retirementAge').addEventListener('input', validateInputs);
             document.getElementById('returnRate').addEventListener('input', validateInputs);
-            document.getElementById('tenure').addEventListener('input', validateInputs);
+            document.getElementById('annuityPercent').addEventListener('input', validateInputs);
+            document.getElementById('annuityRate').addEventListener('input', validateInputs);
         };
     </script>
 </body>

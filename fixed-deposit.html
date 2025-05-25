@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GYW0708DQY');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GYW0708DQY');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fixed Deposit calculator for India. Calculate FD maturity for FY 2025-26.">
-    <meta name="keywords" content="fixed deposit calculator, India, FY 2025-26, FD maturity, interest">
+    <meta name="description" content="Calculate FD maturity for FY 2025-26 with our free Fixed Deposit Calculator for India. Estimate maturity amount and interest earned for your FD savings plan with quarterly compounding or simple interest options.">
+    <meta name="keywords" content="FD calculator India, Fixed Deposit calculator 2025, FD maturity FY 2025-26, FD interest calculator, savings calculator">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Fixed Deposit Calculator</title>
+    <title>FD Calculator India FY 2025-26 - Calculate Fixed Deposit Maturity</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -32,6 +31,69 @@
             display: flex;
             flex-direction: column;
         }
+        header {
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        .nav-menu a:hover {
+            color: #FF6F00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #FFFFFF;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #212121;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background: #F5F7FA;
+            color: #FF6F00;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -44,6 +106,16 @@
             text-align: center;
             margin: 20px 0;
             color: #1A237E;
+        }
+        .intro-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .intro-section p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
         .card {
             background: #FFFFFF;
@@ -71,7 +143,7 @@
             display: block;
             color: #212121;
         }
-        input {
+        input, select {
             font-size: 1em;
             padding: 10px;
             margin: 8px 0;
@@ -83,7 +155,7 @@
             max-width: 200px;
             transition: border 0.2s ease, box-shadow 0.2s ease;
         }
-        input:focus {
+        input:focus, select:focus {
             outline: none;
             border: 1px solid #FF6F00;
             box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
@@ -157,15 +229,35 @@
         .results-card.visible {
             display: block;
         }
+        .faq-section {
+            margin: 40px 0;
+        }
+        .faq-section h2 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            margin: 20px 0;
+        }
+        .faq-item h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1A237E;
+            margin-bottom: 10px;
+        }
+        .faq-item p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
             text-align: center;
             padding: 20px;
-            position: fixed;
-            bottom: 0;
             width: 100%;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
         }
         .footer-links a {
             color: #FFFFFF;
@@ -236,53 +328,174 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
+        @media (max-width: 1024px) {
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .container { padding: 10px; }
             .card { padding: 15px; }
-            input { max-width: 100%; }
+            input, select { max-width: 100%; }
             .input-group { flex-direction: column; gap: 10px; }
             button { width: 100%; max-width: 200px; }
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
         }
     </style>
+    <!-- Schema Markup for Web Application and FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Fixed Deposit Calculator India",
+      "description": "Calculate FD maturity for FY 2025-26 with our free Fixed Deposit Calculator for India. Estimate maturity amount and interest earned for your FD savings plan with quarterly compounding or simple interest options.",
+      "url": "https://yourwebsite.com/fixed-deposit.html",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an FD Calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An FD Calculator is an online tool that estimates the maturity amount and interest earned for a Fixed Deposit (FD) based on the principal amount, annual interest rate, and tenure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is FD maturity calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FD maturity is typically calculated using the compound interest formula with quarterly compounding. For tenures less than 6 months, simple interest may be used, depending on the bank’s policy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the minimum FD amount in India for FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The minimum FD amount varies by bank, typically starting at ₹1,000 for most banks in FY 2025-26. Post office FDs may start at ₹100. Check specific bank or post office terms before investing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is FD interest taxable in FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, FD interest is taxable under the investor’s income tax slab for FY 2025-26. TDS may apply if interest exceeds ₹40,000 (₹50,000 for senior citizens) annually, as per Income Tax rules."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="/index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <h1>Fixed Deposit Calculator FY 2025-26</h1>
-        <p>Estimate returns on your fixed deposit with our FD Calculator. Input principal, tenure, and interest rate to plan your savings for FY 2025-26.</p>
-        <a href="index.html" class="back-link">Back to Calculators</a>
+        <h1>FD Calculator FY 2025-26</h1>
+        <div class="intro-section">
+            <p>Plan your savings with our free Fixed Deposit (FD) Calculator for FY 2025-26, tailored for Indian investors. Estimate the maturity amount and interest earned by entering your principal amount, annual interest rate, and tenure, with options for quarterly compounding or simple interest.</p>
+            <p>FDs offer a secure, fixed-income investment with guaranteed returns, making them ideal for risk-averse savers. Our tool provides accurate estimates to help you achieve your financial goals in FY 2025-26. Start investing smarter today!</p>
+        </div>
+        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
         <div class="card">
-            <h2>Fixed Deposit (FD)</h2>
+            <h2>Fixed Deposit Calculator</h2>
             <div class="input-group">
                 <div>
                     <label for="fdPrincipal">Principal Amount (₹):</label>
-                    <input type="number" id="fdPrincipal" min="0" value="100000">
+                    <input type="number" id="fdPrincipal" min="1000" value="100000">
                 </div>
                 <div>
                     <label for="fdRate">Annual Interest Rate (%):</label>
-                    <input type="number" id="fdRate" min="0" step="0.1" value="6">
+                    <input type="number" id="fdRate" min="4" max="8" step="0.1" value="6">
                 </div>
                 <div>
-                    <label for="fdYears">Duration (Years):</label>
-                    <input type="number" id="fdYears" min="0" value="1">
+                    <label for="fdYears">Tenure (Years):</label>
+                    <input type="number" id="fdYears" min="0" max="10" value="1">
                 </div>
                 <div>
-                    <label for="fdMonths">Duration (Months):</label>
-                    <input type="number" id="fdMonths" min="0" value="0">
+                    <label for="fdMonths">Tenure (Months):</label>
+                    <input type="number" id="fdMonths" min="0" max="11" value="0">
+                </div>
+                <div>
+                    <label for="interestType">Interest Type:</label>
+                    <select id="interestType">
+                        <option value="compound">Compound (Quarterly)</option>
+                        <option value="simple">Simple</option>
+                    </select>
                 </div>
             </div>
             <div class="input-group">
                 <button id="calcButton" onclick="calcFD()" disabled>Calculate</button>
                 <button onclick="resetForm()">Reset</button>
             </div>
-            <div class="note">Enter amount in ₹ (e.g., 100000 for 1 Lakh). FD interest compounded quarterly for specified duration.</div>
+            <div class="note">Enter principal amount in ₹ (minimum ₹1,000 for most banks). FD interest is typically compounded quarterly; simple interest may apply for tenures <6 months. Interest rates (4-8% p.a. in FY 2025-26) vary by bank and tenure. Interest is taxable under your income tax slab.</div>
         </div>
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="fdResult"></div>
+        </div>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What is an FD Calculator?</h3>
+                <p>An FD Calculator is an online tool that estimates the maturity amount and interest earned for a Fixed Deposit (FD) based on the principal amount, annual interest rate, and tenure.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is FD maturity calculated?</h3>
+                <p>FD maturity is typically calculated using the compound interest formula with quarterly compounding. For tenures less than 6 months, simple interest may be used, depending on the bank’s policy.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the minimum FD amount in India for FY 2025-26?</h3>
+                <p>The minimum FD amount varies by bank, typically starting at ₹1,000 for most banks in FY 2025-26. Post office FDs may start at ₹100. Check specific bank or post office terms before investing.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is FD interest taxable in FY 2025-26?</h3>
+                <p>Yes, FD interest is taxable under the investor’s income tax slab for FY 2025-26. TDS may apply if interest exceeds ₹40,000 (₹50,000 for senior citizens) annually, as per Income Tax rules.</p>
+            </div>
         </div>
     </div>
     <div id="disclaimerModal" class="modal">
@@ -301,7 +514,7 @@
     </div>
     <footer class="footer">
         <div class="footer-links">
-            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> | 
+            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
             <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
         </div>
         <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
@@ -326,6 +539,8 @@
             let rate = parseFloat(document.getElementById('fdRate').value);
             let years = parseFloat(document.getElementById('fdYears').value) || 0;
             let months = parseFloat(document.getElementById('fdMonths').value) || 0;
+            let totalDays = (years * 365) + (months * 30.42); // Approximate days
+            let interestType = document.getElementById('interestType').value;
             let errorMessage = document.getElementById('errorMessage');
             let calcButton = document.getElementById('calcButton');
             let principalInput = document.getElementById('fdPrincipal');
@@ -342,24 +557,34 @@
 
             let errors = [];
 
-            if (isNaN(principal) || principal <= 0) {
-                errors.push('Please enter a valid principal amount (greater than 0).');
+            if (isNaN(principal) || principal < 1000) {
+                errors.push('Please enter a valid principal amount (minimum ₹1,000).');
                 principalInput.classList.add('error');
             }
-            if (isNaN(rate) || rate <= 0) {
-                errors.push('Please enter a valid interest rate (greater than 0).');
+            if (isNaN(rate) || rate < 4 || rate > 8) {
+                errors.push('Please enter a valid annual interest rate (4% to 8%).');
                 rateInput.classList.add('error');
             }
-            if (isNaN(years) || years < 0) {
-                errors.push('Please enter a valid number of years.');
+            if (isNaN(years) || years < 0 || years > 10) {
+                errors.push('Please enter a valid number of years (0 to 10).');
                 yearsInput.classList.add('error');
             }
-            if (isNaN(months) || months < 0) {
-                errors.push('Please enter a valid number of months.');
+            if (isNaN(months) || months < 0 || months > 11) {
+                errors.push('Please enter a valid number of months (0 to 11).');
                 monthsInput.classList.add('error');
             }
-            if ((years === 0 && months === 0) || isNaN(years + months)) {
-                errors.push('Duration must be greater than 0.');
+            if (totalDays < 7) {
+                errors.push('Total tenure must be at least 7 days.');
+                yearsInput.classList.add('error');
+                monthsInput.classList.add('error');
+            }
+            if (totalDays > 3650) {
+                errors.push('Total tenure cannot exceed 10 years.');
+                yearsInput.classList.add('error');
+                monthsInput.classList.add('error');
+            }
+            if (interestType === 'simple' && totalDays > 180) {
+                errors.push('Simple interest is typically available for tenures up to 6 months.');
                 yearsInput.classList.add('error');
                 monthsInput.classList.add('error');
             }
@@ -380,16 +605,33 @@
             if (!validateInputs()) return;
 
             let principal = parseFloat(document.getElementById('fdPrincipal').value);
-            let rate = parseFloat(document.getElementById('fdRate').value);
+            let rate = parseFloat(document.getElementById('fdRate').value) / 100;
             let years = parseFloat(document.getElementById('fdYears').value) || 0;
             let months = parseFloat(document.getElementById('fdMonths').value) || 0;
-            let duration = years + months / 12;
-            let n = 4;
+            let durationYears = years + months / 12;
+            let interestType = document.getElementById('interestType').value;
+            let n = 4; // Quarterly compounding
 
-            let amount = principal * Math.pow(1 + rate / 100 / n, n * duration);
-            let interest = amount - principal;
-            document.getElementById('fdResult').innerHTML = `Maturity: ₹${formatIndianNumber(amount)}, Interest: ₹${formatIndianNumber(interest)}`;
+            let amount, interest;
+
+            if (interestType === 'compound') {
+                // Compound interest with quarterly compounding
+                amount = principal * Math.pow(1 + rate / n, n * durationYears);
+                interest = amount - principal;
+            } else {
+                // Simple interest
+                amount = principal * (1 + rate * durationYears);
+                interest = amount - principal;
+            }
+
+            document.getElementById('fdResult').innerHTML = `Maturity Amount: ₹${formatIndianNumber(amount)}, Interest Earned: ₹${formatIndianNumber(interest)}`;
             document.querySelector('.results-card').classList.add('visible');
+
+            // Track FD calculation event
+            gtag('event', 'calculate_fd', {
+                'event_category': 'Calculator',
+                'event_label': 'Fixed Deposit Calculator'
+            });
         }
 
         function resetForm() {
@@ -397,6 +639,7 @@
             document.getElementById('fdRate').value = '6';
             document.getElementById('fdYears').value = '1';
             document.getElementById('fdMonths').value = '0';
+            document.getElementById('interestType').value = 'compound';
             document.getElementById('fdResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
             document.querySelector('.results-card').classList.remove('visible');
@@ -409,6 +652,7 @@
             modal.style.display = 'flex';
             modal.classList.add('show');
         }
+
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.style.display = 'none';
@@ -421,6 +665,7 @@
             document.getElementById('fdRate').addEventListener('input', validateInputs);
             document.getElementById('fdYears').addEventListener('input', validateInputs);
             document.getElementById('fdMonths').addEventListener('input', validateInputs);
+            document.getElementById('interestType').addEventListener('input', validateInputs);
         };
     </script>
 </body>

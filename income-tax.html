@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate income tax for FY 2025-26 with our free calculator. Compare old & new regimes, deductions, and save tax.">
-    <meta name="keywords" content="income tax calculator, India, FY 2025-26, old regime, new regime, tax planning">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Financial Calculators">
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -14,7 +9,13 @@
         gtag('js', new Date());
         gtag('config', 'G-GYW0708DQY');
     </script>
-    <title>Income Tax Calculator FY 2025-26 - Old & New Regime</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate income tax for FY 2025-26 with our free India Income Tax Calculator. Compare Old vs New Tax Regimes, include HRA, 80C deductions, and optimize tax savings.">
+    <meta name="keywords" content="income tax calculator India, income tax calculator 2025, old vs new regime calculator, tax planning FY 2025-26, HRA exemption, Section 80C">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Financial Calculators">
+    <title>Income Tax Calculator India FY 2025-26 - Old & New Regime</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -30,10 +31,73 @@
             display: flex;
             flex-direction: column;
         }
+        header {
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        .nav-menu a:hover {
+            color: #FF6F00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #FFFFFF;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #212121;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background: #F5F7FA;
+            color: #FF6F00;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
         .container {
             max-width: 800px;
             margin: 20px auto;
-            padding: 20px 20px 40px;
+            padding: 20px;
             flex: 1;
         }
         h1 {
@@ -42,6 +106,16 @@
             text-align: center;
             margin: 20px 0;
             color: #1A237E;
+        }
+        .intro-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .intro-section p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
         .card {
             background: #FFFFFF;
@@ -105,17 +179,48 @@
             border: 1px solid #D32F2F;
             box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
         }
+        .input-section {
+            margin-bottom: 20px;
+        }
         .input-group {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
             align-items: center;
         }
-        .input-section {
-            margin-bottom: 20px;
+        .input-group.compact {
+            gap: 10px;
         }
         .hidden {
             display: none;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+            outline: none;
+        }
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 10;
+        }
+        .tooltip:hover::after, .tooltip:focus::after {
+            opacity: 1;
+            visibility: visible;
         }
         button {
             font-size: 1em;
@@ -128,6 +233,7 @@
             color: #FFFFFF;
             cursor: pointer;
             transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 48px;
         }
         button:hover {
             background: #F57C00;
@@ -140,11 +246,28 @@
             transform: none;
             box-shadow: none;
         }
+        button.loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #FFFFFF;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         .results {
             font-size: 1em;
             margin-top: 15px;
             color: #212121;
             font-weight: 400;
+            line-height: 1.6;
         }
         .error-message {
             font-size: 0.9em;
@@ -175,6 +298,28 @@
         }
         .results-card.visible {
             display: block;
+        }
+        .faq-section {
+            margin: 40px 0;
+        }
+        .faq-section h2 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            margin: 20px 0;
+        }
+        .faq-item h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1A237E;
+            margin-bottom: 10px;
+        }
+        .faq-item p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
         }
         .footer {
             background: #1A237E;
@@ -253,9 +398,27 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
+        .progress-bar {
+            width: 100%;
+            background: #E0E0E0;
+            border-radius: 8px;
+            height: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: #FF6F00;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        @media (max-width: 1024px) {
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
-            .container { padding: 10px 10px 30px; }
+            .container { padding: 10px; }
             .card { padding: 15px; }
             input, select { max-width: 100%; }
             .input-group { flex-direction: column; gap: 10px; }
@@ -263,37 +426,131 @@
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
         }
     </style>
+    <!-- Schema Markup for Web Application and FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Income Tax Calculator India FY 2025-26",
+      "description": "Calculate income tax for FY 2025-26 with our free India Income Tax Calculator. Compare Old vs New Tax Regimes, include HRA, 80C deductions, and optimize tax savings.",
+      "url": "https://yourwebsite.com/income-tax.html",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What’s the difference between Old and New Tax Regimes in FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Old Regime allows deductions like Section 80C (₹1.5L), 80D, and HRA but has higher tax rates for lower incomes. The New Regime has lower tax rates and higher slabs (e.g., 0% up to ₹3L, 5% up to ₹7L) but only allows standard deduction (₹50,000) and Section 80CCD(2)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is HRA exemption calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HRA exemption is the minimum of: (1) HRA received, (2) Rent paid minus 10% of basic salary, (3) 50% of basic salary (metro cities) or 40% (non-metro)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the tax slabs for FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Assuming FY 2024-25 slabs apply: Old Regime (Below 60): 0% (₹0–₹2.5L), 5% (₹2.5L–₹5L), 20% (₹5L–₹10L), 30% (>₹10L). New Regime: 0% (₹0–₹3L), 5% (₹3L–₹7L), 10% (₹7L–₹10L), 15% (₹10L–₹12L), 20% (₹12L–₹15L), 30% (>₹15L)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are capital gains taxed differently in FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, equity-based LTCG is taxed at 10% (above ₹1.25L exemption), and STCG at 15%. These rates are applied separately from income tax slabs."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="/index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div class="container">
         <h1>Income Tax Calculator FY 2025-26</h1>
-        <a href="index.html" class="back-link">Back to Calculators</a>
+        <div class="intro-section">
+            <p>Plan your taxes with our free Income Tax Calculator for FY 2025-26, designed for Indian taxpayers. Compare the Old and New Tax Regimes, factor in deductions like Section 80C, HRA, and 80D, and estimate your tax liability to optimize savings.</p>
+            <p>Whether you’re a salaried individual, senior citizen, or investor, our tool provides accurate estimates based on the latest tax rules (assumed FY 2024-25 slabs). Start planning for Assessment Year 2026-27 today!</p>
+        </div>
+        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
         <div class="card">
             <h2>Calculate Your Income Tax</h2>
-            <p>Plan your taxes with our free Income Tax Calculator for FY 2025-26, tailored for India. Compare the New and Old Tax Regimes, include deductions like Section 80C and HRA, and get accurate estimates to optimize your tax savings.</p>
+            <div class="progress-bar">
+                <div class="progress" id="taxProgress"></div>
+            </div>
             <div class="input-section">
                 <h3>Personal Details</h3>
-                <div class="input-group">
+                <div class="input-group compact">
                     <div>
-                        <label for="regime">Tax Regime:</label>
-                        <select id="regime">
+                        <label for="regime">Tax Regime: <span class="tooltip" data-tooltip="Old: More deductions, higher rates; New: Lower rates, fewer deductions" tabindex="0">?</span></label>
+                        <select id="regime" aria-label="Select Tax Regime">
                             <option value="old" selected>Old Regime</option>
                             <option value="new">New Regime</option>
                         </select>
                     </div>
                     <div>
-                        <label for="age">Age Category:</label>
-                        <select id="age">
+                        <label for="age">Age Category: <span class="tooltip" data-tooltip="Affects tax slabs and deductions (e.g., 80D)" tabindex="0">?</span></label>
+                        <select id="age" aria-label="Select Age Category">
                             <option value="below60" selected>Below 60</option>
                             <option value="60to80">60 to 80 (Senior)</option>
                             <option value="above80">Above 80 (Super Senior)</option>
                         </select>
                     </div>
                     <div>
-                        <label for="metroCity">Metro City (for HRA):</label>
-                        <select id="metroCity">
+                        <label for="metroCity">Metro City (for HRA): <span class="tooltip" data-tooltip="Metro: 50% of basic; Non-metro: 40%" tabindex="0">?</span></label>
+                        <select id="metroCity" aria-label="Select Metro City Status">
                             <option value="yes">Yes</option>
                             <option value="no" selected>No</option>
                         </select>
@@ -304,22 +561,22 @@
                 <h3>Income from Salary (Annual)</h3>
                 <div class="input-group">
                     <div>
-                        <label for="basicSalary">Basic Salary (₹):</label>
-                        <input type="number" id="basicSalary" min="0" value="600000">
+                        <label for="basicSalary">Basic Salary (₹): <span class="tooltip" data-tooltip="Annual basic salary before allowances" tabindex="0">?</span></label>
+                        <input type="number" id="basicSalary" min="1000" max="100000000" value="600000" aria-label="Annual Basic Salary">
                     </div>
                     <div>
-                        <label for="hraReceived">HRA Received (₹):</label>
-                        <input type="number" id="hraReceived" min="0" value="240000">
+                        <label for="hraReceived">HRA Received (₹): <span class="tooltip" data-tooltip="House Rent Allowance received annually" tabindex="0">?</span></label>
+                        <input type="number" id="hraReceived" mian="1000" max="100000000" value="240000" aria-label="Annual HRA Received">
                     </div>
                     <div>
-                        <label for="rentPaid">Rent Paid (₹):</label>
-                        <input type="number" id="rentPaid" min="0" value="180000">
+                        <label for="rentPaid">Rent Paid (₹): <span class="tooltip" data-tooltip="Annual rent paid for accommodation" tabindex="0">?</span></label>
+                        <input type="number" id="rentPaid" min="1000" max="100000000" value="180000" aria-label="Annual Rent Paid">
                     </div>
                 </div>
                 <div class="input-group">
                     <div>
-                        <label for="otherAllowances">Other Allowances (₹):</label>
-                        <input type="number" id="otherAllowances" min="0" value="0">
+                        <label for="otherAllowances">Other Allowances (₹): <span class="tooltip" data-tooltip="Taxable allowances (e.g., DA, travel)" tabindex="0">?</span></label>
+                        <input type="number" id="otherAllowances" min="0" max="100000000" value="0" aria-label="Annual Other Allowances">
                     </div>
                 </div>
             </div>
@@ -327,26 +584,26 @@
                 <h3>Other Income (Annual)</h3>
                 <div class="input-group">
                     <div>
-                        <label for="houseProperty">House Property Income (₹):</label>
-                        <input type="number" id="houseProperty" value="0">
+                        <label for="houseProperty">House Property Income (₹): <span class="tooltip" data-tooltip="Rental income or loss (max loss ₹2L)" tabindex="0">?</span></label>
+                        <input type="number" id="houseProperty" min="-200000" max="100000000" value="0" aria-label="Annual House Property Income">
                     </div>
                     <div>
-                        <label for="stcg">Short-term Capital Gains (₹):</label>
-                        <input type="number" id="stcg" min="0" value="0">
+                        <label for="stcg">Short-term Capital Gains (₹): <span class="tooltip" data-tooltip="Equity STCG taxed at 15%" tabindex="0">?</span></label>
+                        <input type="number" id="stcg" min="0" max="100000000" value="0" aria-label="Annual Short-term Capital Gains">
                     </div>
                     <div>
-                        <label for="ltcg">Long-term Capital Gains (₹):</label>
-                        <input type="number" id="ltcg" min="0" value="0">
+                        <label for="ltcg">Long-term Capital Gains (₹): <span class="tooltip" data-tooltip="Equity LTCG taxed at 10% above ₹1.25L" tabindex="0">?</span></label>
+                        <input type="number" id="ltcg" min="0" max="100000000" value="0" aria-label="Annual Long-term Capital Gains">
                     </div>
                 </div>
                 <div class="input-group">
                     <div>
-                        <label for="savingsInterest">Savings Interest (₹):</label>
-                        <input type="number" id="savingsInterest" min="0" value="0">
+                        <label for="savingsInterest">Savings Interest (₹): <span class="tooltip" data-tooltip="Interest from savings accounts" tabindex="0">?</span></label>
+                        <input type="number" id="savingsInterest" min="0" max="100000000" value="0" aria-label="Annual Savings Interest">
                     </div>
                     <div>
-                        <label for="otherIncome">Other Income (₹):</label>
-                        <input type="number" id="otherIncome" min="0" value="0">
+                        <label for="otherIncome">Other Income (₹): <span class="tooltip" data-tooltip="Business, profession, or other sources" tabindex="0">?</span></label>
+                        <input type="number" id="otherIncome" min="0" max="100000000" value="0" aria-label="Annual Other Income">
                     </div>
                 </div>
             </div>
@@ -354,22 +611,22 @@
                 <h3>Deductions (Old Regime)</h3>
                 <div class="input-group">
                     <div>
-                        <label for="section80C">Section 80C (₹):</label>
-                        <input type="number" id="section80C" min="0" max="150000" value="150000">
+                        <label for="section80C">Section 80C (₹): <span class="tooltip" data-tooltip="Investments like PPF, ELSS (max ₹1.5L)" tabindex="0">?</span></label>
+                        <input type="number" id="section80C" min="0" max="150000" value="150000" aria-label="Section 80C Deduction">
                     </div>
                     <div>
-                        <label for="section80D">Section 80D (₹):</label>
-                        <input type="number" id="section80D" min="0" max="50000" value="25000">
+                        <label for="section80D">Section 80D (₹): <span class="tooltip" data-tooltip="Health insurance (₹25K below 60, ₹50K for 60+)" tabindex="0">?</span></label>
+                        <input type="number" id="section80D" min="0" value="25000" aria-label="Section 80D Deduction">
                     </div>
                     <div>
-                        <label for="section80TTA">Section 80TTA (₹):</label>
-                        <input type="number" id="section80TTA" min="0" max="10000" value="0">
+                        <label for="section80TTA">Section 80TTA (₹): <span class="tooltip" data-tooltip="Savings interest deduction (max ₹10K)" tabindex="0">?</span></label>
+                        <input type="number" id="section80TTA" min="0" max="10000" value="0" aria-label="Section 80TTA Deduction">
                     </div>
                 </div>
                 <div class="input-group">
                     <div>
-                        <label for="section80CCD1B">Section 80CCD(1B) (₹):</label>
-                        <input type="number" id="section80CCD1B" min="0" max="50000" value="0">
+                        <label for="section80CCD1B">Section 80CCD(1B) (₹): <span class="tooltip" data-tooltip="NPS contribution (max ₹50K)" tabindex="0">?</span></label>
+                        <input type="number" id="section80CCD1B" min="0" max="50000" value="0" aria-label="Section 80CCD(1B) Deduction">
                     </div>
                 </div>
             </div>
@@ -377,32 +634,51 @@
                 <h3>Deductions (New Regime)</h3>
                 <div class="input-group">
                     <div>
-                        <label for="section80CCD2">Section 80CCD(2) (₹):</label>
-                        <input type="number" id="section80CCD2" min="0" value="0">
+                        <label for="section80CCD2">Section 80CCD(2) (₹): <span class="tooltip" data-tooltip="Employer NPS contribution (max 10% of basic)" tabindex="0">?</span></label>
+                        <input type="number" id="section80CCD2" min="0" value="0" aria-label="Section 80CCD(2) Deduction">
                     </div>
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcTax()" disabled>Calculate</button>
-                <button onclick="resetForm()">Reset</button>
+                <button id="calcButton" onclick="calcTax()" disabled aria-label="Calculate Income Tax">Calculate</button>
+                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
             </div>
-            <div class="note">Enter annual amounts in ₹ for FY 2025-26 (AY 2026-27). Tax slabs are assumed to be the same as FY 2024-25, as FY 2025-26 slabs are not yet announced. Consult a tax professional for personalized advice.</div>
+            <div class="note">Enter annual amounts in ₹ for FY 2025-26 (AY 2026-27). Tax slabs are based on FY 2024-25, as FY 2025-26 slabs are not yet announced. Includes 4% cess, surcharges (above ₹50L income), and special rates for capital gains. Consult a tax professional for personalized advice.</div>
         </div>
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="taxResult"></div>
         </div>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What’s the difference between Old and New Tax Regimes in FY 2025-26?</h3>
+                <p>The Old Regime allows deductions like Section 80C (₹1.5L), 80D, and HRA but has higher tax rates for lower incomes. The New Regime has lower tax rates and higher slabs (e.g., 0% up to ₹3L, 5% up to ₹7L) but only allows standard deduction (₹50,000) and Section 80CCD(2).</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is HRA exemption calculated?</h3>
+                <p>HRA exemption is the minimum of: (1) HRA received, (2) Rent paid minus 10% of basic salary, (3) 50% of basic salary (metro cities) or 40% (non-metro).</p>
+            </div>
+            <div class="faq-item">
+                <h3>What are the tax slabs for FY 2025-26?</h3>
+                <p>Assuming FY 2024-25 slabs apply: Old Regime (Below 60): 0% (₹0–₹2.5L), 5% (₹2.5L–₹5L), 20% (₹5L–₹10L), 30% (>₹10L). New Regime: 0% (₹0–₹3L), 5% (₹3L–₹7L), 10% (₹7L–₹10L), 15% (₹10L–₹12L), 20% (₹12L–₹15L), 30% (>₹15L).</p>
+            </div>
+            <div class="faq-item">
+                <h3>Are capital gains taxed differently in FY 2025-26?</h3>
+                <p>Yes, equity-based LTCG is taxed at 10% (above ₹1.25L exemption), and STCG at 15%. These rates are applied separately from income tax slabs.</p>
+            </div>
+        </div>
     </div>
     <div id="disclaimerModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
+            <span class="close" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
             <h3>Disclaimer</h3>
             <p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or tax professional before making decisions. We are not liable for any losses or damages arising from the use of these calculators.</p>
         </div>
     </div>
     <div id="termsModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('termsModal')">×</span>
+            <span class="close" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
             <h3>Terms and Conditions</h3>
             <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
         </div>
@@ -429,38 +705,69 @@
             return result + '.' + decimal;
         }
 
+        function updateProgress() {
+            const regime = document.getElementById('regime').value;
+            const inputs = [
+                'regime', 'age', 'metroCity', 'basicSalary', 'hraReceived', 'rentPaid',
+                'otherAllowances', 'houseProperty', 'stcg', 'ltcg', 'savingsInterest', 'otherIncome'
+            ].concat(regime === 'old' ? ['section80C', 'section80D', 'section80TTA', 'section80CCD1B'] : ['section80CCD2']);
+            let filled = inputs.reduce((count, id) => {
+                let value = document.getElementById(id).value;
+                return count + (value !== '' ? 1 : 0);
+            }, 0);
+            document.getElementById('taxProgress').style.width = `${(filled / inputs.length) * 100}%`;
+        }
+
         function toggleRegimeFields() {
             let regime = document.getElementById('regime').value;
             let oldDeduction = document.querySelector('.old-regime-deduction');
             let newDeduction = document.querySelector('.new-regime-deduction');
             oldDeduction.classList.toggle('hidden', regime === 'new');
             newDeduction.classList.toggle('hidden', regime === 'old');
+            updateProgress();
             validateInputs();
         }
 
         function validateInputs() {
             let regime = document.getElementById('regime').value;
+            let age = document.getElementById('age').value;
+            let basicSalary = parseFloat(document.getElementById('basicSalary').value);
+            let hraReceived = parseFloat(document.getElementById('hraReceived').value);
+            let rentPaid = parseFloat(document.getElementById('rentPaid').value);
+            let otherAllowances = parseFloat(document.getElementById('otherAllowances').value);
+            let houseProperty = parseFloat(document.getElementById('houseProperty').value);
+            let stcg = parseFloat(document.getElementById('stcg').value);
+            let ltcg = parseFloat(document.getElementById('ltcg').value);
+            let savingsInterest = parseFloat(document.getElementById('savingsInterest').value);
+            let otherIncome = parseFloat(document.getElementById('otherIncome').value);
+            let section80C = regime === 'old' ? parseFloat(document.getElementById('section80C').value) : 0;
+            let section80D = regime === 'old' ? parseFloat(document.getElementById('section80D').value) : 0;
+            let section80TTA = regime === 'old' ? parseFloat(document.getElementById('section80TTA').value) : 0;
+            let section80CCD1B = regime === 'old' ? parseFloat(document.getElementById('section80CCD1B').value) : 0;
+            let section80CCD2 = regime === 'new' ? parseFloat(document.getElementById('section80CCD2').value) : 0;
+
             let inputs = [
-                { id: 'basicSalary', min: 0, label: 'Basic Salary' },
-                { id: 'hraReceived', min: 0, label: 'HRA Received' },
-                { id: 'rentPaid', min: 0, label: 'Rent Paid' },
-                { id: 'otherAllowances', min: 0, label: 'Other Allowances' },
-                { id: 'stcg', min: 0, label: 'Short-term Capital Gains' },
-                { id: 'ltcg', min: 0, label: 'Long-term Capital Gains' },
-                { id: 'savingsInterest', min: 0, label: 'Savings Interest' },
-                { id: 'otherIncome', min: 0, label: 'Other Income' }
+                { id: 'basicSalary', min: 1000, max: 100000000, label: 'Basic Salary' },
+                { id: 'hraReceived', min: 0, max: 100000000, label: 'HRA Received' },
+                { id: 'rentPaid', min: 0, max: 100000000, label: 'Rent Paid' },
+                { id: 'otherAllowances', min: 0, max: 100000000, label: 'Other Allowances' },
+                { id: 'houseProperty', min: -200000, max: 100000000, label: 'House Property Income' },
+                { id: 'stcg', min: 0, max: 100000000, label: 'Short-term Capital Gains' },
+                { id: 'ltcg', min: 0, max: 100000000, label: 'Long-term Capital Gains' },
+                { id: 'savingsInterest', min: 0, max: 100000000, label: 'Savings Interest' },
+                { id: 'otherIncome', min: 0, max: 100000000, label: 'Other Income' }
             ];
 
             if (regime === 'old') {
                 inputs.push(
                     { id: 'section80C', min: 0, max: 150000, label: 'Section 80C' },
-                    { id: 'section80D', min: 0, max: 50000, label: 'Section 80D' },
+                    { id: 'section80D', min: 0, max: age === 'below60' ? 25000 : 50000, label: 'Section 80D' },
                     { id: 'section80TTA', min: 0, max: 10000, label: 'Section 80TTA' },
                     { id: 'section80CCD1B', min: 0, max: 50000, label: 'Section 80CCD(1B)' }
                 );
             } else {
                 inputs.push(
-                    { id: 'section80CCD2', min: 0, label: 'Section 80CCD(2)' }
+                    { id: 'section80CCD2', min: 0, max: basicSalary * 0.1, label: 'Section 80CCD(2)' }
                 );
             }
 
@@ -473,7 +780,7 @@
                 element.classList.remove('error');
                 let value = parseFloat(element.value);
                 if (isNaN(value) || value < input.min) {
-                    errors.push(`Please enter a valid ${input.label} (≥ ${input.min}).`);
+                    errors.push(`Please enter a valid ${input.label} (≥ ${input.min === -200000 ? '-₹2,00,000' : '₹' + formatIndianNumber(input.min)}).`);
                     element.classList.add('error');
                 }
                 if (input.max && value > input.max) {
@@ -502,11 +809,11 @@
             return true;
         }
 
-        function calculateTax(taxableIncome, regime, age) {
+        function calculateTax(taxableIncome, regime, age, totalIncome) {
             let tax = 0, rebate = 0;
             let slabs;
 
-            if (taxableIncome <= 0) return { tax: 0, rebate: 0 };
+            if (taxableIncome <= 0) return { tax: 0, rebate: 0, surcharge: 0 };
 
             if (regime === 'new') {
                 slabs = [
@@ -517,7 +824,6 @@
                     { min: 1200001, max: 1500000, rate: 0.20 },
                     { min: 1500001, max: Infinity, rate: 0.30 }
                 ];
-                rebate = taxableIncome <= 700000 ? Math.min(25000, tax) : 0;
             } else {
                 slabs = age === 'below60' ? [
                     { min: 0, max: 250000, rate: 0 },
@@ -534,7 +840,6 @@
                     { min: 500001, max: 1000000, rate: 0.20 },
                     { min: 1000001, max: Infinity, rate: 0.30 }
                 ];
-                rebate = taxableIncome <= 500000 ? Math.min(12500, tax) : 0;
             }
 
             for (let slab of slabs) {
@@ -544,70 +849,100 @@
                 }
             }
 
-            let surcharge = 0;
-            if (taxableIncome > 5000000) surcharge = tax * 0.37;
-            else if (taxableIncome > 2000000) surcharge = tax * 0.25;
-            else if (taxableIncome > 1000000) surcharge = tax * 0.15;
-            else if (taxableIncome > 500000) surcharge = tax * 0.10;
-
+            rebate = regime === 'new' && taxableIncome <= 700000 ? Math.min(25000, tax) : regime === 'old' && taxableIncome <= 500000 ? Math.min(12500, tax) : 0;
             tax -= rebate;
+
+            let surcharge = 0;
+            if (totalIncome > 50000000) surcharge = regime === 'old' ? tax * 0.37 : tax * 0.25;
+            else if (totalIncome > 20000000) surcharge = tax * 0.25;
+            else if (totalIncome > 10000000) surcharge = tax * 0.15;
+            else if (totalIncome > 5000000) surcharge = tax * 0.10;
+
             tax += surcharge;
             tax = Math.max(0, tax);
             tax += tax * 0.04; // Cess
 
-            return { tax: Math.round(tax), rebate };
+            return { tax: Math.round(tax), rebate, surcharge: Math.round(surcharge) };
         }
 
         function calcTax() {
             if (!validateInputs()) return;
 
-            let regime = document.getElementById('regime').value;
-            let basicSalary = parseFloat(document.getElementById('basicSalary').value);
-            let hraReceived = parseFloat(document.getElementById('hraReceived').value);
-            let rentPaid = parseFloat(document.getElementById('rentPaid').value);
-            let otherAllowances = parseFloat(document.getElementById('otherAllowances').value);
-            let houseProperty = parseFloat(document.getElementById('houseProperty').value);
-            let stcg = parseFloat(document.getElementById('stcg').value);
-            let ltcg = parseFloat(document.getElementById('ltcg').value);
-            let savingsInterest = parseFloat(document.getElementById('savingsInterest').value);
-            let otherIncome = parseFloat(document.getElementById('otherIncome').value);
-            let section80C = regime === 'old' ? parseFloat(document.getElementById('section80C').value) : 0;
-            let section80D = regime === 'old' ? parseFloat(document.getElementById('section80D').value) : 0;
-            let section80TTA = regime === 'old' ? parseFloat(document.getElementById('section80TTA').value) : 0;
-            let section80CCD1B = regime === 'old' ? parseFloat(document.getElementById('section80CCD1B').value) : 0;
-            let section80CCD2 = regime === 'new' ? parseFloat(document.getElementById('section80CCD2').value) : 0;
-            let age = document.getElementById('age').value;
-            let metroCity = document.getElementById('metroCity').value;
+            let calcButton = document.getElementById('calcButton');
+            calcButton.classList.add('loading');
+            setTimeout(() => {
+                let regime = document.getElementById('regime').value;
+                let basicSalary = parseFloat(document.getElementById('basicSalary').value);
+                let hraReceived = parseFloat(document.getElementById('hraReceived').value);
+                let rentPaid = parseFloat(document.getElementById('rentPaid').value);
+                let otherAllowances = parseFloat(document.getElementById('otherAllowances').value);
+                let houseProperty = parseFloat(document.getElementById('houseProperty').value);
+                let stcg = parseFloat(document.getElementById('stcg').value);
+                let ltcg = parseFloat(document.getElementById('ltcg').value);
+                let savingsInterest = parseFloat(document.getElementById('savingsInterest').value);
+                let otherIncome = parseFloat(document.getElementById('otherIncome').value);
+                let section80C = regime === 'old' ? parseFloat(document.getElementById('section80C').value) : 0;
+                let section80D = regime === 'old' ? parseFloat(document.getElementById('section80D').value) : 0;
+                let section80TTA = regime === 'old' ? parseFloat(document.getElementById('section80TTA').value) : 0;
+                let section80CCD1B = regime === 'old' ? parseFloat(document.getElementById('section80CCD1B').value) : 0;
+                let section80CCD2 = regime === 'new' ? Math.min(parseFloat(document.getElementById('section80CCD2').value), basicSalary * 0.1) : 0;
+                let age = document.getElementById('age').value;
+                let metroCity = document.getElementById('metroCity').value;
 
-            // Calculate Tax
-            let grossIncome = basicSalary + hraReceived + otherAllowances + houseProperty + stcg + ltcg + savingsInterest + otherIncome;
-            let taxableIncome, taxResult;
+                // Calculate Gross Income
+                let grossIncome = basicSalary + hraReceived + otherAllowances + houseProperty + savingsInterest + otherIncome;
+                let totalIncome = grossIncome + stcg + ltcg; // For surcharge
 
-            if (regime === 'old') {
-                let hraExemption = Math.min(
+                // HRA Exemption (Old Regime only)
+                let hraExemption = regime === 'old' ? Math.min(
                     hraReceived,
                     rentPaid - (0.1 * basicSalary),
                     metroCity === 'yes' ? 0.5 * basicSalary : 0.4 * basicSalary
-                );
+                ) : 0;
                 hraExemption = Math.max(0, hraExemption);
-                taxableIncome = grossIncome - hraExemption - 50000 - section80C - section80D - section80TTA - section80CCD1B;
-                taxableIncome = Math.max(0, taxableIncome);
-                taxResult = calculateTax(taxableIncome, 'old', age);
-            } else {
-                taxableIncome = grossIncome - 50000 - section80CCD2;
-                taxableIncome = Math.max(0, taxableIncome);
-                taxResult = calculateTax(taxableIncome, 'new', age);
-            }
 
-            // Output
-            let result = `
-                <strong>${regime === 'old' ? 'Old' : 'New'} Regime (FY 2025-26):</strong><br>
-                Taxable Income: ₹${formatIndianNumber(taxableIncome)}<br>
-                Tax (incl. cess): ₹${formatIndianNumber(taxResult.tax)}<br>
-            `;
+                // House Property Loss Cap
+                houseProperty = houseProperty < -200000 ? -200000 : houseProperty;
 
-            document.getElementById('taxResult').innerHTML = result;
-            document.querySelector('.results-card').classList.add('visible');
+                // Taxable Income (excluding capital gains)
+                let taxableIncome = grossIncome - hraExemption - 50000 - section80C - section80D - section80TTA - section80CCD1B - (regime === 'new' ? section80CCD2 : 0);
+                taxableIncome = Math.max(0, taxableIncome);
+
+                // Calculate Tax on Income (excluding capital gains)
+                let taxResult = calculateTax(taxableIncome, regime, age, totalIncome);
+
+                // Capital Gains Tax
+                let stcgTax = stcg * 0.15; // 15% on equity STCG
+                let ltcgTaxable = Math.max(0, ltcg - 125000); // ₹1.25L exemption
+                let ltcgTax = ltcgTaxable * 0.10; // 10% on equity LTCG
+
+                // Total Tax
+                let totalTax = taxResult.tax + stcgTax + ltcgTax;
+                totalTax = Math.round(totalTax);
+
+                // Output
+                let result = `
+                    <strong>${regime === 'old' ? 'Old' : 'New'} Regime (FY 2025-26):</strong><br>
+                    Gross Income: ₹${formatIndianNumber(grossIncome)}<br>
+                    HRA Exemption: ₹${formatIndianNumber(hraExemption)}<br>
+                    Taxable Income (excl. capital gains): ₹${formatIndianNumber(taxableIncome)}<br>
+                    Income Tax: ₹${formatIndianNumber(taxResult.tax)}<br>
+                    STCG Tax (15%): ₹${formatIndianNumber(stcgTax)}<br>
+                    LTCG Tax (10% above ₹1.25L): ₹${formatIndianNumber(ltcgTax)}<br>
+                    Total Tax (incl. cess, surcharge): ₹${formatIndianNumber(totalTax)}<br>
+                    ${taxResult.rebate > 0 ? `Rebate Applied: ₹${formatIndianNumber(taxResult.rebate)}<br>` : ''}
+                    ${taxResult.surcharge > 0 ? `Surcharge: ₹${formatIndianNumber(taxResult.surcharge)}` : ''}
+                `;
+                document.getElementById('taxResult').innerHTML = result;
+                document.querySelector('.results-card').classList.add('visible');
+                calcButton.classList.remove('loading');
+
+                // Track calculation event
+                gtag('event', 'calculate_tax', {
+                    'event_category': 'Calculator',
+                    'event_label': 'Income Tax Calculator'
+                });
+            }, 300);
         }
 
         function resetForm() {
@@ -633,6 +968,7 @@
             document.querySelector('.results-card').classList.remove('visible');
             document.getElementById('calcButton').disabled = true;
             toggleRegimeFields();
+            updateProgress();
             validateInputs();
         }
 
@@ -650,11 +986,28 @@
 
         window.onload = function() {
             toggleRegimeFields();
+            updateProgress();
             validateInputs();
             document.querySelectorAll('input, select').forEach(input => {
                 input.addEventListener('input', () => {
                     validateInputs();
                     if (input.id === 'regime') toggleRegimeFields();
+                    updateProgress();
+                });
+            });
+            document.querySelectorAll('.tooltip').forEach(tooltip => {
+                tooltip.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        tooltip.focus();
+                    }
+                });
+            });
+            document.querySelectorAll('.faq-item h3').forEach(item => {
+                item.addEventListener('click', () => {
+                    gtag('event', 'faq_click', {
+                        'event_category': 'FAQ',
+                        'event_label': item.textContent
+                    });
                 });
             });
         };

@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GYW0708DQY');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GYW0708DQY');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Recurring Deposit calculator for India. Compute RD maturity for FY 2025-26.">
-    <meta name="keywords" content="recurring deposit calculator, India, FY 2025-26, RD maturity, interest">
+    <meta name="description" content="Calculate RD maturity for FY 2025-26 with our free Recurring Deposit Calculator for India. Estimate maturity amount, interest earned, and total invested for your RD savings plan.">
+    <meta name="keywords" content="RD calculator India, Recurring Deposit calculator 2025, RD maturity FY 2025-26, RD interest calculator, savings calculator">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Recurring Deposit Calculator</title>
+    <title>RD Calculator India FY 2025-26 - Calculate Recurring Deposit Maturity</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -32,6 +31,69 @@
             display: flex;
             flex-direction: column;
         }
+        header {
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        .nav-menu a:hover {
+            color: #FF6F00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #FFFFFF;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #212121;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background: #F5F7FA;
+            color: #FF6F00;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -44,6 +106,16 @@
             text-align: center;
             margin: 20px 0;
             color: #1A237E;
+        }
+        .intro-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .intro-section p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
         .card {
             background: #FFFFFF;
@@ -157,15 +229,35 @@
         .results-card.visible {
             display: block;
         }
+        .faq-section {
+            margin: 40px 0;
+        }
+        .faq-section h2 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            margin: 20px 0;
+        }
+        .faq-item h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1A237E;
+            margin-bottom: 10px;
+        }
+        .faq-item p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
             text-align: center;
             padding: 20px;
-            position: fixed;
-            bottom: 0;
             width: 100%;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
         }
         .footer-links a {
             color: #FFFFFF;
@@ -236,6 +328,10 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
+        @media (max-width: 1024px) {
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .container { padding: 10px; }
@@ -246,42 +342,153 @@
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
         }
     </style>
+    <!-- Schema Markup for Web Application and FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Recurring Deposit Calculator India",
+      "description": "Calculate RD maturity for FY 2025-26 with our free Recurring Deposit Calculator for India. Estimate maturity amount, interest earned, and total invested for your RD savings plan.",
+      "url": "https://yourwebsite.com/recurring-deposit.html",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an RD Calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An RD Calculator is an online tool that estimates the maturity amount, interest earned, and total invested for a Recurring Deposit (RD) based on monthly deposits, annual interest rate, and tenure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is RD maturity calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RD maturity is calculated using the compound interest formula, with monthly deposits compounded quarterly. Each monthly instalment earns interest for the remaining tenure, based on the annual interest rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the minimum RD deposit in India for FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The minimum RD deposit varies by bank or post office, typically starting at ₹100 per month in FY 2025-26. Check specific bank or post office terms before opening an RD account."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is RD interest taxable in FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, RD interest is taxable under the investor’s income tax slab for FY 2025-26. TDS may apply if interest exceeds ₹40,000 (₹50,000 for senior citizens) annually, as per Income Tax rules."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="/index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <h1>Recurring Deposit Calculator</h1>
-        <a href="index.html" class="back-link">Back to Calculators</a>
+        <h1>RD Calculator FY 2025-26</h1>
+        <div class="intro-section">
+            <p>Plan your savings with our free Recurring Deposit (RD) Calculator for FY 2025-26, tailored for Indian investors. Estimate the maturity amount, interest earned, and total invested by entering your monthly deposit, annual interest rate, and tenure.</p>
+            <p>RDs offer a secure, fixed-income investment option with quarterly compounding, ideal for disciplined savers. Our tool provides accurate estimates to help you achieve your financial goals in FY 2025-26. Start saving smarter today!</p>
+        </div>
+        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
         <div class="card">
-            <h2>Recurring Deposit (RD)</h2>
+            <h2>Recurring Deposit Calculator</h2>
             <div class="input-group">
                 <div>
                     <label for="rdMonthly">Monthly Deposit (₹):</label>
-                    <input type="number" id="rdMonthly" min="0" value="5000">
+                    <input type="number" id="rdMonthly" min="100" value="5000">
                 </div>
                 <div>
                     <label for="rdRate">Annual Interest Rate (%):</label>
-                    <input type="number" id="rdRate" min="0" step="0.1" value="6">
+                    <input type="number" id="rdRate" min="4" max="8" step="0.1" value="6">
                 </div>
                 <div>
-                    <label for="rdYears">Duration (Years):</label>
-                    <input type="number" id="rdYears" min="0" value="1">
+                    <label for="rdYears">Tenure (Years):</label>
+                    <input type="number" id="rdYears" min="0" max="10" value="1">
                 </div>
                 <div>
-                    <label for="rdMonths">Duration (Months):</label>
-                    <input type="number" id="rdMonths" min="0" value="0">
+                    <label for="rdMonths">Tenure (Months):</label>
+                    <input type="number" id="rdMonths" min="0" max="11" value="0">
                 </div>
             </div>
             <div class="input-group">
                 <button id="calcButton" onclick="calcRD()" disabled>Calculate</button>
                 <button onclick="resetForm()">Reset</button>
             </div>
-            <div class="note">Enter monthly deposit in ₹ (e.g., 5000). RD interest compounded quarterly for specified duration.</div>
+            <div class="note">Enter monthly deposit in ₹ (minimum ₹100 for many banks/post offices). RD interest is compounded quarterly. Interest rates (typically 4-8% p.a. in FY 2025-26) vary by bank and tenure. Interest is taxable under your income tax slab.</div>
         </div>
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="rdResult"></div>
+        </div>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What is an RD Calculator?</h3>
+                <p>An RD Calculator is an online tool that estimates the maturity amount, interest earned, and total invested for a Recurring Deposit (RD) based on monthly deposits, annual interest rate, and tenure.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is RD maturity calculated?</h3>
+                <p>RD maturity is calculated using the compound interest formula, with monthly deposits compounded quarterly. Each monthly instalment earns interest for the remaining tenure, based on the annual interest rate.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the minimum RD deposit in India for FY 2025-26?</h3>
+                <p>The minimum RD deposit varies by bank or post office, typically starting at ₹100 per month in FY 2025-26. Check specific bank or post office terms before opening an RD account.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is RD interest taxable in FY 2025-26?</h3>
+                <p>Yes, RD interest is taxable under the investor’s income tax slab for FY 2025-26. TDS may apply if interest exceeds ₹40,000 (₹50,000 for senior citizens) annually, as per Income Tax rules.</p>
+            </div>
         </div>
     </div>
     <div id="disclaimerModal" class="modal">
@@ -325,6 +532,7 @@
             let rate = parseFloat(document.getElementById('rdRate').value);
             let years = parseFloat(document.getElementById('rdYears').value) || 0;
             let months = parseFloat(document.getElementById('rdMonths').value) || 0;
+            let totalMonths = (years * 12) + months;
             let errorMessage = document.getElementById('errorMessage');
             let calcButton = document.getElementById('calcButton');
             let monthlyInput = document.getElementById('rdMonthly');
@@ -341,24 +549,29 @@
 
             let errors = [];
 
-            if (isNaN(monthly) || monthly <= 0) {
-                errors.push('Please enter a valid monthly deposit (greater than 0).');
+            if (isNaN(monthly) || monthly < 100) {
+                errors.push('Please enter a valid monthly deposit (minimum ₹100).');
                 monthlyInput.classList.add('error');
             }
-            if (isNaN(rate) || rate <= 0) {
-                errors.push('Please enter a valid interest rate (greater than 0).');
+            if (isNaN(rate) || rate < 4 || rate > 8) {
+                errors.push('Please enter a valid annual interest rate (4% to 8%).');
                 rateInput.classList.add('error');
             }
-            if (isNaN(years) || years < 0) {
-                errors.push('Please enter a valid number of years.');
+            if (isNaN(years) || years < 0 || years > 10) {
+                errors.push('Please enter a valid number of years (0 to 10).');
                 yearsInput.classList.add('error');
             }
-            if (isNaN(months) || months < 0) {
-                errors.push('Please enter a valid number of months.');
+            if (isNaN(months) || months < 0 || months > 11) {
+                errors.push('Please enter a valid number of months (0 to 11).');
                 monthsInput.classList.add('error');
             }
-            if ((years === 0 && months === 0) || isNaN(years + months)) {
-                errors.push('Duration must be greater than 0.');
+            if (totalMonths < 6) {
+                errors.push('Total tenure must be at least 6 months.');
+                yearsInput.classList.add('error');
+                monthsInput.classList.add('error');
+            }
+            if (totalMonths > 120) {
+                errors.push('Total tenure cannot exceed 10 years (120 months).');
                 yearsInput.classList.add('error');
                 monthsInput.classList.add('error');
             }
@@ -379,24 +592,30 @@
             if (!validateInputs()) return;
 
             let monthly = parseFloat(document.getElementById('rdMonthly').value);
-            let rate = parseFloat(document.getElementById('rdRate').value);
+            let rate = parseFloat(document.getElementById('rdRate').value) / 100;
             let years = parseFloat(document.getElementById('rdYears').value) || 0;
             let months = parseFloat(document.getElementById('rdMonths').value) || 0;
             let totalMonths = Math.round((years * 12) + months);
-            let durationYears = years + months / 12;
-            let n = 4;
+            let n = 4; // Quarterly compounding
 
+            // Calculate maturity using future value of series with quarterly compounding
             let maturity = 0;
             for (let i = 1; i <= totalMonths; i++) {
                 let monthsRemaining = totalMonths - i;
-                let yearsRemaining = monthsRemaining / 12;
-                maturity += monthly * Math.pow(1 + rate / 100 / n, n * yearsRemaining);
+                let quartersRemaining = monthsRemaining / 3; // Convert months to quarters
+                maturity += monthly * Math.pow(1 + rate / n, Math.floor(quartersRemaining));
             }
             let invested = monthly * totalMonths;
             let interest = maturity - invested;
 
-            document.getElementById('rdResult').innerHTML = `Maturity: ₹${formatIndianNumber(maturity)}, Interest: ₹${formatIndianNumber(interest)}, Invested: ₹${formatIndianNumber(invested)}`;
+            document.getElementById('rdResult').innerHTML = `Maturity Amount: ₹${formatIndianNumber(maturity)}, Interest Earned: ₹${formatIndianNumber(interest)}, Total Invested: ₹${formatIndianNumber(invested)}`;
             document.querySelector('.results-card').classList.add('visible');
+
+            // Track RD calculation event
+            gtag('event', 'calculate_rd', {
+                'event_category': 'Calculator',
+                'event_label': 'Recurring Deposit Calculator'
+            });
         }
 
         function resetForm() {
