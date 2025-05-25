@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GYW0708DQY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore all our financial calculators for India FY 2025-26, including income tax, SIP, fixed deposit, loan EMI, and more. Plan your finances with ease.">
+    <meta name="keywords" content="all financial calculators India, income tax calculator 2025, SIP calculator, fixed deposit calculator, loan EMI calculator, PPF calculator">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Financial Calculators">
+    <title>All Financial Calculators for India FY 2025-26</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #E8EAF6, #F5F7FA);
+            min-height: 100vh;
+            color: #212121;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        .nav-menu a:hover {
+            color: #FF6F00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #FFFFFF;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #212121;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background: #F5F7FA;
+            color: #FF6F00;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            flex: 1;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0;
+            color: #1A237E;
+        }
+        .intro-section {
+            text-align: center;
+            color: #616161;
+            margin-bottom: 20px;
+        }
+        .intro-section p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E0E0E0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+        .card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1A237E;
+        }
+        .card p {
+            font-size: 1em;
+            color: #616161;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .card a {
+            display: inline-block;
+            font-size: 1em;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: #FF6F00;
+            color: #FFFFFF;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .card a:hover {
+            background: #F57C00;
+            transform: scale(1.05);
+        }
+        .back-link {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .back-link a {
+            color: #1A237E;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 600;
+        }
+        .back-link a:hover {
+            color: #FF6F00;
+        }
+        .footer {
+            background: #1A237E;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: auto;
+        }
+        .footer-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1em;
+        }
+        .footer-links a:hover {
+            color: #FF6F00;
+        }
+        .rights-reserved {
+            font-size: 0.9em;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: scaleIn 0.3s ease;
+        }
+        .modal-content {
+            background: #FFFFFF;
+            max-width: 500px;
+            width: 90%;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            color: #212121;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+        .modal-content h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 10px 0;
+            color: #1A237E;
+        }
+        .modal-content p {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5em;
+            color: #212121;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close:hover {
+            color: #FF6F00;
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 1024px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .container { padding: 10px; }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .card { padding: 15px; }
+            .footer { padding: 15px; font-size: 0.9em; }
+            .rights-reserved { font-size: 0.8em; }
+            .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4864427317222127"
+     crossorigin="anonymous"></script>
+    <!-- Schema Markup for Web Application -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "All Financial Calculators for India",
+      "description": "Explore all our financial calculators for FY 2025-26, including income tax, fixed deposit, SIP, and loan EMI calculators tailored for India.",
+      "url": "https://moneymindtool.com//all-calculators",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="/index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h1>All Financial Calculators for FY 2025-26</h1>
+        <div class="intro-section">
+            <p>Explore our complete range of financial calculators tailored for India. Plan your taxes, investments, and loans with accurate, user-friendly tools updated for FY 2025-26.</p>
+        </div>
+        <div class="card-grid">
+            <div class="card" onclick="window.location.href='/income-tax.html'">
+                <h2>Income Tax Calculator</h2>
+                <p>Estimate your income tax for FY 2025-26 with our Income Tax Calculator for India. Compare the New and Old Tax Regimes, factor in deductions like Section 80C and HRA, and plan your tax-saving strategies effortlessly.</p>
+                <a href="/income-tax.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/simple-interest.html'">
+                <h2>Simple Interest Calculator</h2>
+                <p>Calculate simple interest for loans or investments with our Simple Interest Calculator for FY 2025-26. Input your principal, rate, and tenure to get accurate results for financial planning in India.</p>
+                <a href="/simple-interest.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/fixed-deposit.html'">
+                <h2>Fixed Deposit Calculator</h2>
+                <p>Plan your savings with our Fixed Deposit Calculator for India. Estimate maturity amounts and interest earned with quarterly compounding, tailored for FY 2025-26 interest rates from top banks.</p>
+                <a href="/fixed-deposit.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/recurring-deposit.html'">
+                <h2>Recurring Deposit Calculator</h2>
+                <p>Discover the maturity value of your recurring deposits with our RD Calculator for FY 2025-26. Input monthly contributions and interest rates to plan your savings with top Indian banks.</p>
+                <a href="/recurring-deposit.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/educational-loan.html'">
+                <h2>Educational Loan EMI Calculator</h2>
+                <p>Calculate your monthly EMI and total interest for educational loans with our Educational Loan EMI Calculator. Plan your study abroad or domestic education financing for FY 2025-26 with ease.</p>
+                <a href="/educational-loan.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/personal-loan.html'">
+                <h2>Personal Loan EMI Calculator</h2>
+                <p>Estimate monthly EMIs, total interest, and repayment schedules for personal loans with our Personal Loan EMI Calculator for India. Make informed borrowing decisions for FY 2025-26.</p>
+                <a href="/personal-loan.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/sip.html'">
+                <h2>SIP Calculator</h2>
+                <p>Plan your mutual fund investments with our SIP Calculator for FY 2025-26. Estimate future returns based on monthly contributions and expected rates to achieve your financial goals in India.</p>
+                <a href="/sip.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/compound-interest.html'">
+                <h2>Compound Interest Calculator</h2>
+                <p>Calculate the power of compounding with our Compound Interest Calculator for FY 2025-26. Input your principal, rate, and tenure to see how your investments grow over time in India.</p>
+                <a href="/compound-interest.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/ppf.html'">
+                <h2>PPF Calculator</h2>
+                <p>Estimate your Public Provident Fund maturity amount with our PPF Calculator for FY 2025-26. Plan your tax-saving investments with annual contributions and current PPF interest rates.</p>
+                <a href="/ppf.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/nps.html'">
+                <h2>NPS Calculator</h2>
+                <p>Plan your retirement with our NPS Calculator for India. Estimate your retirement corpus and monthly pension based on contributions and expected returns for FY 2025-26.</p>
+                <a href="/nps.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/hra.html'">
+                <h2>HRA Exemption Calculator</h2>
+                <p>Maximize your tax savings with our HRA Exemption Calculator for FY 2025-26. Calculate tax-exempt House Rent Allowance for salaried individuals based on rent, salary, and city type.</p>
+                <a href="/hra.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/gratuity.html'">
+                <h2>Gratuity Calculator</h2>
+                <p>Estimate your gratuity payout with our Gratuity Calculator for India. Designed for employees with 5+ years of service, it calculates your entitlement based on salary and tenure for FY 2025-26.</p>
+                <a href="/gratuity.html">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='/loan-emi.html'">
+                <h2>Loan EMI Calculator</h2>
+                <p>Calculate EMIs for home, car, or personal loans with our Loan EMI Calculator for FY 2025-26. Get accurate monthly payments and total interest to plan your borrowing in India.</p>
+                <a href="/loan-emi.html">Calculate Now</a>
+            </div>
+        </div>
+        <div class="back-link">
+            <a href="/index.html">Back to Home</a>
+        </div>
+    </div>
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
+            <h3>Disclaimer</h3>
+            <p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or tax professional before making decisions. We are not liable for any losses or damages arising from the use of these calculators.</p>
+        </div>
+    </div>
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('termsModal')">×</span>
+            <h3>Terms and Conditions</h3>
+            <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> | 
+            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
+        </div>
+        <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function formatIndianNumber(num) {
+            if (isNaN(num)) return "0";
+            num = Math.round(num * 100) / 100;
+            let str = num.toFixed(2).toString();
+            let [integer, decimal] = str.split('.');
+            let lastThree = integer.slice(-3);
+            let otherDigits = integer.slice(0, -3);
+            if (otherDigits) {
+                lastThree = ',' + lastThree;
+            }
+            let result = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree;
+            return result + '.' + decimal;
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
+            modal.classList.add('show');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+            modal.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
