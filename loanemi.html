@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GYW0708DQY');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GYW0708DQY');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Loan EMI Calculator for India. Calculate monthly EMI for loans in FY 2025-26.">
-    <meta name="keywords" content="loan EMI calculator, India, FY 2025-26, home loan, car loan, personal loan">
+    <meta name="description" content="Calculate your monthly EMI for home, car, or personal loans in India for FY 2025-26 with our free Loan EMI Calculator. Plan repayments with accurate estimates.">
+    <meta name="keywords" content="loan EMI calculator India, home loan EMI calculator 2025, personal loan EMI calculator, car loan EMI calculator, FY 2025-26">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Loan EMI Calculator - Monthly EMI Online</title>
+    <title>Loan EMI Calculator India FY 2025-26 - Calculate Monthly EMI Online</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -32,6 +31,69 @@
             display: flex;
             flex-direction: column;
         }
+        header {
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        .nav-menu a:hover {
+            color: #FF6F00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #FFFFFF;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #212121;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background: #F5F7FA;
+            color: #FF6F00;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -44,6 +106,16 @@
             text-align: center;
             margin: 20px 0;
             color: #1A237E;
+        }
+        .intro-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .intro-section p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
         .card {
             background: #FFFFFF;
@@ -157,6 +229,28 @@
         .results-card.visible {
             display: block;
         }
+        .faq-section {
+            margin: 40px 0;
+        }
+        .faq-section h2 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            margin: 20px 0;
+        }
+        .faq-item h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1A237E;
+            margin-bottom: 10px;
+        }
+        .faq-item p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
@@ -234,6 +328,10 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
+        @media (max-width: 1024px) {
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .container { padding: 10px 10px 30px; }
@@ -244,16 +342,107 @@
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
         }
     </style>
+    <!-- Schema Markup for Web Application and FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Loan EMI Calculator India",
+      "description": "Calculate your monthly EMI for home, car, or personal loans in India for FY 2025-26 with our free online Loan EMI Calculator.",
+      "url": "https://yourwebsite.com/loan-emi.html",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Loan EMI Calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Loan EMI Calculator is an online tool that helps you estimate your monthly Equated Monthly Installment (EMI) for loans like home, car, or personal loans. It uses the loan amount, interest rate, and tenure to calculate your monthly payments and total interest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is EMI calculated for a loan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EMI is calculated using the formula: EMI = [P × R × (1+R)^N] / [(1+R)^N - 1], where P is the loan amount, R is the monthly interest rate (annual rate divided by 12), and N is the number of months. Our calculator automates this for accurate results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this calculator for any loan type in India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, our Loan EMI Calculator is versatile and can be used for home loans, car loans, personal loans, or any fixed-rate loan in India for FY 2025-26. Enter the loan amount, interest rate, and tenure to get accurate EMI estimates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the EMI results accurate for FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The results are estimates based on standard EMI formulas and user inputs. Actual EMIs may vary due to bank-specific terms, processing fees, or changes in interest rates. Consult your lender for precise figures."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="/index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <h1>Loan EMI Calculator</h1>
-        <p>Calculate your monthly EMI for home, car, or personal loans with our free online tool. Enter loan amount, interest rate, and tenure to plan repayments for FY 2025-26. Save time and make informed borrowing decisions.</p>
-        <a href="index.html" class="back-link">Back to Calculators</a>
+        <h1>Loan EMI Calculator India FY 2025-26</h1>
+        <div class="intro-section">
+            <p>Calculate your monthly EMI for home, car, or personal loans with our free Loan EMI Calculator tailored for India in FY 2025-26. Enter your loan amount, interest rate, and tenure to get accurate estimates of monthly payments, total interest, and overall repayment. Plan your borrowing with confidence and make informed financial decisions.</p>
+            <p>Whether you're financing a home, buying a car, or taking a personal loan, our tool simplifies loan planning by providing instant results based on the latest interest rates and standard EMI formulas. Save time and avoid complex calculations with our user-friendly calculator.</p>
+        </div>
+        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
         <div class="card">
-            <h2>Loan EMI</h2>
+            <h2>Loan EMI Calculator</h2>
             <div class="input-group">
                 <div>
                     <label for="loanAmount">Loan Amount (₹):</label>
@@ -277,6 +466,25 @@
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="emiResult"></div>
+        </div>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What is a Loan EMI Calculator?</h3>
+                <p>A Loan EMI Calculator is an online tool that helps you estimate your monthly Equated Monthly Installment (EMI) for loans like home, car, or personal loans. It uses the loan amount, interest rate, and tenure to calculate your monthly payments and total interest.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is EMI calculated for a loan?</h3>
+                <p>EMI is calculated using the formula: EMI = [P × R × (1+R)^N] / [(1+R)^N - 1], where P is the loan amount, R is the monthly interest rate (annual rate divided by 12), and N is the number of months. Our calculator automates this for accurate results.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I use this calculator for any loan type in India?</h3>
+                <p>Yes, our Loan EMI Calculator is versatile and can be used for home loans, car loans, personal loans, or any fixed-rate loan in India for FY 2025-26. Enter the loan amount, interest rate, and tenure to get accurate EMI estimates.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Are the EMI results accurate for FY 2025-26?</h3>
+                <p>The results are estimates based on standard EMI formulas and user inputs. Actual EMIs may vary due to bank-specific terms, processing fees, or changes in interest rates. Consult your lender for precise figures.</p>
+            </div>
         </div>
     </div>
     <div id="disclaimerModal" class="modal">
@@ -372,6 +580,12 @@
 
             document.getElementById('emiResult').innerHTML = `EMI: ₹${formatIndianNumber(emi)}/month, Total Interest: ₹${formatIndianNumber(totalInterest)}, Total Payment: ₹${formatIndianNumber(totalPayment)}`;
             document.querySelector('.results-card').classList.add('visible');
+
+            // Track EMI calculation event
+            gtag('event', 'calculate_emi', {
+                'event_category': 'Calculator',
+                'event_label': 'Loan EMI Calculator'
+            });
         }
 
         function resetForm() {

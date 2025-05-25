@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GYW0708DQY');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GYW0708DQY');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate PPF returns for FY 2025-26 with our free online tool. Estimate savings, interest, and tax benefits.">
-    <meta name="keywords" content="PPF calculator, FY 2025-26, public provident fund, tax saving calculator, India">
+    <meta name="description" content="Calculate PPF returns for FY 2025-26 with our free PPF Calculator for India. Estimate maturity amount, interest earned, and tax-free savings under the Public Provident Fund scheme.">
+    <meta name="keywords" content="PPF calculator India, PPF returns 2025, Public Provident Fund calculator, FY 2025-26, tax saving calculator">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>PPF Calculator India - Calculate Maturity & Returns</title>
+    <title>PPF Calculator India FY 2025-26 - Calculate Maturity & Returns</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -32,6 +31,69 @@
             display: flex;
             flex-direction: column;
         }
+        header {
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        .nav-menu a:hover {
+            color: #FF6F00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #FFFFFF;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #212121;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background: #F5F7FA;
+            color: #FF6F00;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -44,6 +106,16 @@
             text-align: center;
             margin: 20px 0;
             color: #1A237E;
+        }
+        .intro-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .intro-section p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
         .card {
             background: #FFFFFF;
@@ -166,6 +238,28 @@
         .results-card.visible {
             display: block;
         }
+        .faq-section {
+            margin: 40px 0;
+        }
+        .faq-section h2 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            margin: 20px 0;
+        }
+        .faq-item h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1A237E;
+            margin-bottom: 10px;
+        }
+        .faq-item p {
+            font-size: 1em;
+            color: #616161;
+            line-height: 1.5;
+        }
         .footer {
             background: #1A237E;
             color: #FFFFFF;
@@ -243,6 +337,10 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
+        @media (max-width: 1024px) {
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .container { padding: 10px 10px 30px; }
@@ -253,15 +351,107 @@
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
         }
     </style>
+    <!-- Schema Markup for Web Application and FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PPF Calculator India",
+      "description": "Calculate PPF returns for FY 2025-26 with our free PPF Calculator for India. Estimate maturity amount, interest earned, and tax-free savings under the Public Provident Fund scheme.",
+      "url": "https://yourwebsite.com/ppf.html",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a PPF Calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A PPF Calculator is an online tool that estimates the maturity amount, total invested, and interest earned under the Public Provident Fund (PPF) scheme in India, based on annual investment, tenure, and interest rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is PPF maturity calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PPF maturity is calculated using the compound interest formula for annual contributions, with interest compounded annually at the end of each financial year. The calculator assumes a fixed annual investment and interest rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the PPF investment limits for FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For FY 2025-26, the PPF scheme allows annual investments between ₹500 and ₹1,50,000. Contributions can be made in up to 12 instalments per year, but this calculator assumes a single annual lump sum."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is PPF interest tax-free for FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, PPF interest and maturity proceeds are tax-free under Section 10(11) of the Income Tax Act for FY 2025-26. Investments also qualify for tax deductions under Section 80C up to ₹1,50,000."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="/index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <h1>PPF Calculator</h1>
-        <a href="index.html" class="back-link">Back to Calculators</a>
+        <h1>PPF Calculator FY 2025-26</h1>
+        <div class="intro-section">
+            <p>Calculate your Public Provident Fund (PPF) returns for FY 2025-26 with our free PPF Calculator, tailored for Indian investors. Estimate your maturity amount, interest earned, and tax-free savings by entering your annual investment, tenure, and interest rate.</p>
+            <p>PPF is a secure, government-backed savings scheme offering tax-free returns and deductions under Section 80C. Our tool simplifies complex calculations, helping you plan your long-term savings and tax benefits for FY 2025-26. Start building your wealth today!</p>
+        </div>
+        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
         <div class="card">
-            <h2>Public Provident Fund</h2>
+            <h2>PPF Calculator</h2>
             <div class="input-group">
                 <div>
                     <label for="annualInvestment">Annual Investment (₹):</label>
@@ -273,22 +463,42 @@
                         <option value="15" selected>15</option>
                         <option value="20">20</option>
                         <option value="25">25</option>
+                        <option value="30">30</option>
                     </select>
                 </div>
                 <div>
                     <label for="interestRate">Interest Rate (%):</label>
-                    <input type="number" id="interestRate" min="0" step="0.1" value="7.1">
+                    <input type="number" id="interestRate" min="5" max="9" step="0.1" value="7.1">
                 </div>
             </div>
             <div class="input-group">
                 <button id="calcButton" onclick="calcPPF()" disabled>Calculate</button>
                 <button onclick="resetForm()">Reset</button>
             </div>
-            <div class="note">Enter annual investment in ₹ (500 to 1,50,000). Maturity calculated with annual compounding. PPF interest is tax-free.</div>
+            <div class="note">Enter annual investment in ₹ (₹500 to ₹1,50,000). PPF maturity is calculated with annual compounding. Interest (currently 7.1% for FY 2025-26) and maturity proceeds are tax-free. Tenure is 15 years, extendable in 5-year blocks.</div>
         </div>
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="ppfResult"></div>
+        </div>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What is a PPF Calculator?</h3>
+                <p>A PPF Calculator is an online tool that estimates the maturity amount, total invested, and interest earned under the Public Provident Fund (PPF) scheme in India, based on annual investment, tenure, and interest rate.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is PPF maturity calculated?</h3>
+                <p>PPF maturity is calculated using the compound interest formula for annual contributions, with interest compounded annually at the end of each financial year. The calculator assumes a fixed annual investment and interest rate.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What are the PPF investment limits for FY 2025-26?</h3>
+                <p>For FY 2025-26, the PPF scheme allows annual investments between ₹500 and ₹1,50,000. Contributions can be made in up to 12 instalments per year, but this calculator assumes a single annual lump sum.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is PPF interest tax-free for FY 2025-26?</h3>
+                <p>Yes, PPF interest and maturity proceeds are tax-free under Section 10(11) of the Income Tax Act for FY 2025-26. Investments also qualify for tax deductions under Section 80C up to ₹1,50,000.</p>
+            </div>
         </div>
     </div>
     <div id="disclaimerModal" class="modal">
@@ -346,12 +556,16 @@
             let errors = [];
 
             if (isNaN(investment) || investment < 500 || investment > 150000) {
-                errors.push('Please enter a valid annual investment (500 to 1,50,000).');
+                errors.push('Please enter a valid annual investment (₹500 to ₹1,50,000).');
                 investmentInput.classList.add('error');
             }
-            if (isNaN(rate) || rate <= 0) {
-                errors.push('Please enter a valid interest rate (greater than 0).');
+            if (isNaN(rate) || rate < 5 || rate > 9) {
+                errors.push('Please enter a valid interest rate (5% to 9%).');
                 rateInput.classList.add('error');
+            }
+            if (isNaN(tenure) || ![15, 20, 25, 30].includes(tenure)) {
+                errors.push('Please select a valid tenure (15, 20, 25, or 30 years).');
+                tenureInput.classList.add('error');
             }
 
             if (errors.length > 0) {
@@ -373,15 +587,22 @@
             let rate = parseFloat(document.getElementById('interestRate').value) / 100;
             let tenure = parseFloat(document.getElementById('tenure').value);
 
+            // Calculate future value using compound interest for annual contributions
             let futureValue = 0;
-            for (let t = 1; t <= tenure; t++) {
-                futureValue += investment * Math.pow(1 + rate, tenure - t + 1);
+            for (let year = 0; year < tenure; year++) {
+                futureValue += investment * Math.pow(1 + rate, tenure - year);
             }
             let totalInvested = investment * tenure;
             let interest = futureValue - totalInvested;
 
             document.getElementById('ppfResult').innerHTML = `Maturity Amount: ₹${formatIndianNumber(futureValue)}, Total Invested: ₹${formatIndianNumber(totalInvested)}, Interest Earned: ₹${formatIndianNumber(interest)}`;
             document.querySelector('.results-card').classList.add('visible');
+
+            // Track PPF calculation event
+            gtag('event', 'calculate_ppf', {
+                'event_category': 'Calculator',
+                'event_label': 'PPF Calculator'
+            });
         }
 
         function resetForm() {
@@ -411,7 +632,7 @@
             validateInputs();
             document.getElementById('annualInvestment').addEventListener('input', validateInputs);
             document.getElementById('interestRate').addEventListener('input', validateInputs);
-            document.getElementById('tenure').addEventListener('input', validateInputs);
+            document.getElementById('tenure').addEventListener('change', validateInputs);
         };
     </script>
 </body>
