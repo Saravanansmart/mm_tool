@@ -98,6 +98,71 @@
       }
     }
     </script>
+    <!-- Schema Markup: FAQPage -->
+       <script type="application/ld+json">
+       {
+         "@context": "https://schema.org",
+         "@type": "FAQPage",
+         "mainEntity": [
+           {
+             "@type": "Question",
+             "name": "What are the tax slabs for FY 2025-26?",
+             "acceptedAnswer": {
+               "@type": "Answer",
+               "text": "Old regime: Varies by age (e.g., up to ₹2.5 lakh exempt for below 60). New regime: Up to ₹3 lakh exempt, ₹60,000 rebate up to ₹12 lakh."
+             }
+           },
+           {
+             "@type": "Question",
+             "name": "Can I claim Section 80E with the new regime?",
+             "acceptedAnswer": {
+               "@type": "Answer",
+               "text": "No, Section 80E deductions are available only under the old regime."
+             }
+           },
+           {
+             "@type": "Question",
+             "name": "What is the ITR filing deadline?",
+             "acceptedAnswer": {
+               "@type": "Answer",
+               "text": "July 31, 2025, for non-audit cases for FY 2025-26. Late filing incurs a ₹5,000 penalty under Section 234F."
+             }
+           },
+           {
+             "@type": "Question",
+             "name": "What is advance tax and who needs to pay it?",
+             "acceptedAnswer": {
+               "@type": "Answer",
+               "text": "Advance tax is tax paid on income as it is earned, due in installments (e.g., March 15, 2025). Individuals with tax liability exceeding ₹10,000 in a year must pay it, except senior citizens not running a business."
+             }
+           },
+           {
+             "@type": "Question",
+             "name": "What happens if I miss the ITR filing deadline?",
+             "acceptedAnswer": {
+               "@type": "Answer",
+               "text": "Late filing by December 31, 2025, incurs a ₹5,000 penalty (₹1,000 for income below ₹5 lakh) under Section 234F. You may also face interest under Section 85A and lose certain deductions."
+             }
+           },
+           {
+             "@type": "Question",
+             "name": "Can I switch between old and new tax regimes?",
+             "acceptedAnswer": {
+               "@type": "Answer",
+               "text": "Yes, salaried individuals can switch regimes annually; business taxpayers."
+           }
+       },
+       {
+           "@type": "Question",
+           "name": "What are other common deductions under the old regime?",
+           "acceptedAnswer": {
+               "@type": "Answer",
+               "text": "Besides 80C, 80E, and 80D, you can claim deductions like 80TTA (savings interest, up to ₹10,000), 80G (donations), and 24(b) (home loan interest, up to ₹2 lakh)."
+             }
+           }
+         ]
+       }
+       </script>
 </head>
 <body class="bg-gray-100">
     <header class="bg-indigo-900 text-white shadow-md sticky top-0 z-50">
@@ -189,17 +254,33 @@
         <section class="mt-8">
             <h2 class="text-2xl font-semibold text-indigo-900 text-center mb-4">FAQs</h2>
             <div class="space-y-4">
-                <div>
-                    <h3 class="text-lg font-semibold text-indigo-900">What are the tax slabs for FY 2025-26?</h3>
+                <div class="faq-item">
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What are the tax slabs for FY 2025-26?</h3>
                     <p class="text-gray-600">Old regime: Varies by age (e.g., up to ₹2.5 lakh exempt for below 60). New regime: Up to ₹3 lakh exempt, ₹60,000 rebate up to ₹12 lakh.</p>
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-indigo-900">Can I claim Section 80E with the new regime?</h3>
+                <div class="faq-item">
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">Can I claim Section 80E with the new regime?</h3>
                     <p class="text-gray-600">No, Section 80E deductions are available only under the old regime.</p>
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-indigo-900">What is the ITR filing deadline?</h3>
-                    <p class="text-gray-600">July 31, 2025, for non-audit cases for FY 2025-26.</p>
+                <div class="faq-item">
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is the ITR filing deadline?</h3>
+                    <p class="text-gray-600">July 31, 2025, for non-audit cases for FY 2025-26. Late filing incurs a ₹5,000 penalty under Section 234F.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is advance tax and who needs to pay it?</h3>
+                    <p class="text-gray-600">Advance tax is tax paid on income as it is earned, due in installments (e.g., March 15, 2025). Individuals with tax liability exceeding ₹10,000 in a year must pay it, except senior citizens not running a business.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What happens if I miss the ITR filing deadline?</h3>
+                    <p class="text-gray-600">Late filing by December 31, 2025, incurs a ₹5,000 penalty (₹1,000 for income below ₹5 lakh) under Section 234F. You may also face interest under Section 234A and lose certain deductions.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">Can I switch between old and new tax regimes?</h3>
+                    <p class="text-gray-600">Yes, salaried individuals can switch regimes each year when filing ITR. Business/professional taxpayers opting out of the new regime can revert only once.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What are other common deductions under the old regime?</h3>
+                    <p class="text-gray-600">Besides 80C, 80E, 80D, and 80CCD(1B), you can claim deductions like 80TTA (savings interest up to ₹10,000), 80G (donations), and 24(b) (home loan interest up to ₹2 lakh).</p>
                 </div>
             </div>
         </section>
@@ -248,19 +329,36 @@
 
         let taxChart;
         window.onload = function() {
-            const ctx = document.getElementById('taxChart').getContext('2d');
-            taxChart = new Chart(ctx, chartConfig);
-            updateDeadlines();
-            updateProgress();
-            validateInputs();
-            document.querySelectorAll('input, select').forEach(input => {
-                input.addEventListener('input', () => {
-                    validateInputs();
-                    updateProgress();
+        const ctx = document.getElementById('taxChart').getContext('taxChart');
+        taxChart = new Chart(ctx, chartConfig);
+        updateDeadlines();
+        updateProgress();
+        validateInputs();
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('input', () => {
+                validateInputs();
+                updateProgress();
+            });
+        });
+        document.querySelectorAll('.toggle-deadlines').forEach(btn => {
+            btn.addEventListener('click', toggleTaxDeadlines);
+        });
+        document.querySelectorAll('.tooltip').forEach(tooltip => {
+            tooltip.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    tooltip.focus();
+                }
+            });
+        });
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', () => {
+                gtag('event', 'faq_click', {
+                    'event_category': 'FAQ',
+                    'event_label': item.textContent
                 });
             });
-            document.querySelector('.toggle-deadlines').addEventListener('click', toggleDeadlines);
-        };
+        });
+    };
 
         function formatIndianNumber(num) {
             if (isNaN(num)) return "0.00";
