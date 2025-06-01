@@ -4,18 +4,20 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GYW0708DQY');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate your monthly EMI for home, car, or personal loans in India for FY 2025-26 with our free Loan EMI Calculator. Plan repayments with accurate estimates.">
-    <meta name="keywords" content="loan EMI calculator India, home loan EMI calculator 2025, personal loan EMI calculator, car loan EMI calculator, FY 2025-26">
+    <meta name="description" content="Calculate your Loan EMI for FY 2025-26 with our free India Loan EMI Calculator. Estimate monthly EMI, total interest, and repayment schedule for loans from ₹50,000 to ₹1 crore.">
+    <meta name="keywords" content="loan EMI calculator India, EMI calculator 2025, loan repayment calculator, FY 2025-26">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Loan EMI Calculator India FY 2025-26 - Calculate Monthly EMI Online</title>
+    <title>Loan EMI Calculator India FY 2025-26</title>
+    <!-- Include Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         * {
@@ -97,7 +99,7 @@
         .container {
             max-width: 800px;
             margin: 20px auto;
-            padding: 20px 20px 40px;
+            padding: 20px;
             flex: 1;
         }
         h1 {
@@ -143,7 +145,7 @@
             display: block;
             color: #212121;
         }
-        input {
+        input, select {
             font-size: 1em;
             padding: 10px;
             margin: 8px 0;
@@ -155,12 +157,20 @@
             max-width: 200px;
             transition: border 0.2s ease, box-shadow 0.2s ease;
         }
-        input:focus {
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23212121" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+            cursor: pointer;
+        }
+        input:focus, select:focus {
             outline: none;
             border: 1px solid #FF6F00;
             box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
         }
-        input.error {
+        input.error, select.error {
             border: 1px solid #D32F2F;
             box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
         }
@@ -169,6 +179,34 @@
             flex-wrap: wrap;
             gap: 15px;
             align-items: center;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+            outline: none;
+        }
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            background: #1A237E;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 10;
+        }
+        .tooltip:hover::after, .tooltip:focus::after {
+            opacity: 1;
+            visibility: visible;
         }
         button {
             font-size: 1em;
@@ -181,6 +219,7 @@
             color: #FFFFFF;
             cursor: pointer;
             transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 48px;
         }
         button:hover {
             background: #F57C00;
@@ -193,11 +232,28 @@
             transform: none;
             box-shadow: none;
         }
+        button.loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #FFFFFF;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         .results {
             font-size: 1em;
             margin-top: 15px;
             color: #212121;
             font-weight: 400;
+            line-height: 1.6;
         }
         .error-message {
             font-size: 0.9em;
@@ -228,6 +284,39 @@
         }
         .results-card.visible {
             display: block;
+        }
+        .repayment-schedule {
+            margin-top: 20px;
+            display: none;
+        }
+        .repayment-schedule.visible {
+            display: block;
+        }
+        .repayment-schedule table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .repayment-schedule th, .repayment-schedule td {
+            border: 1px solid #E0E0E0;
+            padding: 8px;
+            text-align: right;
+            font-size: 0.9em;
+        }
+        .repayment-schedule th {
+            background: #F5F5F5;
+            color: #1A237E;
+            font-weight: 600;
+        }
+        .toggle-schedule {
+            font-size: 0.9em;
+            color: #1A237E;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .toggle-schedule:hover {
+            color: #FF6F00;
         }
         .faq-section {
             margin: 40px 0;
@@ -324,6 +413,25 @@
         .close:hover {
             color: #FF6F00;
         }
+        .progress-bar {
+            width: 100%;
+            background: #E0E0E0;
+            border-radius: 8px;
+            height: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: #FF6F00;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        .chart-container {
+            max-width: 400px;
+            margin: 20px auto;
+            height: 300px;
+        }
         @keyframes scaleIn {
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
@@ -334,9 +442,9 @@
         }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
-            .container { padding: 10px 10px 30px; }
+            .container { padding: 10px; }
             .card { padding: 15px; }
-            input { max-width: 100%; }
+            input, select { max-width: 100%; }
             .input-group { flex-direction: column; gap: 10px; }
             button { width: 100%; max-width: 200px; }
             .footer { padding: 15px; font-size: 0.9em; }
@@ -346,6 +454,9 @@
             .nav-menu { margin-top: 10px; }
             .nav-menu a { margin: 5px 10px; }
             .dropdown-content { min-width: 150px; }
+            .repayment-schedule table { font-size: 0.8em; }
+            .repayment-schedule th, .repayment-schedule td { padding: 6px; }
+            .chart-container { max-width: 100%; height: 250px; }
         }
     </style>
     <!-- Schema Markup for Web Application and FAQ -->
@@ -353,9 +464,9 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Loan EMI Calculator India",
-      "description": "Calculate your monthly EMI for home, car, or personal loans in India for FY 2025-26 with our free online Loan EMI Calculator.",
-      "url": "https://yourwebsite.com/loan-emi.html",
+      "name": "Loan EMI Calculator India FY 2025-26",
+      "description": "Calculate your Loan EMI for FY 2025-26 with our free India Loan EMI Calculator. Estimate monthly EMI, total interest, and repayment schedule for loans from ₹50,000 to ₹1 crore.",
+      "url": "https://moneymindtool.com/loan-emi.html",
       "applicationCategory": "Financial",
       "operatingSystem": "All",
       "offers": {
@@ -372,34 +483,34 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is a Loan EMI Calculator?",
+          "name": "How is loan EMI calculated?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A Loan EMI Calculator is an online tool that helps you estimate your monthly Equated Monthly Installment (EMI) for loans like home, car, or personal loans. It uses the loan amount, interest rate, and tenure to calculate your monthly payments and total interest."
+            "text": "EMI is calculated using the formula: EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is the loan amount, r is the monthly interest rate, and n is the repayment months."
           }
         },
         {
           "@type": "Question",
-          "name": "How is EMI calculated for a loan?",
+          "name": "What is a typical interest rate for loans in India in 2025?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "EMI is calculated using the formula: EMI = [P × R × (1+R)^N] / [(1+R)^N - 1], where P is the loan amount, R is the monthly interest rate (annual rate divided by 12), and N is the number of months. Our calculator automates this for accurate results."
+            "text": "Loan interest rates in India for FY 2025-26 typically range from 8% to 24% per annum, depending on the loan type, lender, and borrower profile."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I use this calculator for any loan type in India?",
+          "name": "What is the maximum tenure for a loan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, our Loan EMI Calculator is versatile and can be used for home loans, car loans, personal loans, or any fixed-rate loan in India for FY 2025-26. Enter the loan amount, interest rate, and tenure to get accurate EMI estimates."
+            "text": "Loan tenures in India vary by type: personal loans up to 7 years, home loans up to 30 years, and car loans up to 7 years."
           }
         },
         {
           "@type": "Question",
-          "name": "Are the EMI results accurate for FY 2025-26?",
+          "name": "Can I prepay my loan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The results are estimates based on standard EMI formulas and user inputs. Actual EMIs may vary due to bank-specific terms, processing fees, or changes in interest rates. Consult your lender for precise figures."
+            "text": "Yes, most lenders allow prepayment after a lock-in period (e.g., 6–12 months), often with a penalty of 2–5%. Check with your lender."
           }
         }
       ]
@@ -435,68 +546,95 @@
         </div>
     </header>
     <div class="container">
-        <h1>Loan EMI Calculator India FY 2025-26</h1>
+        <h1>Loan EMI Calculator FY 2025-26</h1>
         <div class="intro-section">
-            <p>Calculate your monthly EMI for home, car, or personal loans with our free Loan EMI Calculator tailored for India in FY 2025-26. Enter your loan amount, interest rate, and tenure to get accurate estimates of monthly payments, total interest, and overall repayment. Plan your borrowing with confidence and make informed financial decisions.</p>
-            <p>Whether you're financing a home, buying a car, or taking a personal loan, our tool simplifies loan planning by providing instant results based on the latest interest rates and standard EMI formulas. Save time and avoid complex calculations with our user-friendly calculator.</p>
+            <p>Calculate your loan EMI for FY 2025-26 with our free India Loan EMI Calculator. Suitable for home, car, personal, or other loans from ₹50,000 to ₹1 crore.</p>
+            <p>Enter your loan amount, interest rate, and tenure to estimate monthly EMI, total interest, and repayment schedule, with a visual breakdown of principal and interest.</p>
         </div>
         <a href="/all-calculators" class="back-link">Back to All Calculators</a>
         <div class="card">
-            <h2>Loan EMI Calculator</h2>
+            <h2>Calculate Your Loan EMI</h2>
+            <div class="progress-bar">
+                <div class="progress" id="loanProgress"></div>
+            </div>
             <div class="input-group">
                 <div>
-                    <label for="loanAmount">Loan Amount (₹):</label>
-                    <input type="number" id="loanAmount" min="0" value="1000000">
+                    <label for="loanAmount">Loan Amount (₹): <span class="tooltip" data-tooltip="Principal amount (₹50,000 to ₹1 crore)" tabindex="0">?</span></label>
+                    <input type="number" id="loanAmount" min="50000" max="10000000" value="1000000" aria-label="Loan Amount in Rupees">
                 </div>
                 <div>
-                    <label for="interestRate">Annual Interest Rate (%):</label>
-                    <input type="number" id="interestRate" min="0" step="0.1" value="8.5">
+                    <label for="loanRate">Annual Interest Rate (%): <span class="tooltip" data-tooltip="Annual interest rate (typically 8–24%)" tabindex="0">?</span></label>
+                    <input type="number" id="loanRate" min="8" max="24" step="0.01" value="10" aria-label="Annual Interest Rate in Percent">
                 </div>
                 <div>
-                    <label for="tenure">Tenure (Years):</label>
-                    <input type="number" id="tenure" min="0" value="5">
+                    <label for="loanTenure">Repayment Tenure: <span class="tooltip" data-tooltip="Repayment duration (1–30 years or 12–360 months)" tabindex="0">?</span></label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <input type="number" id="loanTenure" min="1" max="30" step="0.1" value="5" aria-label="Loan Repayment Tenure">
+                        <select id="tenureUnit" aria-label="Select Tenure Unit">
+                            <option value="years" selected>Years</option>
+                            <option value="months">Months</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcEMI()" disabled>Calculate</button>
-                <button onclick="resetForm()">Reset</button>
+                <button id="calcButton" onclick="calcLoan()" disabled aria-label="Calculate Loan EMI">Calculate</button>
+                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
             </div>
-            <div class="note">Enter loan amount in ₹ (e.g., 1000000). EMI calculated with monthly reducing balance. Consult your bank for exact terms.</div>
+            <div class="note">Enter loan amount in ₹ (e.g., 10,00,000 for 10 Lakh), annual interest rate (8–24%), and repayment tenure (1–30 years or 12–360 months). EMI is calculated using the reducing balance method: EMI = P × r × (1+r)^n / ((1+r)^n - 1). Results are estimates; consult your lender for exact terms.</div>
         </div>
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
-            <div class="results" id="emiResult"></div>
+            <div class="results" id="loanResult"></div>
+            <div class="chart-container">
+                <canvas id="emiChart"></canvas>
+            </div>
+            <div class="repayment-schedule" id="repaymentSchedule">
+                <span class="toggle-schedule" onclick="toggleSchedule()">Show Repayment Schedule</span>
+                <table id="scheduleTable">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>EMI (₹)</th>
+                            <th>Principal (₹)</th>
+                            <th>Interest (₹)</th>
+                            <th>Balance (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
         <div class="faq-section">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-item">
-                <h3>What is a Loan EMI Calculator?</h3>
-                <p>A Loan EMI Calculator is an online tool that helps you estimate your monthly Equated Monthly Installment (EMI) for loans like home, car, or personal loans. It uses the loan amount, interest rate, and tenure to calculate your monthly payments and total interest.</p>
+                <h3>How is loan EMI calculated?</h3>
+                <p>EMI is calculated using the formula: EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is the loan amount, r is the monthly interest rate, and n is the repayment months.</p>
             </div>
             <div class="faq-item">
-                <h3>How is EMI calculated for a loan?</h3>
-                <p>EMI is calculated using the formula: EMI = [P × R × (1+R)^N] / [(1+R)^N - 1], where P is the loan amount, R is the monthly interest rate (annual rate divided by 12), and N is the number of months. Our calculator automates this for accurate results.</p>
+                <h3>What is a typical interest rate for loans in India in 2025?</h3>
+                <p>Loan interest rates in India for FY 2025-26 typically range from 8% to 24% per annum, depending on the loan type, lender, and borrower profile.</p>
             </div>
             <div class="faq-item">
-                <h3>Can I use this calculator for any loan type in India?</h3>
-                <p>Yes, our Loan EMI Calculator is versatile and can be used for home loans, car loans, personal loans, or any fixed-rate loan in India for FY 2025-26. Enter the loan amount, interest rate, and tenure to get accurate EMI estimates.</p>
+                <h3>What is the maximum tenure for a loan?</h3>
+                <p>Loan tenures in India vary by type: personal loans up to 7 years, home loans up to 30 years, and car loans up to 7 years.</p>
             </div>
             <div class="faq-item">
-                <h3>Are the EMI results accurate for FY 2025-26?</h3>
-                <p>The results are estimates based on standard EMI formulas and user inputs. Actual EMIs may vary due to bank-specific terms, processing fees, or changes in interest rates. Consult your lender for precise figures.</p>
+                <h3>Can I prepay my loan?</h3>
+                <p>Yes, most lenders allow prepayment after a lock-in period (e.g., 6–12 months), often with a penalty of 2–5%. Check with your lender.</p>
             </div>
         </div>
     </div>
     <div id="disclaimerModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
+            <span class="close" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
             <h3>Disclaimer</h3>
             <p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or tax professional before making decisions. We are not liable for any losses or damages arising from the use of these calculators.</p>
         </div>
     </div>
     <div id="termsModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('termsModal')">×</span>
+            <span class="close" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
             <h3>Terms and Conditions</h3>
             <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
         </div>
@@ -509,8 +647,78 @@
         <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
     </footer>
     <script>
+        // Chart.js Configuration
+        const chartConfig = {
+            type: 'pie',
+            data: {
+                labels: ['Principal', 'Interest'],
+                datasets: [{
+                    data: [0, 0],
+                    backgroundColor: ['#1A237E', '#FF6F00'],
+                    borderColor: ['#FFFFFF', '#FFFFFF'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: '#212121',
+                            font: {
+                                size: 14,
+                                family: "'Inter', sans-serif"
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Loan EMI Breakdown',
+                        color: '#1A237E',
+                        font: {
+                            size: 16,
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                }
+            }
+        };
+
+        // Initialize Chart
+        let emiChart;
+        window.onload = function() {
+            const ctx = document.getElementById('emiChart').getContext('2d');
+            emiChart = new Chart(ctx, chartConfig);
+            updateDeadlines();
+            updateProgress();
+            validateInputs();
+            document.querySelectorAll('input, select').forEach(input => {
+                input.addEventListener('input', () => {
+                    validateInputs();
+                    updateProgress();
+                });
+            });
+            document.querySelectorAll('.tooltip').forEach(tooltip => {
+                tooltip.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        tooltip.focus();
+                    }
+                });
+            });
+            document.querySelectorAll('.faq-item h3').forEach(item => {
+                item.addEventListener('click', () => {
+                    gtag('event', 'faq_click', {
+                        'event_category': 'FAQ',
+                        'event_label': item.textContent
+                    });
+                });
+            });
+        };
+
         function formatIndianNumber(num) {
-            if (isNaN(num)) return "0";
+            if (isNaN(num)) return "0.00";
             num = Math.round(num * 100) / 100;
             let str = num.toFixed(2).toString();
             let [integer, decimal] = str.split('.');
@@ -521,36 +729,57 @@
             }
             let result = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree;
             return result + '.' + decimal;
-        }
+        }   
 
+        function updateProgress() {
+            const inputs = ['loanAmount', 'loanRate', 'loanTenure', 'tenureUnit'];
+            let filled = inputs.reduce((count, id) => {
+                let value = document.getElementById(id).value;
+                return count + (value !== '' ? 1 : 0);
+            }, 0);
+            document.getElementById('loanProgress').style.width = `${(filled / inputs.length) * 100}%`;
+        }
+        function updateDeadlines() {
+                    const today = new Date();
+                    const subsidyDeadline = new Date('2025-03-31');
+                    const deadlinesList = document.getElementById('deadlinesList');
+                    if (today > subsidyDeadline) {
+                        const pastItem = document.getElementById('past-subsidy');
+                        pastItem.classList.add('past-deadline');
+                        pastItem.innerHTML = '<strong>Loan Subsidy Application (FY 2024-25)</strong>: Deadline passed (March 31, 2025). <span class="penalty">Consequence: Loss of interest subsidy; reapply for FY 2025-26.</span>';
+                    }
+                }
         function validateInputs() {
-            let loanAmount = parseFloat(document.getElementById('loanAmount').value);
-            let interestRate = parseFloat(document.getElementById('interestRate').value);
-            let tenure = parseFloat(document.getElementById('tenure').value);
+            let amount = parseFloat(document.getElementById('loanAmount').value);
+            let rate = parseFloat(document.getElementById('loanRate').value);
+            let tenure = parseFloat(document.getElementById('loanTenure').value);
+            let tenureUnit = document.getElementById('tenureUnit').value;
+            let repaymentMonths = tenureUnit === 'years' ? tenure * 12 : tenure;
+
             let errorMessage = document.getElementById('errorMessage');
             let calcButton = document.getElementById('calcButton');
-            let loanAmountInput = document.getElementById('loanAmount');
-            let interestRateInput = document.getElementById('interestRate');
-            let tenureInput = document.getElementById('tenure');
+            let amountInput = document.getElementById('loanAmount');
+            let rateInput = document.getElementById('loanRate');
+            let tenureInput = document.getElementById('loanTenure');
 
-            loanAmountInput.classList.remove('error');
-            interestRateInput.classList.remove('error');
+            amountInput.classList.remove('error');
+            rateInput.classList.remove('error');
             tenureInput.classList.remove('error');
             errorMessage.style.display = 'none';
             errorMessage.innerHTML = '';
 
             let errors = [];
 
-            if (isNaN(loanAmount) || loanAmount <= 0) {
-                errors.push('Please enter a valid loan amount (greater than 0).');
-                loanAmountInput.classList.add('error');
+            if (isNaN(amount) || amount < 50000 || amount > 10000000) {
+                errors.push('Please enter a valid loan amount (₹50,000 to ₹1 crore).');
+                amountInput.classList.add('error');
             }
-            if (isNaN(interestRate) || interestRate <= 0) {
-                errors.push('Please enter a valid interest rate (greater than 0).');
-                interestRateInput.classList.add('error');
+            if (isNaN(rate) || rate < 8 || rate > 24) {
+                errors.push('Please enter a valid interest rate (8% to 24%).');
+                rateInput.classList.add('error');
             }
-            if (isNaN(tenure) || tenure <= 0) {
-                errors.push('Please enter a valid tenure (greater than 0).');
+            if (isNaN(tenure) || repaymentMonths < 12 || repaymentMonths > 360) {
+                errors.push('Please enter a valid repayment tenure (12 to 360 months).');
                 tenureInput.classList.add('error');
             }
 
@@ -566,36 +795,136 @@
             return true;
         }
 
-        function calcEMI() {
-            if (!validateInputs()) return;
+        function generateRepaymentSchedule(amount, rate, repaymentMonths) {
+            let monthlyRate = rate / 100 / 12;
+            let emi = amount * monthlyRate * Math.pow(1 + monthlyRate, repaymentMonths) / (Math.pow(1 + monthlyRate, repaymentMonths) - 1);
+            let balance = amount;
+            let schedule = [];
 
-            let loanAmount = parseFloat(document.getElementById('loanAmount').value);
-            let interestRate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
-            let tenure = parseFloat(document.getElementById('tenure').value);
-            let months = tenure * 12;
+            for (let month = 1; month <= repaymentMonths; month++) {
+                let interest = balance * monthlyRate;
+                let principal = emi - interest;
+                balance -= principal;
+                if (balance < 0) balance = 0;
+                schedule.push({
+                    month,
+                    emi: Math.round(emi),
+                    principal: Math.round(principal),
+                    interest: Math.round(interest),
+                    balance: Math.round(balance)
+                });
+            }
 
-            let emi = (loanAmount * interestRate * Math.pow(1 + interestRate, months)) / (Math.pow(1 + interestRate, months) - 1);
-            let totalPayment = emi * months;
-            let totalInterest = totalPayment - loanAmount;
-
-            document.getElementById('emiResult').innerHTML = `EMI: ₹${formatIndianNumber(emi)}/month, Total Interest: ₹${formatIndianNumber(totalInterest)}, Total Payment: ₹${formatIndianNumber(totalPayment)}`;
-            document.querySelector('.results-card').classList.add('visible');
-
-            // Track EMI calculation event
-            gtag('event', 'calculate_emi', {
-                'event_category': 'Calculator',
-                'event_label': 'Loan EMI Calculator'
-            });
+            return schedule;
         }
 
+        function calcLoan() {
+            if (!validateInputs()) return;
+
+            let calcButton = document.getElementById('calcButton');
+            calcButton.classList.add('loading');
+            setTimeout(() => {
+                let amount = parseFloat(document.getElementById('loanAmount').value);
+                let rate = parseFloat(document.getElementById('loanRate').value);
+                let tenure = parseFloat(document.getElementById('loanTenure').value);
+                let tenureUnit = document.getElementById('tenureUnit').value;
+                let repaymentMonths = tenureUnit === 'years' ? Math.round(tenure * 12) : Math.round(tenure);
+
+                let monthlyRate = rate / 100 / 12;
+                let emi = amount * monthlyRate * Math.pow(1 + monthlyRate, repaymentMonths) / (Math.pow(1 + monthlyRate, repaymentMonths) - 1);
+                emi = Math.round(emi);
+                let totalPayment = emi * repaymentMonths;
+                let totalInterest = totalPayment - amount;
+
+                // Update Result
+                let result = `
+                    <strong>Loan EMI Details:</strong><br>
+                    Monthly EMI: ₹${formatIndianNumber(emi)}<br>
+                    Total Interest: ₹${formatIndianNumber(totalInterest)}<br>
+                    Total Payment: ₹${formatIndianNumber(totalPayment)}<br>
+                    Annual EMI Cost: ₹${formatIndianNumber(emi * 12)}
+                `;
+                document.getElementById('loanResult').innerHTML = result;
+
+                // Update Chart
+                emiChart.data.datasets[0].data = [amount, totalInterest];
+                emiChart.update();
+
+                // Generate Repayment Schedule
+                let schedule = generateRepaymentSchedule(amount, rate, repaymentMonths);
+                let tbody = document.querySelector('#scheduleTable tbody');
+                tbody.innerHTML = '';
+                schedule.forEach(row => {
+                    let tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${row.month}</td>
+                        <td>₹${formatIndianNumber(row.emi)}</td>
+                        <td>₹${formatIndianNumber(row.principal)}</td>
+                        <td>₹${formatIndianNumber(row.interest)}</td>
+                        <td>₹${formatIndianNumber(row.balance)}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                document.querySelector('.results-card').classList.add('visible');
+                document.querySelector('.repayment-schedule').style.display = 'block';
+                document.querySelector('.repayment-schedule').classList.remove('visible');
+                document.querySelector('.toggle-schedule').textContent = 'Show Repayment Schedule';
+                calcButton.classList.remove('loading');
+
+                // Track calculation event
+                gtag('event', 'calculate_emi', {
+                    'event_category': 'Calculator',
+                    'event_label': 'Loan EMI Calculator'
+                });
+            }, 300);
+        }
+
+        function toggleSchedule() {
+            let schedule = document.querySelector('.repayment-schedule');
+            let toggle = document.querySelector('.toggle-schedule');
+            let table = document.querySelector('#scheduleTable');
+            if (schedule.classList.contains('visible')) {
+                schedule.classList.remove('visible');
+                table.style.display = 'none';
+                toggle.textContent = 'Show Repayment Schedule';
+            } else {
+                schedule.classList.add('visible');
+                table.style.display = 'table';
+                toggle.textContent = 'Hide Repayment Schedule';
+            }
+        }
+        function toggleDeadlines() {
+            let deadlines = document.getElementById('deadlinesList');
+            let toggle = document.querySelector('.toggle-deadlines');
+            if (deadlines.classList.contains('hidden')) {
+                deadlines.classList.remove('hidden');
+                toggle.textContent = 'Hide Deadlines';
+            } else {
+                deadlines.classList.add('hidden');
+                toggle.textContent = 'Show Deadlines';
+            }
+            gtag('event', 'toggle_deadlines', {
+                'event_category': 'Deadlines',
+                'event_label': 'Loan Deadlines'
+            });
+        }
         function resetForm() {
             document.getElementById('loanAmount').value = '1000000';
-            document.getElementById('interestRate').value = '8.5';
-            document.getElementById('tenure').value = '5';
-            document.getElementById('emiResult').innerHTML = '';
+            document.getElementById('loanRate').value = '10';
+            document.getElementById('loanTenure').value = '5';
+            document.getElementById('tenureUnit').value = 'years';
+            document.getElementById('loanResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
             document.querySelector('.results-card').classList.remove('visible');
+            document.querySelector('.repayment-schedule').style.display = 'none';
+            document.querySelector('.repayment-schedule').classList.remove('visible');
+            document.querySelector('.toggle-schedule').textContent = 'Show Repayment Schedule';
             document.getElementById('calcButton').disabled = true;
+            document.querySelector('#scheduleTable tbody').innerHTML = '';
+            emiChart.data.datasets[0].data = [0, 0];
+            emiChart.update();
+            updateProgress();
             validateInputs();
         }
 
@@ -610,13 +939,6 @@
             modal.style.display = 'none';
             modal.classList.remove('show');
         }
-
-        window.onload = function() {
-            validateInputs();
-            document.getElementById('loanAmount').addEventListener('input', validateInputs);
-            document.getElementById('interestRate').addEventListener('input', validateInputs);
-            document.getElementById('tenure').addEventListener('input', validateInputs);
-        };
     </script>
 </body>
 </html>
