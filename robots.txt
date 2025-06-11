@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /login/              # Block login pages
+Disallow: /signup/             # Block signup pages
+Disallow: /search/             # Block internal search results
+Disallow: /private/            # Block private directories
+Disallow: *.pdf                # Block PDF files (optional)
+Sitemap: https://moneymindtool.com/sitemap.xml
