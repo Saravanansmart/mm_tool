@@ -4,20 +4,22 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GYW0708DQY');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate PPF returns for FY 2025-26 with our free PPF Calculator for India. Estimate maturity amount, interest earned, and tax-free savings under the Public Provident Fund scheme.">
-    <meta name="keywords" content="PPF calculator India, PPF returns 2025, Public Provident Fund calculator, FY 2025-26, tax saving calculator">
+    <meta name="description" content="Free PPF Calculator India 2025 for FY 2025-26. Calculate Public Provident Fund maturity amount, interest earned, and tax-free savings instantly.">
+    <meta name="keywords" content="PPF calculator India, PPF returns 2025, Public Provident Fund calculator, PPF tax benefits 2025, PPF interest rate 2025, PPF withdrawal rules, FY 2025-26, tax saving calculator, PPF eligibility">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>PPF Calculator India FY 2025-26 - Calculate Maturity & Returns</title>
+    <title>PPF Calculator India 2025 - Free Maturity & Returns Calculation</title>
+    <!-- Include Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
         * {
             margin: 0;
             padding: 0;
@@ -25,17 +27,18 @@
         }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #E8EAF6, #F5F7FA);
+            background: linear-gradient(180deg, #E8F0FE, #F9FAFB);
             min-height: 100vh;
-            color: #212121;
+            color: #4B5EAA;
             display: flex;
             flex-direction: column;
+            line-height: 1.6;
         }
         header {
-            background: #1A237E;
+            background: #2A3EB1;
             color: #FFFFFF;
             padding: 15px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -49,7 +52,7 @@
         }
         .nav-container h1 {
             font-size: 1.8em;
-            font-weight: 700;
+            font-weight: 600;
         }
         .nav-menu {
             display: flex;
@@ -60,10 +63,10 @@
             text-decoration: none;
             font-size: 1em;
             margin-left: 20px;
-            font-weight: 600;
+            font-weight: 500;
         }
         .nav-menu a:hover {
-            color: #FF6F00;
+            color: #F57C00;
         }
         .dropdown {
             position: relative;
@@ -72,7 +75,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background: #FFFFFF;
+            background: #F9FAFB;
             min-width: 200px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
@@ -81,15 +84,15 @@
             right: 0;
         }
         .dropdown-content a {
-            color: #212121;
+            color: #4B5EAA;
             padding: 12px 16px;
             display: block;
             font-weight: 400;
             margin: 0;
         }
         .dropdown-content a:hover {
-            background: #F5F7FA;
-            color: #FF6F00;
+            background: #E8F0FE;
+            color: #F57C00;
         }
         .dropdown:hover .dropdown-content {
             display: block;
@@ -97,60 +100,81 @@
         .container {
             max-width: 800px;
             margin: 20px auto;
-            padding: 20px 20px 40px;
+            padding: 20px;
             flex: 1;
         }
         h1 {
-            font-size: 2.5em;
-            font-weight: 700;
+            font-size: 2.2em;
+            font-weight: 600;
             text-align: center;
             margin: 20px 0;
-            color: #1A237E;
+            color: #2A3EB1;
         }
-        .intro-section {
+        h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #2A3EB1;
+            margin: 20px 0 15px;
+            line-height: 1.3;
+        }
+        h3 {
+            font-size: 1.3em;
+            font-weight: 500;
+            color: #3F51B5;
+            margin: 15px 0 10px;
+            line-height: 1.4;
+        }
+        .intro-section, .content-section, .faq-section {
+            padding: 25px;
             margin: 20px 0;
-            text-align: center;
+            background: #F9FAFB;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E8F0FE;
         }
-        .intro-section p {
+        .content-section::before, .faq-section::before {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #F57C00;
+            margin: 0 auto 20px;
+            border-radius: 2px;
+        }
+        .intro-section p, .content-section p, .faq-item p {
             font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
+            color: #4B5EAA;
+            line-height: 1.6;
             margin-bottom: 15px;
         }
         .card {
-            background: #FFFFFF;
+            background: #F9FAFB;
             border-radius: 12px;
             padding: 20px;
             margin: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #E0E0E0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E8F0FE;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-        h2 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 10px 0;
-            color: #1A237E;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
         }
         label {
             font-size: 1em;
             font-weight: 400;
             margin: 8px 0;
             display: block;
-            color: #212121;
+            color: #4B5EAA;
         }
         input, select {
             font-size: 1em;
             padding: 10px;
             margin: 8px 0;
-            border: 1px solid #E0E0E0;
+            border: 1px solid #E8F0FE;
             border-radius: 8px;
-            background: #F5F5F5;
-            color: #212121;
+            background: #FFFFFF;
+            color: #4B5EAA;
             width: 100%;
             max-width: 200px;
             transition: border 0.2s ease, box-shadow 0.2s ease;
@@ -158,7 +182,7 @@
         }
         select {
             appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="%23212121" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%234B5EAA" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
             background-repeat: no-repeat;
             background-position: right 10px center;
             padding-right: 30px;
@@ -166,8 +190,8 @@
         }
         input:focus, select:focus {
             outline: none;
-            border: 1px solid #FF6F00;
-            box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
+            border: 1px solid #F57C00;
+            box-shadow: 0 0 8px rgba(245, 124, 0, 0.2);
         }
         input.error, select.error {
             border: 1px solid #D32F2F;
@@ -179,22 +203,51 @@
             gap: 15px;
             align-items: center;
         }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+            outline: none;
+        }
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            background: #2A3EB1;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 10;
+        }
+        .tooltip:hover::after, .tooltip:focus::after {
+            opacity: 1;
+            visibility: visible;
+        }
         button {
             font-size: 1em;
-            font-weight: 700;
+            font-weight: 600;
             padding: 10px 20px;
             margin: 8px 0;
             border: none;
             border-radius: 8px;
-            background: #FF6F00;
+            background: #F57C00;
             color: #FFFFFF;
             cursor: pointer;
             transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 48px;
         }
         button:hover {
-            background: #F57C00;
+            background: #E65100;
             transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(245, 124, 0, 0.3);
         }
         button:disabled {
             background: #B0BEC5;
@@ -202,11 +255,28 @@
             transform: none;
             box-shadow: none;
         }
+        button.loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #FFFFFF;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         .results {
             font-size: 1em;
             margin-top: 15px;
-            color: #212121;
+            color: #4B5EAA;
             font-weight: 400;
+            line-height: 1.6;
         }
         .error-message {
             font-size: 0.9em;
@@ -216,7 +286,7 @@
         }
         .note {
             font-size: 0.9em;
-            color: #616161;
+            color: #6B7280;
             margin: 8px 0;
             line-height: 1.5;
         }
@@ -224,13 +294,13 @@
             display: block;
             text-align: center;
             margin: 20px 0;
-            color: #1A237E;
+            color: #2A3EB1;
             text-decoration: none;
             font-size: 1em;
-            font-weight: 600;
+            font-weight: 500;
         }
         .back-link:hover {
-            color: #FF6F00;
+            color: #F57C00;
         }
         .results-card {
             display: none;
@@ -238,30 +308,55 @@
         .results-card.visible {
             display: block;
         }
+        .contribution-schedule {
+            margin-top: 20px;
+            display: none;
+        }
+        .contribution-schedule.visible {
+            display: block;
+        }
+        .contribution-schedule table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .contribution-schedule th, .contribution-schedule td {
+            border: 1px solid #E8F0FE;
+            padding: 8px;
+            text-align: right;
+            font-size: 0.9em;
+            color: #4B5EAA;
+        }
+        .contribution-schedule th {
+            background: #E8F0FE;
+            color: #2A3EB1;
+            font-weight: 600;
+        }
+        .toggle-schedule {
+            font-size: 0.9em;
+            color: #2A3EB1;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .toggle-schedule:hover {
+            color: #F57C00;
+        }
         .faq-section {
             margin: 40px 0;
         }
-        .faq-section h2 {
-            font-size: 1.8em;
-            text-align: center;
+        strong {
+            color: #F57C00;
+            font-weight: 600;
+        }
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
             margin-bottom: 20px;
         }
-        .faq-item {
-            margin: 20px 0;
-        }
-        .faq-item h3 {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #1A237E;
-            margin-bottom: 10px;
-        }
-        .faq-item p {
-            font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
-        }
         .footer {
-            background: #1A237E;
+            background: #2A3EB1;
             color: #FFFFFF;
             text-align: center;
             padding: 20px;
@@ -276,7 +371,7 @@
             font-weight: 400;
         }
         .footer-links a:hover {
-            color: #FF6F00;
+            color: #F57C00;
         }
         .rights-reserved {
             font-size: 0.9em;
@@ -297,13 +392,13 @@
             animation: scaleIn 0.3s ease;
         }
         .modal-content {
-            background: #FFFFFF;
+            background: #F9FAFB;
             max-width: 500px;
             width: 90%;
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            color: #212121;
+            color: #4B5EAA;
             position: relative;
             transform: scale(0.95);
             transition: transform 0.2s ease;
@@ -315,7 +410,7 @@
             font-size: 1.5em;
             font-weight: 600;
             margin: 10px 0;
-            color: #1A237E;
+            color: #2A3EB1;
         }
         .modal-content p {
             font-size: 0.9em;
@@ -326,12 +421,35 @@
             top: 15px;
             right: 15px;
             font-size: 1.5em;
-            color: #212121;
+            color: #4B5EAA;
             cursor: pointer;
             transition: color 0.2s ease;
         }
         .close:hover {
-            color: #FF6F00;
+            color: #F57C00;
+        }
+        .progress-bar {
+            width: 100%;
+            background: #E8F0FE;
+            border-radius: 8px;
+            height: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: #F57C00;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        .past-deadline {
+            color: #D32F2F;
+        }
+        .penalty {
+            font-weight: 600;
+        }
+        .deadlinesList.hidden {
+            display: none;
         }
         @keyframes scaleIn {
             from { opacity: 0; transform: scale(0.9); }
@@ -342,11 +460,14 @@
             .nav-menu a { margin-left: 15px; }
         }
         @media (max-width: 768px) {
-            h1 { font-size: 2em; }
-            .container { padding: 10px 10px 30px; }
-            .card { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            p { font-size: 0.95em; }
+            .container { padding: 10px; }
+            .card, .content-section, .faq-section { padding: 15px; margin: 10px; }
             input, select { max-width: 100%; }
-            .input-group { flex-direction: column; gap: 10px; }
+            .input-group { flex-direction: column; gap: 10px; align-items: stretch; }
             button { width: 100%; max-width: 200px; }
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
@@ -355,15 +476,17 @@
             .nav-menu { margin-top: 10px; }
             .nav-menu a { margin: 5px 10px; }
             .dropdown-content { min-width: 150px; }
+            .contribution-schedule table { font-size: 0.8em; }
+            .contribution-schedule th, .contribution-schedule td { padding: 6px; }
         }
     </style>
-    <!-- Schema Markup for Web Application and FAQ -->
+    <!-- Schema Markup for Web Application, FAQ, HowTo, and SoftwareApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "PPF Calculator India",
-      "description": "Calculate PPF returns for FY 2025-26 with our free PPF Calculator for India. Estimate maturity amount, interest earned, and tax-free savings under the Public Provident Fund scheme.",
+      "name": "PPF Calculator India 2025",
+      "description": "Free PPF Calculator India 2025 for FY 2025-26. Calculate Public Provident Fund maturity amount, interest earned, and tax-free savings instantly.",
       "url": "https://moneymindtool.com/ppf.html",
       "applicationCategory": "Financial",
       "operatingSystem": "All",
@@ -392,7 +515,7 @@
           "name": "How is PPF maturity calculated?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PPF maturity is calculated using the compound interest formula for annual contributions, with interest compounded annually at the end of each financial year. The calculator assumes a fixed annual investment and interest rate."
+            "text": "PPF maturity is calculated using the compound interest formula for annual contributions, with interest compounded annually at the end of each financial year."
           }
         },
         {
@@ -400,7 +523,7 @@
           "name": "What are the PPF investment limits for FY 2025-26?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For FY 2025-26, the PPF scheme allows annual investments between ₹500 and ₹1,50,000. Contributions can be made in up to 12 instalments per year, but this calculator assumes a single annual lump sum."
+            "text": "For FY 2025-26, PPF allows annual investments between ₹500 and ₹1,50,000, in up to 12 instalments, but this calculator assumes a single annual lump sum."
           }
         },
         {
@@ -408,10 +531,95 @@
           "name": "Is PPF interest tax-free for FY 2025-26?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, PPF interest and maturity proceeds are tax-free under Section 10(11) of the Income Tax Act for FY 2025-26. Investments also qualify for tax deductions under Section 80C up to ₹1,50,000."
+            "text": "Yes, PPF interest and maturity proceeds are tax-free under Section 10(11), and investments qualify for Section 80C deductions up to ₹1,50,000."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I extend my PPF account after 15 years in 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, PPF accounts can be extended in 5-year blocks after 15 years, with or without further contributions, as per rules in FY 2025-26."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the PPF interest rate for FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The PPF interest rate for FY 2025-26 is currently 7.1% per annum, subject to quarterly revisions by the Government of India."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I withdraw from my PPF account in 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Partial withdrawals are allowed from the 7th year, up to 50% of the balance at the end of the 4th or preceding year, once annually."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is eligible to open a PPF account in India in 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Resident individuals and guardians for minors can open PPF accounts. NRIs and HUFs are not eligible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does PPF compare to other tax-saving options in 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PPF offers guaranteed, tax-free returns but has a 15-year lock-in. ELSS has a 3-year lock-in but market risks, while NPS offers retirement benefits. Use our NPS Calculator for comparison."
           }
         }
       ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate PPF Returns in India for FY 2025-26",
+      "description": "Step-by-step guide to calculate your PPF maturity using our free India PPF Calculator.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "text": "Enter your annual investment (₹500 to ₹1,50,000).",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Select tenure (15, 20, 25, or 30 years).",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Input the interest rate (e.g., 7.1%).",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Click 'Calculate' to view maturity amount, interest, and contribution schedule.",
+          "position": 4
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PPF Calculator India",
+      "applicationCategory": "FinancialApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "description": "Free online PPF Calculator for FY 2025-26 to calculate Public Provident Fund maturity amount, interest earned, and tax-free savings in India."
     }
     </script>
 </head>
@@ -444,22 +652,39 @@
         </div>
     </header>
     <div class="container">
-        <h1>PPF Calculator FY 2025-26</h1>
+        <h1>PPF Calculator India 2025</h1>
         <div class="intro-section">
-            <p>Calculate your Public Provident Fund (PPF) returns for FY 2025-26 with our free PPF Calculator, tailored for Indian investors. Estimate your maturity amount, interest earned, and tax-free savings by entering your annual investment, tenure, and interest rate.</p>
-            <p>PPF is a secure, government-backed savings scheme offering tax-free returns and deductions under Section 80C. Our tool simplifies complex calculations, helping you plan your long-term savings and tax benefits for FY 2025-26. Start building your wealth today!</p>
+            <img src="/images/ppf-india-2025.jpg" alt="PPF Calculator India 2025" class="hero-image">
+            <p>Calculate your <strong>Public Provident Fund (PPF)</strong> returns for FY 2025-26 with our free <strong>PPF Calculator</strong>, tailored for Indian investors. Estimate your <strong>maturity amount</strong>, interest earned, and tax-free savings instantly.</p>
+            <p>PPF is a secure, government-backed scheme offering <strong>tax-free returns</strong> and deductions under Section 80C. Use our tool to plan long-term savings in cities like Mumbai, Delhi, or Bengaluru. Explore our <a href="/income-tax.html">Income Tax Calculator</a> or <a href="/nps.html">NPS Calculator</a> for more financial tools.</p>
         </div>
         <a href="/all-calculators" class="back-link">Back to All Calculators</a>
+        <div class="content-section">
+            <h2><i class="fas fa-calculator"></i> Why Use Our PPF Calculator?</h2>
+            <p>Plan your tax-free savings with our <strong>free PPF calculator</strong> for FY 2025-26, designed for Indian investors.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Instant <strong>maturity amount</strong> calculations for up to 30 years.</li>
+                <li><i class="fas fa-table"></i> Detailed year-wise contribution schedule.</li>
+                <li><i class="fas fa-shield-alt"></i> Reflects tax-free returns under Section 80C.</li>
+            </ul>
+            <h3>PPF Calculator for FY 2025-26</h3>
+            <p>Estimate your <strong>PPF returns</strong> with the current interest rate of 7.1% and tenures up to 30 years.</p>
+            <h3>Online PPF Maturity Calculator</h3>
+            <p>Get instant <strong>savings projections</strong> for secure, long-term investments.</p>
+        </div>
         <div class="card">
-            <h2>PPF Calculator</h2>
+            <h2>Calculate Your PPF Returns</h2>
+            <div class="progress-bar">
+                <div class="progress" id="ppfProgress"></div>
+            </div>
             <div class="input-group">
                 <div>
-                    <label for="annualInvestment">Annual Investment (₹):</label>
-                    <input type="number" id="annualInvestment" min="500" max="150000" value="100000">
+                    <label for="annualInvestment">Annual Investment (₹): <span class="tooltip" data-tooltip="Annual contribution (₹500 to ₹1,50,000)" tabindex="0">?</span></label>
+                    <input type="number" id="annualInvestment" min="500" max="150000" value="100000" aria-label="Annual Investment in Rupees">
                 </div>
                 <div>
-                    <label for="tenure">Tenure (Years):</label>
-                    <select id="tenure">
+                    <label for="tenure">Tenure (Years): <span class="tooltip" data-tooltip="PPF tenure (15 years, extendable in 5-year blocks)" tabindex="0">?</span></label>
+                    <select id="tenure" aria-label="Select Tenure">
                         <option value="15" selected>15</option>
                         <option value="20">20</option>
                         <option value="25">25</option>
@@ -467,19 +692,41 @@
                     </select>
                 </div>
                 <div>
-                    <label for="interestRate">Interest Rate (%):</label>
-                    <input type="number" id="interestRate" min="5" max="9" step="0.1" value="7.1">
+                    <label for="interestRate">Interest Rate (%): <span class="tooltip" data-tooltip="Annual interest rate (currently 7.1%)" tabindex="0">?</span></label>
+                    <input type="number" id="interestRate" min="5" max="9" step="0.1" value="7.1" aria-label="Annual Interest Rate in Percent">
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcPPF()" disabled>Calculate</button>
-                <button onclick="resetForm()">Reset</button>
+                <button id="calcButton" onclick="calcPPF()" disabled aria-label="Calculate PPF Returns">Calculate</button>
+                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
             </div>
-            <div class="note">Enter annual investment in ₹ (₹500 to ₹1,50,000). PPF maturity is calculated with annual compounding. Interest (currently 7.1% for FY 2025-26) and maturity proceeds are tax-free. Tenure is 15 years, extendable in 5-year blocks.</div>
+            <div class="note">Enter annual investment in ₹ (₹500 to ₹1,50,000). PPF maturity is calculated with annual compounding at the end of each financial year. Interest (currently 7.1% for FY 2025-26) and maturity proceeds are tax-free under Section 10(11). Tenure is 15 years, extendable in 5-year blocks. Results are estimates; consult your financial advisor.</div>
         </div>
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="ppfResult"></div>
+            <div class="contribution-schedule" id="contributionSchedule">
+                <span class="toggle-schedule" onclick="toggleSchedule()">Show Contribution Schedule</span>
+                <table id="scheduleTable">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Investment (₹)</th>
+                            <th>Interest (₹)</th>
+                            <th>Balance (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <button onclick="resetForm()">Calculate Again</button>
+        </div>
+        <div class="card">
+            <h2>Important PPF Deadlines FY 2025-26</h2>
+            <ul id="deadlinesList">
+                <li id="past-deposit">Annual PPF Deposit: March 31, 2026</li>
+            </ul>
+            <!-- <span class="toggle-deadlines" onclick="toggleDeadlines()">Show Deadlines</span> -->
         </div>
         <div class="faq-section">
             <h2>Frequently Asked Questions</h2>
@@ -489,34 +736,57 @@
             </div>
             <div class="faq-item">
                 <h3>How is PPF maturity calculated?</h3>
-                <p>PPF maturity is calculated using the compound interest formula for annual contributions, with interest compounded annually at the end of each financial year. The calculator assumes a fixed annual investment and interest rate.</p>
+                <p>PPF maturity is calculated using the compound interest formula for annual contributions, with interest compounded annually at the end of each financial year.</p>
             </div>
             <div class="faq-item">
                 <h3>What are the PPF investment limits for FY 2025-26?</h3>
-                <p>For FY 2025-26, the PPF scheme allows annual investments between ₹500 and ₹1,50,000. Contributions can be made in up to 12 instalments per year, but this calculator assumes a single annual lump sum.</p>
+                <p>For FY 2025-26, PPF allows annual investments between ₹500 and ₹1,50,000, in up to 12 instalments, but this calculator assumes a single annual lump sum.</p>
             </div>
             <div class="faq-item">
                 <h3>Is PPF interest tax-free for FY 2025-26?</h3>
-                <p>Yes, PPF interest and maturity proceeds are tax-free under Section 10(11) of the Income Tax Act for FY 2025-26. Investments also qualify for tax deductions under Section 80C up to ₹1,50,000.</p>
+                <p>Yes, PPF interest and maturity proceeds are tax-free under Section 10(11), and investments qualify for Section 80C deductions up to ₹1,50,000.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I extend my PPF account after 15 years in 2025?</h3>
+                <p>Yes, PPF accounts can be extended in 5-year blocks after 15 years, with or without further contributions, as per rules in FY 2025-26.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the PPF interest rate for FY 2025-26?</h3>
+                <p>The PPF interest rate for FY 2025-26 is currently 7.1% per annum, subject to quarterly revisions by the Government of India.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I withdraw from my PPF account in 2025?</h3>
+                <p>Partial withdrawals are allowed from the 7th year, up to 50% of the balance at the end of the 4th or preceding year, once annually.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Who is eligible to open a PPF account in India in 2025?</h3>
+                <p>Resident individuals and guardians for minors can open PPF accounts. NRIs and HUFs are not eligible.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How does PPF compare to other tax-saving options in 2025?</h3>
+                <p>PPF offers guaranteed, tax-free returns but has a 15-year lock-in. ELSS has a 3-year lock-in but market risks, while NPS offers retirement benefits. Use our <a href="/nps.html">NPS Calculator</a> for comparison.</p>
             </div>
         </div>
     </div>
     <div id="disclaimerModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
+            <span class="close" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
             <h3>Disclaimer</h3>
             <p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or tax professional before making decisions. We are not liable for any losses or damages arising from the use of these calculators.</p>
         </div>
     </div>
     <div id="termsModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('termsModal')">×</span>
+            <span class="close" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
             <h3>Terms and Conditions</h3>
             <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
         </div>
     </div>
     <footer class="footer">
         <div class="footer-links">
+            <a href="/income-tax.html">Income Tax Calculator</a> |
+            <a href="/sip.html">SIP Calculator</a> |
+            <a href="/personal-loan.html">Personal Loan Calculator</a> |
             <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
             <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
         </div>
@@ -524,7 +794,7 @@
     </footer>
     <script>
         function formatIndianNumber(num) {
-            if (isNaN(num)) return "0";
+            if (isNaN(num)) return "0.00";
             num = Math.round(num * 100) / 100;
             let str = num.toFixed(2).toString();
             let [integer, decimal] = str.split('.');
@@ -535,6 +805,26 @@
             }
             let result = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree;
             return result + '.' + decimal;
+        }
+
+        function updateProgress() {
+            const inputs = ['annualInvestment', 'tenure', 'interestRate'];
+            let filled = inputs.reduce((count, id) => {
+                let value = document.getElementById(id).value;
+                return count + (value !== '' ? 1 : 0);
+            }, 0);
+            document.getElementById('ppfProgress').style.width = `${(filled / inputs.length) * 100}%`;
+        }
+
+        function updateDeadlines() {
+            const today = new Date();
+            const depositDeadline = new Date('2026-03-31');
+            const deadlinesList = document.getElementById('deadlinesList');
+            if (today > depositDeadline) {
+                const pastItem = document.getElementById('past-deposit');
+                pastItem.classList.add('past-deadline');
+                pastItem.innerHTML = '<strong>Annual PPF Deposit (FY 2025-26)</strong>: Deadline passed (March 31, 2026). <span class="penalty">Consequence: No further deposits for FY 2025-26; resume in FY 2026-27.</span>';
+            }
         }
 
         function validateInputs() {
@@ -580,28 +870,114 @@
             return true;
         }
 
+        function generateContributionSchedule(investment, rate, tenure) {
+            let monthlyRate = rate / 100;
+            let balance = 0;
+            let schedule = [];
+
+            for (let year = 1; year <= tenure; year++) {
+                balance += investment;
+                let interest = balance * monthlyRate;
+                balance += interest;
+                schedule.push({
+                    year,
+                    investment: Math.round(investment),
+                    interest: Math.round(interest),
+                    balance: Math.round(balance)
+                });
+            }
+
+            return schedule;
+        }
+
         function calcPPF() {
             if (!validateInputs()) return;
 
-            let investment = parseFloat(document.getElementById('annualInvestment').value);
-            let rate = parseFloat(document.getElementById('interestRate').value) / 100;
-            let tenure = parseFloat(document.getElementById('tenure').value);
+            let calcButton = document.getElementById('calcButton');
+            calcButton.classList.add('loading');
+            setTimeout(() => {
+                let investment = parseFloat(document.getElementById('annualInvestment').value);
+                let rate = parseFloat(document.getElementById('interestRate').value) / 100;
+                let tenure = parseFloat(document.getElementById('tenure').value);
 
-            // Calculate future value using compound interest for annual contributions
-            let futureValue = 0;
-            for (let year = 0; year < tenure; year++) {
-                futureValue += investment * Math.pow(1 + rate, tenure - year);
+                // Calculate future value using compound interest for annual contributions
+                let futureValue = 0;
+                for (let year = 0; year < tenure; year++) {
+                    futureValue += investment * Math.pow(1 + rate, tenure - year);
+                }
+                let totalInvested = investment * tenure;
+                let interest = futureValue - totalInvested;
+
+                // Update Result
+                let result = `
+                    <strong>PPF Returns Details:</strong><br>
+                    Maturity Amount: ₹${formatIndianNumber(futureValue)}<br>
+                    Total Invested: ₹${formatIndianNumber(totalInvested)}<br>
+                    Interest Earned: ₹${formatIndianNumber(interest)}
+                `;
+                document.getElementById('ppfResult').innerHTML = result;
+
+                // Generate Contribution Schedule
+                let schedule = generateContributionSchedule(investment, rate, tenure);
+                let tbody = document.querySelector('#scheduleTable tbody');
+                tbody.innerHTML = '';
+                schedule.forEach(row => {
+                    let tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${row.year}</td>
+                        <td>₹${formatIndianNumber(row.investment)}</td>
+                        <td>₹${formatIndianNumber(row.interest)}</td>
+                        <td>₹${formatIndianNumber(row.balance)}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                document.querySelector('.results-card').classList.add('visible');
+                document.querySelector('.contribution-schedule').style.display = 'block';
+                document.querySelector('.contribution-schedule').classList.remove('visible');
+                document.querySelector('.toggle-schedule').textContent = 'Show Contribution Schedule';
+                calcButton.classList.remove('loading');
+
+                // Track calculation event
+                gtag('event', 'calculate_ppf', {
+                    'event_category': 'Calculator',
+                    'event_label': 'PPF Calculator'
+                });
+            }, 300);
+        }
+
+        function toggleSchedule() {
+            let schedule = document.querySelector('.contribution-schedule');
+            let toggle = document.querySelector('.toggle-schedule');
+            let table = document.querySelector('#scheduleTable');
+            if (schedule.classList.contains('visible')) {
+                schedule.classList.remove('visible');
+                table.style.display = 'none';
+                toggle.textContent = 'Show Contribution Schedule';
+            } else {
+                schedule.classList.add('visible');
+                table.style.display = 'table';
+                toggle.textContent = 'Hide Contribution Schedule';
             }
-            let totalInvested = investment * tenure;
-            let interest = futureValue - totalInvested;
+            gtag('event', 'toggle_schedule', {
+                'event_category': 'Schedule',
+                'event_label': 'PPF Contribution Schedule'
+            });
+        }
 
-            document.getElementById('ppfResult').innerHTML = `Maturity Amount: ₹${formatIndianNumber(futureValue)}, Total Invested: ₹${formatIndianNumber(totalInvested)}, Interest Earned: ₹${formatIndianNumber(interest)}`;
-            document.querySelector('.results-card').classList.add('visible');
-
-            // Track PPF calculation event
-            gtag('event', 'calculate_ppf', {
-                'event_category': 'Calculator',
-                'event_label': 'PPF Calculator'
+        function toggleDeadlines() {
+            let deadlines = document.getElementById('deadlinesList');
+            let toggle = document.querySelector('.toggle-deadlines');
+            if (deadlines.classList.contains('hidden')) {
+                deadlines.classList.remove('hidden');
+                toggle.textContent = 'Hide Deadlines';
+            } else {
+                deadlines.classList.add('hidden');
+                toggle.textContent = 'Show Deadlines';
+            }
+            gtag('event', 'toggle_deadlines', {
+                'event_category': 'Deadlines',
+                'event_label': 'PPF Deadlines'
             });
         }
 
@@ -612,7 +988,12 @@
             document.getElementById('ppfResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
             document.querySelector('.results-card').classList.remove('visible');
+            document.querySelector('.contribution-schedule').style.display = 'none';
+            document.querySelector('.contribution-schedule').classList.remove('visible');
+            document.querySelector('.toggle-schedule').textContent = 'Show Contribution Schedule';
             document.getElementById('calcButton').disabled = true;
+            document.querySelector('#scheduleTable tbody').innerHTML = '';
+            updateProgress();
             validateInputs();
         }
 
@@ -629,10 +1010,30 @@
         }
 
         window.onload = function() {
+            updateDeadlines();
+            updateProgress();
             validateInputs();
-            document.getElementById('annualInvestment').addEventListener('input', validateInputs);
-            document.getElementById('interestRate').addEventListener('input', validateInputs);
-            document.getElementById('tenure').addEventListener('change', validateInputs);
+            document.querySelectorAll('input, select').forEach(input => {
+                input.addEventListener('input', () => {
+                    validateInputs();
+                    updateProgress();
+                });
+            });
+            document.querySelectorAll('.tooltip').forEach(tooltip => {
+                tooltip.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        tooltip.focus();
+                    }
+                });
+            });
+            document.querySelectorAll('.faq-item h3').forEach(item => {
+                item.addEventListener('click', () => {
+                    gtag('event', 'faq_click', {
+                        'event_category': 'FAQ',
+                        'event_label': item.textContent
+                    });
+                });
+            });
         };
     </script>
 </body>
