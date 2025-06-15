@@ -72,27 +72,53 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background: #FFFFFF;
-            min-width: 200px;
+            background: #F9FAFB;
+            min-width: 220px; /* Increased for readability */
+            max-height: 300px; /* Limit height to enable scrolling */
+            overflow-y: auto; /* Enable vertical scrolling */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            z-index: 1;
+            z-index: 1000; /* Ensure it’s above other elements */
             top: 100%;
             right: 0;
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: #F57C00 #E8F0FE; /* Firefox */
+        }
+        .dropdown-content::-webkit-scrollbar {
+            width: 6px; /* Chrome, Safari */
+        }
+        .dropdown-content::-webkit-scrollbar-track {
+            background: #E8F0FE;
+            border-radius: 8px;
+        }
+        .dropdown-content::-webkit-scrollbar-thumb {
+            background: #F57C00;
+            border-radius: 8px;
+        }
+        .dropdown-content::-webkit-scrollbar-thumb:hover {
+            background: #E65100;
         }
         .dropdown-content a {
-            color: #212121;
+            color: #4B5EAA;
             padding: 12px 16px;
             display: block;
             font-weight: 400;
             margin: 0;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
         }
         .dropdown-content a:hover {
-            background: #F5F7FA;
-            color: #FF6F00;
+            background: #E8F0FE;
+            color: #F57C00;
         }
         .dropdown:hover .dropdown-content {
             display: block;
+        }
+        @media (max-width: 768px) {
+            .dropdown-content {
+                min-width: 180px; /* Smaller width for mobile */
+                max-height: 250px; /* Shorter height for mobile */
+            }
         }
         .hero {
             background: linear-gradient(90deg, #1A237E, #3F51B5);
@@ -375,6 +401,7 @@
                         <a href="hra.html">HRA Exemption Calculator</a>
                         <a href="gratuity.html">Gratuity Calculator</a>
                         <a href="loanemi.html">Loan EMI Calculator</a>
+                        <a href="home-loan.html">Home Loan EMI Calculator</a>
                     </div>
                 </div>
             </nav>
