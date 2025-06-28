@@ -18,22 +18,73 @@
     <title>Income Tax Calculator India FY 2025-26</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #E8F0FE, #F9FAFB);
+            min-height: 100vh;
+            color: #4B5EAA;
+            line-height: 1.6;
         }
-        .chart-container {
-            max-width: 600px;
-            margin: 20px auto;
-            height: 300px;
+        header {
+            background: #2A3EB1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #F9FAFB;
+            min-width: 220px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 100%;
+            right: 0;
+            scrollbar-width: thin;
+            scrollbar-color: #F57C00 #E8F0FE;
+        }
+        .dropdown-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .dropdown-content::-webkit-scrollbar-track {
+            background: #E8F0FE;
+            border-radius: 8px;
+        }
+        .dropdown-content::-webkit-scrollbar-thumb {
+            background: #F57C00;
+            border-radius: 8px;
+        }
+        .dropdown-content::-webkit-scrollbar-thumb:hover {
+            background: #E65100;
+        }
+        .dropdown-content a {
+            color: #4B5EAA;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .dropdown-content a:hover {
+            background: #E8F0FE;
+            color: #F57C00;
+        }
+        .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
+            display: block;
         }
         .tooltip {
             position: relative;
             display: inline-block;
             margin-left: 5px;
             cursor: help;
+            outline: none;
         }
         .tooltip::after {
             content: attr(data-tooltip);
@@ -41,7 +92,7 @@
             top: -10px;
             left: 50%;
             transform: translate(-50%, -100%);
-            background: #1A237E;
+            background: #2A3EB1;
             color: #FFFFFF;
             padding: 5px 10px;
             border-radius: 4px;
@@ -67,17 +118,69 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            animation: scaleIn 0.3s ease;
         }
         .modal.show {
             display: flex;
         }
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+        .chart-container {
+            max-width: 600px;
+            margin: 20px auto;
+            height: 300px;
+        }
         .past-deadline {
-                   color: #DC2626; /* Tailwind text-red-600 */
-               }
+            color: #D32F2F;
+        }
+        .penalty {
+            font-weight: 600;
+        }
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%234B5EAA" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+            padding-right: 30px;
+            cursor: pointer;
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        button.loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #FFFFFF;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
         @media (max-width: 768px) {
+            .dropdown-content {
+                min-width: 180px;
+                max-height: 250px;
+            }
             .chart-container {
                 max-width: 100%;
                 height: 250px;
+            }
+            select {
+                background-size: 14px;
             }
         }
     </style>
@@ -98,161 +201,223 @@
       }
     }
     </script>
-    <!-- Schema Markup: FAQPage -->
-       <script type="application/ld+json">
-       {
-         "@context": "https://schema.org",
-         "@type": "FAQPage",
-         "mainEntity": [
-           {
-             "@type": "Question",
-             "name": "What are the tax slabs for FY 2025-26?",
-             "acceptedAnswer": {
-               "@type": "Answer",
-               "text": "Old regime: Varies by age (e.g., up to ₹2.5 lakh exempt for below 60). New regime: Up to ₹3 lakh exempt, ₹60,000 rebate up to ₹12 lakh."
-             }
-           },
-           {
-             "@type": "Question",
-             "name": "Can I claim Section 80E with the new regime?",
-             "acceptedAnswer": {
-               "@type": "Answer",
-               "text": "No, Section 80E deductions are available only under the old regime."
-             }
-           },
-           {
-             "@type": "Question",
-             "name": "What is the ITR filing deadline?",
-             "acceptedAnswer": {
-               "@type": "Answer",
-               "text": "July 31, 2025, for non-audit cases for FY 2025-26. Late filing incurs a ₹5,000 penalty under Section 234F."
-             }
-           },
-           {
-             "@type": "Question",
-             "name": "What is advance tax and who needs to pay it?",
-             "acceptedAnswer": {
-               "@type": "Answer",
-               "text": "Advance tax is tax paid on income as it is earned, due in installments (e.g., March 15, 2025). Individuals with tax liability exceeding ₹10,000 in a year must pay it, except senior citizens not running a business."
-             }
-           },
-           {
-             "@type": "Question",
-             "name": "What happens if I miss the ITR filing deadline?",
-             "acceptedAnswer": {
-               "@type": "Answer",
-               "text": "Late filing by December 31, 2025, incurs a ₹5,000 penalty (₹1,000 for income below ₹5 lakh) under Section 234F. You may also face interest under Section 85A and lose certain deductions."
-             }
-           },
-           {
-             "@type": "Question",
-             "name": "Can I switch between old and new tax regimes?",
-             "acceptedAnswer": {
-               "@type": "Answer",
-               "text": "Yes, salaried individuals can switch regimes annually; business taxpayers."
-           }
-       },
-       {
-           "@type": "Question",
-           "name": "What are other common deductions under the old regime?",
-           "acceptedAnswer": {
-               "@type": "Answer",
-               "text": "Besides 80C, 80E, and 80D, you can claim deductions like 80TTA (savings interest, up to ₹10,000), 80G (donations), and 24(b) (home loan interest, up to ₹2 lakh)."
-             }
-           }
-         ]
-       }
-       </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the tax slabs for FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Old regime: Varies by age (e.g., up to ₹2.5 lakh exempt for below 60). New regime: Up to ₹3 lakh exempt, ₹60,000 rebate up to ₹12 lakh."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I claim Section 80E with the new regime?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, Section 80E deductions are available only under the old regime."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the ITR filing deadline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "July 31, 2025, for non-audit cases for FY 2025-26. Late filing incurs a ₹5,000 penalty under Section 234F."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is advance tax and who needs to pay it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Advance tax is tax paid on income as it is earned, due in installments (e.g., March 15, 2025). Individuals with tax liability exceeding ₹10,000 in a year must pay it, except senior citizens not running a business."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I miss the ITR filing deadline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Late filing by December 31, 2025, incurs a ₹5,000 penalty (₹1,000 for income below ₹5 lakh) under Section 234F. You may also face interest under Section 234A and lose certain deductions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I switch between old and new tax regimes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, salaried individuals can switch regimes each year when filing ITR. Business/professional taxpayers opting out of the new regime can revert only once."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are other common deductions under the old regime?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Besides 80C, 80E, 80D, and 80CCD(1B), you can claim deductions like 80TTA (savings interest up to ₹10,000), 80G (donations), and 24(b) (home loan interest up to ₹2 lakh)."
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Income Tax in India for FY 2025-26",
+      "description": "Step-by-step guide to calculate your income tax using our free India Income Tax Calculator.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "text": "Select your age group (below 60, 60–80, above 80).",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Enter gross salary and other income.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Input deductions (HRA, 80C, 80E, 80D, NPS).",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Click 'Calculate' to compare old and new regime tax.",
+          "position": 4
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Income Tax Calculator India",
+      "applicationCategory": "FinancialApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "description": "Free online Income Tax Calculator for FY 2025-26 to compare old and new tax regimes in India."
+    }
+    </script>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-indigo-900 text-white shadow-md sticky top-0 z-50">
+<body>
+    <header class="sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Financial Calculators</h1>
+            <h1 class="text-2xl font-bold text-white">Financial Calculators</h1>
             <nav class="flex space-x-4">
-                <a href="/index.html" class="hover:text-orange-500">Home</a>
-                <div class="relative group">
-                    <a href="/all-calculators" class="hover:text-orange-500">Calculators</a>
-                    <div class="absolute hidden group-hover:block bg-white text-gray-800 shadow-lg rounded-lg mt-2 w-48">
+                <a href="/index.html" class="text-white hover:text-orange-500 font-medium">Home</a>
+                <div class="relative dropdown">
+                    <a href="/all-calculators.html" class="text-white hover:text-orange-500 font-medium" aria-expanded="false">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/hra.html">HRA Exemption Calculator</a>
+                        <a href="/gratuity.html">Gratuity Calculator</a>
+                        <a href="/home-loan.html">Home Loan EMI Calculator</a>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 class="text-3xl font-bold text-indigo-900 text-center mb-6">Income Tax Calculator FY 2025-26</h1>
-        <section class="mb-6 text-center">
-            <p class="text-gray-600 mb-4">Calculate your income tax for FY 2025-26 (AY 2026-27). Compare old and new tax regimes, claim deductions (80C, 80E, 80D), and plan for ITR filing deadlines.</p>
+        <h1 class="text-3xl font-bold text-indigo-900 text-center mb-6"><i class="fas fa-calculator mr-2"></i>Income Tax Calculator FY 2025-26</h1>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6 text-center">
+            <img src="/images/income-tax-2025.jpg" alt="Income Tax Calculator India FY 2025-26" class="w-full h-auto rounded-lg mb-4">
+            <p class="text-gray-600 mb-4">Calculate your income tax for FY 2025-26 (AY 2026-27) with our free calculator. Compare <strong>old and new tax regimes</strong>, claim deductions (80C, 80E, 80D), and plan for ITR filing deadlines. Explore our <a href="/educational-loan.html" class="text-indigo-900 hover:text-orange-500">Education Loan EMI Calculator</a> or <a href="/home-loan.html" class="text-indigo-900 hover:text-orange-500">Home Loan EMI Calculator</a>.</p>
             <a href="/all-calculators" class="text-indigo-900 hover:text-orange-500 font-semibold">Back to All Calculators</a>
         </section>
-        <section class="mb-6">
-            <h3 class="text-xl font-semibold text-indigo-900 mb-2 text-center">Tax Filing Deadlines (2025)</h3>
-            <span class="text-indigo-900 cursor-pointer hover:text-orange-500 block text-center mb-2 toggle-deadlines">Show Deadlines</span>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-indigo-900 mb-4 text-center"><i class="fas fa-calendar-alt mr-2"></i>Tax Filing Deadlines (2025)</h2>
+            <span class="text-indigo-900 cursor-pointer hover:text-orange-500 block text-center mb-2 toggle-deadlines" tabindex="0" role="button">Show Deadlines</span>
             <div id="deadlinesList" class="hidden text-gray-800 max-w-xl mx-auto">
                 <ul class="list-disc pl-5">
                     <li id="past-advance-tax"><strong>Advance Tax (Final, FY 2024-25)</strong>: Due March 15, 2025. <span class="penalty">Penalty: 1% interest per month under Section 234C for late payment.</span></li>
-                    <li><strong>ITR Filing (Non-Audit, FY 2025-26)</strong>: July 31, 2025, for FY 2025-26. File at <a href="https://www.incometax.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500">incometax.gov.in</a>.</li>
-                    <li><strong>PM-Vidyalaxmi (Education Loan)</strong>: Apply by August 31, 2025, for loan subsidies at <a href="https://pmvidyalaxmi.co.in" target="_blank" class="text-indigo-900 hover:text-orange-500">pmvidyalaxmi.co.in</a>.</li>
+                    <li id="itr-filing"><strong>ITR Filing (Non-Audit, FY 2025-26)</strong>: July 31, 2025. File at <a href="https://www.incometax.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500">incometax.gov.in</a>.</li>
+                    <li id="pm-vidyalaxmi"><strong>PM-Vidyalaxmi (Education Loan)</strong>: Apply by August 31, 2025, at <a href="https://pmvidyalaxmi.co.in" target="_blank" class="text-indigo-900 hover:text-orange-500">pmvidyalaxmi.co.in</a>.</li>
                 </ul>
             </div>
         </section>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-xl font-semibold text-indigo-900 mb-4">Calculate Your Income Tax</h2>
-            <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
+            <h2 class="text-xl font-semibold text-indigo-900 mb-4"><i class="fas fa-calculator mr-2"></i>Calculate Your Income Tax</h2>
+            <div class="w-full bg-indigo-100 rounded-full h-2 mb-4">
                 <div id="taxProgress" class="bg-orange-500 h-2 rounded-full" style="width: 0;"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label for="ageGroup" class="block text-gray-800">Age Group: <span class="tooltip" data-tooltip="Select your age for tax slab applicability" tabindex="0">?</span></label>
-                    <select id="ageGroup" class="w-full p-2 border rounded-lg" aria-label="Select Age Group">
+                    <label for="ageGroup" class="block text-gray-800 font-medium">Age Group: <span class="tooltip" data-tooltip="Select your age for tax slab applicability" tabindex="0">?</span></label>
+                    <select id="ageGroup" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white" aria-label="Select Age Group">
                         <option value="below60" selected>Below 60</option>
                         <option value="60to80">60 to 80</option>
                         <option value="above80">Above 80</option>
                     </select>
                 </div>
                 <div>
-                    <label for="grossSalary" class="block text-gray-800">Gross Salary (₹): <span class="tooltip" data-tooltip="Annual salary before exemptions" tabindex="0">?</span></label>
-                    <input type="number" id="grossSalary" min="0" value="1000000" class="w-full p-2 border rounded-lg" aria-label="Gross Salary in Rupees">
+                    <label for="grossSalary" class="block text-gray-800 font-medium">Gross Salary (₹): <span class="tooltip" data-tooltip="Annual salary before exemptions" tabindex="0">?</span></label>
+                    <input type="number" id="grossSalary" min="0" value="1000000" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Gross Salary in Rupees">
                 </div>
                 <div>
-                    <label for="otherIncome" class="block text-gray-800">Other Income (₹): <span class="tooltip" data-tooltip="Rental, interest, capital gains, etc." tabindex="0">?</span></label>
-                    <input type="number" id="otherIncome" min="0" value="0" class="w-full p-2 border rounded-lg" aria-label="Other Income in Rupees">
+                    <label for="otherIncome" class="block text-gray-800 font-medium">Other Income (₹): <span class="tooltip" data-tooltip="Rental, interest, capital gains, etc." tabindex="0">?</span></label>
+                    <input type="number" id="otherIncome" min="0" value="0" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Other Income in Rupees">
                 </div>
                 <div>
-                    <label for="hraExemption" class="block text-gray-800">HRA Exemption (₹): <span class="tooltip" data-tooltip="HRA exemption (old regime)" tabindex="0">?</span></label>
-                    <input type="number" id="hraExemption" min="0" value="0" class="w-full p-2 border rounded-lg" aria-label="HRA Exemption in Rupees">
+                    <label for="hraExemption" class="block text-gray-800 font-medium">HRA Exemption (₹): <span class="tooltip" data-tooltip="HRA exemption (old regime)" tabindex="0">?</span></label>
+                    <input type="number" id="hraExemption" min="0" value="0" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="HRA Exemption in Rupees">
                 </div>
                 <div>
-                    <label for="section80C" class="block text-gray-800">Section 80C Deduction (₹): <span class="tooltip" data-tooltip="Up to ₹1.5 lakh (PPF, ELSS, etc.)" tabindex="0">?</span></label>
-                    <input type="number" id="section80C" min="0" max="150000" value="0" class="w-full p-2 border rounded-lg" aria-label="Section 80C Deduction">
+                    <label for="section80C" class="block text-gray-800 font-medium">Section 80C Deduction (₹): <span class="tooltip" data-tooltip="Up to ₹1.5 lakh (PPF, ELSS, etc.)" tabindex="0">?</span></label>
+                    <input type="number" id="section80C" min="0" max="150000" value="0" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Section 80C Deduction">
                 </div>
                 <div>
-                    <label for="section80E" class="block text-gray-800">Section 80E Interest (₹): <span class="tooltip" data-tooltip="Education loan interest (old regime)" tabindex="0">?</span></label>
-                    <input type="number" id="section80E" min="0" value="0" class="w-full p-2 border rounded-lg" aria-label="Section 80E Interest">
+                    <label for="section80E" class="block text-gray-800 font-medium">Section 80E Interest (₹): <span class="tooltip" data-tooltip="Education loan interest (old regime)" tabindex="0">?</span></label>
+                    <input type="number" id="section80E" min="0" value="0" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Section 80E Interest">
                 </div>
                 <div>
-                    <label for="section80D" class="block text-gray-800">Section 80D Deduction (₹): <span class="tooltip" data-tooltip="Health insurance premium (up to ₹25,000)" tabindex="0">?</span></label>
-                    <input type="number" id="section80D" min="0" max="25000" value="0" class="w-full p-2 border rounded-lg" aria-label="Section 80D Deduction">
+                    <label for="section80D" class="block text-gray-800 font-medium">Section 80D Deduction (₹): <span class="tooltip" data-tooltip="Health insurance premium (up to ₹25,000)" tabindex="0">?</span></label>
+                    <input type="number" id="section80D" min="0" max="25000" value="0" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Section 80D Deduction">
                 </div>
                 <div>
-                    <label for="npsDeduction" class="block text-gray-800">NPS Deduction (₹): <span class="tooltip" data-tooltip="Section 80CCD(1B), up to ₹50,000" tabindex="0">?</span></label>
-                    <input type="number" id="npsDeduction" min="0" max="50000" value="0" class="w-full p-2 border rounded-lg" aria-label="NPS Deduction">
+                    <label for="npsDeduction" class="block text-gray-800 font-medium">NPS Deduction (₹): <span class="tooltip" data-tooltip="Section 80CCD(1B), up to ₹50,000" tabindex="0">?</span></label>
+                    <input type="number" id="npsDeduction" min="0" max="50000" value="0" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="NPS Deduction">
                 </div>
             </div>
-            <div class="flex gap-4 mt-4">
-                <button id="calcButton" onclick="calcTax()" disabled class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 disabled:bg-gray-400" aria-label="Calculate Tax">Calculate</button>
-                <button onclick="resetForm()" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600" aria-label="Reset Form">Reset</button>
+            <div class="flex gap-4 mt-4 justify-center">
+                <button id="calcButton" onclick="calcTax()" disabled class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 disabled:bg-gray-400 transition-all duration-200" aria-label="Calculate Tax">Calculate</button>
+                <button onclick="resetForm()" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200" aria-label="Reset Form">Reset</button>
             </div>
-            <p class="text-sm text-gray-600 mt-2">Enter income and deductions to compare tax under old and new regimes. Results are estimates; consult a tax professional.</p>
+            <p class="text-sm text-gray-600 mt-2 text-center">Enter income and deductions to compare tax under old and new regimes. Results are estimates; consult a tax professional.</p>
         </div>
-        <div class="bg-white rounded-lg shadow-md p-6 hidden" id="resultsCard">
-            <div id="errorMessage" class="text-red-600 hidden"></div>
-            <div id="taxResult" class="text-gray-800"></div>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50 hidden" id="resultsCard">
+            <div id="errorMessage" class="text-red-600 hidden mb-4 text-center"></div>
+            <div id="taxResult" class="text-gray-800 mb-4 text-center"></div>
             <div class="chart-container">
                 <canvas id="taxChart"></canvas>
             </div>
+            <div class="text-center mt-4">
+                <button onclick="resetForm()" class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-all duration-200" aria-label="Calculate Again">Calculate Again</button>
+            </div>
         </div>
-        <section class="mt-8">
-            <h2 class="text-2xl font-semibold text-indigo-900 text-center mb-4">FAQs</h2>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-semibold text-indigo-900 text-center mb-4"><i class="fas fa-question-circle mr-2"></i>Frequently Asked Questions</h2>
             <div class="space-y-4">
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What are the tax slabs for FY 2025-26?</h3>
@@ -286,17 +451,30 @@
         </section>
     </main>
     <div id="disclaimerModal" class="modal">
-        <div class="bg-white rounded-lg p-6 max-w-md w-full">
-            <span class="absolute top-4 right-4 text-2xl cursor-pointer" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
+        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
             <h3 class="text-xl font-semibold text-indigo-900 mb-2">Disclaimer</h3>
             <p class="text-gray-600">Calculators are for informational purposes only. Results are estimates and do not account for individual circumstances or regulations. Consult a tax professional.</p>
         </div>
     </div>
+    <div id="termsModal" class="modal">
+        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
+            <h3 class="text-xl font-semibold text-indigo-900 mb-2">Terms and Conditions</h3>
+            <p class="text-gray-600">By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Usage is governed by Indian laws.</p>
+        </div>
+    </div>
     <footer class="bg-indigo-900 text-white text-center py-6">
         <div class="flex justify-center space-x-4">
+            <a href="/income-tax.html" class="hover:text-orange-500">Income Tax Calculator</a>
+            <span>|</span>
+            <a href="/educational-loan.html" class="hover:text-orange-500">Education Loan Calculator</a>
+            <span>|</span>
+            <a href="/home-loan.html" class="hover:text-orange-500">Home Loan Calculator</a>
+            <span>|</span>
             <a href="#" onclick="openModal('disclaimerModal')" class="hover:text-orange-500">Disclaimer</a>
             <span>|</span>
-            <a href="#" class="hover:text-orange-500">Terms and Conditions</a>
+            <a href="#" onclick="openModal('termsModal')" class="hover:text-orange-500">Terms and Conditions</a>
         </div>
         <p class="mt-2 text-sm">© 2025 Financial Calculators. All Rights Reserved.</p>
     </footer>
@@ -309,7 +487,7 @@
                 datasets: [{
                     label: 'Tax Liability (₹)',
                     data: [0, 0],
-                    backgroundColor: ['#1A237E', '#FF6F00'],
+                    backgroundColor: ['#2A3EB1', '#F57C00'],
                     borderColor: ['#FFFFFF', '#FFFFFF'],
                     borderWidth: 1
                 }]
@@ -318,47 +496,62 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    y: { beginAtZero: true, title: { display: true, text: 'Tax (₹)' } }
+                    y: { beginAtZero: true, title: { display: true, text: 'Tax (₹)', color: '#4B5EAA', font: { family: 'Inter' } } }
                 },
                 plugins: {
                     legend: { display: false },
-                    title: { display: true, text: 'Tax Comparison', color: '#1A237E' }
+                    title: { display: true, text: 'Tax Comparison', color: '#2A3EB1', font: { family: 'Inter', size: 16 } }
                 }
             }
         };
 
         let taxChart;
         window.onload = function() {
-        const ctx = document.getElementById('taxChart').getContext('taxChart');
-        taxChart = new Chart(ctx, chartConfig);
-        updateDeadlines();
-        updateProgress();
-        validateInputs();
-        document.querySelectorAll('input, select').forEach(input => {
-            input.addEventListener('input', () => {
-                validateInputs();
-                updateProgress();
-            });
-        });
-        document.querySelectorAll('.toggle-deadlines').forEach(btn => {
-            btn.addEventListener('click', toggleTaxDeadlines);
-        });
-        document.querySelectorAll('.tooltip').forEach(tooltip => {
-            tooltip.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    tooltip.focus();
-                }
-            });
-        });
-        document.querySelectorAll('.faq-item h3').forEach(item => {
-            item.addEventListener('click', () => {
-                gtag('event', 'faq_click', {
-                    'event_category': 'FAQ',
-                    'event_label': item.textContent
+            const ctx = document.getElementById('taxChart')?.getContext('2d');
+            if (ctx) taxChart = new Chart(ctx, chartConfig);
+            updateDeadlines();
+            updateProgress();
+            validateInputs();
+            document.querySelectorAll('input, select').forEach(input => {
+                input?.addEventListener('input', () => {
+                    validateInputs();
+                    updateProgress();
                 });
             });
-        });
-    };
+            document.querySelectorAll('.toggle-deadlines').forEach(btn => {
+                btn?.addEventListener('click', toggleDeadlines);
+                btn?.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleDeadlines();
+                    }
+                });
+            });
+            document.querySelectorAll('.faq-item h3').forEach(item => {
+                item?.addEventListener('click', () => {
+                    gtag('event', 'faq_click', {
+                        event_category: 'FAQ',
+                        event_label: item.textContent
+                    });
+                });
+            });
+            document.querySelectorAll('.dropdown-content a').forEach(link => {
+                link?.addEventListener('click', () => {
+                    gtag('event', 'dropdown_click', {
+                        event_category: 'Navigation',
+                        event_label: link.textContent
+                    });
+                });
+            });
+            document.querySelectorAll('.tooltip').forEach(tooltip => {
+                tooltip?.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        tooltip.focus();
+                    }
+                });
+            });
+        };
 
         function formatIndianNumber(num) {
             if (isNaN(num)) return "0.00";
@@ -373,54 +566,54 @@
 
         function updateProgress() {
             const inputs = ['ageGroup', 'grossSalary', 'otherIncome', 'hraExemption', 'section80C', 'section80E', 'section80D', 'npsDeduction'];
-            let filled = inputs.reduce((count, id) => count + (document.getElementById(id).value !== '' ? 1 : 0), 0);
+            let filled = inputs.reduce((count, id) => count + (document.getElementById(id)?.value !== '' ? 1 : 0), 0);
             document.getElementById('taxProgress').style.width = `${(filled / inputs.length) * 100}%`;
         }
 
         function validateInputs() {
-            let salary = parseFloat(document.getElementById('grossSalary').value);
-            let otherIncome = parseFloat(document.getElementById('otherIncome').value);
-            let hra = parseFloat(document.getElementById('hraExemption').value);
-            let section80C = parseFloat(document.getElementById('section80C').value);
-            let section80E = parseFloat(document.getElementById('section80E').value);
-            let section80D = parseFloat(document.getElementById('section80D').value);
-            let nps = parseFloat(document.getElementById('npsDeduction').value);
+            const salary = parseFloat(document.getElementById('grossSalary')?.value);
+            const otherIncome = parseFloat(document.getElementById('otherIncome')?.value);
+            const hra = parseFloat(document.getElementById('hraExemption')?.value);
+            const section80C = parseFloat(document.getElementById('section80C')?.value);
+            const section80E = parseFloat(document.getElementById('section80E')?.value);
+            const section80D = parseFloat(document.getElementById('section80D')?.value);
+            const nps = parseFloat(document.getElementById('npsDeduction')?.value);
 
-            let errorMessage = document.getElementById('errorMessage');
-            let calcButton = document.getElementById('calcButton');
-            let inputs = ['grossSalary', 'otherIncome', 'hraExemption', 'section80C', 'section80E', 'section80D', 'npsDeduction'];
-            inputs.forEach(id => document.getElementById(id).classList.remove('border-red-500'));
+            const errorMessage = document.getElementById('errorMessage');
+            const calcButton = document.getElementById('calcButton');
+            const inputs = ['grossSalary', 'otherIncome', 'hraExemption', 'section80C', 'section80E', 'section80D', 'npsDeduction'];
+            inputs.forEach(id => document.getElementById(id)?.classList.remove('border-red-600'));
             errorMessage.style.display = 'none';
             errorMessage.innerHTML = '';
 
             let errors = [];
             if (isNaN(salary) || salary < 0) {
                 errors.push('Gross salary must be non-negative.');
-                document.getElementById('grossSalary').classList.add('border-red-500');
+                document.getElementById('grossSalary')?.classList.add('border-red-600');
             }
             if (isNaN(otherIncome) || otherIncome < 0) {
                 errors.push('Other income must be non-negative.');
-                document.getElementById('otherIncome').classList.add('border-red-500');
+                document.getElementById('otherIncome')?.classList.add('border-red-600');
             }
             if (isNaN(hra) || hra < 0) {
                 errors.push('HRA exemption must be non-negative.');
-                document.getElementById('hraExemption').classList.add('border-red-500');
+                document.getElementById('hraExemption')?.classList.add('border-red-600');
             }
             if (isNaN(section80C) || section80C < 0 || section80C > 150000) {
                 errors.push('Section 80C must be ₹0 to ₹1.5 lakh.');
-                document.getElementById('section80C').classList.add('border-red-500');
+                document.getElementById('section80C')?.classList.add('border-red-600');
             }
             if (isNaN(section80E) || section80E < 0) {
                 errors.push('Section 80E must be non-negative.');
-                document.getElementById('section80E').classList.add('border-red-500');
+                document.getElementById('section80E')?.classList.add('border-red-600');
             }
             if (isNaN(section80D) || section80D < 0 || section80D > 25000) {
                 errors.push('Section 80D must be ₹0 to ₹25,000.');
-                document.getElementById('section80D').classList.add('border-red-500');
+                document.getElementById('section80D')?.classList.add('border-red-600');
             }
             if (isNaN(nps) || nps < 0 || nps > 50000) {
                 errors.push('NPS deduction must be ₹0 to ₹50,000.');
-                document.getElementById('npsDeduction').classList.add('border-red-500');
+                document.getElementById('npsDeduction')?.classList.add('border-red-600');
             }
 
             if (errors.length > 0) {
@@ -522,30 +715,30 @@
         function calcTax() {
             if (!validateInputs()) return;
 
-            let calcButton = document.getElementById('calcButton');
-            calcButton.innerHTML = 'Calculating...';
+            const calcButton = document.getElementById('calcButton');
+            calcButton.classList.add('loading');
             setTimeout(() => {
-                let ageGroup = document.getElementById('ageGroup').value;
-                let grossSalary = parseFloat(document.getElementById('grossSalary').value);
-                let otherIncome = parseFloat(document.getElementById('otherIncome').value);
-                let hraExemption = parseFloat(document.getElementById('hraExemption').value);
-                let section80C = parseFloat(document.getElementById('section80C').value);
-                let section80E = parseFloat(document.getElementById('section80E').value);
-                let section80D = parseFloat(document.getElementById('section80D').value);
-                let npsDeduction = parseFloat(document.getElementById('npsDeduction').value);
+                const ageGroup = document.getElementById('ageGroup').value;
+                const grossSalary = parseFloat(document.getElementById('grossSalary').value);
+                const otherIncome = parseFloat(document.getElementById('otherIncome').value);
+                const hraExemption = parseFloat(document.getElementById('hraExemption').value);
+                const section80C = parseFloat(document.getElementById('section80C').value);
+                const section80E = parseFloat(document.getElementById('section80E').value);
+                const section80D = parseFloat(document.getElementById('section80D').value);
+                const npsDeduction = parseFloat(document.getElementById('npsDeduction').value);
 
                 // Old Regime
                 let oldTaxableIncome = grossSalary + otherIncome - hraExemption - section80C - section80E - section80D - npsDeduction;
                 oldTaxableIncome = Math.max(0, oldTaxableIncome);
-                let oldTax = calculateOldRegimeTax(oldTaxableIncome, ageGroup);
+                const oldTax = calculateOldRegimeTax(oldTaxableIncome, ageGroup);
 
                 // New Regime
                 let newTaxableIncome = grossSalary + otherIncome;
                 newTaxableIncome = Math.max(0, newTaxableIncome);
-                let newTax = calculateNewRegimeTax(newTaxableIncome);
+                const newTax = calculateNewRegimeTax(newTaxableIncome);
 
-                let result = `
-                    <strong>Tax Calculation FY 2025-26:</strong><br>
+                const result = `
+                    <strong class="text-indigo-900">Tax Calculation FY 2025-26:</strong><br>
                     <strong>Old Regime:</strong><br>
                     Taxable Income: ₹${formatIndianNumber(oldTaxableIncome)}<br>
                     Tax Liability: ₹${formatIndianNumber(oldTax)}<br>
@@ -561,11 +754,11 @@
 
                 document.getElementById('resultsCard').classList.add('block');
                 document.getElementById('resultsCard').classList.remove('hidden');
-                calcButton.innerHTML = 'Calculate';
+                calcButton.classList.remove('loading');
 
                 gtag('event', 'calculate_tax', {
-                    'event_category': 'Calculator',
-                    'event_label': 'Income Tax Calculator'
+                    event_category: 'Calculator',
+                    event_label: 'Income Tax Calculator'
                 });
             }, 300);
         }
@@ -592,17 +785,28 @@
         function updateDeadlines() {
             const today = new Date();
             const advanceTaxDeadline = new Date('2025-03-15');
-            const deadlinesList = document.getElementById('deadlinesList');
+            const itrDeadline = new Date('2025-07-31');
+            const pmVidyalaxmiDeadline = new Date('2025-08-31');
+            const advanceTaxItem = document.getElementById('past-advance-tax');
+            const itrItem = document.getElementById('itr-filing');
+            const pmVidyalaxmiItem = document.getElementById('pm-vidyalaxmi');
             if (today > advanceTaxDeadline) {
-                const pastItem = document.getElementById('past-advance-tax');
-                pastItem.classList.add('past-deadline');
-                pastItem.innerHTML = '<strong>Advance Tax (Final, FY 2024-25)</strong>: Deadline passed (March 15, 2025). <span class="penalty">Penalty: 1% interest per month under Section 234C for late payment.</span>';
+                advanceTaxItem.classList.add('past-deadline');
+                advanceTaxItem.innerHTML = '<strong>Advance Tax (Final, FY 2024-25)</strong>: Deadline passed (March 15, 2025). <span class="penalty">Penalty: 1% interest per month under Section 234C for late payment.</span>';
+            }
+            if (today > itrDeadline) {
+                itrItem.classList.add('past-deadline');
+                itrItem.innerHTML = '<strong>ITR Filing (Non-Audit, FY 2025-26)</strong>: Deadline passed (July 31, 2025). <span class="penalty">Penalty: ₹5,000 under Section 234F (₹1,000 if income < ₹5 lakh).</span>';
+            }
+            if (today > pmVidyalaxmiDeadline) {
+                pmVidyalaxmiItem.classList.add('past-deadline');
+                pmVidyalaxmiItem.innerHTML = '<strong>PM-Vidyalaxmi (Education Loan)</strong>: Deadline passed (August 31, 2025). Check <a href="https://pmvidyalaxmi.co.in" target="_blank" class="text-indigo-900 hover:text-orange-500">pmvidyalaxmi.co.in</a> for 2026 updates.';
             }
         }
 
         function toggleDeadlines() {
-            let deadlines = document.getElementById('deadlinesList');
-            let toggle = document.querySelector('.toggle-deadlines');
+            const deadlines = document.getElementById('deadlinesList');
+            const toggle = document.querySelector('.toggle-deadlines');
             if (deadlines.classList.contains('hidden')) {
                 deadlines.classList.remove('hidden');
                 toggle.textContent = 'Hide Deadlines';
@@ -611,8 +815,8 @@
                 toggle.textContent = 'Show Deadlines';
             }
             gtag('event', 'toggle_deadlines', {
-                'event_category': 'Deadlines',
-                'event_label': 'Tax Deadlines'
+                event_category: 'Deadlines',
+                event_label: 'Tax Deadlines'
             });
         }
 
