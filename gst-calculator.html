@@ -21,25 +21,121 @@
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .chart-container { max-width: 600px; margin: 20px auto; height: 300px; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(180deg, #E8F0FE, #F9FAFB);
+            min-height: 100vh;
+            color: #4B5EAA;
+            line-height: 1.6;
+        }
+        header {
+            background: #2A3EB1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .chart-container { 
+            max-width: 600px; 
+            margin: 20px auto; 
+            height: 300px; 
+            max-height: 300px;
+        }
         .tooltip {
-            position: relative; display: inline-block; margin-left: 5px; cursor: help;
+            position: relative; 
+            display: inline-block; 
+            margin-left: 5px; 
+            cursor: help;
+            outline: none;
         }
         .tooltip::after {
-            content: attr(data-tooltip); position: absolute; top: -10px; left: 50%;
-            transform: translate(-50%, -100%); background: #1A237E; color: #FFFFFF;
-            padding: 5px 10px; border-radius: 4px; font-size: 0.8em; white-space: nowrap;
-            opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; z-index: 10;
+            content: attr(data-tooltip); 
+            position: absolute; 
+            top: -10px; 
+            left: 50%;
+            transform: translate(-50%, -100%); 
+            background: #2A3EB1; 
+            color: #FFFFFF;
+            padding: 5px 10px; 
+            border-radius: 4px; 
+            font-size: 0.8em; 
+            white-space: nowrap;
+            opacity: 0; 
+            visibility: hidden; 
+            transition: opacity 0.2s, visibility 0.2s; 
+            z-index: 10;
         }
-        .tooltip:hover::after, .tooltip:focus::after { opacity: 1; visibility: visible; }
+        .tooltip:hover::after, .tooltip:focus::after { 
+            opacity: 1; 
+            visibility: visible; 
+        }
         .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 1000;
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000;
+            animation: scaleIn 0.3s ease;
         }
-        .modal.show { display: flex; }
-        .past-deadline { color: #DC2626; }
-        @media (max-width: 768px) { .chart-container { max-width: 100%; height: 250px; } }
+        .modal.show { 
+            display: flex; 
+        }
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+        .past-deadline { 
+            color: #DC2626; 
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #F9FAFB;
+            min-width: 220px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: #4B5EAA;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .dropdown-content a:hover {
+            background: #E8F0FE;
+            color: #F57C00;
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 768px) { 
+            .chart-container { 
+                max-width: 100%; 
+                height: 250px; 
+                max-height: 250px; 
+            }
+            .dropdown-content {
+                min-width: 180px;
+                max-height: 250px;
+            }
+        }
     </style>
     <!-- Schema Markup: WebApplication -->
     <script type="application/ld+json">
@@ -47,7 +143,7 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "GST Interest & Late Fee Calculator India FY 2025-26",
-      "description": "Calculate GST interest and late fees for late GSTR-3B filings for FY 2025-26.",
+      "description": "Calculate GST interest (18% p.a.) and late fees for late GSTR-3B filings for FY 2025-26 in India. Supports turnover-based due dates.",
       "url": "https://yourwebsite.com/gst-calculator.html",
       "applicationCategory": "Financial",
       "operatingSystem": "All",
@@ -73,7 +169,7 @@
           "name": "How is GST interest calculated?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Interest is charged at 18% p.a. on the outstanding tax liability for the number of days the GSTR-3B filing is delayed, under Section 50."
+            "text": "Interest is charged at 18% per annum on the outstanding tax liability for the number of days the GSTR-3B filing is delayed, under Section 50 of the CGST Act."
           }
         },
         {
@@ -81,7 +177,7 @@
           "name": "What are the late fees for GSTR-3B?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Late fees are ₹100/day (₹50 CGST + ₹50 SGST) for regular filings, capped at ₹5,000 each for turnover >₹5 crore, or ₹2,000 for <₹1.5 crore. Nil filings have lower fees (₹20/day)."
+            "text": "Late fees are ₹100/day (₹50 CGST + ₹50 SGST) for regular filings, capped at ₹5,000 each for turnover >₹5 crore, or ₹2,000 each for turnover ≤₹5 crore. Nil filings incur ₹20/day (₹10 CGST + ₹10 SGST), capped similarly."
           }
         },
         {
@@ -89,7 +185,7 @@
           "name": "What are the GSTR-3B filing due dates?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Due dates depend on turnover: 20th of next month (>₹5 crore), 22nd (₹1.5–5 crore), 24th (<₹1.5 crore). Check state-specific rules."
+            "text": "Due dates depend on turnover: 20th of next month for turnover >₹5 crore, 22nd for ₹1.5–5 crore, 24th for <₹1.5 crore. State-specific variations may apply."
           }
         },
         {
@@ -97,146 +193,194 @@
           "name": "Can late fees be waived?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Late fees may be waived under amnesty schemes or for specific periods, as announced by CBIC. Check official GST notifications."
+            "text": "Late fees may be waived under amnesty schemes or for specific periods, as announced by CBIC. Check official GST notifications at gst.gov.in."
           }
         }
       ]
     }
     </script>
+    <!-- Schema Markup: HowTo -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate GST Interest and Late Fees for FY 2025-26",
+      "description": "Step-by-step guide to calculate GST interest and late fees using our free GST Calculator for FY 2025-26.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "text": "Select your previous FY turnover to determine the applicable due date.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Enter CGST, SGST, IGST, and Cess liabilities, or check 'Nil Filing' if no tax is due.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Input the due date and actual filing date for GSTR-3B.",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Click 'Calculate Penalty' to view interest (18% p.a.), late fees, and total liability.",
+          "position": 4
+        }
+      ]
+    }
+    </script>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-indigo-900 text-white shadow-md sticky top-0 z-50">
+<body>
+    <header class="sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Financial Calculators</h1>
+            <h1 class="text-2xl font-bold text-white">Financial Calculators</h1>
             <nav class="flex space-x-4">
-                <a href="/index.html" class="hover:text-orange-500">Home</a>
-                <div class="relative group">
-                    <a href="#" class="hover:text-orange-500">Calculators</a>
-                    <div class="absolute hidden group-hover:block bg-white text-gray-800 shadow-lg rounded-lg mt-2 w-48">
-                        <a href="/all-calculators" class="block px-4 py-2 hover:bg-gray-100">All Calculators</a>
-                        <a href="/income-tax.html" class="block px-4 py-2 hover:bg-gray-100">Income Tax Calculator</a>
-                        <a href="/loan-emi.html" class="block px-4 py-2 hover:bg-gray-100">Loan EMI Calculator</a>
-                        <a href="/capital-gains.html" class="block px-4 py-2 hover:bg-gray-100">Capital Gains Tax Calculator</a>
-                        <a href="/gst-calculator.html" class="block px-4 py-2 hover:bg-gray-100">GST Interest & Late Fee Calculator</a>
+                <a href="/index.html" class="text-white hover:text-orange-500 font-medium">Home</a>
+                <div class="relative dropdown">
+                    <a href="/all-calculators.html" class="text-white hover:text-orange-500 font-medium" aria-expanded="false">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/loan-emi.html">Loan EMI Calculator</a>
+                        <a href="/capital-gains.html">Capital Gains Tax Calculator</a>
+                        <a href="/gst-calculator.html">GST Interest & Late Fee Calculator</a>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-    <section class="mb-8">
-        <h1 class="text-3xl font-semibold text-indigo-900 text-center mb-6">GST Interest & Late Fee Calculator India FY 2025-26</h1>
-        <p class="text-center text-gray-600 mb-4">Calculate interest (18% p.a.) and late fees for late GSTR-3B filings for FY 2025-26. Supports turnover-based due dates.</p>
-        <div class="text-center">
-            <a href="/all-calculators" class="text-indigo-600 hover:text-orange-500">Back to All Calculators</a>
-        </div>
-    </section>
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold text-indigo-900 mb-2 text-center">GST & Tax Deadlines (2025)</h3>
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <section class="mb-8">
+            <h1 class="text-3xl font-semibold text-indigo-900 text-center mb-6">GST Interest & Late Fee Calculator India FY 2025-26</h1>
+            <p class="text-center text-gray-600 mb-4">Calculate interest (18% p.a.) and late fees for late GSTR-3B filings for FY 2025-26. Supports turnover-based due dates and Budget 2025 rules. Use our tool to estimate penalties and plan compliance. Explore related tools like our <a href="/income-tax.html" class="text-indigo-900 hover:text-orange-500">Income Tax Calculator</a> or <a href="/loan-emi.html" class="text-indigo-900 hover:text-orange-500">Loan EMI Calculator</a> for comprehensive financial planning.</p>
             <div class="text-center">
-                <span class="toggle-deadlines text-indigo-600 cursor-pointer hover:text-orange-500 block mb-2">Show Deadlines</span>
+                <a href="/all-calculators" class="text-indig
+o-900 hover:text-orange-500 font-semibold">Back to All Calculators</a>
+            </div>
+        </section>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-indigo-900 mb-4 text-center">GST & Tax Deadlines (2025)</h2>
+            <div class="text-center">
+                <span class="toggle-deadlines text-indigo-900 cursor-pointer hover:text-orange-500 block mb-2" tabindex="0" role="button">Show Deadlines</span>
             </div>
             <div id="deadlinesList" class="hidden text-gray-600 max-w-xl mx-auto">
                 <ul class="list-disc pl-5">
                     <li id="past-advance-tax"><strong>Advance Tax (Final, FY 2024-25)</strong>: Due March 15, 2025. <span class="penalty">Penalty: 1% interest per month under Section 234C.</span></li>
-                    <li><strong>GSTR-3B Filing</strong>: Due 20th/22nd/24th of next month based on turnover. File at <a href="https://www.gst.gov.in" target="_blank" class="text-indigo-600 hover:text-orange-500">gst.gov.in</a>.</li>
+                    <li><strong>GSTR-3B Filing</strong>: Due 20th/22nd/24th of next month based on turnover. File at <a href="https://www.gst.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500">gst.gov.in</a>.</li>
                 </ul>
             </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-xl font-semibold text-indigo-900 mb-4">Calculate GST Interest & Late Fees</h2>
-            <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-                <div id="taxProgress" class="bg-orange-600 h-2 rounded-full" style="width: 0;"></div>
+        </section>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
+            <h2 class="text-xl font-semibold text-indigo-900 mb-4"><i class="fas fa-calculator mr-2"></i>Calculate GST Interest & Late Fees</h2>
+            <div class="w-full bg-indigo-100 rounded-full h-2 mb-4">
+                <div id="taxProgress" class="bg-orange-500 h-2 rounded-full" style="width: 0;"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label for="turnover" class="block text-gray-700">Turnover (Previous FY): <span class="tooltip" data-tooltip="Annual turnover to determine due date" tabindex="0">?</span></label>
-                    <select id="turnover" class="w-full p-2 border rounded-md">
+                    <label for="turnover" class="block text-gray-800 font-medium">Turnover (Previous FY): <span class="tooltip" data-tooltip="Annual turnover to determine due date and fee cap" tabindex="0">?</span></label>
+                    <select id="turnover" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white" aria-label="Select Turnover Range">
                         <option value="below1_5cr">Below ₹1.5 crore</option>
                         <option value="1_5to5cr">₹1.5–5 crore</option>
                         <option value="above5cr">Above ₹5 crore</option>
                     </select>
                 </div>
                 <div>
-                    <label for="taxLiabilityCGST" class="block text-gray-700">CGST Liability (₹): <span class="tooltip" data-tooltip="Central GST amount due" tabindex="0">?</span></label>
-                    <input type="number" id="taxLiabilityCGST" min="0" value="5000" class="w-full p-2 border rounded-md">
+                    <label for="taxLiabilityCGST" class="block text-gray-800 font-medium">CGST Liability (₹): <span class="tooltip" data-tooltip="Central GST amount due" tabindex="0">?</span></label>
+                    <input type="number" id="taxLiabilityCGST" min="0" value="5000" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="CGST Liability in Rupees">
                 </div>
                 <div>
-                    <label for="taxLiabilitySGST" class="block text-gray-700">SGST Liability (₹): <span class="tooltip" data-tooltip="State GST amount due" tabindex="0">?</span></label>
-                    <input type="number" id="taxLiabilitySGST" min="0" value="5000" class="w-full p-2 border rounded-md">
+                    <label for="taxLiabilitySGST" class="block text-gray-800 font-medium">SGST Liability (₹): <span class="tooltip" data-tooltip="State GST amount due" tabindex="0">?</span></label>
+                    <input type="number" id="taxLiabilitySGST" min="0" value="5000" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="SGST Liability in Rupees">
                 </div>
                 <div>
-                    <label for="taxLiabilityIGST" class="block text-gray-700">IGST Liability (₹): <span class="tooltip" data-tooltip="Integrated GST amount due" tabindex="0">?</span></label>
-                    <input type="number" id="taxLiabilityIGST" min="0" value="0" class="w-full p-2 border rounded-md">
+                    <label for="taxLiabilityIGST" class="block text-gray-800 font-medium">IGST Liability (₹): <span class="tooltip" data-tooltip="Integrated GST amount due" tabindex="0">?</span></label>
+                    <input type="number" id="taxLiabilityIGST" min="0" value="0" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="IGST Liability in Rupees">
                 </div>
                 <div>
-                    <label for="taxLiabilityCess" class="block text-gray-700">Cess Liability (₹): <span class="tooltip" data-tooltip="GST Cess amount due" tabindex="0">?</span></label>
-                    <input type="number" id="taxLiabilityCess" min="0" value="0" class="w-full p-2 border rounded-md">
+                    <label for="taxLiabilityCess" class="block text-gray-800 font-medium">Cess Liability (₹): <span class="tooltip" data-tooltip="GST Cess amount due" tabindex="0">?</span></label>
+                    <input type="number" id="taxLiabilityCess" min="0" value="0" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Cess Liability in Rupees">
                 </div>
                 <div>
-                    <label for="dueDate" class="block text-gray-700">Due Date: <span class="tooltip" data-tooltip="GSTR-3B filing due date" tabindex="0">?</span></label>
-                    <input type="date" id="dueDate" class="w-full p-2 border rounded-md">
+                    <label for="dueDate" class="block text-gray-800 font-medium">Due Date: <span class="tooltip" data-tooltip="GSTR-3B filing due date (e.g., 20th/22nd/24th)" tabindex="0">?</span></label>
+                    <input type="date" id="dueDate" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="GSTR-3B Due Date">
                 </div>
                 <div>
-                    <label for="filingDate" class="block text-gray-700">Filing Date: <span class="tooltip" data-tooltip="Actual GSTR-3B filing date" tabindex="0">?</span></label>
-                    <input type="date" id="filingDate" class="w-full p-2 border rounded-md">
+                    <label for="filingDate" class="block text-gray-800 font-medium">Filing Date: <span class="tooltip" data-tooltip="Actual GSTR-3B filing date" tabindex="0">?</span></label>
+                    <input type="date" id="filingDate" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="GSTR-3B Filing Date">
                 </div>
                 <div>
-                    <label for="isNilFiling" class="block text-gray-700">Nil Filing: <span class="tooltip" data-tooltip="Check if no tax liability (lower fees)" tabindex="0">?</span></label>
-                    <input type="checkbox" id="isNilFiling" class="p-2">
+                    <label for="isNilFiling" class="block text-gray-800 font-medium">Nil Filing: <span class="tooltip" data-tooltip="Check if no tax liability (lower fees)" tabindex="0">?</span></label>
+                    <input type="checkbox" id="isNilFiling" class="p-2 h-5 w-5 text-orange-500 border border-indigo-200 rounded focus:ring-orange-200" aria-label="Nil Filing Checkbox">
                 </div>
             </div>
-            <div class="flex gap-4 mt-4">
-                <button id="calcButton" onclick="calculateGSTPenalty()" class="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 disabled:bg-gray-400" disabled>Calculate Penalty</button>
-                <button onclick="resetForm()" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700">Reset</button>
+            <div class="flex gap-4 mt-4 justify-center">
+                <button id="calcButton" onclick="calculateGSTPenalty()" class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 disabled:bg-gray-400 transition-all duration-200" disabled aria-label="Calculate GST Penalty">Calculate Penalty</button>
+                <button onclick="resetForm()" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200" aria-label="Reset Form">Reset</button>
             </div>
-            <p class="mt-2 text-sm text-gray-600">Enter tax and filing details to calculate GST penalties. Results are estimates; consult a GST advisor.</p>
-        </div>
-        <div id="resultsCard" class="bg-white rounded-lg shadow-md p-6 hidden">
-            <div id="errorMessage" class="text-red-600 hidden"></div>
-            <div id="taxResult" class="text-gray-800"></div>
+            <p class="mt-2 text-sm text-gray-600 text-center">Enter tax and filing details to calculate GST penalties for FY 2025-26. Results are estimates; consult a GST advisor for accurate compliance.</p>
+        </section>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50 hidden" id="resultsCard">
+            <div id="errorMessage" class="text-red-600 hidden mb-4 text-center"></div>
+            <div id="taxResult" class="text-gray-800 mb-4 text-center"></div>
             <div class="chart-container">
                 <canvas id="taxChart"></canvas>
             </div>
-        </div>
-        <section class="mt-8">
-            <h2 class="text-2xl font-semibold text-indigo-900 text-center mb-4">FAQs</h2>
+            <div class="text-center mt-4">
+                <button onclick="resetForm()" class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-all duration-200" aria-label="Calculate Again">Calculate Again</button>
+            </div>
+        </section>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-semibold text-indigo-900 text-center mb-4">Frequently Asked Questions</h2>
             <div class="space-y-4">
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is GSTR-3B?</h3>
-                    <p class="text-gray-600">GSTR-3B is a monthly self-declared summary return filed by GST-registered taxpayers, summarizing outward and inward supplies, ITC, and tax liability.</p>
+                    <p class="text-gray-600">GSTR-3B is a monthly self-declared summary return filed by GST-registered taxpayers, summarizing outward and inward supplies, input tax credit (ITC), and tax liability.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">How is GST interest calculated?</h3>
-                    <p class="text-gray-600">Interest is charged at 18% p.a. on the outstanding tax liability for the number of days the GSTR-3B filing is delayed, under Section 50.</p>
+                    <p class="text-gray-600">Interest is charged at 18% per annum on the outstanding tax liability (CGST + SGST + IGST + Cess) for the number of days the GSTR-3B filing is delayed, under Section 50 of the CGST Act.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What are the late fees for GSTR-3B?</h3>
-                    <p class="text-gray-600">Late fees are ₹100/day (₹50 CGST + ₹50 SGST) for regular filings, capped at ₹5,000 each for turnover >₹5 crore, or ₹2,000 for <₹1.5 crore. Nil filings have lower fees (₹20/day).</p>
+                    <p class="text-gray-600">Late fees are ₹100/day (₹50 CGST + ₹50 SGST) for regular filings, capped at ₹5,000 each for turnover >₹5 crore, or ₹2,000 each for turnover ≤₹5 crore. Nil filings incur ₹20/day (₹10 CGST + ₹10 SGST), capped similarly.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What are the GSTR-3B filing due dates?</h3>
-                    <p class="text-gray-600">Due dates depend on turnover: 20th of next month (>₹5 crore), 22nd (₹1.5–5 crore), 24th (<₹1.5 crore). Check state-specific rules.</p>
+                    <p class="text-gray-600">Due dates depend on turnover: 20th of the next month for turnover >₹5 crore, 22nd for ₹1.5–5 crore, 24th for <₹1.5 crore. State-specific variations may apply; check <a href="https://www.gst.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500">gst.gov.in</a>.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">Can late fees be waived?</h3>
-                    <p class="text-gray-600">Late fees may be waived under amnesty schemes or for specific periods, as announced by CBIC. Check official GST notifications.</p>
+                    <p class="text-gray-600">Late fees may be waived under amnesty schemes or for specific periods, as announced by the CBIC. Check official GST notifications at <a href="https://www.gst.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500">gst.gov.in</a>.</p>
                 </div>
             </div>
         </section>
-        <div id="disclaimerModal" class="modal">
-            <div class="bg-white rounded-md p-6 max-w-md w-full">
-                <span class="modal-close absolute top-4 right-4 text-2xl cursor-pointer" onclick="closeModal('disclaimerModal')">×</span>
-                <h3 class="text-xl font-semibold text-indigo-900 mb-2">Disclaimer</h3>
-                <p class="text-gray-600">Calculators are for informational purposes only. Results are estimates and do not account for all circumstances. Consult a GST professional.</p>
-            </div>
+    </main>
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
+            <h3 class="text-xl font-semibold text-indigo-900 mb-2">Disclaimer</h3>
+            <p class="text-gray-600">This calculator is for informational purposes only. Results are estimates and may not account for all circumstances or state-specific rules. Consult a GST professional for accurate compliance and personalized advice.</p>
         </div>
-    </section>
+    </div>
+    <div id="termsModal" class="modal">
+        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
+            <h3 class="text-xl font-semibold text-indigo-900 mb-2">Terms and Conditions</h3>
+            <p class="text-gray-600">By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Usage is governed by Indian laws.</p>
+        </div>
+    </div>
     <footer class="bg-indigo-900 text-white text-center py-6">
         <div class="flex justify-center space-x-4">
+            <a href="/income-tax.html" class="hover:text-orange-500">Income Tax Calculator</a>
+            <span>|</span>
+            <a href="/loan-emi.html" class="hover:text-orange-500">Loan EMI Calculator</a>
+            <span>|</span>
+            <a href="/capital-gains.html" class="hover:text-orange-500">Capital Gains Tax Calculator</a>
+            <span>|</span>
             <a href="#" onclick="openModal('disclaimerModal')" class="hover:text-orange-500">Disclaimer</a>
             <span>|</span>
-            <a href="#" class="hover:text-orange-500">Terms & Conditions</a>
+            <a href="#" onclick="openModal('termsModal')" class="hover:text-orange-500">Terms & Conditions</a>
         </div>
         <p class="mt-2 text-sm">© 2025 Financial Calculators. All Rights Reserved.</p>
     </footer>
@@ -249,7 +393,7 @@
                 datasets: [{
                     label: 'Amount (₹)',
                     data: [0, 0, 0],
-                    backgroundColor: ['#1A237E', '#FF6F00', '#DC2626'],
+                    backgroundColor: ['#2A3EB1', '#F57C00', '#DC2626'],
                     borderColor: ['#FFFFFF', '#FFFFFF', '#FFFFFF'],
                     borderWidth: 1
                 }]
@@ -257,38 +401,79 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                scales: { y: { beginAtZero: true, title: { display: true, text: 'Amount (₹)' } } },
-                plugins: { legend: { display: false }, title: { display: true, text: 'GST Penalty Breakdown', color: '#1A237E' } }
+                scales: { 
+                    y: { 
+                        beginAtZero: true, 
+                        title: { 
+                            display: true, 
+                            text: 'Amount (₹)', 
+                            color: '#4B5EAA', 
+                            font: { family: 'Inter' } 
+                        } 
+                    } 
+                },
+                plugins: { 
+                    legend: { display: false }, 
+                    title: { 
+                        display: true, 
+                        text: 'GST Penalty Breakdown', 
+                        color: '#2A3EB1', 
+                        font: { family: 'Inter', size: 16 } 
+                    } 
+                }
             }
         };
 
         let taxChart;
         window.onload = function() {
-            const ctx = document.getElementById('taxChart').getContext('2d');
-            taxChart = new Chart(ctx, chartConfig);
+            const ctx = document.getElementById('taxChart')?.getContext('2d');
+            if (ctx) taxChart = new Chart(ctx, chartConfig);
             updateDeadlines();
             updateProgress();
             validateInputs();
             document.querySelectorAll('input, select').forEach(input => {
-                input.addEventListener('input', () => { validateInputs(); updateProgress(); });
+                input?.addEventListener('input', () => { 
+                    validateInputs(); 
+                    updateProgress(); 
+                });
             });
             document.querySelectorAll('.toggle-deadlines').forEach(btn => {
-                btn.addEventListener('click', toggleDeadlines);
-            });
-            document.querySelectorAll('.tooltip').forEach(tooltip => {
-                tooltip.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') tooltip.focus();
+                btn?.addEventListener('click', toggleDeadlines);
+                btn?.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleDeadlines();
+                    }
                 });
             });
             document.querySelectorAll('.faq-item h3').forEach(item => {
-                item.addEventListener('click', () => {
-                    gtag('event', 'faq_click', { 'event_category': 'FAQ', 'event_label': item.textContent });
+                item?.addEventListener('click', () => {
+                    gtag('event', 'faq_click', { 
+                        event_category: 'FAQ', 
+                        event_label: item.textContent 
+                    });
+                });
+            });
+            document.querySelectorAll('.dropdown-content a').forEach(link => {
+                link?.addEventListener('click', () => {
+                    gtag('event', 'dropdown_click', { 
+                        event_category: 'Navigation', 
+                        event_label: link.textContent 
+                    });
+                });
+            });
+            document.querySelectorAll('.tooltip').forEach(tooltip => {
+                tooltip?.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        tooltip.focus();
+                    }
                 });
             });
         };
 
         function formatIndianNumber(num) {
-            if (isNaN(num)) return num;
+            if (isNaN(num)) return "0.00";
             let str = Number(num).toFixed(2).toString();
             let [intPart, decPart] = str.split('.');
             let lastThree = intPart.slice(-3);
@@ -306,10 +491,10 @@
 
         function validateInputs() {
             const turnover = document.getElementById('turnover').value;
-            const cgst = parseFloat(document.getElementById('taxLiabilityCGST').value);
-            const sgst = parseFloat(document.getElementById('taxLiabilitySGST').value);
-            const igst = parseFloat(document.getElementById('taxLiabilityIGST').value);
-            const cess = parseFloat(document.getElementById('taxLiabilityCess').value);
+            const cgst = parseFloat(document.getElementById('taxLiabilityCGST').value) || 0;
+            const sgst = parseFloat(document.getElementById('taxLiabilitySGST').value) || 0;
+            const igst = parseFloat(document.getElementById('taxLiabilityIGST').value) || 0;
+            const cess = parseFloat(document.getElementById('taxLiabilityCess').value) || 0;
             const dueDate = new Date(document.getElementById('dueDate').value);
             const filingDate = new Date(document.getElementById('filingDate').value);
             const isNilFiling = document.getElementById('isNilFiling').checked;
@@ -317,28 +502,47 @@
             const errorMessage = document.getElementById('errorMessage');
             const calcButton = document.getElementById('calcButton');
             const inputs = ['taxLiabilityCGST', 'taxLiabilitySGST', 'taxLiabilityIGST', 'taxLiabilityCess', 'dueDate', 'filingDate'];
-            inputs.forEach(id => document.getElementById(id).classList.remove('border-red-500'));
+            inputs.forEach(id => document.getElementById(id)?.classList.remove('border-red-600'));
             errorMessage.style.display = 'none';
             errorMessage.innerHTML = '';
 
             let errors = [];
-            if (isNaN(cgst) || cgst < 0) errors.push('CGST liability must be non-negative.');
-            if (isNaN(sgst) || sgst < 0) errors.push('SGST liability must be non-negative.');
-            if (isNaN(igst) || igst < 0) errors.push('IGST liability must be non-negative.');
-            if (isNaN(cess) || cess < 0) errors.push('Cess liability must be non-negative.');
-            if (isNilFiling && (cgst > 0 || sgst > 0 || igst > 0 || cess > 0)) errors.push('Nil filing cannot have tax liability.');
-            if (isNaN(dueDate.getTime())) errors.push('Valid due date required.');
-            if (isNaN(filingDate.getTime())) errors.push('Valid filing date required.');
-            if (filingDate < dueDate) errors.push('Filing date must be after due date.');
+            if (isNaN(cgst) || cgst < 0) {
+                errors.push('CGST liability must be non-negative.');
+                document.getElementById('taxLiabilityCGST')?.classList.add('border-red-600');
+            }
+            if (isNaN(sgst) || sgst < 0) {
+                errors.push('SGST liability must be non-negative.');
+                document.getElementById('taxLiabilitySGST')?.classList.add('border-red-600');
+            }
+            if (isNaN(igst) || igst < 0) {
+                errors.push('IGST liability must be non-negative.');
+                document.getElementById('taxLiabilityIGST')?.classList.add('border-red-600');
+            }
+            if (isNaN(cess) || cess < 0) {
+                errors.push('Cess liability must be non-negative.');
+                document.getElementById('taxLiabilityCess')?.classList.add('border-red-600');
+            }
+            if (isNilFiling && (cgst > 0 || sgst > 0 || igst > 0 || cess > 0)) {
+                errors.push('Nil filing cannot have tax liability.');
+                inputs.forEach(id => document.getElementById(id)?.classList.add('border-red-600'));
+            }
+            if (isNaN(dueDate.getTime())) {
+                errors.push('Valid due date required.');
+                document.getElementById('dueDate')?.classList.add('border-red-600');
+            }
+            if (isNaN(filingDate.getTime())) {
+                errors.push('Valid filing date required.');
+                document.getElementById('filingDate')?.classList.add('border-red-600');
+            }
+            if (!isNaN(dueDate.getTime()) && !isNaN(filingDate.getTime()) && filingDate < dueDate) {
+                errors.push('Filing date must be after due date.');
+                document.getElementById('filingDate')?.classList.add('border-red-600');
+            }
 
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
                 errorMessage.style.display = 'block';
-                inputs.forEach(id => {
-                    if (errors.some(e => e.toLowerCase().includes(id.toLowerCase()))) {
-                        document.getElementById(id).classList.add('border-red-500');
-                    }
-                });
                 calcButton.disabled = true;
                 return false;
             }
@@ -351,6 +555,7 @@
 
             const calcButton = document.getElementById('calcButton');
             calcButton.innerHTML = 'Calculating...';
+            calcButton.classList.add('loading');
             setTimeout(() => {
                 const turnover = document.getElementById('turnover').value;
                 const cgst = parseFloat(document.getElementById('taxLiabilityCGST').value) || 0;
@@ -369,22 +574,20 @@
                 const interest = totalTax * 0.18 * daysLate / 365;
 
                 // Calculate late fee
-                let dailyFeePerGST = isNilFiling ? 20 : 100; // ₹20/day for nil, ₹100/day for regular
-                let feeCapPerGST;
-                if (turnover === 'below1_5cr') feeCapPerGST = 2000;
-                else if (turnover === '1_5to5cr') feeCapPerGST = 3500;
-                else feeCapPerGST = 5000;
-                const lateFeePerGST = Math.min(feeCapPerGST, daysLate * dailyFeePerGST / 2); // Split between CGST/SGST
-                const totalLateFee = isNilFiling && totalTax === 0 ? 2 * lateFeePerGST : 2 * lateFeePerGST;
+                const dailyFeePerGST = isNilFiling ? 10 : 50; // ₹10/day for nil, ₹50/day for regular (per CGST/SGST)
+                const feeCapPerGST = turnover === 'above5cr' ? 5000 : 2000; // ₹5,000 for >₹5 crore, ₹2,000 for ≤₹5 crore
+                const lateFeePerGST = Math.min(feeCapPerGST, daysLate * dailyFeePerGST);
+                const totalLateFee = 2 * lateFeePerGST; // CGST + SGST
 
                 // Total liability
                 const totalLiability = totalTax + interest + totalLateFee;
 
                 // Update results
                 document.getElementById('taxResult').innerHTML = `
+                    <strong class="text-indigo-900">GST Penalty Calculation:</strong><br>
                     <strong>Tax Liability:</strong> ₹${formatIndianNumber(totalTax)}<br>
                     <strong>Interest (18% p.a.):</strong> ₹${formatIndianNumber(interest)}<br>
-                    <strong>Late Fee:</strong> ₹${formatIndianNumber(totalLateFee)}<br>
+                    <strong>Late Fee (CGST + SGST):</strong> ₹${formatIndianNumber(totalLateFee)}<br>
                     <strong>Total Liability:</strong> ₹${formatIndianNumber(totalLiability)}
                 `;
                 document.getElementById('resultsCard').classList.remove('hidden');
@@ -394,7 +597,11 @@
                 taxChart.update();
 
                 calcButton.innerHTML = 'Calculate Penalty';
-                gtag('event', 'calculate_gst_penalty', { 'event_category': 'GST', 'event_label': 'Calculate' });
+                calcButton.classList.remove('loading');
+                gtag('event', 'calculate_gst_penalty', { 
+                    event_category: 'GST', 
+                    event_label: 'Calculate' 
+                });
             }, 300);
         }
 
@@ -436,11 +643,18 @@
                 deadlinesList.classList.add('hidden');
                 toggleBtn.textContent = 'Show Deadlines';
             }
-            gtag('event', 'toggle_deadlines', { 'event_category': 'Deadlines', 'event_label': 'GST Deadlines' });
+            gtag('event', 'toggle_deadlines', { 
+                event_category: 'Deadlines', 
+                event_label: 'GST Deadlines' 
+            });
         }
 
-        function openModal(modalId) { document.getElementById(modalId).classList.add('show'); }
-        function closeModal(modalId) { document.getElementById(modalId).classList.remove('show'); }
+        function openModal(modalId) { 
+            document.getElementById(modalId).classList.add('show'); 
+        }
+        function closeModal(modalId) { 
+            document.getElementById(modalId).classList.remove('show'); 
+        }
     </script>
 </body>
 </html>
