@@ -11,8 +11,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate your capital gains tax for FY 2025-26 (AY 2026-27) in India. Supports equities, property, mutual funds with Budget 2025 rates, indexation, and exemptions (Section 54, 54EC).">
-    <meta name="keywords" content="capital gains tax calculator India, LTCG, STCG, Budget 2025, Section 54">
+    <meta name="description" content="Calculate your capital gains tax for FY 2025-26 (AY 2026-27) in India. Supports equities, property, mutual funds, and bonds with Budget 2025 rates, indexation, and exemptions (Sections 54, 54EC, 54F).">
+    <meta name="keywords" content="capital gains tax calculator India, LTCG, STCG, Budget 2025, Section 54, indexation">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
     <title>Capital Gains Tax Calculator India FY 2025-26</title>
@@ -21,25 +21,121 @@
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .chart-container { max-width: 600px; margin: 20px auto; height: 300px; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(180deg, #E8F0FE, #F9FAFB);
+            min-height: 100vh;
+            color: #4B5EAA;
+            line-height: 1.6;
+        }
+        header {
+            background: #2A3EB1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .chart-container { 
+            max-width: 600px; 
+            margin: 20px auto; 
+            height: 300px; 
+            max-height: 300px;
+        }
         .tooltip {
-            position: relative; display: inline-block; margin-left: 5px; cursor: help;
+            position: relative; 
+            display: inline-block; 
+            margin-left: 5px; 
+            cursor: help;
+            outline: none;
         }
         .tooltip::after {
-            content: attr(data-tooltip); position: absolute; top: -10px; left: 50%;
-            transform: translate(-50%, -100%); background: #1A237E; color: #FFFFFF;
-            padding: 5px 10px; border-radius: 4px; font-size: 0.8em; white-space: nowrap;
-            opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; z-index: 10;
+            content: attr(data-tooltip); 
+            position: absolute; 
+            top: -10px; 
+            left: 50%;
+            transform: translate(-50%, -100%); 
+            background: #2A3EB1; 
+            color: #FFFFFF;
+            padding: 5px 10px; 
+            border-radius: 4px; 
+            font-size: 0.8em; 
+            white-space: nowrap;
+            opacity: 0; 
+            visibility: hidden; 
+            transition: opacity 0.2s, visibility 0.2s; 
+            z-index: 10;
         }
-        .tooltip:hover::after, .tooltip:focus::after { opacity: 1; visibility: visible; }
+        .tooltip:hover::after, .tooltip:focus::after { 
+            opacity: 1; 
+            visibility: visible; 
+        }
         .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 1000;
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000;
+            animation: scaleIn 0.3s ease;
         }
-        .modal.show { display: flex; }
-        .past-deadline { color: #DC2626; }
-        @media (max-width: 768px) { .chart-container { max-width: 100%; height: 250px; } }
+        .modal.show { 
+            display: flex; 
+        }
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+        .past-deadline { 
+            color: #DC2626; 
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #F9FAFB;
+            min-width: 220px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 100%;
+            right: 0;
+        }
+        .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: #4B5EAA;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .dropdown-content a:hover {
+            background: #E8F0FE;
+            color: #F57C00;
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 768px) { 
+            .chart-container { 
+                max-width: 100%; 
+                height: 250px; 
+                max-height: 250px; 
+            }
+            .dropdown-content {
+                min-width: 180px;
+                max-height: 250px;
+            }
+        }
     </style>
     <!-- Schema Markup: WebApplication -->
     <script type="application/ld+json">
@@ -47,7 +143,7 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Capital Gains Tax Calculator India FY 2025-26",
-      "description": "Calculate your capital gains tax for FY 2025-26 (AY 2026-27) in India.",
+      "description": "Calculate your capital gains tax for FY 2025-26 (AY 2026-27) in India, supporting equities, property, mutual funds, and bonds with Budget 2025 rates and exemptions.",
       "url": "https://yourwebsite.com/capital-gains.html",
       "applicationCategory": "Financial",
       "operatingSystem": "All",
@@ -65,7 +161,7 @@
           "name": "What is the LTCG tax rate for FY 2025-26?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For equities and mutual funds, LTCG is taxed at 12.5% above ₹1.35 lakh. For property, it’s 20% with indexation or 12.5% without, per Budget 2025."
+            "text": "For equities and mutual funds, LTCG is taxed at 12.5% above ₹1.35 lakh. For property, it’s 20% with indexation or 12.5% without, per Budget 2025. Bonds are taxed at 12.5%."
           }
         },
         {
@@ -73,7 +169,7 @@
           "name": "What is the STCG tax rate for FY 2025-26?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "STCG on equities is taxed at 20%. For other assets like property, it’s taxed at your income slab rate."
+            "text": "STCG on equities and mutual funds is taxed at 20%. For property and bonds, it’s taxed at your income tax slab rate."
           }
         },
         {
@@ -81,7 +177,7 @@
           "name": "Can I claim exemptions on capital gains?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, under Section 54 (property reinvestment), 54EC (bonds), or 54F (net proceeds reinvested), subject to conditions."
+            "text": "Yes, under Section 54 (property reinvestment), 54EC (bonds), or 54F (net proceeds reinvested), subject to conditions and limits."
           }
         },
         {
@@ -94,200 +190,316 @@
         },
         {
           "@type": "Question",
-          "name": "When is the ITR filing deadline for capital gains?",
+          "name": "When is the ITR filing deadline for FY 2025-26?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "July 31, 2025, for non-audit cases. Late filing incurs a ₹5,000 penalty under Section 234F."
+            "text": "July 31, 2026, for non-audit cases. Late filing incurs a ₹5,000 penalty under Section 234F."
           }
         }
       ]
     }
     </script>
+    <!-- Schema Markup: HowTo -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Capital Gains Tax for FY 2025-26",
+      "description": "Step-by-step guide to calculate your capital gains tax using our free calculator for FY 2025-26.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "text": "Select the asset type (equity, property, or bonds) and enter purchase cost and date.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Input the sale value and sale date to determine the holding period.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Enter your total income and any exemption amount (e.g., under Section 54).",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "text": "For property, check 'Apply Indexation' if eligible (post-July 23, 2024).",
+          "position": 4
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Click 'Calculate Tax' to view your capital gain, tax liability, and type (LTCG/STCG).",
+          "position": 5
+        }
+      ]
+    }
+    </script>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-indigo-900 text-white shadow-md sticky top-0 z-50">
+<body>
+    <header class="sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Financial Calculators</h1>
+            <h1 class="text-2xl font-bold text-white">Financial Calculators</h1>
             <nav class="flex space-x-4">
-                <a href="/index.html" class="hover:text-orange-500">Home</a>
-                <div class="relative group">
-                    <a href="#" class="hover:text-orange-500">Calculators</a>
-                    <div class="absolute hidden group-hover:block bg-white text-gray-800 shadow-lg rounded-lg mt-2 w-48">
-                        <a href="/all-calculators" class="block px-4 py-2 hover:bg-gray-100">All Calculators</a>
-                        <a href="/income-tax.html" class="block px-4 py-2 hover:bg-gray-100">Income Tax Calculator</a>
-                        <a href="/loan-emi.html" class="block px-4 py-2 hover:bg-gray-100">Loan EMI Calculator</a>
-                        <a href="/capital-gains.html" class="block px-4 py-2 hover:bg-gray-100">Capital Gains Tax Calculator</a>
+                <a href="/index.html" class="text-white hover:text-orange-500 font-medium">Home</a>
+                <div class="relative dropdown">
+                    <a href="/all-calculators.html" class="text-white hover:text-orange-500 font-medium" aria-expanded="false">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="/all-calculators">All Calculators</a>
+                        <a href="/income-tax.html">Income Tax Calculator</a>
+                        <a href="/loanemi.html">Loan EMI Calculator</a>
+                        <a href="/capital-gains.html">Capital Gains Tax Calculator</a>
+                        <a href="/gst-calculator.html">GST Interest & Late Fee Calculator</a>
+                        <a href="/retirement-planning.html">Retirement Planning Calculator</a>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-    <section class="mb-8">
-        <h1 class="text-3xl font-semibold text-indigo-900 text-center mb-6">Capital Gains Tax Calculator India FY 2025-26</h1>
-        <p class="text-center text-gray-600 mb-4">Calculate your capital gains tax for FY 2025-26 (AY 2026-27). Supports equities, property, mutual funds with Budget 2025 rates, indexation, and exemptions.</p>
-        <div class="text-center">
-            <a href="/all-calculators" class="text-indigo-600 hover:text-orange-500">Back to All Calculators</a>
-        </div>
-    </section>
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold text-indigo-900 mb-2 text-center">Tax Filing Deadlines (2025)</h3>
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <section class="mb-8">
+            <h1 class="text-3xl font-semibold text-indigo-900 text-center mb-6">Capital Gains Tax Calculator India FY 2025-26</h1>
+            <p class="text-center text-gray-600 mb-4">Calculate your capital gains tax for FY 2025-26 (AY 2026-27). Supports equities, property, mutual funds, and bonds with Budget 2025 rates, indexation, and exemptions. Try our <a href="/retirement-planning.html" class="text-indigo-900 hover:text-orange-500">Retirement Planning Calculator</a> or <a href="/gst-calculator.html" class="text-indigo-900 hover:text-orange-500">GST Calculator</a> for more tools.</p>
             <div class="text-center">
-                <span class="toggle-deadlines text-indigo-600 cursor-pointer hover:text-orange-500 block mb-2">Show Deadlines</span>
+                <a href="/all-calculators" class="text-indigo-900 hover:text-orange-500 font-semibold">Back to All Calculators</a>
+            </div>
+        </section>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
+            <h2 class="text-xl font-semibold text-indigo-900 mb-4 text-center">Tax Filing Deadlines (2025-26)</h2>
+            <div class="text-center">
+                <span class="toggle-deadlines text-indigo-900 cursor-pointer hover:text-orange-500 block mb-2" tabindex="0" role="button">Show Deadlines</span>
             </div>
             <div id="deadlinesList" class="hidden text-gray-600 max-w-xl mx-auto">
                 <ul class="list-disc pl-5">
                     <li id="past-advance-tax"><strong>Advance Tax (Final, FY 2024-25)</strong>: Due March 15, 2025. <span class="penalty">Penalty: 1% interest per month under Section 234C.</span></li>
-                    <li><strong>ITR Filing (Non-Audit, FY 2025-26)</strong>: July 31, 2025. File at <a href="https://www.incometax.gov.in" target="_blank" class="text-indigo-600 hover:text-orange-500">incometax.gov.in</a>.</li>
+                    <li><strong>ITR Filing (Non-Audit, FY 2025-26)</strong>: July 31, 2026. File at <a href="https://www.incometax.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500">incometax.gov.in</a>.</li>
                 </ul>
             </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        </section>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
             <h2 class="text-xl font-semibold text-indigo-900 mb-4">Calculate Your Capital Gains Tax</h2>
-            <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-                <div id="taxProgress" class="bg-orange-600 h-2 rounded-full" style="width: 0;"></div>
+            <div class="w-full bg-indigo-100 rounded-full h-2 mb-4">
+                <div id="taxProgress" class="bg-orange-500 h-2 rounded-full" style="width: 0;"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label for="assetType" class="block text-gray-700">Asset Type: <span class="tooltip" data-tooltip="Select the type of asset sold" tabindex="0">?</span></label>
-                    <select id="assetType" class="w-full p-2 border rounded-md">
+                    <label for="assetType" class="block text-gray-800 font-medium">Asset Type: <span class="tooltip" data-tooltip="Select the type of asset sold" tabindex="0">?</span></label>
+                    <select id="assetType" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white" aria-label="Select Asset Type">
                         <option value="equity">Equity Shares/Mutual Funds</option>
                         <option value="property">Property</option>
                         <option value="bonds">Bonds</option>
                     </select>
                 </div>
                 <div>
-                    <label for="purchaseCost" class="block text-gray-700">Purchase Cost (₹): <span class="tooltip" data-tooltip="Cost of acquiring the asset" tabindex="0">?</span></label>
-                    <input type="number" id="purchaseCost" min="0" value="100000" class="w-full p-2 border rounded-md">
+                    <label for="purchaseCost" class="block text-gray-800 font-medium">Purchase Cost (₹): <span class="tooltip" data-tooltip="Cost of acquiring the asset" tabindex="0">?</span></label>
+                    <input type="number" id="purchaseCost" min="0" value="100000" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Purchase Cost in Rupees">
                 </div>
                 <div>
-                    <label for="purchaseDate" class="block text-gray-700">Purchase Date: <span class="tooltip" data-tooltip="Date of asset purchase" tabindex="0">?</span></label>
-                    <input type="date" id="purchaseDate" class="w-full p-2 border rounded-md">
+                    <label for="purchaseDate" class="block text-gray-800 font-medium">Purchase Date: <span class="tooltip" data-tooltip="Date of asset purchase" tabindex="0">?</span></label>
+                    <input type="date" id="purchaseDate" value="2022-04-01" max="2025-06-30" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Purchase Date">
                 </div>
                 <div>
-                    <label for="saleValue" class="block text-gray-700">Sale Value (₹): <span class="tooltip" data-tooltip="Amount received from sale" tabindex="0">?</span></label>
-                    <input type="number" id="saleValue" min="0" value="200000" class="w-full p-2 border rounded-md">
+                    <label for="saleValue" class="block text-gray-800 font-medium">Sale Value (₹): <span class="tooltip" data-tooltip="Amount received from asset sale" tabindex="0">?</span></label>
+                    <input type="number" id="saleValue" min="0" value="200000" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Sale Value in Rupees">
                 </div>
                 <div>
-                    <label for="saleDate" class="block text-gray-700">Sale Date: <span class="tooltip" data-tooltip="Date of asset sale" tabindex="0">?</span></label>
-                    <input type="date" id="saleDate" class="w-full p-2 border rounded-md">
+                    <label for="saleDate" class="block text-gray-800 font-medium">Sale Date: <span class="tooltip" data-tooltip="Date of asset sale" tabindex="0">?</span></label>
+                    <input type="date" id="saleDate" value="2025-03-31" max="2026-03-31" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Sale Date">
                 </div>
                 <div>
-                    <label for="totalIncome" class="block text-gray-700">Total Income (₹): <span class="tooltip" data-tooltip="Annual income for surcharge" tabindex="0">?</span></label>
-                    <input type="number" id="totalIncome" min="0" value="1000000" class="w-full p-2 border rounded-md">
+                    <label for="totalIncome" class="block text-gray-800 font-medium">Total Income (₹): <span class="tooltip" data-tooltip="Annual income for surcharge calculation" tabindex="0">?</span></label>
+                    <input type="number" id="totalIncome" min="0" value="1000000" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Total Annual Income in Rupees">
                 </div>
                 <div>
-                    <label for="exemption" class="block text-gray-700">Exemption Amount (₹): <span class="tooltip" data-tooltip="Section 54/54EC/54F reinvestment" tabindex="0">?</span></label>
-                    <input type="number" id="exemption" min="0" value="0" class="w-full p-2 border rounded-md">
+                    <label for="exemption" class="block text-gray-800 font-medium">Exemption Amount (₹): <span class="tooltip" data-tooltip="Amount reinvested under Section 54, 54EC, or 54F" tabindex="0">?</span></label>
+                    <input type="number" id="exemption" min="0" value="0" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Exemption Amount in Rupees">
                 </div>
                 <div>
-                    <label class="block text-gray-700">Apply Indexation: <span class="tooltip" data-tooltip="For property, adjust cost for inflation" tabindex="0">?</span></label>
-                    <input type="checkbox" id="indexation" class="p-2">
+                    <label for="indexation" class="block text-gray-800 font-medium">Apply Indexation: <span class="tooltip" data-tooltip="For property sold after July 23, 2024, adjust cost for inflation" tabindex="0">?</span></label>
+                    <input type="checkbox" id="indexation" class="p-2 h-5 w-5 border border-indigo-200 rounded focus:ring-orange-200" disabled aria-label="Apply Indexation for Property">
                 </div>
             </div>
-            <div class="flex gap-4 mt-4">
-                <button id="calcButton" onclick="calculateCapitalGains()" class="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 disabled:bg-gray-400" disabled>Calculate Tax</button>
-                <button onclick="resetForm()" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700">Reset</button>
+            <div class="flex gap-4 mt-4 justify-center">
+                <button id="calcButton" onclick="calculateCapitalGains()" class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 disabled:bg-gray-400 transition-all duration-200" disabled aria-label="Calculate Capital Gains Tax">Calculate Tax</button>
+                <button onclick="resetForm()" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200" aria-label="Reset Form">Reset</button>
             </div>
-            <p class="mt-2 text-sm text-gray-600">Enter asset details to calculate capital gains tax. Results are estimates; consult a tax advisor.</p>
-        </div>
-        <div id="resultsCard" class="bg-white rounded-lg shadow-md p-6 hidden">
-            <div id="errorMessage" class="text-red-600 hidden"></div>
-            <div id="taxResult" class="text-gray-800"></div>
+            <p class="mt-2 text-sm text-gray-600 text-center">Enter asset details to calculate capital gains tax for FY 2025-26. Results are estimates; consult a tax advisor for personalized advice.</p>
+        </section>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50 hidden" id="resultsCard">
+            <div id="errorMessage" class="text-red-600 hidden mb-4 text-center"></div>
+            <div id="taxResult" class="text-gray-800 mb-4 text-center"></div>
             <div class="chart-container">
                 <canvas id="taxChart"></canvas>
             </div>
-        </div>
-        <section class="mt-8">
-            <h2 class="text-2xl font-semibold text-indigo-900 text-center mb-4">FAQs</h2>
+            <div class="text-center mt-4">
+                <button onclick="resetForm()" class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-all duration-200" aria-label="Calculate Again">Calculate Again</button>
+            </div>
+        </section>
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-semibold text-indigo-900 text-center mb-4">Frequently Asked Questions</h2>
             <div class="space-y-4">
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is the LTCG tax rate for FY 2025-26?</h3>
-                    <p class="text-gray-600">For equities and mutual funds, LTCG is taxed at 12.5% above ₹1.35 lakh. For property, it’s 20% with indexation or 12.5% without, per Budget 2025.</p>
+                    <p class="text-gray-600">For equities and mutual funds, LTCG is taxed at 12.5% above ₹1.35 lakh. For property, it’s 20% with indexation or 12.5% without, per Budget 2025. Bonds are taxed at 12.5%.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is the STCG tax rate for FY 2025-26?</h3>
-                    <p class="text-gray-600">STCG on equities is taxed at 20%. For other assets like property, it’s taxed at your income slab rate.</p>
+                    <p class="text-gray-600">STCG on equities and mutual funds is taxed at 20%. For property and bonds, it’s taxed at your income tax slab rate.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">Can I claim exemptions on capital gains?</h3>
-                    <p class="text-gray-600">Yes, under Section 54 (property reinvestment), 54EC (bonds), or 54F (net proceeds reinvested), subject to conditions.</p>
+                    <p class="text-gray-600">Yes, under Section 54 (property reinvestment), 54EC (bonds, up to ₹50 lakh), or 54F (net proceeds reinvested), subject to conditions. Consult <a href="https://www.incometax.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500">incometax.gov.in</a>.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is indexation in capital gains?</h3>
                     <p class="text-gray-600">Indexation adjusts the purchase cost of property for inflation using the Cost Inflation Index (CII), reducing taxable gains. Available for property sold after July 23, 2024.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">When is the ITR filing deadline for capital gains?</h3>
-                    <p class="text-gray-600">July 31, 2025, for non-audit cases. Late filing incurs a ₹5,000 penalty under Section 234F.</p>
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">When is the ITR filing deadline for FY 2025-26?</h3>
+                    <p class="text-gray-600">July 31, 2026, for non-audit cases. Late filing incurs a ₹5,000 penalty under Section 234F.</p>
                 </div>
             </div>
         </section>
-        <div id="disclaimerModal" class="modal">
-            <div class="bg-white rounded-md p-6 max-w-md w-full">
-                <span class="modal-close absolute top-4 right-4 text-2xl cursor-pointer" onclick="closeModal('disclaimerModal')">×</span>
-                <h3 class="text-xl font-semibold text-indigo-900 mb-2">Disclaimer</h3>
-                <p class="text-gray-600">Calculators are for informational purposes only. Results are estimates and do not account for all circumstances. Consult a tax professional.</p>
-            </div>
+    </main>
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
+            <h3 class="text-xl font-semibold text-indigo-900 mb-2">Disclaimer</h3>
+            <p class="text-gray-600">This calculator is for informational purposes only. Results are estimates and may not account for all tax rules, exemptions, or circumstances. Consult a tax advisor for accurate calculations.</p>
         </div>
-    </section>
+    </div>
+    <div id="termsModal" class="modal">
+        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
+            <h3 class="text-xl font-semibold text-indigo-900 mb-2">Terms and Conditions</h3>
+            <p class="text-gray-600">By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Usage is governed by Indian laws.</p>
+        </div>
+    </div>
     <footer class="bg-indigo-900 text-white text-center py-6">
         <div class="flex justify-center space-x-4">
+            <a href="/income-tax.html" class="hover:text-orange-500">Income Tax Calculator</a>
+            <span>|</span>
+            <a href="/loanemi.html" class="hover:text-orange-500">Loan EMI Calculator</a>
+            <span>|</span>
+            <a href="/retirement-planning.html" class="hover:text-orange-500">Retirement Planning Calculator</a>
+            <span>|</span>
+            <a href="/gst-calculator.html" class="hover:text-orange-500">GST Calculator</a>
+            <span>|</span>
             <a href="#" onclick="openModal('disclaimerModal')" class="hover:text-orange-500">Disclaimer</a>
             <span>|</span>
-            <a href="#" class="hover:text-orange-500">Terms & Conditions</a>
+            <a href="#" onclick="openModal('termsModal')" class="hover:text-orange-500">Terms & Conditions</a>
         </div>
         <p class="mt-2 text-sm">© 2025 Financial Calculators. All Rights Reserved.</p>
     </footer>
     <script>
+        // Simplified CII table (example values, replace with actual CII data)
+        const ciiTable = {
+            '2001': 100, '2002': 105, '2003': 109, '2004': 113, '2005': 117, '2006': 122,
+            '2007': 129, '2008': 137, '2009': 148, '2010': 167, '2011': 184, '2012': 200,
+            '2013': 220, '2014': 240, '2015': 254, '2016': 264, '2017': 272, '2018': 280,
+            '2019': 289, '2020': 301, '2021': 317, '2022': 331, '2023': 348, '2024': 363,
+            '2025': 375
+        };
+
         // Chart.js configuration
         const chartConfig = {
             type: 'bar',
             data: {
-                labels: ['STCG', 'LTCG'],
+                labels: ['Base Tax', 'Surcharge', 'Cess'],
                 datasets: [{
-                    label: 'Tax Liability (₹)',
-                    data: [0, 0],
-                    backgroundColor: ['#1A237E', '#FF6F00'],
-                    borderColor: ['#FFFFFF', '#FFFFFF'],
+                    label: 'Tax Breakdown (₹)',
+                    data: [0, 0, 0],
+                    backgroundColor: ['#2A3EB1', '#F57C00', '#10B981'],
+                    borderColor: ['#FFFFFF', '#FFFFFF', '#FFFFFF'],
                     borderWidth: 1
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                scales: { y: { beginAtZero: true, title: { display: true, text: 'Tax (₹)' } } },
-                plugins: { legend: { display: false }, title: { display: true, text: 'Capital Gains Tax', color: '#1A237E' } }
+                scales: { 
+                    y: { 
+                        beginAtZero: true, 
+                        title: { 
+                            display: true, 
+                            text: 'Amount (₹)', 
+                            color: '#4B5EAA', 
+                            font: { family: 'Inter' } 
+                        } 
+                    },
+                    x: { 
+                        title: { 
+                            display: true, 
+                            text: 'Tax Components', 
+                            color: '#4B5EAA', 
+                            font: { family: 'Inter' } 
+                        } 
+                    }
+                },
+                plugins: { 
+                    legend: { display: false }, 
+                    title: { 
+                        display: true, 
+                        text: 'Capital Gains Tax Breakdown', 
+                        color: '#2A3EB1', 
+                        font: { family: 'Inter', size: 16 } 
+                    } 
+                }
             }
         };
 
         let taxChart;
         window.onload = function() {
-            const ctx = document.getElementById('taxChart').getContext('2d');
-            taxChart = new Chart(ctx, chartConfig);
+            const ctx = document.getElementById('taxChart')?.getContext('2d');
+            if (ctx) taxChart = new Chart(ctx, chartConfig);
             updateDeadlines();
             updateProgress();
             validateInputs();
+            toggleIndexation();
             document.querySelectorAll('input, select').forEach(input => {
-                input.addEventListener('input', () => { validateInputs(); updateProgress(); });
+                input?.addEventListener('input', () => { 
+                    validateInputs(); 
+                    updateProgress(); 
+                    if (input.id === 'assetType' || input.id === 'saleDate') toggleIndexation();
+                });
             });
             document.querySelectorAll('.toggle-deadlines').forEach(btn => {
-                btn.addEventListener('click', toggleDeadlines);
-            });
-            document.querySelectorAll('.tooltip').forEach(tooltip => {
-                tooltip.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') tooltip.focus();
+                btn?.addEventListener('click', toggleDeadlines);
+                btn?.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleDeadlines();
+                    }
                 });
             });
             document.querySelectorAll('.faq-item h3').forEach(item => {
-                item.addEventListener('click', () => {
-                    gtag('event', 'faq_click', { 'event_category': 'FAQ', 'event_label': item.textContent });
+                item?.addEventListener('click', () => {
+                    gtag('event', 'faq_click', { 
+                        event_category: 'FAQ', 
+                        event_label: item.textContent 
+                    });
+                });
+            });
+            document.querySelectorAll('.dropdown-content a').forEach(link => {
+                link?.addEventListener('click', () => {
+                    gtag('event', 'dropdown_click', { 
+                        event_category: 'Navigation', 
+                        event_label: link.textContent 
+                    });
+                });
+            });
+            document.querySelectorAll('.tooltip').forEach(tooltip => {
+                tooltip?.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        tooltip.focus();
+                    }
                 });
             });
         };
 
         function formatIndianNumber(num) {
-            if (isNaN(num)) return num;
+            if (isNaN(num) || num === null) return "0.00";
             let str = Number(num).toFixed(2).toString();
             let [intPart, decPart] = str.split('.');
             let lastThree = intPart.slice(-3);
@@ -303,29 +515,89 @@
             document.getElementById('taxProgress').style.width = `${(filled / inputs.length) * 100}%`;
         }
 
+        function toggleIndexation() {
+            const assetType = document.getElementById('assetType').value;
+            const saleDate = new Date(document.getElementById('saleDate').value);
+            const indexationCheckbox = document.getElementById('indexation');
+            const isProperty = assetType === 'property';
+            const isPostJuly2024 = saleDate >= new Date('2024-07-23');
+            indexationCheckbox.disabled = !(isProperty && isPostJuly2024);
+            if (!isProperty || !isPostJuly2024) indexationCheckbox.checked = false;
+        }
+
+        function getCIIData(year) {
+            return ciiTable[year] || 300; // Default to 300 if year not found
+        }
+
+        function getIncomeTaxSlabRate(income) {
+            // Simplified slab rates for FY 2025-26 (new regime, assumed)
+            if (income <= 300000) return 0;
+            if (income <= 700000) return 0.05;
+            if (income <= 1000000) return 0.10;
+            if (income <= 1200000) return 0.15;
+            if (income <= 1500000) return 0.20;
+            return 0.30;
+        }
+
         function validateInputs() {
-            const purchaseCost = parseFloat(document.getElementById('purchaseCost').value);
-            const saleValue = parseFloat(document.getElementById('saleValue').value);
+            const assetType = document.getElementById('assetType').value;
+            const purchaseCost = parseFloat(document.getElementById('purchaseCost').value) || 0;
+            const saleValue = parseFloat(document.getElementById('saleValue').value) || 0;
             const purchaseDate = new Date(document.getElementById('purchaseDate').value);
             const saleDate = new Date(document.getElementById('saleDate').value);
-            const totalIncome = parseFloat(document.getElementById('totalIncome').value);
-            const exemption = parseFloat(document.getElementById('exemption').value);
+            const totalIncome = parseFloat(document.getElementById('totalIncome').value) || 0;
+            const exemption = parseFloat(document.getElementById('exemption').value) || 0;
+            const applyIndexation = document.getElementById('indexation').checked;
 
             const errorMessage = document.getElementById('errorMessage');
             const calcButton = document.getElementById('calcButton');
             const inputs = ['purchaseCost', 'saleValue', 'purchaseDate', 'saleDate', 'totalIncome', 'exemption'];
-            inputs.forEach(id => document.getElementById(id).classList.remove('border-red-500'));
+            inputs.forEach(id => document.getElementById(id)?.classList.remove('border-red-600'));
             errorMessage.style.display = 'none';
             errorMessage.innerHTML = '';
 
             let errors = [];
-            if (isNaN(purchaseCost) || purchaseCost < 0) errors.push('Purchase cost must be non-negative.');
-            if (isNaN(saleValue) || saleValue < 0) errors.push('Sale value must be non-negative.');
-            if (isNaN(purchaseDate.getTime())) errors.push('Valid purchase date required.');
-            if (isNaN(saleDate.getTime())) errors.push('Valid sale date required.');
-            if (saleDate < purchaseDate) errors.push('Sale date must be after purchase date.');
-            if (isNaN(totalIncome) || totalIncome < 0) errors.push('Total income must be non-negative.');
-            if (isNaN(exemption) || exemption < 0) errors.push('Exemption amount must be non-negative.');
+            if (isNaN(purchaseCost) || purchaseCost < 0) {
+                errors.push('Purchase cost must be non-negative.');
+                document.getElementById('purchaseCost')?.classList.add('border-red-600');
+            }
+            if (isNaN(saleValue) || saleValue < 0) {
+                errors.push('Sale value must be non-negative.');
+                document.getElementById('saleValue')?.classList.add('border-red-600');
+            }
+            if (isNaN(purchaseDate.getTime())) {
+                errors.push('Valid purchase date required.');
+                document.getElementById('purchaseDate')?.classList.add('border-red-600');
+            }
+            if (isNaN(saleDate.getTime())) {
+                errors.push('Valid sale date required.');
+                document.getElementById('saleDate')?.classList.add('border-red-600');
+            }
+            if (saleDate <= purchaseDate) {
+                errors.push('Sale date must be after purchase date.');
+                document.getElementById('saleDate')?.classList.add('border-red-600');
+                document.getElementById('purchaseDate')?.classList.add('border-red-600');
+            }
+            if (isNaN(totalIncome) || totalIncome < 0) {
+                errors.push('Total income must be non-negative.');
+                document.getElementById('totalIncome')?.classList.add('border-red-600');
+            }
+            if (isNaN(exemption) || exemption < 0) {
+                errors.push('Exemption amount must be non-negative.');
+                document.getElementById('exemption')?.classList.add('border-red-600');
+            }
+            if (applyIndexation && assetType !== 'property') {
+                errors.push('Indexation is only applicable for property.');
+                document.getElementById('indexation')?.classList.add('border-red-600');
+            }
+            if (applyIndexation && saleDate < new Date('2024-07-23')) {
+                errors.push('Indexation is only available for property sold after July 23, 2024.');
+                document.getElementById('saleDate')?.classList.add('border-red-600');
+            }
+            if (exemption > saleValue) {
+                errors.push('Exemption amount cannot exceed sale value.');
+                document.getElementById('exemption')?.classList.add('border-red-600');
+            }
 
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
@@ -342,14 +614,15 @@
 
             const calcButton = document.getElementById('calcButton');
             calcButton.innerHTML = 'Calculating...';
+            calcButton.classList.add('loading');
             setTimeout(() => {
                 const assetType = document.getElementById('assetType').value;
-                const purchaseCost = parseFloat(document.getElementById('purchaseCost').value);
-                const saleValue = parseFloat(document.getElementById('saleValue').value);
+                const purchaseCost = parseFloat(document.getElementById('purchaseCost').value) || 0;
+                const saleValue = parseFloat(document.getElementById('saleValue').value) || 0;
                 const purchaseDate = new Date(document.getElementById('purchaseDate').value);
                 const saleDate = new Date(document.getElementById('saleDate').value);
-                const totalIncome = parseFloat(document.getElementById('totalIncome').value);
-                const exemption = parseFloat(document.getElementById('exemption').value);
+                const totalIncome = parseFloat(document.getElementById('totalIncome').value) || 0;
+                const exemption = parseFloat(document.getElementById('exemption').value) || 0;
                 const applyIndexation = document.getElementById('indexation').checked;
 
                 // Calculate holding period (in years)
@@ -358,68 +631,86 @@
 
                 // Calculate gain
                 let gain = saleValue - purchaseCost;
-                if (applyIndexation && assetType === 'property') {
-                    const cii2025 = 375; // Example CII for FY 2025-26
-                    const ciiPurchase = 300; // Example CII for purchase year
-                    const indexedCost = purchaseCost * (cii2025 / ciiPurchase);
+                let indexedCost = purchaseCost;
+                if (applyIndexation && assetType === 'property' && saleDate >= new Date('2024-07-23')) {
+                    const purchaseYear = purchaseDate.getFullYear();
+                    const saleYear = saleDate.getFullYear();
+                    const ciiPurchase = getCIIData(purchaseYear.toString());
+                    const ciiSale = getCIIData(saleYear.toString());
+                    indexedCost = purchaseCost * (ciiSale / ciiPurchase);
                     gain = saleValue - indexedCost;
                 }
-                gain = Math.max(0, gain - exemption);
+                gain = Math.max(0, gain);
+                const taxableGain = Math.max(0, gain - exemption);
+                const exemptionApplied = Math.min(exemption, gain);
 
                 // Tax rates (Budget 2025)
                 let taxRate;
+                let gainType = isLTCG ? 'LTCG' : 'STCG';
                 if (isLTCG) {
-                    taxRate = assetType === 'equity' ? 0.125 : (applyIndexation ? 0.20 : 0.125);
-                    if (assetType === 'equity' && gain <= 135000) taxRate = 0; // Exemption limit
+                    taxRate = (assetType === 'equity' || assetType === 'bonds') ? 0.125 : (applyIndexation ? 0.20 : 0.125);
+                    if (assetType === 'equity' && taxableGain <= 135000) taxRate = 0; // Exemption limit
                 } else {
-                    taxRate = assetType === 'equity' ? 0.20 : 0.30; // Slab rate simplified
+                    taxRate = (assetType === 'equity') ? 0.20 : getIncomeTaxSlabRate(totalIncome);
                 }
-                let tax = gain * taxRate;
+                let baseTax = taxableGain * taxRate;
 
-                // Surcharge
-                let surcharge = 0;
-                if (totalIncome > 5000000) surcharge = tax * 0.10;
-                if (totalIncome > 10000000) surcharge = tax * 0.15;
-                if (totalIncome > 20000000) surcharge = tax * 0.25;
-                if (totalIncome > 50000000) surcharge = tax * 0.37;
+                // Surcharge (capped at 25% for capital gains per Budget 2025)
+                let surchargeRate = 0;
+                if (totalIncome > 5000000) surchargeRate = 0.10;
+                if (totalIncome > 10000000) surchargeRate = 0.15;
+                if (totalIncome > 20000000) surchargeRate = 0.25;
+                const surcharge = baseTax * surchargeRate;
 
                 // Cess
-                const cess = (tax + surcharge) * 0.04;
-                const totalTax = tax + surcharge + cess;
+                const cess = (baseTax + surcharge) * 0.04;
+                const totalTax = baseTax + surcharge + cess;
 
                 // Update results
                 document.getElementById('taxResult').innerHTML = `
+                    <strong class="text-indigo-900">Capital Gains Summary:</strong><br>
                     <strong>Capital Gain:</strong> ₹${formatIndianNumber(gain)}<br>
-                    <strong>Tax Liability:</strong> ₹${formatIndianNumber(totalTax)}<br>
-                    <strong>Type:</strong> ${isLTCG ? 'LTCG' : 'STCG'}
+                    <strong>Exemption Applied:</strong> ₹${formatIndianNumber(exemptionApplied)}<br>
+                    <strong>Taxable Gain:</strong> ₹${formatIndianNumber(taxableGain)}<br>
+                    <strong>Tax Rate:</strong> ${(taxRate * 100).toFixed(2)}% (${gainType})<br>
+                    <strong>Base Tax:</strong> ₹${formatIndianNumber(baseTax)}<br>
+                    <strong>Surcharge:</strong> ₹${formatIndianNumber(surcharge)}<br>
+                    <strong>Cess (4%):</strong> ₹${formatIndianNumber(cess)}<br>
+                    <strong>Total Tax Liability:</strong> ₹${formatIndianNumber(totalTax)}
                 `;
                 document.getElementById('resultsCard').classList.remove('hidden');
 
                 // Update chart
-                taxChart.data.datasets[0].data = [isLTCG ? 0 : totalTax, isLTCG ? totalTax : 0];
+                taxChart.data.datasets[0].data = [baseTax, surcharge, cess];
                 taxChart.update();
 
                 calcButton.innerHTML = 'Calculate Tax';
-                gtag('event', 'calculate_capital_gains', { 'event_category': 'CapitalGains', 'event_label': 'Calculate' });
+                calcButton.classList.remove('loading');
+                gtag('event', 'calculate_capital_gains', { 
+                    event_category: 'CapitalGains', 
+                    event_label: `Calculate ${gainType}` 
+                });
             }, 300);
         }
 
         function resetForm() {
             document.getElementById('assetType').value = 'equity';
             document.getElementById('purchaseCost').value = '100000';
-            document.getElementById('purchaseDate').value = '';
+            document.getElementById('purchaseDate').value = '2022-04-01';
             document.getElementById('saleValue').value = '200000';
-            document.getElementById('saleDate').value = '';
+            document.getElementById('saleDate').value = '2025-03-31';
             document.getElementById('totalIncome').value = '1000000';
             document.getElementById('exemption').value = '0';
             document.getElementById('indexation').checked = false;
+            document.getElementById('indexation').disabled = true;
             document.getElementById('taxResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
             document.getElementById('resultsCard').classList.add('hidden');
-            taxChart.data.datasets[0].data = [0, 0];
+            taxChart.data.datasets[0].data = [0, 0, 0];
             taxChart.update();
             updateProgress();
             validateInputs();
+            toggleIndexation();
         }
 
         function updateDeadlines() {
@@ -442,11 +733,18 @@
                 deadlinesList.classList.add('hidden');
                 toggleBtn.textContent = 'Show Deadlines';
             }
-            gtag('event', 'toggle_deadlines', { 'event_category': 'Deadlines', 'event_label': 'Capital Gains Deadlines' });
+            gtag('event', 'toggle_deadlines', { 
+                event_category: 'Deadlines', 
+                event_label: 'Capital Gains Deadlines' 
+            });
         }
 
-        function openModal(modalId) { document.getElementById(modalId).classList.add('show'); }
-        function closeModal(modalId) { document.getElementById(modalId).classList.remove('show'); }
+        function openModal(modalId) { 
+            document.getElementById(modalId).classList.add('show'); 
+        }
+        function closeModal(modalId) { 
+            document.getElementById(modalId).classList.remove('show'); 
+        }
     </script>
 </body>
 </html>
