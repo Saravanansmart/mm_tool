@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -11,17 +11,19 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate your capital gains tax for FY 2025-26 (AY 2026-27) in India. Supports equities, property, mutual funds, and bonds with Budget 2025 rates, indexation, and exemptions (Sections 54, 54EC, 54F).">
-    <meta name="keywords" content="capital gains tax calculator India, LTCG calculator 2025, STCG calculator 2025, Budget 2025 tax calculator, Section 54 exemption, indexation calculator India, capital gains tax FY 2025-26, mutual fund tax calculator, property tax calculator India, bond tax calculator, tax planning India 2025, capital gains exemptions, Section 54EC calculator, Section 54F benefits, online tax calculator India, equity tax calculator 2025, capital gains tax planner, financial calculators India 2025">
+    <meta name="description" content="Calculate capital gains tax for FY 2025-26 in India. Supports equities, property, mutual funds, bonds with Budget 2025 rates and exemptions.">
+    <meta name="keywords" content="capital gains tax calculator, LTCG calculator 2025, STCG calculator, Budget 2025 tax, Section 54 exemption, indexation calculator, mutual fund tax, property tax India, bond tax calculator, tax planning 2025">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Capital Gains Tax Calculator India FY 2025-26</title>
+    <!-- Canonical Tag to Resolve Duplicate Content -->
+    <link rel="canonical" href="https://moneymindtool.com/capital-gains.html">
+    <title>Capital Gains Tax Calculator India FY 2025-26 | MoneyMindTool</title>
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap&font-display=swap');
         body { 
             font-family: 'Inter', sans-serif; 
             background: linear-gradient(180deg, #E8F0FE, #F9FAFB);
@@ -105,6 +107,22 @@
             z-index: 1000;
             top: 100%;
             right: 0;
+            scrollbar-width: thin;
+            scrollbar-color: #F57C00 #E8F0FE;
+        }
+        .dropdown-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .dropdown-content::-webkit-scrollbar-track {
+            background: #E8F0FE;
+            border-radius: 8px;
+        }
+        .dropdown-content::-webkit-scrollbar-thumb {
+            background: #F57C00;
+            border-radius: 8px;
+        }
+        .dropdown-content::-webkit-scrollbar-thumb:hover {
+            background: #E65100;
         }
         .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
             display: block;
@@ -150,6 +168,24 @@
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
     }
     </script>
+    <!-- Schema Markup: Organization (Local SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MoneyMindTool",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chennai",
+        "addressRegion": "Tamil Nadu",
+        "addressCountry": "India"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@moneymindtool.com"
+      }
+    }
+    </script>
     <!-- Schema Markup: FAQPage -->
     <script type="application/ld+json">
     {
@@ -177,7 +213,7 @@
           "name": "Can I claim exemptions on capital gains?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, under Section 54 (property reinvestment), 54EC (bonds), or 54F (net proceeds reinvested), subject to conditions and limits."
+            "text": "Yes, under Section 54 (property reinvestment), 54EC (bonds, up to ₹50 lakh), or 54F (net proceeds reinvested), subject to conditions."
           }
         },
         {
@@ -241,39 +277,40 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-white">Financial Calculators</h1>
             <nav class="flex space-x-4">
-                <a href="/index.html" class="text-white hover:text-orange-500 font-medium">Home</a>
+                <a href="https://moneymindtool.com/" class="text-white hover:text-orange-500 font-medium">Home</a>
                 <div class="relative dropdown">
-                    <a href="/all-calculators.html" class="text-white hover:text-orange-500 font-medium" aria-expanded="false">Calculators</a>
+                    <a href="https://moneymindtool.com/all-calculators" class="text-white hover:text-orange-500 font-medium" aria-expanded="false">Calculators</a>
                     <div class="dropdown-content">
-                        <a href="/all-calculators">All Calculators</a>
-                        <a href="/income-tax.html">Income Tax Calculator</a>
-                        <a href="/simple-interest.html">Simple Interest Calculator</a>
-                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
-                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
-                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
-                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
-                        <a href="/sip.html">SIP Calculator</a>
-                        <a href="/compound-interest.html">Compound Interest Calculator</a>
-                        <a href="/ppf.html">PPF Calculator</a>
-                        <a href="/nps.html">NPS Calculator</a>
-                        <a href="/hra.html">HRA Exemption Calculator</a>
-                        <a href="/gratuity.html">Gratuity Calculator</a>
-                        <a href="/loanemi.html">Loan EMI Calculator</a>
-                        <a href="/home-loan.html">Home EMI Calculator</a>
-                        <a href="/capital-gains.html">Capital Gains Calculator</a>
-                        <a href="gst-calculator.html">GST Interest & Late Fee Calculator</a>
-                        <a href="/retirement.html">Retirement Planning Calculator</a>
+                        <a href="https://moneymindtool.com/all-calculators">All Calculators</a>
+                        <a href="https://moneymindtool.com/income-tax.html">Income Tax Calculator</a>
+                        <a href="https://moneymindtool.com/simple-interest.html">Simple Interest Calculator</a>
+                        <a href="https://moneymindtool.com/fixed-deposit.html">Fixed Deposit Calculator</a>
+                        <a href="https://moneymindtool.com/recurring-deposit.html">Recurring Deposit Calculator</a>
+                        <a href="https://moneymindtool.com/educational-loan.html">Educational Loan EMI Calculator</a>
+                        <a href="https://moneymindtool.com/personal-loan.html">Personal Loan EMI Calculator</a>
+                        <a href="https://moneymindtool.com/sip.html">SIP Calculator</a>
+                        <a href="https://moneymindtool.com/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="https://moneymindtool.com/ppf.html">PPF Calculator</a>
+                        <a href="https://moneymindtool.com/nps.html">NPS Calculator</a>
+                        <a href="https://moneymindtool.com/hra.html">HRA Exemption Calculator</a>
+                        <a href="https://moneymindtool.com/gratuity.html">Gratuity Calculator</a>
+                        <a href="https://moneymindtool.com/loanemi.html">Loan EMI Calculator</a>
+                        <a href="https://moneymindtool.com/home-loan.html">Home EMI Calculator</a>
+                        <a href="https://moneymindtool.com/capital-gains.html">Capital Gains Calculator</a>
+                        <a href="https://moneymindtool.com/gst-calculator.html">GST Interest & Late Fee Calculator</a>
+                        <a href="https://moneymindtool.com/retirement.html">Retirement Planning Calculator</a>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Ensure unique content for this page to avoid internal duplication -->
         <section class="mb-8">
             <h1 class="text-3xl font-semibold text-indigo-900 text-center mb-6">Capital Gains Tax Calculator India FY 2025-26</h1>
-            <p class="text-center text-gray-600 mb-4">Calculate your capital gains tax for FY 2025-26 (AY 2026-27). Supports equities, property, mutual funds, and bonds with Budget 2025 rates, indexation, and exemptions. Try our <a href="/retirement.html" class="text-indigo-900 hover:text-orange-500">Retirement Planning Calculator</a> or <a href="/gst-calculator.html" class="text-indigo-900 hover:text-orange-500">GST Calculator</a> for more tools.</p>
+            <p class="text-center text-gray-600 mb-4">Estimate your capital gains tax for FY 2025-26 (AY 2026-27) with Budget 2025 rates. Supports equities, property, mutual funds, and bonds with exemptions (Sections 54, 54EC, 54F). Try our <a href="https://moneymindtool.com/retirement.html" class="text-indigo-900 hover:text-orange-500">Retirement Planning Calculator</a> or <a href="https://moneymindtool.com/gst-calculator.html" class="text-indigo-900 hover:text-orange-500">GST Calculator</a> for more tools.</p>
             <div class="text-center">
-                <a href="/all-calculators" class="text-indigo-900 hover:text-orange-500 font-semibold">Back to All Calculators</a>
+                <a href="https://moneymindtool.com/all-calculators" class="text-indigo-900 hover:text-orange-500 font-semibold">Back to All Calculators</a>
             </div>
         </section>
         <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
@@ -380,6 +417,32 @@
             <p class="text-gray-600">This calculator is for informational purposes only. Results are estimates and may not account for all tax rules, exemptions, or circumstances. Consult a tax advisor for accurate calculations.</p>
         </div>
     </div>
+    <div id="privacyModal" class="modal">
+        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('privacyModal')" aria-label="Close Privacy Modal">×</span>
+            <h3 class="text-xl font-semibold text-indigo-900 mb-2">Privacy Policy</h3>
+            <p class="text-gray-600">This Privacy Policy outlines how we collect, use, and protect your information on moneymindtool.com. We do not collect personal data unless voluntarily provided. Usage statistics and cookie-based analytics may be collected to improve user experience. We do not share your information with third parties except where required by law. By using our site, you consent to our Privacy Policy. We may update this policy from time to time without prior notice.</p>
+        </div>
+    </div>
+    <div id="aboutModal" class="modal">
+        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('aboutModal')" aria-label="Close About Modal">×</span>
+            <h3 class="text-xl font-semibold text-indigo-900 mb-2">About Us</h3>
+            <p class="text-gray-600">At MoneyMindTool, we are committed to helping individuals in India make informed financial decisions. Our free calculators are tailored for Indian users based on the latest financial year guidelines. We are a digital-first platform by DigiCreature Technologies aiming to simplify tax, investment, and loan planning for everyone.</p>
+        </div>
+    </div>
+    <div id="contactModal" class="modal">
+        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('contactModal')" aria-label="Close Contact Modal">×</span>
+            <h3 class="text-xl font-semibold text-indigo-900 mb-2">Contact Us</h3>
+            <p class="text-gray-600">
+                We'd love to hear from you!<br>
+                📧 Email: <a href="mailto:support@moneymindtool.com" class="text-indigo-900 hover:text-orange-500">support@moneymindtool.com</a><br>
+                🏢 Company: DigiCreature Technologies<br>
+                📍 Chennai, Tamil Nadu, India
+            </p>
+        </div>
+    </div>
     <div id="termsModal" class="modal">
         <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
             <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
@@ -389,19 +452,19 @@
     </div>
     <footer class="bg-indigo-900 text-white text-center py-6">
         <div class="flex justify-center space-x-4">
-            <a href="/income-tax.html" class="hover:text-orange-500">Income Tax Calculator</a>
-            <span>|</span>
-            <a href="/loanemi.html" class="hover:text-orange-500">Loan EMI Calculator</a>
-            <span>|</span>
-            <a href="/retirement.html" class="hover:text-orange-500">Retirement Planning Calculator</a>
-            <span>|</span>
-            <a href="/gst-calculator.html" class="hover:text-orange-500">GST Calculator</a>
+            <a href="https://moneymindtool.com/income-tax.html" class="hover:text-orange-500">Income Tax Calculator</a>
             <span>|</span>
             <a href="#" onclick="openModal('disclaimerModal')" class="hover:text-orange-500">Disclaimer</a>
             <span>|</span>
             <a href="#" onclick="openModal('termsModal')" class="hover:text-orange-500">Terms & Conditions</a>
+            <span>|</span>
+            <a href="#" onclick="openModal('privacyModal')" class="hover:text-orange-500">Privacy Policy</a>
+            <span>|</span>
+            <a href="#" onclick="openModal('aboutModal')" class="hover:text-orange-500">About Us</a>
+            <span>|</span>
+            <a href="#" onclick="openModal('contactModal')" class="hover:text-orange-500">Contact Us</a>
         </div>
-        <p class="mt-2 text-sm">© 2025 Financial Calculators. All Rights Reserved.</p>
+        <p class="mt-2 text-sm">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
     </footer>
     <script>
         // Simplified CII table (example values, replace with actual CII data)
