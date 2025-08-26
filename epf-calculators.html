@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free EPF Calculator India 2025 for FY 2025-26. Calculate your Employee Provident Fund maturity amount, contributions, and interest instantly.">
+    <meta name="keywords" content="EPF calculator 2025, Employee Provident Fund calculator, EPF maturity amount, EPF interest rate 2025, EPF contribution calculator, PF calculator India, FY 2025-26 EPF calculator, Section 80C tax benefits, EPF withdrawal calculator, retirement savings calculator, financial planning India 2025, EPF balance calculator, EPF interest calculation, PF eligibility calculator, online EPF calculator India, personal finance tools 2025">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Financial Calculators">
+    <link rel="canonical" href="https://moneymindtool.com/epf-calculator.html">
+    <title>EPF Calculator India 2025 - Free Provident Fund Calculation</title>
+    <!-- Font Awesome CDN with local fallback -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script>
+        if (!window.FontAwesome) {
+            document.write('<link rel="stylesheet" href="/css/font-awesome.min.css">');
+        }
+    </script>
+    <!-- Chart.js CDN with local fallback -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script>
+        if (!window.Chart) {
+            document.write('<script src="/js/chart.umd.min.js"><\/script>');
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #E8F0FE, #F9FAFB);
+            min-height: 100vh;
+            color: #4B5EAA;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+        header {
+            background: #2A3EB1;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-container h1 {
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+        .nav-menu a:hover {
+            color: #F57C00;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #F9FAFB;
+            min-width: 220px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 100%;
+            right: 0;
+            scrollbar-width: thin;
+            scrollbar-color: #F57C00 #E8F0FE;
+        }
+        .dropdown-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .dropdown-content::-webkit-scrollbar-track {
+            background: #E8F0FE;
+            border-radius: 8px;
+        }
+        .dropdown-content::-webkit-scrollbar-thumb {
+            background: #F57C00;
+            border-radius: 8px;
+        }
+        .dropdown-content::-webkit-scrollbar-thumb:hover {
+            background: #E65100;
+        }
+        .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: #4B5EAA;
+            padding: 12px 16px;
+            display: block;
+            font-weight: 400;
+            margin: 0;
+            text-decoration: none;
+        }
+        .dropdown-content a:hover {
+            background: #E8F0FE;
+            color: #F57C00;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            flex: 1;
+        }
+        h1 {
+            font-size: 2.2em;
+            font-weight: 500;
+            text-align: center;
+            margin: 20px 0;
+            color: #2A3EB1;
+        }
+        h2 {
+            font-size: 1.8em;
+            font-weight: 500;
+            color: #2A3EB1;
+            margin: 20px 0 15px;
+            line-height: 1.3;
+        }
+        h3 {
+            font-size: 1.3em;
+            font-weight: 500;
+            color: #2A3EB1;
+            margin: 15px 0 10px;
+            line-height: 1.4;
+        }
+        .intro-section, .content-section, .faq-section {
+            padding: 25px;
+            margin: 20px 0;
+            background: #F9FAFB;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E8F0FE;
+        }
+        .content-section::before, .faq-section::before {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #F57C00;
+            margin: 0 auto 20px;
+            border-radius: 2px;
+        }
+        .intro-section p, .content-section p, .faq-item p {
+            font-size: 1em;
+            color: #4B5EAA;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .card {
+            background: #F9FAFB;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E8F0FE;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 1em;
+            font-weight: 400;
+            margin: 8px 0;
+            display: block;
+            color: #4B5EAA;
+        }
+        input, select {
+            font-size: 1em;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #E8F0FE;
+            border-radius: 8px;
+            background: #FFFFFF;
+            color: #4B5EAA;
+            width: 100%;
+            max-width: 200px;
+            transition: border 0.2s ease, box-shadow 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%234B5EAA" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+            cursor: pointer;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border: 1px solid #F57C00;
+            box-shadow: 0 0 8px rgba(245, 124, 0, 0.2);
+        }
+        input.error, select.error {
+            border: 1px solid #D32F2F;
+            box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+            outline: none;
+        }
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            background: #2A3EB1;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 10;
+        }
+        .tooltip:hover::after, .tooltip:focus::after {
+            opacity: 1;
+            visibility: visible;
+        }
+        button {
+            font-size: 1em;
+            font-weight: 600;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            background: #F57C00;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 48px;
+        }
+        button:hover {
+            background: #E65100;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(245, 124, 0, 0.3);
+        }
+        button:disabled {
+            background: #B0BEC5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        button.loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #FFFFFF;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .results {
+            font-size: 1em;
+            margin-top: 15px;
+            color: #4B5EAA;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        .error-message {
+            font-size: 0.9em;
+            color: #D32F2F;
+            margin: 8px 0;
+            display: none;
+        }
+        .note {
+            font-size: 0.9em;
+            color: #4B5EAA;
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            color: #2A3EB1;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: #F57C00;
+        }
+        .results-card {
+            display: none;
+        }
+        .results-card.visible {
+            display: block;
+        }
+        .chart-container {
+            max-width: 600px;
+            margin: 20px auto;
+            height: 300px;
+            max-height: 300px;
+        }
+        .breakdown-schedule {
+            margin-top: 20px;
+            display: none;
+        }
+        .breakdown-schedule.visible {
+            display: block;
+        }
+        .breakdown-schedule table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .breakdown-schedule th, .breakdown-schedule td {
+            border: 1px solid #E8F0FE;
+            padding: 8px;
+            text-align: right;
+            font-size: 0.9em;
+            color: #4B5EAA;
+        }
+        .breakdown-schedule th {
+            background: #E8F0FE;
+            color: #2A3EB1;
+            font-weight: 600;
+        }
+        .toggle-schedule, .toggle-deadlines {
+            font-size: 0.9em;
+            color: #2A3EB1;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .toggle-schedule:hover, .toggle-deadlines:hover {
+            color: #F57C00;
+        }
+        .faq-section {
+            margin: 40px 0;
+        }
+        strong {
+            color: #F57C00;
+            font-weight: 600;
+        }
+        .footer {
+            background: #2A3EB1;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: auto;
+        }
+        .footer-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1em;
+            font-weight: 400;
+        }
+        .footer-links a:hover {
+            color: #F57C00;
+        }
+        .rights-reserved {
+            font-size: 0.9em;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: scaleIn 0.3s ease;
+        }
+        .modal.show {
+            display: flex;
+        }
+        .modal-content {
+            background: #F9FAFB;
+            max-width: 500px;
+            width: 90%;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            color: #4B5EAA;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+        .modal-content h3 {
+            font-size: 1.5em;
+            font-weight: 500;
+            margin: 10px 0;
+            color: #2A3EB1;
+        }
+        .modal-content p {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5em;
+            color: #4B5EAA;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close:hover {
+            color: #F57C00;
+        }
+        .progress-bar {
+            width: 100%;
+            background: #E8F0FE;
+            border-radius: 8px;
+            height: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: #F57C00;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        .past-deadline {
+            color: #D32F2F;
+        }
+        .penalty {
+            font-weight: 600;
+        }
+        .deadlinesList.hidden {
+            display: none;
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 1024px) {
+            .nav-container h1 { font-size: 1.5em; }
+            .nav-menu a { margin-left: 15px; }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            p { font-size: 0.95em; }
+            .container { padding: 10px; }
+            .card, .content-section, .faq-section { padding: 15px; margin: 10px; }
+            input, select { max-width: 100%; }
+            .input-group { flex-direction: column; gap: 10px; align-items: stretch; }
+            button { width: 100%; max-width: 200px; }
+            .footer { padding: 15px; font-size: 0.9em; }
+            .rights-reserved { font-size: 0.8em; }
+            .modal-content { padding: 15px; }
+            .nav-container { flex-direction: column; }
+            .nav-menu { margin-top: 10px; }
+            .nav-menu a { margin: 5px 10px; }
+            .dropdown-content { min-width: 150px; }
+            .breakdown-schedule table { font-size: 0.8em; }
+            .breakdown-schedule th, .breakdown-schedule td { padding: 6px; }
+            .chart-container { max-width: 100%; height: 250px; max-height: 250px; }
+            .tooltip::after { white-space: normal; width: 200px; transform: translateX(-50%); }
+        }
+    </style>
+    <!-- Schema Markup for Web Application, FAQ, HowTo, and SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "EPF Calculator India 2025",
+      "description": "Free EPF Calculator India 2025 for FY 2025-26. Calculate your Employee Provident Fund maturity amount, contributions, and interest instantly.",
+      "url": "https://moneymindtool.com/epf-calculator.html",
+      "applicationCategory": "Financial",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an EPF Calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An EPF Calculator is an online tool that calculates the Employee Provident Fund maturity amount based on monthly salary, contributions, interest rate, and tenure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is EPF interest calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EPF interest is calculated monthly at 8.25% per annum (for FY 2025-26) and credited annually, using the formula: Interest = (Previous Balance + Monthly Contribution) * (Interest Rate / 12)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the tax benefits of EPF in FY 2025-26?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Employee contributions to EPF are eligible for tax deductions up to ₹1.5 lakh under Section 80C. Interest earned and maturity amounts are tax-exempt if withdrawn after 5 years of service."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the EPF interest rate for 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The EPF interest rate for FY 2025-26 is 8.25% per annum, as per EPFO guidelines."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is eligible for EPF in India in 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Employees in organizations with 20 or more employees, earning a basic salary up to ₹15,000 per month, are mandatorily covered under EPF. Others can opt in voluntarily."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I withdraw my EPF balance in 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, EPF withdrawals are allowed for specific reasons like retirement, unemployment, or home purchase, subject to EPFO rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the maximum EPF contribution in 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The employee and employer each contribute 12% of the basic salary. For salaries above ₹15,000, the employer’s EPS contribution is capped at ₹1,250/month."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does EPF help in retirement planning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EPF provides a secure, long-term savings option with guaranteed interest, ideal for retirement. Use this calculator to estimate your retirement corpus."
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate EPF Maturity Amount in India for FY 2025-26",
+      "description": "Step-by-step guide to calculate your EPF maturity amount using our free India EPF Calculator.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "text": "Enter your monthly basic salary (₹5,000 to ₹1,00,000).",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Input your contribution percentage (default 12%).",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Select tenure (1 to 35 years).",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Click 'Calculate' to view maturity amount, contributions, and breakdown schedule.",
+          "position": 4
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "EPF Calculator India",
+      "applicationCategory": "FinancialApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "description": "Free online EPF Calculator for FY 2025-26 to calculate maturity amount, contributions, and interest in India."
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <h1>Financial Calculators</h1>
+            <nav class="nav-menu">
+                <a href="https://moneymindtool.com/index.html" aria-label="Go to Home">Home</a>
+                <div class="dropdown">
+                    <a href="https://moneymindtool.com/all-calculators.html" aria-label="View All Calculators" aria-expanded="false" role="button">Calculators</a>
+                    <div class="dropdown-content">
+                        <a href="https://moneymindtool.com/all-calculators.html" aria-label="All Calculators">All Calculators</a>
+                        <a href="https://moneymindtool.com/income-tax.html" aria-label="Income Tax Calculator">Income Tax Calculator</a>
+                        <a href="https://moneymindtool.com/simple-interest.html" aria-label="Simple Interest Calculator">Simple Interest Calculator</a>
+                        <a href="https://moneymindtool.com/fixed-deposit.html" aria-label="Fixed Deposit Calculator">Fixed Deposit Calculator</a>
+                        <a href="https://moneymindtool.com/recurring-deposit.html" aria-label="Recurring Deposit Calculator">Recurring Deposit Calculator</a>
+                        <a href="https://moneymindtool.com/educational-loan.html" aria-label="Educational Loan EMI Calculator">Educational Loan EMI Calculator</a>
+                        <a href="https://moneymindtool.com/personal-loan.html" aria-label="Personal Loan EMI Calculator">Personal Loan EMI Calculator</a>
+                        <a href="https://moneymindtool.com/sip.html" aria-label="SIP Calculator">SIP Calculator</a>
+                        <a href="https://moneymindtool.com/compound-interest.html" aria-label="Compound Interest Calculator">Compound Interest Calculator</a>
+                        <a href="https://moneymindtool.com/ppf.html" aria-label="PPF Calculator">PPF Calculator</a>
+                        <a href="https://moneymindtool.com/nps.html" aria-label="NPS Calculator">NPS Calculator</a>
+                        <a href="https://moneymindtool.com/hra.html" aria-label="HRA Exemption Calculator">HRA Exemption Calculator</a>
+                        <a href="https://moneymindtool.com/gratuity.html" aria-label="Gratuity Calculator">Gratuity Calculator</a>
+                        <a href="https://moneymindtool.com/loanemi.html" aria-label="Loan EMI Calculator">Loan EMI Calculator</a>
+                        <a href="https://moneymindtool.com/home-loan.html" aria-label="Home EMI Calculator">Home EMI Calculator</a>
+                        <a href="https://moneymindtool.com/capital-gains.html" aria-label="Capital Gains Calculator">Capital Gains Calculator</a>
+                        <a href="https://moneymindtool.com/gst-calculator.html" aria-label="GST Interest & Late Fee Calculator">GST Interest & Late Fee Calculator</a>
+                        <a href="https://moneymindtool.com/retirement.html" aria-label="Retirement Planning Calculator">Retirement Planning Calculator</a>
+                        <a href="https://moneymindtool.com/epf-calculators.html" aria-label="EPF Calculator">EPF Calculator</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h1>EPF Calculator India 2025</h1>
+        <div class="intro-section">
+            <p>Calculate your <strong>Employee Provident Fund (EPF)</strong> maturity amount for FY 2025-26 with our free <strong>EPF Calculator</strong>, designed for Indian employees. Estimate your <strong>contributions</strong>, interest earned, and total savings instantly.</p>
+            <p>EPF is a secure retirement savings scheme with <strong>tax benefits</strong> under Section 80C (up to ₹1.5 lakh). Use our tool to plan your retirement and explore our <a href="https://moneymindtool.com/ppf.html" aria-label="PPF Calculator">PPF Calculator</a>, <a href="https://moneymindtool.com/income-tax.html", aria-label="Income Tax Calculator">Income Tax Calculator</a>, or <a href="https://moneymindtool.com/retirement.html" aria-label="Retirement Planning Calculator">Retirement Planning Calculator</a> for more financial insights.</p>
+        </div>
+        <a href="https://moneymindtool.com/all-calculators.html" class="back-link" aria-label="Back to All Calculators">Back to All Calculators</a>
+        <div class="content-section">
+            <h2><i class="fas fa-calculator"></i> Why Use Our EPF Calculator?</h2>
+            <p>Plan your retirement savings with our <strong>free EPF calculator</strong> for FY 2025-26, tailored for Indian employees.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Instant <strong>maturity amount</strong> and interest calculations for up to 35 years.</li>
+                <li><i class="fas fa-table"></i> Detailed year-wise contribution and balance breakdown.</li>
+                <li><i class="fas fa-shield-alt"></i> Reflects tax benefits under Section 80C.</li>
+            </ul>
+            <h3>EPF Calculator for FY 2025-26</h3>
+            <p>Estimate your <strong>retirement corpus</strong> with an interest rate of 8.25%.</p>
+            <h3>Online EPF Savings Calculator</h3>
+            <p>Get instant <strong>savings projections</strong> for informed financial planning.</p>
+        </div>
+        <div class="card">
+            <h2>Calculate Your EPF Maturity Amount</h2>
+            <div class="progress-bar">
+                <div class="progress" id="epfProgress"></div>
+            </div>
+            <div class="input-group">
+                <div>
+                    <label for="basicSalary">Monthly Basic Salary (₹): <span class="tooltip" data-tooltip="Basic salary (₹5,000 to ₹1,00,000)" tabindex="0" aria-label="Basic Salary Tooltip">?</span></label>
+                    <input type="number" id="basicSalary" min="5000" max="100000" value="25000" aria-label="Monthly Basic Salary in Rupees">
+                </div>
+                <div>
+                    <label for="contributionRate">Contribution Rate (%): <span class="tooltip" data-tooltip="Employee contribution (10% to 12%)" tabindex="0" aria-label="Contribution Rate Tooltip">?</span></label>
+                    <input type="number" id="contributionRate" min="10" max="12" step="0.1" value="12" aria-label="Employee Contribution Rate in Percent">
+                </div>
+                <div>
+                    <label for="tenure">Tenure (Years): <span class="tooltip" data-tooltip="Service period (1 to 35 years)" tabindex="0" aria-label="Tenure Tooltip">?</span></label>
+                    <select id="tenure" aria-label="Select Tenure in Years">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                        <option value="35">35</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <button id="calcButton" onclick="calcEPF()" disabled aria-label="Calculate EPF Maturity Amount">Calculate</button>
+                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
+            </div>
+            <div class="note">Enter monthly basic salary in ₹ (₹5,000 to ₹1,00,000), contribution rate (10% to 12%), and tenure (1 to 35 years). Interest is calculated at 8.25% per annum, compounded monthly, and credited annually. Results are estimates; consult your employer or EPFO for exact terms.</div>
+        </div>
+        <div class="card results-card">
+            <div class="error-message" id="errorMessage"></div>
+            <div class="results" id="epfResult"></div>
+            <div class="chart-container">
+                <canvas id="epfChart"></canvas>
+            </div>
+            <div class="breakdown-schedule" id="breakdownSchedule">
+                <span class="toggle-schedule" onclick="toggleSchedule()" aria-label="Toggle Breakdown Schedule">Show Contribution Breakdown</span>
+                <table id="scheduleTable">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Employee Contribution (₹)</th>
+                            <th>Employer Contribution (₹)</th>
+                            <th>Interest Earned (₹)</th>
+                            <th>Balance (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <button onclick="resetForm()" aria-label="Calculate Again">Calculate Again</button>
+        </div>
+        <div class="card">
+            <h2>Important EPF Deadlines FY 2025-26</h2>
+            <ul id="deadlinesList" class="hidden">
+                <li id="pf-contribution"><strong>Monthly PF Contribution Deposit</strong>: 15th of every month. <span class="penalty">Consequence: Interest penalty of 12% p.a. if delayed.</span></li>
+                <li><strong>Section 80C Tax Deduction Claim</strong>: March 31, 2026. Claim up to ₹1.5 lakh on employee contributions.</li>
+                <li><strong>EPF Withdrawal Claim</strong>: Ongoing, subject to EPFO processing timelines. Ensure claims are filed promptly to avoid delays.</li>
+            </ul>
+            <span class="toggle-deadlines" onclick="toggleDeadlines()" role="button" aria-label="Toggle Deadlines">Show Deadlines</span>
+        </div>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What is an EPF Calculator?</h3>
+                <p>An EPF Calculator is an online tool that calculates the Employee Provident Fund maturity amount based on monthly salary, contributions, interest rate, and tenure.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is EPF interest calculated?</h3>
+                <p>EPF interest is calculated monthly at 8.25% per annum (for FY 2025-26) and credited annually, using the formula: Interest = (Previous Balance + Monthly Contribution) * (Interest Rate / 12).</p>
+            </div>
+            <div class="faq-item">
+                <h3>What are the tax benefits of EPF in FY 2025-26?</h3>
+                <p>Employee contributions to EPF are eligible for tax deductions up to ₹1.5 lakh under Section 80C. Interest earned and maturity amounts are tax-exempt if withdrawn after 5 years of service.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the EPF interest rate for 2025?</h3>
+                <p>The EPF interest rate for FY 2025-26 is 8.25% per annum, as per EPFO guidelines.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Who is eligible for EPF in India in 2025?</h3>
+                <p>Employees in organizations with 20 or more employees, earning a basic salary up to ₹15,000 per month, are mandatorily covered under EPF. Others can opt in voluntarily.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I withdraw my EPF balance in 2025?</h3>
+                <p>Yes, EPF withdrawals are allowed for specific reasons like retirement, unemployment, or home purchase, subject to EPFO rules.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the maximum EPF contribution in 2025?</h3>
+                <p>The employee and employer each contribute 12% of the basic salary. For salaries above ₹15,000, the employer’s EPS contribution is capped at ₹1,250/month.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How does EPF help in retirement planning?</h3>
+                <p>EPF provides a secure, long-term savings option with guaranteed interest, ideal for retirement. Use our <a href="https://moneymindtool.com/retirement.html" aria-label="Retirement Planning Calculator">Retirement Planning Calculator</a> for comprehensive planning.</p>
+            </div>
+        </div>
+    </div>
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
+            <h3>Disclaimer</h3>
+            <p>The calculators on this website are provided for informational and educational purposes only. Results are estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results. Consult a qualified financial advisor or EPFO for exact terms. We are not liable for any losses or damages arising from the use of these calculators.</p>
+        </div>
+    </div>
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
+            <h3>Terms and Conditions</h3>
+            <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://moneymindtool.com/income-tax.html" aria-label="Income Tax Calculator">Income Tax Calculator</a> |
+            <a href="https://moneymindtool.com/ppf.html" aria-label="PPF Calculator">PPF Calculator</a> |
+            <a href="https://moneymindtool.com/personal-loan.html" aria-label="Personal Loan Calculator">Personal Loan Calculator</a> |
+            <a href="https://moneymindtool.com/retirement.html" aria-label="Retirement Planning Calculator">Retirement Planning Calculator</a> |
+            <a href="#" onclick="openModal('disclaimerModal')" aria-label="View Disclaimer">Disclaimer</a> |
+            <a href="#" onclick="openModal('termsModal')" aria-label="View Terms and Conditions">Terms and Conditions</a>
+        </div>
+        <p class="rights-reserved">© 2025 Financial Calculators. All Rights Reserved.</p>
+    </footer>
+    <script>
+        // Chart.js configuration
+        const chartConfig = {
+            type: 'bar',
+            data: {
+                labels: ['Employee Contribution', 'Employer Contribution', 'Interest Earned', 'Maturity Amount'],
+                datasets: [{
+                    label: 'Amount (₹)',
+                    data: [0, 0, 0, 0],
+                    backgroundColor: ['#2A3EB1', '#F57C00', '#DC2626', '#059669'],
+                    borderColor: ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Amount (₹)',
+                            color: '#4B5EAA',
+                            font: { family: 'Inter', size: 14 }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'EPF Savings Breakdown',
+                        color: '#2A3EB1',
+                        font: { family: 'Inter', size: 16 }
+                    }
+                }
+            }
+        };
+
+        let epfChart;
+        window.onload = function() {
+            try {
+                const ctx = document.getElementById('epfChart')?.getContext('2d');
+                if (ctx) {
+                    epfChart = new Chart(ctx, chartConfig);
+                } else {
+                    console.error('Chart canvas not found');
+                }
+                updateDeadlines();
+                updateProgress();
+                validateInputs();
+                document.querySelectorAll('input, select').forEach(input => {
+                    input.addEventListener('input', () => {
+                        validateInputs();
+                        updateProgress();
+                    });
+                });
+                document.querySelectorAll('.tooltip').forEach(tooltip => {
+                    tooltip.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            tooltip.focus();
+                        }
+                    });
+                });
+                document.querySelectorAll('.faq-item h3').forEach(item => {
+                    item.addEventListener('click', () => {
+                        gtag('event', 'faq_click', {
+                            event_category: 'FAQ',
+                            event_label: item.textContent
+                        });
+                    });
+                });
+                document.querySelectorAll('.dropdown-content a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        gtag('event', 'dropdown_click', {
+                            event_category: 'Navigation',
+                            event_label: link.textContent
+                        });
+                    });
+                });
+            } catch (e) {
+                console.error('Error in window.onload:', e);
+            }
+        };
+
+        function formatIndianNumber(num) {
+            if (isNaN(num) || num === null) return "0.00";
+            num = Math.round(num * 100) / 100;
+            let str = num.toFixed(2).toString();
+            let [integer, decimal] = str.split('.');
+            let lastThree = integer.slice(-3);
+            let otherDigits = integer.slice(0, -3);
+            if (otherDigits) {
+                lastThree = ',' + lastThree;
+            }
+            let result = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree;
+            return result + '.' + decimal;
+        }
+
+        function updateProgress() {
+            const inputs = ['basicSalary', 'contributionRate', 'tenure'];
+            let filled = inputs.reduce((count, id) => {
+                let value = document.getElementById(id).value;
+                return count + (value !== '' ? 1 : 0);
+            }, 0);
+            document.getElementById('epfProgress').style.width = `${(filled / inputs.length) * 100}%`;
+        }
+
+        function updateDeadlines() {
+            const today = new Date('2025-08-20');
+            const contributionDeadline = new Date('2026-03-15');
+            const taxDeductionDeadline = new Date('2026-03-31');
+            const deadlinesList = document.getElementById('deadlinesList');
+            if (today > contributionDeadline) {
+                const pastItem = document.getElementById('pf-contribution');
+                pastItem.classList.add('past-deadline');
+                pastItem.innerHTML = '<strong>Monthly PF Contribution Deposit:</strong> Deadline passed (March 15, 2026). <span class="penalty">Consequence: Interest penalty of 12% p.a. for delayed deposits.</span>';
+            }
+            if (today > taxDeductionDeadline) {
+                const taxItem = document.querySelector('#deadlinesList li:nth-child(2)');
+                taxItem.classList.add('past-deadline');
+                taxItem.innerHTML = '<strong>Section 80C Tax Deduction Claim:</strong> Deadline passed (March 31, 2026). <span class="penalty">Consequence: Loss of deduction for FY 2025-26; claim in next FY.</span>';
+            }
+        }
+
+        function validateInputs() {
+            let basicSalary = parseFloat(document.getElementById('basicSalary').value);
+            let contributionRate = parseFloat(document.getElementById('contributionRate').value);
+            let tenure = parseFloat(document.getElementById('tenure').value);
+            let errorMessage = document.getElementById('errorMessage');
+            let calcButton = document.getElementById('calcButton');
+            let salaryInput = document.getElementById('basicSalary');
+            let rateInput = document.getElementById('contributionRate');
+            let tenureInput = document.getElementById('tenure');
+
+            salaryInput.classList.remove('error');
+            rateInput.classList.remove('error');
+            tenureInput.classList.remove('error');
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
+
+            let errors = [];
+
+            if (isNaN(basicSalary) || basicSalary < 5000 || basicSalary > 100000) {
+                errors.push('Basic salary must be between ₹5,000 and ₹1,00,000.');
+                salaryInput.classList.add('error');
+            }
+            if (isNaN(contributionRate) || contributionRate < 10 || contributionRate > 12) {
+                errors.push('Contribution rate must be between 10% and 12%.');
+                rateInput.classList.add('error');
+            }
+            if (isNaN(tenure) || tenure < 1 || tenure > 35) {
+                errors.push('Tenure must be between 1 and 35 years.');
+                tenureInput.classList.add('error');
+            }
+
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                document.querySelector('.results-card').classList.add('visible');
+                calcButton.disabled = true;
+                return false;
+            }
+
+            calcButton.disabled = false;
+            return true;
+        }
+
+        function generateBreakdownSchedule(basicSalary, contributionRate, tenureYears, interestRate) {
+            try {
+                let balance = 0;
+                let schedule = [];
+                let totalEmployeeContribution = 0;
+                let totalEmployerContribution = 0;
+                let totalInterest = 0;
+                const monthlyRate = interestRate / 12 / 100; // Monthly interest rate
+                const isEpsApplicable = basicSalary <= 15000;
+                const monthlyEmployeeContribution = Math.round(basicSalary * (contributionRate / 100));
+                const monthlyEmployerPfContribution = isEpsApplicable ? Math.round(basicSalary * 0.0367) : monthlyEmployeeContribution;
+                const monthlyEpsContribution = isEpsApplicable ? Math.min(1250, Math.round(basicSalary * 0.0833)) : 0;
+
+                for (let year = 1; year <= tenureYears; year++) {
+                    let yearlyEmployeeContribution = 0;
+                    let yearlyEmployerContribution = 0;
+                    let yearlyInterest = 0;
+
+                    for (let month = 1; month <= 12; month++) {
+                        // Calculate interest for the month
+                        let monthlyInterest = balance * monthlyRate;
+                        balance += monthlyInterest;
+                        yearlyInterest += monthlyInterest;
+
+                        // Add monthly contributions
+                        yearlyEmployeeContribution += monthlyEmployeeContribution;
+                        yearlyEmployerContribution += monthlyEmployerPfContribution;
+                        balance += monthlyEmployeeContribution + monthlyEmployerPfContribution;
+                    }
+
+                    totalEmployeeContribution += yearlyEmployeeContribution;
+                    totalEmployerContribution += yearlyEmployerContribution;
+                    totalInterest += yearlyInterest;
+
+                    schedule.push({
+                        year,
+                        employeeContribution: Math.round(yearlyEmployeeContribution),
+                        employerContribution: Math.round(yearlyEmployerContribution),
+                        interest: Math.round(yearlyInterest),
+                        balance: Math.round(balance)
+                    });
+
+                    if (balance <= 0) break; // Prevent negative balance
+                }
+
+                return { schedule, totalEmployeeContribution, totalEmployerContribution, totalInterest, maturityAmount: Math.round(balance) };
+            } catch (e) {
+                console.error('Error in generateBreakdownSchedule:', e);
+                return { schedule: [], totalEmployeeContribution: 0, totalEmployerContribution: 0, totalInterest: 0, maturityAmount: 0 };
+            }
+        }
+
+        function calcEPF() {
+            if (!validateInputs()) return;
+
+            let calcButton = document.getElementById('calcButton');
+            calcButton.classList.add('loading');
+            setTimeout(() => {
+                try {
+                    let basicSalary = parseFloat(document.getElementById('basicSalary').value);
+                    let contributionRate = parseFloat(document.getElementById('contributionRate').value);
+                    let tenure = parseFloat(document.getElementById('tenure').value);
+                    const interestRate = 8.25; // EPF interest rate for FY 2025-26
+
+                    // Generate Breakdown Schedule
+                    let { schedule, totalEmployeeContribution, totalEmployerContribution, totalInterest, maturityAmount } = generateBreakdownSchedule(basicSalary, contributionRate, tenure, interestRate);
+
+                    // Update Result
+                    let result = `
+                        <strong style="color: #2A3EB1;">EPF Maturity Details:</strong><br>
+                        Employee Contribution: ₹${formatIndianNumber(totalEmployeeContribution)}<br>
+                        Employer Contribution: ₹${formatIndianNumber(totalEmployerContribution)}<br>
+                        Interest Earned: ₹${formatIndianNumber(totalInterest)}<br>
+                        Maturity Amount: ₹${formatIndianNumber(maturityAmount)}<br>
+                        Tax Benefits: Up to ₹1.5 lakh on employee contributions under Section 80C.
+                    `;
+                    document.getElementById('epfResult').innerHTML = result;
+
+                    // Populate Breakdown Schedule
+                    let tbody = document.querySelector('#scheduleTable tbody');
+                    tbody.innerHTML = '';
+                    schedule.forEach(row => {
+                        let tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${row.year}</td>
+                            <td>₹${formatIndianNumber(row.employeeContribution)}</td>
+                            <td>₹${formatIndianNumber(row.employerContribution)}</td>
+                            <td>₹${formatIndianNumber(row.interest)}</td>
+                            <td>₹${formatIndianNumber(row.balance)}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+
+                    // Update Chart
+                    if (epfChart) {
+                        epfChart.data.datasets[0].data = [totalEmployeeContribution, totalEmployerContribution, totalInterest, maturityAmount];
+                        epfChart.update();
+                    }
+
+                    document.querySelector('.results-card').classList.add('visible');
+                    document.querySelector('.breakdown-schedule').style.display = 'block';
+                    document.querySelector('.breakdown-schedule').classList.remove('visible');
+                    document.querySelector('.toggle-schedule').textContent = 'Show Contribution Breakdown';
+                    calcButton.classList.remove('loading');
+
+                    // Track calculation event
+                    gtag('event', 'calculate_epf', {
+                        event_category: 'Calculator',
+                        event_label: 'EPF Calculator'
+                    });
+                } catch (e) {
+                    console.error('Error in calcEPF:', e);
+                    document.getElementById('errorMessage').innerHTML = 'An error occurred during calculation. Please try again.';
+                    document.getElementById('errorMessage').style.display = 'block';
+                    calcButton.classList.remove('loading');
+                }
+            }, 300);
+        }
+
+        function toggleSchedule() {
+            let schedule = document.querySelector('.breakdown-schedule');
+            let toggle = document.querySelector('.toggle-schedule');
+            let table = document.querySelector('#scheduleTable');
+            if (schedule.classList.contains('visible')) {
+                schedule.classList.remove('visible');
+                table.style.display = 'none';
+                toggle.textContent = 'Show Contribution Breakdown';
+            } else {
+                schedule.classList.add('visible');
+                table.style.display = 'table';
+                toggle.textContent = 'Hide Contribution Breakdown';
+            }
+            gtag('event', 'toggle_schedule', {
+                event_category: 'Schedule',
+                event_label: 'EPF Contribution Breakdown'
+            });
+        }
+
+        function toggleDeadlines() {
+            let deadlines = document.getElementById('deadlinesList');
+            let toggle = document.querySelector('.toggle-deadlines');
+            if (deadlines.classList.contains('hidden')) {
+                deadlines.classList.remove('hidden');
+                toggle.textContent = 'Hide Deadlines';
+            } else {
+                deadlines.classList.add('hidden');
+                toggle.textContent = 'Show Deadlines';
+            }
+            gtag('event', 'toggle_deadlines', {
+                event_category: 'Deadlines',
+                event_label: 'EPF Deadlines'
+            });
+        }
+
+        function resetForm() {
+            document.getElementById('basicSalary').value = '25000';
+            document.getElementById('contributionRate').value = '12';
+            document.getElementById('tenure').value = '10';
+            document.getElementById('epfResult').innerHTML = '';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.querySelector('.results-card').classList.remove('visible');
+            document.querySelector('.breakdown-schedule').style.display = 'none';
+            document.querySelector('.breakdown-schedule').classList.remove('visible');
+            document.querySelector('.toggle-schedule').textContent = 'Show Contribution Breakdown';
+            document.getElementById('calcButton').disabled = true;
+            document.querySelector('#scheduleTable tbody').innerHTML = '';
+            if (epfChart) {
+                epfChart.data.datasets[0].data = [0, 0, 0, 0];
+                epfChart.update();
+            }
+            updateProgress();
+            validateInputs();
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
+            modal.classList.add('show');
+            gtag('event', 'open_modal', {
+                event_category: 'Modal',
+                event_label: modalId
+            });
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+            modal.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
