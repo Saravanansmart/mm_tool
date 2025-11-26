@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GYW0708DQY');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate your gratuity amount for FY 2025-26 in India with our free Gratuity Calculator. Estimate your employee benefits based on salary and service years.">
-    <meta name="keywords" content="gratuity calculator India, gratuity calculation 2025, employee gratuity FY 2025-26, gratuity benefits India, gratuity payout calculator, gratuity eligibility 2025, end of service calculator India, gratuity tax exemption, online gratuity calculator 2025, employee benefits calculator, gratuity rules India, gratuity for private sector, gratuity calculation formula, financial calculators India 2025, retirement benefits calculator, gratuity planner 2025, employee gratuity rules, personal finance tools India">
+    <meta name="description" content="Calculate your gratuity amount for FY 2025-26 in India with our free Gratuity Calculator. Estimate your employee benefits based on salary and service years. Includes Gratuity Formula and Updated Eligibility Rules.">
+    <meta name="keywords" content="gratuity calculator India, gratuity calculation 2025, employee gratuity FY 2025-26, gratuity benefits India, gratuity payout calculator, gratuity eligibility 2025, end of service calculator India, gratuity tax exemption, online gratuity calculator 2025, gratuity calculation formula, new labour codes gratuity">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <title>Gratuity Calculator India FY 2025-26 - Calculate Employee Benefits</title>
+    <title>Gratuity Calculator India FY 2025-26 - Calculate Employee Benefits (Updated Rules)</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
         * {
             margin: 0;
             padding: 0;
@@ -30,9 +29,10 @@
             color: #212121;
             display: flex;
             flex-direction: column;
+            line-height: 1.6;
         }
         header {
-            background: #1A237E;
+            background: #1A237E; /* Dark Indigo */
             color: #FFFFFF;
             padding: 15px 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -61,15 +61,16 @@
             font-size: 1em;
             margin-left: 20px;
             font-weight: 600;
+            transition: color 0.2s ease;
         }
         .nav-menu a:hover {
-            color: #FF6F00;
+            color: #FF6F00; /* Orange highlight */
         }
         .dropdown {
             position: relative;
             display: inline-block;
         }
-         .dropdown-content {
+        .dropdown-content {
             display: none;
             position: absolute;
             background: #F9FAFB;
@@ -88,9 +89,10 @@
             display: block;
             font-weight: 400;
             margin: 0;
+            transition: background 0.2s ease, color 0.2s ease;
         }
         .dropdown-content a:hover {
-            background: #F5F7FA;
+            background: #E8EAF6;
             color: #FF6F00;
         }
         .dropdown:hover .dropdown-content {
@@ -104,7 +106,7 @@
         }
         h1 {
             font-size: 2.5em;
-            font-weight: 700;
+            font-weight: 800;
             text-align: center;
             margin: 20px 0;
             color: #1A237E;
@@ -115,32 +117,30 @@
         }
         .intro-section p {
             font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
+            color: #424242;
+            line-height: 1.6;
             margin-bottom: 15px;
         }
         .card {
             background: #FFFFFF;
             border-radius: 12px;
-            padding: 20px;
+            padding: 25px;
             margin: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #E0E0E0;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border: 2px solid #1A237E;
+            transition: box-shadow 0.2s ease;
         }
         h2 {
-            font-size: 1.5em;
-            font-weight: 600;
+            font-size: 1.6em;
+            font-weight: 700;
             margin: 10px 0;
             color: #1A237E;
+            border-bottom: 2px solid #E8EAF6;
+            padding-bottom: 5px;
         }
         label {
             font-size: 1em;
-            font-weight: 400;
+            font-weight: 600;
             margin: 8px 0;
             display: block;
             color: #212121;
@@ -149,12 +149,12 @@
             font-size: 1em;
             padding: 10px;
             margin: 8px 0;
-            border: 1px solid #E0E0E0;
+            border: 1px solid #BDBDBD;
             border-radius: 8px;
             background: #F5F5F5;
             color: #212121;
             width: 100%;
-            max-width: 200px;
+            max-width: 250px;
             transition: border 0.2s ease, box-shadow 0.2s ease;
         }
         input:focus {
@@ -169,14 +169,24 @@
         .input-group {
             display: flex;
             flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .input-group > div {
+            flex-grow: 1;
+            min-width: 250px; /* Wider input containers for labels */
+        }
+        .button-group {
+            display: flex;
             gap: 15px;
-            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
         }
         button {
             font-size: 1em;
             font-weight: 700;
-            padding: 10px 20px;
-            margin: 8px 0;
+            padding: 12px 25px;
             border: none;
             border-radius: 8px;
             background: #FF6F00;
@@ -186,7 +196,7 @@
         }
         button:hover {
             background: #F57C00;
-            transform: scale(1.05);
+            transform: scale(1.03);
             box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
         }
         button:disabled {
@@ -196,22 +206,38 @@
             box-shadow: none;
         }
         .results {
-            font-size: 1em;
+            font-size: 1.1em;
             margin-top: 15px;
-            color: #212121;
-            font-weight: 400;
+            color: #1A237E;
+            font-weight: 700;
+            padding: 15px;
+            background: #E8EAF6;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .results strong {
+            display: block;
+            font-size: 1.2em;
+            color: #FF6F00;
+            margin-top: 5px;
         }
         .error-message {
             font-size: 0.9em;
             color: #D32F2F;
             margin: 8px 0;
+            padding: 10px;
+            border: 1px solid #D32F2F;
+            background: #FFEBEE;
+            border-radius: 8px;
             display: none;
         }
         .note {
             font-size: 0.9em;
             color: #616161;
-            margin: 8px 0;
+            margin: 15px 0 0 0;
             line-height: 1.5;
+            padding: 10px;
+            border-top: 1px dashed #B0BEC5;
         }
         .back-link {
             display: block;
@@ -220,13 +246,14 @@
             color: #1A237E;
             text-decoration: none;
             font-size: 1em;
-            font-weight: 600;
+            font-weight: 700;
         }
         .back-link:hover {
             color: #FF6F00;
         }
         .results-card {
             display: none;
+            border-color: #FF6F00;
         }
         .results-card.visible {
             display: block;
@@ -235,23 +262,44 @@
             margin: 40px 0;
         }
         .faq-section h2 {
-            font-size: 1.8em;
+            font-size: 2em;
             text-align: center;
             margin-bottom: 20px;
+            color: #1A237E;
+            border-bottom: none;
         }
         .faq-item {
             margin: 20px 0;
+            padding: 15px;
+            border-left: 5px solid #FF6F00;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
         }
         .faq-item h3 {
             font-size: 1.2em;
-            font-weight: 600;
+            font-weight: 700;
             color: #1A237E;
             margin-bottom: 10px;
         }
         .faq-item p {
             font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
+            color: #424242;
+            line-height: 1.6;
+        }
+        .formula {
+            margin: 20px 0;
+            padding: 15px;
+            background: #E8EAF6;
+            border-left: 4px solid #1A237E;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+        .formula strong {
+            font-weight: 700;
+            color: #FF6F00;
         }
         .footer {
             background: #1A237E;
@@ -288,6 +336,9 @@
             align-items: center;
             z-index: 1000;
             animation: scaleIn 0.3s ease;
+        }
+        .modal.show {
+            display: flex;
         }
         .modal-content {
             background: #FFFFFF;
@@ -330,17 +381,15 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
-        @media (max-width: 1024px) {
-            .nav-container h1 { font-size: 1.5em; }
-            .nav-menu a { margin-left: 15px; }
-        }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .container { padding: 10px 10px 30px; }
             .card { padding: 15px; }
             input { max-width: 100%; }
             .input-group { flex-direction: column; gap: 10px; }
-            button { width: 100%; max-width: 200px; }
+            .input-group > div { min-width: 100%; }
+            .button-group { flex-direction: column; }
+            button { width: 100%; max-width: 100%; }
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
@@ -350,7 +399,6 @@
             .dropdown-content { min-width: 150px; }
         }
     </style>
-    <!-- Schema Markup for Web Application and FAQ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -385,15 +433,15 @@
           "name": "How is gratuity calculated in India?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Gratuity is calculated using the formula: Gratuity = (15/26) × (Basic Salary + DA) × Years of Service. The years are rounded up, and the tax-exempt amount is capped at ₹20,00,000 for FY 2025-26."
+            "text": "Gratuity for employees covered under the Act is calculated using the formula: Gratuity = (15/26) × (Basic Salary + DA) × Years of Service (Rounded Up). The definition of 'Basic Salary + DA' has been broadened under new labour codes, potentially increasing the payout base. The tax-exempt amount is capped at ₹20,00,000 for private-sector employees."
           }
         },
         {
           "@type": "Question",
-          "name": "Who is eligible for gratuity in India?",
+          "name": "Who is eligible for gratuity under the New Labour Codes?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Employees who have completed at least 5 years of continuous service with an employer in India are eligible for gratuity under the Payment of Gratuity Act, 1972. This applies to both private and public sector employees."
+            "text": "The minimum eligibility period remains 5 years of continuous service for permanent employees. However, fixed-term and contract employees are now eligible for gratuity after completing just 1 year of continuous service. This is a significant change under the new labour codes."
           }
         },
         {
@@ -401,7 +449,7 @@
           "name": "Is the gratuity amount tax-free for FY 2025-26?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Gratuity is tax-exempt up to ₹20,00,000 or the calculated amount, whichever is lower, for FY 2025-26. Any amount above this limit is taxable. Consult a tax professional for personalized advice."
+            "text": "For private-sector employees, gratuity is tax-exempt up to ₹20,00,000 or the calculated amount, whichever is lower, for FY 2025-26. Central Government employees may have a higher exemption limit (up to ₹25,00,000). Any amount above the exempt limit is taxable."
           }
         }
       ]
@@ -441,51 +489,57 @@
         </div>
     </header>
     <div class="container">
-        <h1>Gratuity Calculator FY 2025-26</h1>
+        <h1>Gratuity Calculator India FY 2025-26: Estimate Your Tax-Free Benefit 💸</h1>
         <div class="intro-section">
-            <p>Estimate your gratuity amount for FY 2025-26 with our free Gratuity Calculator tailored for employees in India. Enter your basic salary, dearness allowance (DA), and years of service to calculate your entitled benefits under the Payment of Gratuity Act, 1972. Plan your finances with accurate and instant results.</p>
-            <p>Gratuity is a valuable employee benefit for those with 5 or more years of service. Our tool simplifies the calculation process, providing both the total gratuity and the tax-exempt amount (up to ₹20,00,000). Whether you're in the private or public sector, use our calculator to understand your gratuity entitlement for FY 2025-26.</p>
+            <p>Estimate your <strong>gratuity amount</strong> for <strong>FY 2025-26</strong> with our free Gratuity Calculator tailored for employees in India. Gratuity is a statutory <strong>employee benefit</strong> for those completing <strong>5 or more years of continuous service</strong>.</p>
+            <p>Enter your <strong>Basic Salary + Dearness Allowance (DA)</strong> and <strong>Years of Service</strong> to calculate your entitled benefit under the Payment of Gratuity Act, 1972. <strong>New Labour Codes (2025)</strong> have broadened the definition of 'wage', potentially increasing your gratuity base, and reduced the eligibility period for <strong>fixed-term/contract employees to 1 year</strong>.</p>
         </div>
         <a href="/all-calculators" class="back-link">Back to All Calculators</a>
+
         <div class="card">
-            <h2>Gratuity Calculator</h2>
+            <h2>Calculate Your Employee Gratuity</h2>
             <div class="input-group">
                 <div>
-                    <label for="basicDA">Basic Salary + DA (₹/month):</label>
+                    <label for="basicDA">Last Drawn Basic Salary + DA (₹/month):</label>
                     <input type="number" id="basicDA" min="0" value="50000">
                 </div>
                 <div>
-                    <label for="yearsService">Years of Service:</label>
+                    <label for="yearsService">Years of Continuous Service (Min. 5 for Permanent Staff*):</label>
                     <input type="number" id="yearsService" min="5" value="10">
                 </div>
             </div>
-            <div class="input-group">
+            <div class="button-group">
                 <button id="calcButton" onclick="calcGratuity()" disabled>Calculate</button>
                 <button onclick="resetForm()">Reset</button>
             </div>
-            <div class="note">Enter basic salary + DA in ₹ per month. Gratuity calculated for employees with 5+ years of service. Tax-exempt amount capped at ₹20,00,000.</div>
+            <div class="note">
+                <strong>Note on Eligibility:</strong> *The 5-year minimum applies to permanent staff. <strong>Fixed-term/Contract employees are now eligible after 1 year</strong> of continuous service. The tax-exempt amount for private employees remains capped at <strong>₹20,00,000</strong>.
+            </div>
         </div>
+        
+
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="gratuityResult"></div>
         </div>
+
         <div class="faq-section">
-            <h2>Frequently Asked Questions</h2>
+            <h2>Frequently Asked Questions ❓</h2>
             <div class="faq-item">
                 <h3>What is a Gratuity Calculator?</h3>
-                <p>A Gratuity Calculator is an online tool that estimates the gratuity amount an employee is entitled to in India based on their basic salary, dearness allowance (DA), and years of service. It is applicable for employees with 5 or more years of service.</p>
+                <p>A <strong>Gratuity Calculator</strong> is an online tool that estimates the <strong>gratuity amount</strong> an employee is entitled to in India based on their <strong>basic salary, dearness allowance (DA), and years of service</strong>. It is applicable for employees meeting the statutory service requirement.</p>
             </div>
             <div class="faq-item">
                 <h3>How is gratuity calculated in India?</h3>
-                <p>Gratuity is calculated using the formula: Gratuity = (15/26) × (Basic Salary + DA) × Years of Service. The years are rounded up, and the tax-exempt amount is capped at ₹20,00,000 for FY 2025-26.</p>
+                <p>Gratuity for employees covered under the Act is calculated using the formula: <strong>Gratuity = (15/26) × (Basic Salary + DA) × Years of Service (Rounded Up)</strong>. The definition of <strong>'Basic Salary + DA' has been broadened</strong> under new labour codes, potentially leading to <strong>higher payouts</strong> for many employees, as the calculation base must be at least 50% of the total remuneration.</p>
             </div>
             <div class="faq-item">
-                <h3>Who is eligible for gratuity in India?</h3>
-                <p>Employees who have completed at least 5 years of continuous service with an employer in India are eligible for gratuity under the Payment of Gratuity Act, 1972. This applies to both private and public sector employees.</p>
+                <h3>Who is eligible for gratuity under the New Labour Codes?</h3>
+                <p>The minimum eligibility period remains <strong>5 years of continuous service for permanent employees</strong>. However, under the new rules, <strong>fixed-term and contract employees</strong> are now eligible for gratuity after completing just <strong>1 year of continuous service</strong>, bringing them on par with permanent staff for this benefit.</p>
             </div>
             <div class="faq-item">
                 <h3>Is the gratuity amount tax-free for FY 2025-26?</h3>
-                <p>Gratuity is tax-exempt up to ₹20,00,000 or the calculated amount, whichever is lower, for FY 2025-26. Any amount above this limit is taxable. Consult a tax professional for personalized advice.</p>
+                <p>For <strong>private-sector employees</strong>, gratuity is <strong>tax-exempt up to ₹20,00,000</strong> or the calculated amount, whichever is lower, for FY 2025-26. <strong>Central Government employees</strong> may have a higher exemption limit (up to <strong>₹25,00,000</strong>). Any amount above the exempt limit is taxable.</p>
             </div>
         </div>
     </div>
@@ -512,7 +566,7 @@
     </footer>
     <script>
         function formatIndianNumber(num) {
-            if (isNaN(num)) return "0";
+            if (isNaN(num)) return "0.00";
             num = Math.round(num * 100) / 100;
             let str = num.toFixed(2).toString();
             let [integer, decimal] = str.split('.');
@@ -533,19 +587,22 @@
             let basicDAInput = document.getElementById('basicDA');
             let yearsServiceInput = document.getElementById('yearsService');
 
+            // Reset error states
             basicDAInput.classList.remove('error');
             yearsServiceInput.classList.remove('error');
             errorMessage.style.display = 'none';
             errorMessage.innerHTML = '';
-
+            
             let errors = [];
 
             if (isNaN(basicDA) || basicDA <= 0) {
-                errors.push('Please enter a valid basic salary + DA (greater than 0).');
+                errors.push('Please enter a valid last drawn Basic Salary + DA (greater than 0).');
                 basicDAInput.classList.add('error');
             }
-            if (isNaN(yearsService) || yearsService < 5) {
-                errors.push('Please enter valid years of service (5 or greater).');
+            
+            // Note: Validation allows any service years >= 1 due to the new rules for fixed-term/contract, but the input field default is 5.
+            if (isNaN(yearsService) || yearsService < 1) {
+                errors.push('Please enter valid years of service (minimum 1 year for fixed-term/contract employees).');
                 yearsServiceInput.classList.add('error');
             }
 
@@ -566,13 +623,40 @@
 
             let basicDA = parseFloat(document.getElementById('basicDA').value);
             let yearsService = parseFloat(document.getElementById('yearsService').value);
-            let yearsRounded = Math.ceil(yearsService);
+            
+            // --- Gratuity Act 1972 (for covered employees) ---
+            // Service rounding for calculation: rounds up if service exceeds 6 months in the last year
+            let yearsRounded = Math.floor(yearsService);
+            if (yearsService - yearsRounded >= 0.5) {
+                yearsRounded += 1;
+            }
 
+            // Ensure the minimum eligible service is 1 year (reflecting new rules)
+            yearsRounded = Math.max(1, yearsRounded);
+            
+            // Gratuity calculation: (15/26) * Last Drawn Basic Pay + DA * Completed Years of Service (rounded)
             let gratuity = (15 / 26) * basicDA * yearsRounded;
-            let taxExempt = Math.min(gratuity, 2000000);
+            
+            // Tax Exemption Cap for private employees
+            const TAX_EXEMPT_MAX = 2000000;
+            let taxExempt = Math.min(gratuity, TAX_EXEMPT_MAX);
 
-            document.getElementById('gratuityResult').innerHTML = `Gratuity Amount: ₹${formatIndianNumber(gratuity)}, Tax-Exempt Amount: ₹${formatIndianNumber(taxExempt)}`;
+            document.getElementById('gratuityResult').innerHTML = `
+                <div style="font-size: 1.2em; margin-bottom: 10px;">
+                    Calculated Gratuity (Rounded Years: ${yearsRounded}):
+                    <strong>₹${formatIndianNumber(gratuity)}</strong>
+                </div>
+                <div style="font-size: 1em;">
+                    Maximum Tax-Exempt Amount (Private Sector):
+                    <strong>₹${formatIndianNumber(taxExempt)}</strong>
+                </div>
+                <div style="font-size: 0.9em; margin-top: 10px;">
+                    Taxable Gratuity: ₹${formatIndianNumber(Math.max(0, gratuity - taxExempt))}
+                </div>
+            `;
             document.querySelector('.results-card').classList.add('visible');
+            document.querySelector('.results-card').scrollIntoView({ behavior: 'smooth' });
+
 
             // Track gratuity calculation event
             gtag('event', 'calculate_gratuity', {
@@ -607,6 +691,7 @@
             validateInputs();
             document.getElementById('basicDA').addEventListener('input', validateInputs);
             document.getElementById('yearsService').addEventListener('input', validateInputs);
+            document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
         };
     </script>
 </body>

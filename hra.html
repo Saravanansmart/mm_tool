@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GYW0708DQY');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate your HRA tax exemption for FY 2025-26 with our free HRA Exemption Calculator for India. Save on taxes by estimating house rent allowance benefits based on salary, rent, and city type. Explore expert guides for smarter financial planning.">
-    <meta name="keywords" content="HRA exemption calculator India, HRA tax exemption 2025, house rent allowance calculator, FY 2025-26 HRA calculator, HRA benefits India, HRA calculation 2025, tax saving calculator India, HRA exemption rules, online HRA calculator 2025, house rent tax benefits, HRA for salaried employees, Section 10(13A) calculator, HRA tax planner, employee tax benefits 2025, personal finance tools India, HRA deduction calculator, tax exemption calculator India, financial planning India 2025, tax planning 2025">
+    <meta name="description" content="Calculate your HRA tax exemption for FY 2025-26 with our free HRA Exemption Calculator for India. Estimate house rent allowance benefits based on salary, rent, and city type. Explore expert guides for smarter financial planning.">
+    <meta name="keywords" content="HRA exemption calculator India, HRA tax exemption 2025, house rent allowance calculator, FY 2025-26 HRA calculator, HRA benefits India, HRA calculation 2025, tax saving calculator India, HRA exemption rules, online HRA calculator 2025, house rent tax benefits, HRA for salaried employees, Section 10(13A) calculator, HRA tax planner">
     <meta name="robots" content="index, follow">
     <meta name="author" content="MoneyMindTool">
     <title>HRA Exemption Calculator India FY 2025-26 - Calculate Tax Benefits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
         * {
             margin: 0;
             padding: 0;
@@ -30,6 +30,7 @@
             color: #212121;
             display: flex;
             flex-direction: column;
+            line-height: 1.6;
         }
         header {
             background: #1A237E;
@@ -61,6 +62,7 @@
             font-size: 1em;
             margin-left: 20px;
             font-weight: 600;
+            transition: color 0.2s ease;
         }
         .nav-menu a:hover {
             color: #FF6F00;
@@ -99,7 +101,7 @@
             background: #E65100;
         }
         .dropdown-content a {
-            color: #4B5EAA;
+            color: #1A237E;
             padding: 12px 16px;
             display: block;
             font-weight: 400;
@@ -122,7 +124,7 @@
         }
         h1 {
             font-size: 2.5em;
-            font-weight: 700;
+            font-weight: 800;
             text-align: center;
             margin: 20px 0;
             color: #1A237E;
@@ -133,32 +135,30 @@
         }
         .intro-section p {
             font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
+            color: #424242;
+            line-height: 1.6;
             margin-bottom: 15px;
         }
         .card {
             background: #FFFFFF;
             border-radius: 12px;
-            padding: 20px;
+            padding: 25px;
             margin: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #E0E0E0;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border: 2px solid #1A237E;
+            transition: box-shadow 0.2s ease;
         }
         h2 {
-            font-size: 1.5em;
-            font-weight: 600;
+            font-size: 1.6em;
+            font-weight: 700;
             margin: 10px 0;
             color: #1A237E;
+            border-bottom: 2px solid #E8EAF6;
+            padding-bottom: 5px;
         }
         label {
             font-size: 1em;
-            font-weight: 400;
+            font-weight: 600;
             margin: 8px 0;
             display: block;
             color: #212121;
@@ -167,12 +167,12 @@
             font-size: 1em;
             padding: 10px;
             margin: 8px 0;
-            border: 1px solid #E0E0E0;
+            border: 1px solid #BDBDBD;
             border-radius: 8px;
             background: #F5F5F5;
             color: #212121;
             width: 100%;
-            max-width: 200px;
+            max-width: 250px;
             transition: border 0.2s ease, box-shadow 0.2s ease;
         }
         input:focus, select:focus {
@@ -187,14 +187,24 @@
         .input-group {
             display: flex;
             flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .input-group > div {
+            flex-grow: 1;
+            min-width: 200px;
+        }
+        .button-group {
+            display: flex;
             gap: 15px;
-            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
         }
         button {
             font-size: 1em;
             font-weight: 700;
-            padding: 10px 20px;
-            margin: 8px 0;
+            padding: 12px 25px;
             border: none;
             border-radius: 8px;
             background: #FF6F00;
@@ -204,7 +214,7 @@
         }
         button:hover {
             background: #F57C00;
-            transform: scale(1.05);
+            transform: scale(1.03);
             box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
         }
         button:disabled {
@@ -214,22 +224,38 @@
             box-shadow: none;
         }
         .results {
-            font-size: 1em;
+            font-size: 1.1em;
             margin-top: 15px;
-            color: #212121;
-            font-weight: 400;
+            color: #1A237E;
+            font-weight: 700;
+            padding: 15px;
+            background: #E8EAF6;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .results strong {
+            display: block;
+            font-size: 1.2em;
+            color: #FF6F00;
+            margin-top: 5px;
         }
         .error-message {
             font-size: 0.9em;
             color: #D32F2F;
             margin: 8px 0;
+            padding: 10px;
+            border: 1px solid #D32F2F;
+            background: #FFEBEE;
+            border-radius: 8px;
             display: none;
         }
         .note {
             font-size: 0.9em;
             color: #616161;
-            margin: 8px 0;
+            margin: 15px 0 0 0;
             line-height: 1.5;
+            padding: 10px;
+            border-top: 1px dashed #B0BEC5;
         }
         .back-link {
             display: block;
@@ -238,13 +264,14 @@
             color: #1A237E;
             text-decoration: none;
             font-size: 1em;
-            font-weight: 600;
+            font-weight: 700;
         }
         .back-link:hover {
             color: #FF6F00;
         }
         .results-card {
             display: none;
+            border-color: #FF6F00;
         }
         .results-card.visible {
             display: block;
@@ -253,35 +280,43 @@
             margin: 40px 0;
         }
         .faq-section h2 {
-            font-size: 1.8em;
+            font-size: 2em;
             text-align: center;
             margin-bottom: 20px;
+            color: #1A237E;
+            border-bottom: none;
         }
         .faq-item {
             margin: 20px 0;
+            padding: 15px;
+            border-left: 5px solid #FF6F00;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
         }
         .faq-item h3 {
             font-size: 1.2em;
-            font-weight: 600;
+            font-weight: 700;
             color: #1A237E;
             margin-bottom: 10px;
         }
         .faq-item p {
             font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
+            color: #424242;
+            line-height: 1.6;
         }
         .featured-blogs {
             max-width: 800px;
-            margin: 40px 0;
+            margin: 40px auto;
             padding: 20px;
         }
         .featured-blogs h2 {
-            font-size: 1.8em;
+            font-size: 2em;
             font-weight: 700;
             color: #1A237E;
             text-align: center;
             margin-bottom: 20px;
+            border-bottom: none;
         }
         .blog-grid {
             display: grid;
@@ -293,6 +328,7 @@
             border-radius: 12px;
             padding: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #1A237E;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .blog-card:hover {
@@ -301,8 +337,8 @@
         }
         .blog-card h3 {
             font-size: 1.3em;
-            font-weight: 600;
-            color: #1A237E;
+            font-weight: 700;
+            color: #FF6F00;
             margin-bottom: 10px;
         }
         .blog-card p {
@@ -314,8 +350,9 @@
         .blog-card a {
             font-size: 0.9em;
             font-weight: 700;
-            color: #FF6F00;
+            color: #1A237E;
             text-decoration: none;
+            transition: color 0.2s ease;
         }
         .blog-card a:hover {
             color: #F57C00;
@@ -375,6 +412,9 @@
             z-index: 1000;
             animation: scaleIn 0.3s ease;
         }
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
         .modal-content {
             background: #FFFFFF;
             max-width: 500px;
@@ -386,9 +426,6 @@
             position: relative;
             transform: scale(0.95);
             transition: transform 0.2s ease;
-        }
-        .modal.show .modal-content {
-            transform: scale(1);
         }
         .modal-content h3 {
             font-size: 1.5em;
@@ -416,20 +453,14 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
-        @media (max-width: 1024px) {
-            .nav-container h1 { font-size: 1.5em; }
-            .nav-menu a { margin-left: 15px; }
-            .blog-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .container { padding: 10px 10px 30px; }
             .card { padding: 15px; }
             input, select { max-width: 100%; }
             .input-group { flex-direction: column; gap: 10px; }
-            button { width: 100%; max-width: 200px; }
+            .button-group { flex-direction: column; }
+            button { width: 100%; max-width: 100%; }
             .footer { padding: 15px; font-size: 0.9em; }
             .rights-reserved { font-size: 0.8em; }
             .modal-content { padding: 15px; }
@@ -442,7 +473,6 @@
             }
         }
     </style>
-    <!-- Schema Markup for Web Application and FAQ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -459,7 +489,6 @@
       }
     }
     </script>
-    <!-- New: ItemList for Featured Blog Posts -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -512,7 +541,7 @@
         },
         {
           "@type": "Article",
-          "headline": "Grow Your Savings with Our Recurring Deposit Calculator for FY 2025-26",
+          "headline": "Build Wealth with Our Recurring Deposit Calculator for FY 2025-26",
           "description": "Plan your Recurring Deposits (RDs) for FY 2025-26 with our RD Calculator. Learn how to save systematically, compare rates, and achieve your financial goals with ease.",
           "url": "https://moneymindtool.com/blog/recurring-deposit-calculator-2025.html",
           "author": {
@@ -528,7 +557,6 @@
       ]
     }
     </script>
-    <!-- FAQ structured data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -547,7 +575,7 @@
           "name": "How is HRA exemption calculated in India?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "HRA exemption is the minimum of: 1) HRA received, 2) Rent paid minus 10% of basic salary, 3) 50% of basic salary (metro cities) or 40% (non-metro cities). Our calculator uses these rules for FY 2025-26."
+            "text": "HRA exemption is the minimum of three conditions: 1) HRA received, 2) Rent paid minus 10% of basic salary, and 3) 50% of basic salary (metro cities) or 40% (non-metro cities). Our calculator uses these rules for FY 2025-26 under the Old Tax Regime."
           }
         },
         {
@@ -555,15 +583,16 @@
           "name": "Which cities are considered metro cities for HRA exemption?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For HRA exemption, metro cities in India are Delhi, Mumbai, Kolkata, and Chennai. Other cities are classified as non-metro, qualifying for a 40% basic salary exemption."
+            "text": "For HRA exemption, the official metro cities in India are Delhi, Mumbai, Kolkata, and Chennai (DMKC). Other cities are classified as non-metro, qualifying for a 40% basic salary exemption."
           }
         },
         {
           "@type": "Question",
-          "name": "Is HRA exemption applicable for FY 2025-26?",
+          "@type": "Question",
+          "name": "Is HRA exemption applicable under the New Tax Regime (FY 2025-26)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, HRA exemption is applicable for FY 2025-26 under the old tax regime in India. The calculator provides estimates based on current rules, but consult a tax professional for exact applicability."
+            "text": "No, HRA exemption under Section 10(13A) is generally not available if you opt for the simplified New Tax Regime (Section 115BAC) in FY 2025-26. This calculator assumes calculation under the Old Tax Regime for maximum deduction benefit."
           }
         }
       ]
@@ -604,17 +633,18 @@
         </div>
     </header>
     <div class="container">
-        <h1>HRA Exemption Calculator FY 2025-26</h1>
+        <h1>HRA Exemption Calculator India FY 2025-26: Maximize Your Tax Savings 🏠</h1>
         <div class="intro-section">
-            <p>Maximize your tax savings with our free HRA Exemption Calculator for FY 2025-26, designed for salaried employees in India. Enter your basic salary, HRA received, rent paid, and city type (metro or non-metro) to instantly estimate your tax-exempt House Rent Allowance under the old tax regime.</p>
-            <p>Our tool simplifies complex Income Tax rules, helping you reduce taxable income and plan your finances smarter. Whether you're in a metro city like Mumbai or a non-metro like Pune, calculate your HRA benefits effortlessly and take control of your financial future!</p>
+            <p>Maximize your tax savings with our free <strong>HRA Exemption Calculator</strong> for <strong>FY 2025-26</strong>, designed for salaried employees in India. This tool estimates the tax-exempt portion of your <strong>House Rent Allowance (HRA)</strong> under the <strong>Old Tax Regime</strong>.</p>
+            <p>Enter your basic salary, HRA received, rent paid, and city type to instantly find the maximum deduction available under <strong>Section 10(13A)</strong>. Use this insight to reduce your taxable income and plan your finances smarter!</p>
         </div>
         <a href="https://moneymindtool.com/all-calculators" class="back-link">Back to All Calculators</a>
+        
         <div class="card">
-            <h2>HRA Exemption Calculator</h2>
+            <h2>Calculate Your House Rent Allowance Exemption</h2>
             <div class="input-group">
                 <div>
-                    <label for="basicSalary">Basic Salary (₹/month):</label>
+                    <label for="basicSalary">Basic Salary + DA (₹/month):</label>
                     <input type="number" id="basicSalary" min="0" value="50000">
                 </div>
                 <div>
@@ -628,72 +658,82 @@
             </div>
             <div class="input-group">
                 <div>
-                    <label for="metroCity">Metro City:</label>
+                    <label for="metroCity">City Type:</label>
                     <select id="metroCity">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="yes">Metro City (50% Exemption)</option>
+                        <option value="no">Non-Metro City (40% Exemption)</option>
                     </select>
                 </div>
                 <div></div>
                 <div></div>
             </div>
-            <div class="input-group">
-                <button id="calcButton" onclick="calcHRA()" disabled>Calculate</button>
+            <div class="button-group">
+                <button id="calcButton" onclick="calcHRA()" disabled>Calculate Exemption</button>
                 <button onclick="resetForm()">Reset</button>
             </div>
-            <div class="note">Enter amounts in ₹ per month. HRA exemption calculated per Income Tax rules for FY 2025-26. Metro cities include Delhi, Mumbai, Kolkata, and Chennai.</div>
+            <div class="note">
+                <strong>Note:</strong> The calculation is based on monthly figures. Remember, HRA exemption is only claimable if you opt for the <strong>Old Tax Regime</strong> for FY 2025-26. Metro cities include Delhi, Mumbai, Kolkata, and Chennai.
+            </div>
         </div>
+        
+        <div class="card" style="border-color: #FF6F00; box-shadow: none;">
+            <h3>HRA Exemption Rule Breakdown (The "Minimum of Three" Rule)</h3>
+            <p>The maximum HRA amount exempt from tax is the <strong>least</strong> of the following three conditions (per monthly basis):</p>
+            <ul style="list-style-type: decimal; padding-left: 25px; margin-top: 10px;">
+                <li style="margin-bottom: 5px;"><strong>HRA Received:</strong> The actual amount of House Rent Allowance received from your employer.</li>
+                <li style="margin-bottom: 5px;"><strong>Rent Paid - 10% of Salary:</strong> Actual annual rent paid minus 10% of your Basic Salary + DA.</li>
+                <li style="margin-bottom: 5px;"><strong>Statutory Percentage:</strong> <ul style="list-style-type: circle; padding-left: 20px;">
+                        <li><strong>50%</strong> of (Basic Salary + DA) if living in a Metro City (Delhi, Mumbai, Kolkata, Chennai).</li>
+                        <li><strong>40%</strong> of (Basic Salary + DA) if living in a Non-Metro City.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="hraResult"></div>
         </div>
+        
         <div class="featured-blogs">
             <h2>Featured Financial Insights for FY 2025-26</h2>
-            <p>Explore our expert guides to save more on taxes and plan your finances smarter. Get tips tailored for Indian salaried employees and investors.</p>
+            <p style="text-align: center;">Explore our expert guides to save more on taxes and plan your finances smarter. Get tips tailored for Indian salaried employees and investors.</p>
             <br>
             <div class="blog-grid">
                 <div class="blog-card">
                     <h3>Master Your Taxes with Our Income Tax Calculator</h3>
                     <p>Learn how to save on taxes in FY 2025-26 using our Income Tax Calculator. Compare Old and New Tax Regimes, optimize deductions like Section 80C, and plan smarter.</p>
-                    <a href="https://moneymindtool.com/blog.html#income-tax-calculator">Read More</a>
+                    <a href="https://moneymindtool.com/blog/income-tax-calculator-2025.html">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="blog-card">
-                    <h3>Save More with Our HRA Exemption Calculator</h3>
-                    <p>Maximize your HRA exemptions in FY 2025-26. Our guide shows salaried employees how to use our HRA Exemption Calculator to reduce taxable income effectively.</p>
-                    <a href="https://moneymindtool.com/blog.html#hra-exemption-calculator">Read More</a>
-                </div>
-                <div class="blog-card">
-                    <h3>Plan Fixed Deposits with Our FD Calculator</h3>
+                    <h3>Plan Fixed Deposits Wisely: Using Our FD Calculator</h3>
                     <p>Discover how to grow your savings securely in FY 2025-26. Use our Fixed Deposit Calculator to compare rates and tenures for maximum returns.</p>
-                    <a href="https://moneymindtool.com/blog.html#fixed-deposit-calculator">Read More</a>
-                </div>
-                <div class="blog-card">
-                    <h3>Build Wealth with Our Recurring Deposit Calculator</h3>
-                    <p>Start saving systematically for FY 2025-26. Our RD Calculator helps you plan recurring deposits to achieve goals like buying a car or funding a vacation.</p>
-                    <a href="https://moneymindtool.com/blog.html#recurring-deposit-calculator">Read More</a>
+                    <a href="https://moneymindtool.com/blog/fixed-deposit-calculator-2025.html">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="show-more">
                 <a href="https://moneymindtool.com/blog.html">Explore All Insights</a>
             </div>
         </div>
+
         <div class="faq-section">
-            <h2>Frequently Asked Questions</h2>
+            <h2>Frequently Asked Questions ❓</h2>
             <div class="faq-item">
                 <h3>What is an HRA Exemption Calculator?</h3>
-                <p>An HRA Exemption Calculator is an online tool that estimates the tax-exempt portion of House Rent Allowance (HRA) in India based on basic salary, HRA received, rent paid, and whether you live in a metro or non-metro city.</p>
+                <p>An <strong>HRA Exemption Calculator</strong> is an online tool that estimates the <strong>tax-exempt portion</strong> of House Rent Allowance (HRA) in India based on basic salary, HRA received, rent paid, and whether you live in a metro or non-metro city.</p>
             </div>
             <div class="faq-item">
                 <h3>How is HRA exemption calculated in India?</h3>
-                <p>HRA exemption is the minimum of: 1) HRA received, 2) Rent paid minus 10% of basic salary, 3) 50% of basic salary (metro cities) or 40% (non-metro cities). Our calculator uses these rules for FY 2025-26.</p>
+                <p>HRA exemption is determined by taking the <strong>minimum of three calculated values</strong> (HRA received, Rent Paid minus 10% of salary, and the statutory percentage of salary—50% for metro, 40% for non-metro). This is the amount exempt from tax.</p>
             </div>
             <div class="faq-item">
                 <h3>Which cities are considered metro cities for HRA exemption?</h3>
-                <p>For HRA exemption, metro cities in India are Delhi, Mumbai, Kolkata, and Chennai. Other cities are classified as non-metro, qualifying for a 40% basic salary exemption.</p>
+                <p>For HRA exemption, the official metro cities in India are <strong>Delhi, Mumbai, Kolkata, and Chennai (DMKC)</strong>. Residing in one of these cities qualifies you for the 50% basic salary exemption limit.</p>
             </div>
             <div class="faq-item">
-                <h3>Is HRA exemption applicable for FY 2025-26?</h3>
-                <p>Yes, HRA exemption is applicable for FY 2025-26 under the old tax regime in India. The calculator provides estimates based on current rules, but consult a tax professional for exact applicability.</p>
+                <h3>Is HRA exemption applicable under the New Tax Regime (FY 2025-26)?</h3>
+                <p>No, HRA exemption under Section 10(13A) is generally <strong>not available</strong> if you opt for the simplified <strong>New Tax Regime (Section 115BAC)</strong> in FY 2025-26. This calculator assumes calculation under the <strong>Old Tax Regime</strong> for individuals aiming to maximize tax benefits.</p>
             </div>
         </div>
     </div>
@@ -720,7 +760,7 @@
     </footer>
     <script>
         function formatIndianNumber(num) {
-            if (isNaN(num)) return "0";
+            if (isNaN(num)) return "0.00";
             num = Math.round(num * 100) / 100;
             let str = num.toFixed(2).toString();
             let [integer, decimal] = str.split('.');
@@ -752,7 +792,7 @@
             let errors = [];
 
             if (isNaN(basicSalary) || basicSalary <= 0) {
-                errors.push('Please enter a valid basic salary (greater than 0).');
+                errors.push('Please enter a valid Basic Salary + DA (greater than 0).');
                 basicSalaryInput.classList.add('error');
             }
             if (isNaN(hraReceived) || hraReceived < 0) {
@@ -760,7 +800,7 @@
                 hraReceivedInput.classList.add('error');
             }
             if (isNaN(rentPaid) || rentPaid < 0) {
-                errors.push('Please enter a valid rent paid (0 or greater).');
+                errors.push('Please enter a valid Rent Paid (0 or greater).');
                 rentPaidInput.classList.add('error');
             }
 
@@ -783,17 +823,38 @@
             let hraReceived = parseFloat(document.getElementById('hraReceived').value);
             let rentPaid = parseFloat(document.getElementById('rentPaid').value);
             let metroCity = document.getElementById('metroCity').value;
+            
+            // HRA Calculation components (all monthly):
+            
+            // 1. Actual HRA received
+            let condition1 = hraReceived;
+            
+            // 2. Rent paid minus 10% of salary
+            let condition2 = rentPaid - (0.1 * basicSalary);
+            
+            // 3. 50% or 40% of salary
+            let condition3 = metroCity === 'yes' ? 0.5 * basicSalary : 0.4 * basicSalary;
+            
+            // Exemption is the minimum of the three conditions
+            let exemption = Math.min(condition1, condition2, condition3);
 
-            let exemption = Math.min(
-                hraReceived,
-                rentPaid - (0.1 * basicSalary),
-                metroCity === 'yes' ? 0.5 * basicSalary : 0.4 * basicSalary
-            );
             if (exemption < 0) exemption = 0;
             let taxableHRA = hraReceived - exemption;
-
-            document.getElementById('hraResult').innerHTML = `HRA Exempted: ₹${formatIndianNumber(exemption)}/month, Taxable HRA: ₹${formatIndianNumber(taxableHRA)}/month`;
+            
+            // Display Results
+            document.getElementById('hraResult').innerHTML = `
+                <div style="font-size: 1.2em; margin-bottom: 10px;">
+                    Maximum HRA Exemption: 
+                    <strong>₹${formatIndianNumber(exemption)}</strong> / month
+                </div>
+                <div style="font-size: 1em;">
+                    Taxable HRA (Will be added to your income): 
+                    <strong>₹${formatIndianNumber(taxableHRA)}</strong> / month
+                </div>
+            `;
             document.querySelector('.results-card').classList.add('visible');
+            document.querySelector('.results-card').scrollIntoView({ behavior: 'smooth' });
+
 
             // Track HRA calculation event
             gtag('event', 'calculate_hra', {
@@ -832,6 +893,7 @@
             document.getElementById('hraReceived').addEventListener('input', validateInputs);
             document.getElementById('rentPaid').addEventListener('input', validateInputs);
             document.getElementById('metroCity').addEventListener('change', validateInputs);
+            document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
         };
     </script>
 </body>
