@@ -370,6 +370,23 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "Calculator",
+      "name": "Fixed Deposit Maturity Calculator",
+      "url": "https://moneymindtool.com/fixed-deposit.html",
+      "input": [
+        { "name": "Principal", "type": "number", "unit": "INR" },
+        { "name": "Interest Rate", "type": "percentage" },
+        { "name": "Tenure", "type": "duration" }
+      ],
+      "output": [
+        { "name": "Maturity Amount", "type": "currency", "unit": "INR" },
+        { "name": "Interest Earned", "type": "currency", "unit": "INR" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
         {
