@@ -721,6 +721,7 @@
             <div class="chart-container">
                 <canvas id="emiChart" aria-label="Pie chart showing EMI breakdown"></canvas>
                 <p>Visual breakdown of principal and interest for your <strong>personal loan</strong>.</p>
+                
             </div>
             <div class="repayment-schedule" id="repaymentSchedule">
                 <span class="toggle-schedule" onclick="toggleSchedule()">Show Repayment Schedule</span>
@@ -800,16 +801,24 @@
             <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
         </div>
     </div>
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="/income-tax.html">Income Tax Calculator</a> |
-            <a href="/sip.html">SIP Calculator</a> |
-            <a href="/ppf.html">PPF Calculator</a> |
-            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
-            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
+    <div id="privacyModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('privacyModal')" aria-label="Close Privacy Policy Modal">×</span>
+                <h3>Privacy Policy</h3>
+                <p>We respect your privacy. This calculator works <strong>100% offline in your browser</strong> — no personal data is collected, stored, or transmitted via the calculator. We use Google Analytics (G-GYW0708DQY) for anonymous traffic analysis to improve user experience only.</p>
+            </div>
         </div>
-        <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
-    </footer>
+    <footer class="footer">
+            <div class="footer-links">
+                <a href="/income-tax.html">Income Tax Calculator</a> |
+                <a href="/sip.html">SIP Calculator</a> |
+                <a href="/ppf.html">PPF Calculator</a> |
+                <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
+                <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a> |
+                <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
+            </div>
+            <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
+        </footer>
     <script>
         // Chart.js Configuration
         const chartConfig = {
@@ -1068,6 +1077,8 @@
         function toggleDeadlines() {
             let deadlines = document.getElementById('deadlinesList');
             let toggle = document.querySelector('.toggle-deadlines');
+            
+            // Toggle the 'hidden' class based on its current state
             if (deadlines.classList.contains('hidden')) {
                 deadlines.classList.remove('hidden');
                 toggle.textContent = 'Hide Deadlines';
@@ -1075,6 +1086,7 @@
                 deadlines.classList.add('hidden');
                 toggle.textContent = 'Show Deadlines';
             }
+            
             gtag('event', 'toggle_deadlines', {
                 'event_category': 'Deadlines',
                 'event_label': 'Personal Loan Deadlines'

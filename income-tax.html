@@ -335,7 +335,7 @@
 <body>
     <header class="sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-white">Financial Calculators</h1>
+            <h1 class="text-2xl font-bold text-white">MoneyMindTool</h1>
             <nav class="flex space-x-4">               <a href="https://moneymindtool.com/index.html" class="text-white hover:text-orange-500 font-medium" aria-label="Go to Home">Home</a>
                 <div class="relative dropdown">
                     <a href="https://moneymindtool.com/all-calculators.html" class="text-white hover:text-orange-500 font-medium" aria-expanded="false" aria-label="View All Calculators">Calculators</a>
@@ -567,19 +567,23 @@
             <p class="text-gray-600">By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Usage is governed by Indian laws.</p>
         </div>
     </div>
+    <div id="privacyModal" class="modal">
+            <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
+                <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('privacyModal')" aria-label="Close Privacy Policy Modal">×</span>
+                <h3 class="text-xl font-semibold text-indigo-900 mb-2">Privacy Policy</h3>
+                <p class="text-gray-600">We respect your privacy. This calculator works <strong>100% offline in your browser</strong> — no personal data is collected, stored, or transmitted via the calculator. We use Google Analytics for anonymous traffic analysis to improve user experience only.</p>
+            </div>
+        </div>
     <footer class="bg-indigo-900 text-white text-center py-6">
         <div class="flex justify-center space-x-4">
-            <a href="https://moneymindtool.com/income-tax.html" class="hover:text-orange-500" aria-label="Income Tax Calculator">Income Tax Calculator</a>
-            <span>|</span>
-            <a href="https://moneymindtool.com/educational-loan.html" class="hover:text-orange-500" aria-label="Education Loan Calculator">Education Loan Calculator</a>
-            <span>|</span>
-            <a href="https://moneymindtool.com/home-loan.html" class="hover:text-orange-500" aria-label="Home Loan Calculator">Home Loan Calculator</a>
             <span>|</span>
             <a href="#" onclick="openModal('disclaimerModal')" class="hover:text-orange-500" aria-label="View Disclaimer">Disclaimer</a>
             <span>|</span>
             <a href="#" onclick="openModal('termsModal')" class="hover:text-orange-500" aria-label="View Terms and Conditions">Terms and Conditions</a>
+            <span>|</span>
+            <a href="#" onclick="openModal('privacyModal')" class="hover:text-orange-500" aria-label="View Privacy Policy">Privacy Policy</a>
         </div>
-        <p class="mt-2 text-sm">© 2025 Financial Calculators. All Rights Reserved.</p>
+        <p class="mt-2 text-sm">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
     </footer>
     <script>
         // Chart.js Configuration
