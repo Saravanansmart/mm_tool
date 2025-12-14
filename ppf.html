@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -16,7 +15,6 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
     <title>PPF Calculator India 2025 - Free Maturity & Returns Calculation</title>
-    <!-- Include Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
@@ -482,7 +480,6 @@
             .contribution-schedule th, .contribution-schedule td { padding: 6px; }
         }
     </style>
-    <!-- Updated Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -597,7 +594,7 @@
           "name": "Can I take a loan against my PPF account in 2025?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, loans are allowed from the 3rd to 6th year, up to 25% of the balance at the end of the second preceding year, repayable within 36 months."
+            "text": "Yes, loans are available from the 3rd to 6th year, up to 25% of the balance at the end of the second preceding year, repayable within 36 months."
           }
         }
       ]
@@ -730,6 +727,24 @@
             </div>
             <div class="note">Enter annual investment in ₹ (₹500 to ₹1,50,000). PPF maturity is calculated with annual compounding at the end of each financial year. Interest (currently 7.1% for FY 2025-26) and maturity proceeds are tax-free under Section 10(11). Tenure is 15 years, extendable in 5-year blocks. Results are estimates; consult your financial advisor.</div>
         </div>
+        <div class="rules-section" style="border: 2px solid #2A3EB1;">
+            <h2><i class="fas fa-chart-line"></i> The PPF Annual Compounding Formula</h2>
+            <p>The PPF calculation uses the compound interest formula for annual contributions. Interest is compounded annually at the end of every financial year, maximizing returns over the long 15-year tenure.</p>
+            
+            <div style="text-align: center; margin: 20px 0; background: #E8F0FE; padding: 20px; border-radius: 8px;">
+                <h3>Formula for PPF Maturity (Annual Contribution)</h3>
+                <p style="font-size: 1.1em; font-weight: 500; color: #F57C00;">A = P [{(1+r)^n - 1}] \ (r) </p>
+            </div>
+
+            <p>Where:</p>
+            <ul>
+                <li>A = Maturity Amount</li>
+                <li>P = Annual Contribution (Lump Sum)</li>
+                <li>r = Annual Interest Rate (e.g., 0.071 for 7.1%)</li>
+                <li>n = Tenure in Years</li>
+            </ul>
+            <p class="note" style="color: #3F51B5;">This model assumes the annual contribution is made on April 1st, thereby earning interest for the full financial year.</p>
+        </div>
         <div class="card results-card">
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="ppfResult"></div>
@@ -851,15 +866,23 @@
             <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
         </div>
     </div>
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('privacyModal')" aria-label="Close Privacy Policy Modal">×</span>
+            <h3>Privacy Policy</h3>
+            <p>We respect your privacy. This calculator works <strong>100% offline in your browser</strong> — no personal data is collected, stored, or transmitted via the calculator. We use Google Analytics for anonymous traffic analysis to improve user experience only.</p>
+        </div>
+    </div>
     <footer class="footer">
         <div class="footer-links">
             <a href="/income-tax.html">Income Tax Calculator</a> |
             <a href="/sip.html">SIP Calculator</a> |
             <a href="/personal-loan.html">Personal Loan Calculator</a> |
             <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
-            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
+            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a> |
+            <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
         </div>
-        <p class="rights-reserved">© 2025 Financial Calculators. All Rights Reserved.</p>
+        <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
     </footer>
     <script>
         function formatIndianNumber(num) {
@@ -890,9 +913,13 @@
             const depositDeadline = new Date('2026-03-31');
             const deadlinesList = document.getElementById('deadlinesList');
             const pastDeposit = document.getElementById('past-deposit');
+            
+            // Check for deadline passed status
             if (today > depositDeadline) {
-                pastDeposit.classList.add('past-deadline');
-                pastDeposit.innerHTML = '<strong>Annual PPF Deposit (FY 2025-26)</strong>: Deadline passed (March 31, 2026). <span class="penalty">Consequence: No further deposits for FY 2025-26; resume in FY 2026-27 with ₹50 penalty per year of default.</span>';
+                if (pastDeposit) {
+                    pastDeposit.classList.add('past-deadline');
+                    pastDeposit.innerHTML = '<strong>Annual PPF Deposit (FY 2025-26)</strong>: Deadline <strong>passed</strong> (March 31, 2026). <span class="penalty">Consequence: No further deposits for FY 2025-26; resume in FY 2026-27 with ₹50 penalty per year of default.</span>';
+                }
             }
         }
 
@@ -940,19 +967,31 @@
         }
 
         function generateContributionSchedule(investment, rate, tenure) {
-            let monthlyRate = rate / 100;
+            // Note: PPF formula assumes investment at the beginning of the year and annual compounding.
+            let annualRate = rate;
             let balance = 0;
             let schedule = [];
 
             for (let year = 1; year <= tenure; year++) {
+                // Interest is calculated on the previous year's balance + current year's investment (for simplicity and maximum returns)
+                // PPF rule: interest is calculated on the lowest balance between the 5th and last day of the month,
+                // but the final interest is added annually. This simplifies to compounding on the balance.
+                
+                // 1. Calculate Interest for the year
+                let interest = balance * annualRate;
+                
+                // 2. Add current year's investment (lump sum at the beginning)
                 balance += investment;
-                let interest = balance * monthlyRate;
+                
+                // 3. Add interest to the new balance
                 balance += interest;
+                
+                // Store yearly data
                 schedule.push({
                     year,
-                    investment: Math.round(investment),
-                    interest: Math.round(interest),
-                    balance: Math.round(balance)
+                    investment: Math.round(investment), // Investment for this year
+                    interest: Math.round(interest), // Interest calculated this year
+                    balance: Math.round(balance) // Closing Balance
                 });
             }
 
@@ -969,12 +1008,15 @@
                 let rate = parseFloat(document.getElementById('interestRate').value) / 100;
                 let tenure = parseFloat(document.getElementById('tenure').value);
 
-                // Calculate future value using compound interest for annual contributions
+                // Recalculate based on the provided PPF formula model
                 let futureValue = 0;
-                for (let year = 0; year < tenure; year++) {
-                    futureValue += investment * Math.pow(1 + rate, tenure - year);
-                }
                 let totalInvested = investment * tenure;
+
+                // Formula: A = P * [ ((1+r)^n - 1) / r ] * (1+r) -- Annuity Due Future Value
+                // This formula directly calculates the future value for investments made at the start of each period.
+                let annuityFactor = (Math.pow(1 + rate, tenure) - 1) / rate;
+                futureValue = investment * annuityFactor * (1 + rate);
+
                 let interest = futureValue - totalInvested;
 
                 // Update Result
@@ -1006,6 +1048,9 @@
                 document.querySelector('.contribution-schedule').classList.remove('visible');
                 document.querySelector('.toggle-schedule').textContent = 'Show Contribution Schedule';
                 calcButton.classList.remove('loading');
+
+                // Scroll to results
+                document.querySelector('.results-card').scrollIntoView({ behavior: 'smooth' });
 
                 // Track calculation event
                 gtag('event', 'calculate_ppf', {
@@ -1112,6 +1157,9 @@
                     });
                 });
             });
+             // Ensure deadlines list is initially hidden if JS is loaded before CSS
+            const deadlinesList = document.getElementById('deadlinesList');
+            if (deadlinesList) deadlinesList.classList.add('hidden');
         };
     </script>
 </body>

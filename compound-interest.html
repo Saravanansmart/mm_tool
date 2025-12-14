@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GYW0708DQY');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -170,6 +169,7 @@
             background-repeat: no-repeat;
             background-position: right 10px center;
             padding-right: 30px;
+            padding-left: 10px; /* Reset left padding for select */
             cursor: pointer;
         }
         input:focus, select:focus {
@@ -188,14 +188,28 @@
             content: '₹';
             position: absolute;
             left: 10px;
-            top: 70%;
-            transform: translateY(-50%);
+            top: 50%;
+            transform: translateY(5px); /* Adjusted for better alignment */
             color: #616161;
             font-size: 1em;
+            pointer-events: none; /* Ensure text input remains clickable */
         }
         .input-icon.percent::before {
             content: '%';
+            left: unset;
+            right: 10px;
+            padding: 0;
+            transform: translateY(5px);
         }
+        /* Style adjustments for inputs inside icon wrapper */
+        .input-icon input {
+            padding-left: 30px;
+        }
+        .input-icon.percent input {
+            padding-left: 10px;
+            padding-right: 30px;
+        }
+
         .tooltip {
             position: relative;
             display: inline-block;
@@ -271,6 +285,12 @@
             font-weight: 400;
             line-height: 1.6;
         }
+        .results strong {
+             display: block;
+             font-size: 1.2em;
+             color: #FF6F00;
+             margin-top: 5px;
+        }
         .error-message {
             font-size: 0.9em;
             color: #D32F2F;
@@ -297,20 +317,26 @@
         }
         .results-card {
             display: none;
+            border: 2px solid #FF6F00;
         }
         .results-card.visible {
             display: block;
         }
-        .faq-section {
+        .faq-section, .formula-section {
             margin: 40px 0;
         }
-        .faq-section h2 {
+        .faq-section h2, .formula-section h2 {
             font-size: 1.8em;
             text-align: center;
             margin-bottom: 20px;
         }
         .faq-item {
             margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #1A237E;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
         }
         .faq-item h3 {
             font-size: 1.2em;
@@ -322,6 +348,33 @@
             font-size: 1em;
             color: #616161;
             line-height: 1.5;
+        }
+        .formula-box {
+            padding: 20px;
+            background: #E8EAF6;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #C5CAE9;
+        }
+        .formula-box h3 {
+            margin-top: 0;
+            color: #1A237E;
+        }
+        .formula-equation {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #FF6F00;
+            margin: 10px 0;
+        }
+        .formula-key {
+            text-align: left;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #616161;
+        }
+        .formula-key ul {
+            list-style-type: disc;
+            padding-left: 20px;
         }
         .footer {
             background: #1A237E;
@@ -414,27 +467,7 @@
             width: 0;
             transition: width 0.3s ease;
         }
-        @media (max-width: 1024px) {
-            .nav-container h1 { font-size: 1.5em; }
-            .nav-menu a { margin-left: 15px; }
-        }
-        @media (max-width: 768px) {
-            h1 { font-size: 2em; }
-            .container { padding: 10px; }
-            .card { padding: 15px; }
-            input, select { max-width: 100%; }
-            .input-group { flex-direction: column; gap: 10px; }
-            button { width: 100%; max-width: 200px; }
-            .footer { padding: 15px; font-size: 0.9em; }
-            .rights-reserved { font-size: 0.8em; }
-            .modal-content { padding: 15px; }
-            .nav-container { flex-direction: column; }
-            .nav-menu { margin-top: 10px; }
-            .nav-menu a { margin: 5px 10px; }
-            .dropdown-content { min-width: 150px; }
-        }
     </style>
-    <!-- Schema Markup for Web Application and FAQ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -495,7 +528,7 @@
 <body>
     <header>
         <div class="nav-container">
-            <h1>Financial Calculators</h1>
+            <h1>MoneyMindTool</h1>
             <nav class="nav-menu">
                 <a href="/index.html">Home</a>
                 <div class="dropdown">
@@ -573,6 +606,26 @@
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="ciResult"></div>
         </div>
+        
+        <div class="formula-section">
+            <h2>The Compound Interest Formula</h2>
+            <p>Compound interest is the foundation of long-term wealth growth, as it calculates interest on both the principal and the accumulated interest from preceding periods. The formula used is:</p>
+            <div class="formula-equation">
+                 A = P (1 + {r}/{n})^{nt}
+            </div>
+            <div class="formula-key">
+                <h3>Key to the Variables:</h3>
+                <ul>
+                    <li>A = Final Amount (Principal + Interest)</li>
+                    <li>P = Principal Amount Invested or Borrowed</li>
+                    <li>r = Annual Interest Rate (as a decimal, e.g., 5% = 0.05)</li>
+                    <li>n = Number of Times Interest is Compounded per Year</li>
+                    <li>t = Time in Years (Total Duration)</li>
+                </ul>
+                <p>The Total Interest Earned is I = A - P.</p>
+                
+            </div>
+        </div>
         <div class="faq-section">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-item">
@@ -581,7 +634,7 @@
             </div>
             <div class="faq-item">
                 <h3>How is compound interest calculated?</h3>
-                <p>Compound interest is calculated using the formula A = P * (1 + r/(n*100))^(n*t), where A is the total amount, P is the principal, r is the annual interest rate, n is the number of compounding periods per year, and t is the time in years.</p>
+                <p>Compound interest is calculated using the formula $A = P \times (1 + \frac{r}{n})^{nt}$, where A is the total amount, P is the principal, r is the annual interest rate, n is the number of compounding periods per year, and t is the time in years.</p>
             </div>
             <div class="faq-item">
                 <h3>What compounding frequencies are available?</h3>
@@ -607,10 +660,18 @@
             <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
         </div>
     </div>
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('privacyModal')" aria-label="Close Privacy Policy Modal">×</span>
+            <h3>Privacy Policy</h3>
+            <p>We respect your privacy. This calculator works <strong>100% offline in your browser</strong> — no personal data is collected, stored, or transmitted via the calculator. We use Google Analytics for anonymous traffic analysis to improve user experience only.</p>
+        </div>
+    </div>
     <footer class="footer">
         <div class="footer-links">
             <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
-            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
+            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a> |
+            <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
         </div>
         <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
     </footer>
@@ -714,24 +775,31 @@
                 let frequency = parseInt(document.getElementById('ciFrequency').value);
                 let duration = years + months / 12;
 
-                // Use BigInt for high precision with large durations or frequencies
+                // A = P * (1 + r/n)^(n*t)
                 let amount = principal * Math.pow(1 + rate / frequency, frequency * duration);
                 amount = Math.round(amount * 100) / 100; // Round to 2 decimal places
                 let interest = amount - principal;
 
                 let yearlyBreakdown = '';
                 if (years > 0) {
-                    for (let i = 1; i <= Math.floor(years); i++) {
+                    for (let i = 1; i <= Math.floor(duration); i++) { // Loop through whole years only
                         let yearAmount = principal * Math.pow(1 + rate / frequency, frequency * i);
                         yearAmount = Math.round(yearAmount * 100) / 100;
                         yearlyBreakdown += `<li>Year ${i}: Amount = ₹${formatIndianNumber(yearAmount)}</li>`;
                     }
                 }
-                if (months > 0 || duration < 1) {
+                
+                // If there are partial years or duration < 1 year, show final amount only once
+                if (duration < 1 || years !== Math.floor(duration)) {
                     let finalAmount = principal * Math.pow(1 + rate / frequency, frequency * duration);
                     finalAmount = Math.round(finalAmount * 100) / 100;
-                    yearlyBreakdown += `<li>End of Period: Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
+                    if (duration < 1 || years === 0) {
+                        yearlyBreakdown += `<li>End of Period: Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
+                    } else if (years > 0 && years !== duration) {
+                        yearlyBreakdown += `<li>Final Amount (after ${months} months): Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
+                    }
                 }
+
 
                 let frequencyText = {1: 'Yearly', 2: 'Half-Yearly', 4: 'Quarterly', 12: 'Monthly'}[frequency];
                 let result = `
@@ -740,14 +808,17 @@
                     Annual Interest Rate: ${rate * 100}%<br>
                     Duration: ${years} Years, ${months} Months<br>
                     Compounding Frequency: ${frequencyText}<br>
-                    Total Interest Earned: ₹${formatIndianNumber(interest)}<br>
-                    Total Amount: ₹${formatIndianNumber(amount)}<br>
+                    Total Interest Earned: <strong>₹${formatIndianNumber(interest)}</strong><br>
+                    Total Amount: <strong>₹${formatIndianNumber(amount)}</strong><br>
                     <strong>Yearly Growth:</strong><br>
-                    <ul>${yearlyBreakdown || 'No yearly breakdown (duration < 1 year)'}</ul>
+                    <ul style="list-style: disc; padding-left: 20px; margin-top: 5px;">${yearlyBreakdown || 'No yearly breakdown (duration < 1 year)'}</ul>
                 `;
                 document.getElementById('ciResult').innerHTML = result;
                 document.querySelector('.results-card').classList.add('visible');
                 calcButton.classList.remove('loading');
+
+                // Scroll to results
+                document.querySelector('.results-card').scrollIntoView({ behavior: 'smooth' });
 
                 // Track calculation event
                 gtag('event', 'calculate_ci', {

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GYW0708DQY');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -200,6 +199,13 @@
             margin-top: 15px;
             color: #212121;
             font-weight: 400;
+            text-align: center;
+        }
+        .results strong {
+             display: block;
+             font-size: 1.2em;
+             color: #FF6F00;
+             margin-top: 5px;
         }
         .error-message {
             font-size: 0.9em;
@@ -227,6 +233,7 @@
         }
         .results-card {
             display: none;
+            border: 2px solid #FF6F00;
         }
         .results-card.visible {
             display: block;
@@ -241,6 +248,11 @@
         }
         .faq-item, .tips-item {
             margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #1A237E;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
         }
         .faq-item h3, .tips-item h3 {
             font-size: 1.2em;
@@ -252,6 +264,30 @@
             font-size: 1em;
             color: #616161;
             line-height: 1.5;
+        }
+        .formula-section {
+            padding: 20px;
+            margin: 20px 0;
+            background: #E8EAF6;
+            border-left: 5px solid #1A237E;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .formula-section h3 {
+            color: #1A237E;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        .formula-box {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #FF6F00;
+            padding: 10px 0;
+        }
+        .formula-box p {
+            margin: 5px 0;
+            color: #1A237E;
+            font-size: 0.9em;
         }
         .footer {
             background: #1A237E;
@@ -350,7 +386,6 @@
             .dropdown-content { min-width: 150px; }
         }
     </style>
-    <!-- Schema Markup for Web Application and FAQ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -486,6 +521,16 @@
             <div class="error-message" id="errorMessage"></div>
             <div class="results" id="rdResult"></div>
         </div>
+        
+        <div class="formula-section">
+            <h3>RD Maturity Formula (Quarterly Compounding)</h3>
+            <p>The calculation relies on the formula for the future value of a series of deposits compounded quarterly:</p>
+            <div class="formula-box">
+                M = R [ {(1 + {i})^{n} - 1}/{1 - (1 + {i})^{-1/3}} ] 
+                <p>Where M is Maturity Amount, <br>R is the Monthly Installment Amount, <br> i is the compounding frequency (4 for quarterly), and <br> n is the tenure in years.</p>
+                
+            </div>
+        </div>
         <div class="tips-section">
             <h2>Tips for Maximizing Your RD Investment in FY 2025-26</h2>
             <div class="tips-item">
@@ -543,10 +588,18 @@
             <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to invalid data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Do not reproduce or distribute without permission. We may update or discontinue the website at any time. We are not liable for any direct, indirect, or consequential damages from using this site. Usage is governed by Indian laws.</p>
         </div>
     </div>
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('privacyModal')">×</span>
+            <h3>Privacy Policy</h3>
+            <p>We respect your privacy. This calculator works <strong>100% offline in your browser</strong> — no personal data is collected, stored, or transmitted via the calculator. We use Google Analytics for anonymous traffic analysis to improve user experience only.</p>
+        </div>
+    </div>
     <footer class="footer">
         <div class="footer-links">
             <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
-            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
+            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a> |
+            <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
         </div>
         <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
     </footer>
@@ -635,19 +688,35 @@
             let months = parseFloat(document.getElementById('rdMonths').value) || 0;
             let totalMonths = Math.round((years * 12) + months);
             let n = 4; // Quarterly compounding
+            
+            // Monthly interest rate for compounding calculation (r/n)
+            let compoundingRate = rate / n; 
 
-            // Calculate maturity using future value of series with quarterly compounding
+            // Calculate maturity using the Future Value of Annuity formula for RDs.
+            // Since deposits are monthly (12x) and compounding is quarterly (4x), 
+            // a single formula application is complicated, so we use a series sum for accuracy.
+            
             let maturity = 0;
             for (let i = 1; i <= totalMonths; i++) {
+                // Calculate total elapsed quarters for the current month's deposit
                 let monthsRemaining = totalMonths - i;
-                let quartersRemaining = monthsRemaining / 3; // Convert months to quarters
-                maturity += monthly * Math.pow(1 + rate / n, Math.floor(quartersRemaining));
+                let quartersRemaining = Math.floor(monthsRemaining / 3); 
+                
+                // Add the future value of this single deposit, compounded by the quarters it has left.
+                maturity += monthly * Math.pow(1 + compoundingRate, quartersRemaining);
             }
+            
             let invested = monthly * totalMonths;
             let interest = maturity - invested;
 
-            document.getElementById('rdResult').innerHTML = `Maturity Amount: ₹${formatIndianNumber(maturity)}, Interest Earned: ₹${formatIndianNumber(interest)}, Total Invested: ₹${formatIndianNumber(invested)}`;
+            document.getElementById('rdResult').innerHTML = `
+                Maturity Amount: <strong>₹${formatIndianNumber(maturity)}</strong> 
+                Interest Earned: <strong>₹${formatIndianNumber(interest)}</strong>
+                Total Invested: <strong>₹${formatIndianNumber(invested)}</strong>
+            `;
             document.querySelector('.results-card').classList.add('visible');
+            document.querySelector('.results-card').scrollIntoView({ behavior: 'smooth' });
+
 
             // Track RD calculation event
             gtag('event', 'calculate_rd', {

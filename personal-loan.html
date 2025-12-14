@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -16,9 +15,7 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
     <title>Personal Loan EMI Calculator India 2025 - Free EMI Calculation</title>
-    <!-- Include Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-    <!-- Include Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
@@ -489,7 +486,6 @@
             .chart-container { max-width: 100%; height: 200px; }
         }
     </style>
-    <!-- Schema Markup for Web Application, FAQ, HowTo, and SoftwareApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -721,9 +717,9 @@
             <div class="chart-container">
                 <canvas id="emiChart" aria-label="Pie chart showing EMI breakdown"></canvas>
                 <p>Visual breakdown of principal and interest for your <strong>personal loan</strong>.</p>
-                
             </div>
-            <div class="repayment-schedule" id="repaymentSchedule">
+            <br>
+            <div class="repayment-schedule" id="repaymentSchedule" style="display: none;">
                 <span class="toggle-schedule" onclick="toggleSchedule()">Show Repayment Schedule</span>
                 <table id="scheduleTable">
                     <thead>
@@ -742,7 +738,7 @@
         </div>
         <div class="card">
             <h2>Important Personal Loan Deadlines FY 2025-26</h2>
-            <ul id="deadlinesList">
+            <ul id="deadlinesList" class="deadlinesList hidden">
                 <li id="past-kyc">KYC Update for Loan Applications: March 31, 2025</li>
             </ul>
             <span class="toggle-deadlines" onclick="toggleDeadlines()">Show Deadlines</span>
@@ -805,7 +801,7 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal('privacyModal')" aria-label="Close Privacy Policy Modal">×</span>
                 <h3>Privacy Policy</h3>
-                <p>We respect your privacy. This calculator works <strong>100% offline in your browser</strong> — no personal data is collected, stored, or transmitted via the calculator. We use Google Analytics (G-GYW0708DQY) for anonymous traffic analysis to improve user experience only.</p>
+                <p>We respect your privacy. This calculator works <strong>100% offline in your browser</strong> — no personal data is collected, stored, or transmitted via the calculator. We use Google Analytics for anonymous traffic analysis to improve user experience only.</p>
             </div>
         </div>
     <footer class="footer">
@@ -888,6 +884,9 @@
                     });
                 });
             });
+             // Ensure deadlines list is hidden on load
+            const deadlinesList = document.getElementById('deadlinesList');
+            if (deadlinesList) deadlinesList.classList.add('hidden');
         };
 
         function formatIndianNumber(num) {
@@ -917,7 +916,7 @@
             const today = new Date();
             const kycDeadline = new Date('2025-03-31');
             const deadlinesList = document.getElementById('deadlinesList');
-            if (today > kycDeadline) {
+            if (deadlinesList && today > kycDeadline) {
                 const pastItem = document.getElementById('past-kyc');
                 pastItem.classList.add('past-deadline');
                 pastItem.innerHTML = '<strong>KYC Update for Loan Applications (FY 2024-25)</strong>: Deadline passed (March 31, 2025). <span class="penalty">Consequence: Inability to apply for new loans; update KYC for FY 2025-26.</span>';
@@ -1046,6 +1045,9 @@
                 document.querySelector('.repayment-schedule').classList.remove('visible');
                 document.querySelector('.toggle-schedule').textContent = 'Show Repayment Schedule';
                 calcButton.classList.remove('loading');
+
+                // Scroll to results
+                document.querySelector('.results-card').scrollIntoView({ behavior: 'smooth' });
 
                 // Track calculation event
                 gtag('event', 'calculate_emi', {
