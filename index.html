@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GYW0708DQY');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +15,6 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="MoneyMindTool">
     <link rel="canonical" href="https://moneymindtool.com/">
-    <!-- SEO: Open Graph & Twitter Card -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Free Financial Calculators for India FY 2025-26 | MoneyMindTool">
     <meta property="og:description" content="Calculate taxes, SIP returns, FDs, and EMIs for FY 2025-26. Plus: expert guides on GST 2.0 changes (effective 22 Sept 2025), tax planning, and investments for Indian users.">
@@ -536,7 +534,6 @@
         }
     </style>
 
-    <!-- Schema Markup: WebApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -554,14 +551,16 @@
     }
     </script>
 
-    <!-- Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "MoneyMindTool",
       "url": "https://moneymindtool.com/",
-      "logo": "https://moneymindtool.com/assets/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://moneymindtool.com/assets/logo.png"
+      },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Chennai",
@@ -575,7 +574,6 @@
     }
     </script>
 
-    <!-- Article LD for GST piece -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -599,7 +597,6 @@
     }
     </script>
 
-    <!-- New: ItemList for Featured Blog Posts -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -669,7 +666,6 @@
     }
     </script>
 
-    <!-- Existing FAQ structured data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -771,6 +767,7 @@
                         <a href="https://moneymindtool.com/capital-gains.html">Capital Gains Calculator</a>
                         <a href="https://moneymindtool.com/gst-calculator.html">GST Interest & Late Fee Calculator</a>
                         <a href="https://moneymindtool.com/retirement.html">Retirement Planning Calculator</a>
+                        <a href="https://moneymindtool.com/epf-calculators.html">EPF Calculator</a>
                     </div>
                 </div>
             </nav>
@@ -826,7 +823,7 @@
                 <a href="https://moneymindtool.com/blog.html#income-tax-calculator">Read More</a>
             </div>
             <div class="blog-card">
-                <h3>Save More with Our HRA Exemption Calculator</h3>
+                <h3>Save More on Rent: How to Use Our HRA Exemption Calculator</h3>
                 <p>Maximize your HRA exemptions in FY 2025-26. Our guide shows salaried employees how to use our HRA Exemption Calculator to reduce taxable income effectively.</p>
                 <a href="https://moneymindtool.com/blog.html#hra-exemption-calculator">Read More</a>
             </div>
@@ -971,6 +968,10 @@
             const modal = document.getElementById(modalId);
             modal.style.display = 'flex';
             modal.classList.add('show');
+            gtag('event', 'open_modal', {
+                event_category: 'Modal',
+                event_label: modalId
+            });
         }
 
         function closeModal(modalId) {

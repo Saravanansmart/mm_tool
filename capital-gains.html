@@ -275,11 +275,25 @@
                     </a>
                     <div class="dropdown-content">
                         <a href="https://moneymindtool.com/capital-gains.html" class="bg-indigo-50 font-bold text-orange-600">Capital Gains Calculator</a>
-                        <a href="https://moneymindtool.com/income-tax.html">Income Tax Calculator</a>
-                        <a href="https://moneymindtool.com/sip.html">SIP Calculator</a>
-                        <a href="https://moneymindtool.com/home-loan.html">Home EMI Calculator</a>
-                        <a href="https://moneymindtool.com/ppf.html">PPF Calculator</a>
-                        <a href="https://moneymindtool.com/all-calculators">View All Tools</a>
+                        <a href="https://moneymindtool.com/all-calculators.html" aria-label="All Calculators">All Calculators</a>
+                        <a href="https://moneymindtool.com/income-tax.html" aria-label="Income Tax Calculator">Income Tax Calculator</a>
+                        <a href="https://moneymindtool.com/simple-interest.html" aria-label="Simple Interest Calculator">Simple Interest Calculator</a>
+                        <a href="https://moneymindtool.com/fixed-deposit.html" aria-label="Fixed Deposit Calculator">Fixed Deposit Calculator</a>
+                        <a href="https://moneymindtool.com/recurring-deposit.html" aria-label="Recurring Deposit Calculator">Recurring Deposit Calculator</a>
+                        <a href="https://moneymindtool.com/educational-loan.html" aria-label="Educational Loan EMI Calculator">Educational Loan EMI Calculator</a>
+                        <a href="https://moneymindtool.com/personal-loan.html" aria-label="Personal Loan EMI Calculator">Personal Loan EMI Calculator</a>
+                        <a href="https://moneymindtool.com/sip.html" aria-label="SIP Calculator">SIP Calculator</a>
+                        <a href="https://moneymindtool.com/compound-interest.html" aria-label="Compound Interest Calculator">Compound Interest Calculator</a>
+                        <a href="https://moneymindtool.com/ppf.html" aria-label="PPF Calculator">PPF Calculator</a>
+                        <a href="https://moneymindtool.com/nps.html" aria-label="NPS Calculator">NPS Calculator</a>
+                        <a href="https://moneymindtool.com/hra.html" aria-label="HRA Exemption Calculator">HRA Exemption Calculator</a>
+                        <a href="https://moneymindtool.com/gratuity.html" aria-label="Gratuity Calculator">Gratuity Calculator</a>
+                        <a href="https://moneymindtool.com/loanemi.html" aria-label="Loan EMI Calculator">Loan EMI Calculator</a>
+                        <a href="https://moneymindtool.com/home-loan.html" aria-label="Home EMI Calculator">Home EMI Calculator</a>
+                        <a href="https://moneymindtool.com/capital-gains.html" aria-label="Capital Gains Calculator">Capital Gains Calculator</a>
+                        <a href="https://moneymindtool.com/gst-calculator.html" aria-label="GST Interest & Late Fee Calculator">GST Interest & Late Fee Calculator</a>
+                        <a href="https://moneymindtool.com/retirement.html" aria-label="Retirement Planning Calculator">Retirement Planning Calculator</a>
+                        <a href="https://moneymindtool.com/epf-calculator.html" aria-label="EPF Calculator">EPF Calculator</a>
                     </div>
                 </div>
             </nav>
@@ -292,9 +306,9 @@
                 💰 India Capital Gains Tax Calculator for FY 2025-26 (AY 2026-27)
             </h1>
             <p class="text-xl text-gray-600 mb-6">
-                Calculate your LTCG/STCG liability instantly on **Equity, Property, Mutual Funds & Bonds** with the latest **Budget 2025** rates and exemptions.
+                Calculate your LTCG/STCG liability instantly on Equity, Property, Mutual Funds & Bonds with the latest Budget 2025 rates and exemptions.
             </p>
-             <button onclick="document.getElementById('assetType').focus()" class="bg-orange-600 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:bg-orange-700 transition-all duration-200" aria-label="Start Calculating Capital Gains Tax">
+            <button onclick="document.getElementById('assetType').focus()" class="bg-orange-600 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:bg-orange-700 transition-all duration-200" aria-label="Start Calculating Capital Gains Tax">
                 Start Calculating Now <i class="fas fa-arrow-down ml-2"></i>
             </button>
         </section>
@@ -379,6 +393,7 @@
             <div class="chart-container">
                 <canvas id="taxChart"></canvas>
             </div>
+            
 
             <div class="text-center mt-6">
                 <button onclick="document.getElementById('calculatorSection').scrollIntoView({ behavior: 'smooth' }); resetForm();" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-all duration-200" aria-label="Calculate Again">
@@ -389,7 +404,7 @@
 
         <section class="bg-white rounded-lg shadow-md p-6 mb-8 border border-indigo-100">
             <h2 class="text-2xl font-bold text-indigo-900 mb-4">Capital Gains Tax Rates & Holding Period (FY 2025-26)</h2>
-            <p class="text-gray-700 mb-6">The tax rate depends on the asset type and whether the gain is **Short-Term (STCG)** or **Long-Term (LTCG)**. Here are the key distinctions for the Financial Year 2025-26 (AY 2026-27):</p>
+            <p class="text-gray-700 mb-6">The tax rate depends on the asset type and whether the gain is Short-Term (STCG) or Long-Term (LTCG). Here are the key distinctions for the Financial Year 2025-26 (AY 2026-27):</p>
 
             <div class="overflow-x-auto">
                 
@@ -425,7 +440,7 @@
                             <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Residential Property/Land</td>
                             <td class="px-6 py-4 whitespace-nowrap">More than 24 months</td>
                             <td class="px-6 py-4 whitespace-nowrap font-bold text-indigo-700">LTCG</td>
-                            <td class="px-6 py-4 whitespace-nowrap">20% with Indexation **OR** 12.5% without Indexation (Budget 2025)</td>
+                            <td class="px-6 py-4 whitespace-nowrap">20% with Indexation OR 12.5% without Indexation (Budget 2025)</td>
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Bonds, Debt Funds, Jewellery</td>
@@ -438,28 +453,27 @@
             </div>
             
             <h3 class="text-xl font-bold text-indigo-900 mt-6 mb-2">Understanding Indexation</h3>
-            <p class="text-gray-700">Indexation is a powerful mechanism available for LTCG (mostly non-equity assets) that adjusts the **Cost of Acquisition** for inflation using the **Cost Inflation Index (CII)**, thereby reducing your taxable gain. It is generally available for property sold after July 23, 2024 (as per new rules) and other non-equity assets held long-term.</p>
+            <p class="text-gray-700">Indexation is a powerful mechanism available for LTCG (mostly non-equity assets) that adjusts the Cost of Acquisition for inflation using the Cost Inflation Index (CII), thereby reducing your taxable gain. It is generally available for property sold after July 23, 2024 (as per new rules) and other non-equity assets held long-term.</p>
             <blockquote class="bg-indigo-50 border-l-4 border-orange-500 text-gray-800 p-4 mt-4 rounded-md">
-                <p class="font-mono text-sm">
-                    $$
-                    \text{Indexed Cost} = \text{Purchase Cost} \times \left(\frac{\text{CII of Sale Year}}{\text{CII of Purchase Year}}\right)
-                    $$
+                <p class="font-mono text-sm">Indexed Cost = Purchase Cost x (CII of Sale Year/CII of Purchase Year)
                 </p>
+                
             </blockquote>
         </section>
 
         <section class="bg-white rounded-lg shadow-md p-6 mb-8 border border-indigo-100">
             <h2 class="text-2xl font-bold text-indigo-900 mb-4">Smart Tax Planning: Tips to Minimize Your Capital Gains Liability</h2>
+            
             <p class="text-gray-700 mb-4">Leveraging specified sections under the Income Tax Act allows you to save significant tax by reinvesting your capital gains:</p>
             <ul class="list-disc pl-6 text-gray-700 space-y-3">
                 <li>
-                    <strong>Section 54 (Property Reinvestment):</strong> You can claim a full or partial exemption on **LTCG from selling a residential house** if you reinvest the gain into **purchasing or constructing another residential house** within specified time limits (usually 2 years before or 1 year after the sale).
+                    <strong>Section 54 (Property Reinvestment):</strong> You can claim a full or partial exemption on LTCG from selling a residential house if you reinvest the gain into purchasing or constructing another residential house within specified time limits (usually 2 years before or 1 year after the sale).
                 </li>
                 <li>
-                    <strong>Section 54EC (Capital Gains Bonds):</strong> This is a key provision to save tax on **LTCG from land or building** sale. By investing the capital gain (up to **₹50 lakh**) into specified long-term bonds (like NHAI or REC bonds) within six months of the transfer, you can claim a corresponding exemption.
+                    <strong>Section 54EC (Capital Gains Bonds):</strong> This is a key provision to save tax on LTCG from land or building sale. By investing the capital gain (up to ₹50 lakh) into specified long-term bonds (like NHAI or REC bonds) within six months of the transfer, you can claim a corresponding exemption.
                 </li>
                 <li>
-                    <strong>Section 54F (Reinvesting Net Proceeds):</strong> This allows exemption on **LTCG from selling any asset other than a residential house** (e.g., gold, mutual funds, or commercial property) by reinvesting the **net sale consideration** into a new residential property.
+                    <strong>Section 54F (Reinvesting Net Proceeds):</strong> This allows exemption on LTCG from selling any asset other than a residential house (e.g., gold, mutual funds, or commercial property) by reinvesting the net sale consideration into a new residential property.
                 </li>
             </ul>
         </section>
@@ -494,42 +508,42 @@
                         What is the LTCG tax rate for FY 2025-26?
                         <i class="fas fa-chevron-down icon"></i>
                     </h3>
-                    <p class="text-gray-600">For equities and mutual funds, LTCG is taxed at **12.5%** above ₹1.35 lakh. For property, it’s **20%** with indexation or **12.5%** without, per Budget 2025. Bonds and other long-term assets are taxed at a flat **12.5%**.</p>
+                    <p class="text-gray-600">For equities and mutual funds, LTCG is taxed at 12.5% above ₹1.35 lakh. For property, it’s 20% with indexation or 12.5% without, per Budget 2025. Bonds and other long-term assets are taxed at a flat 12.5%.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">
                         What is the STCG tax rate for FY 2025-26?
                         <i class="fas fa-chevron-down icon"></i>
                     </h3>
-                    <p class="text-gray-600">STCG on equities and equity mutual funds is taxed at a flat **20%**. For property, bonds, and other non-equity assets, the STCG is taxed at your applicable **income tax slab rate**.</p>
+                    <p class="text-gray-600">STCG on equities and equity mutual funds is taxed at a flat 20%. For property, bonds, and other non-equity assets, the STCG is taxed at your applicable income tax slab rate.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">
                         Can I claim exemptions on capital gains?
                         <i class="fas fa-chevron-down icon"></i>
                     </h3>
-                    <p class="text-gray-600">Yes, you can claim exemptions by reinvesting your gains: **Section 54** (reinvestment into residential property from property sale), **54EC** (reinvestment into specified bonds, up to ₹50 lakh), or **54F** (reinvestment of net sale proceeds into residential property from sale of other assets). All are subject to conditions and timelines.</p>
+                    <p class="text-gray-600">Yes, you can claim exemptions by reinvesting your gains: Section 54 (reinvestment into residential property from property sale), 54EC (reinvestment into specified bonds, up to ₹50 lakh), or 54F (reinvestment of net sale proceeds into residential property from sale of other assets). All are subject to conditions and timelines.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">
                         What is indexation in capital gains?
                         <i class="fas fa-chevron-down icon"></i>
                     </h3>
-                    <p class="text-gray-600">Indexation is a method to adjust the purchase cost of an asset for inflation using the **Cost Inflation Index (CII)**, thereby reducing the taxable capital gain. It is generally available for LTCG on non-equity assets. The benefit for property sold after July 23, 2024 now allows a choice between the indexed 20% rate or a flat 12.5% rate without indexation.</p>
+                    <p class="text-gray-600">Indexation is a method to adjust the purchase cost of an asset for inflation using the Cost Inflation Index (CII), thereby reducing the taxable capital gain. It is generally available for LTCG on non-equity assets. The benefit for property sold after July 23, 2024 now allows a choice between the indexed 20% rate or a flat 12.5% rate without indexation.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">
                         When is the ITR filing deadline for FY 2025-26?
                         <i class="fas fa-chevron-down icon"></i>
                     </h3>
-                    <p class="text-gray-600">The primary ITR filing deadline for non-audit cases (FY 2025-26 / AY 2026-27) is **July 31, 2026**. Filing after this date incurs a penalty under Section 234F (up to ₹5,000).</p>
+                    <p class="text-gray-600">The primary ITR filing deadline for non-audit cases (FY 2025-26 / AY 2026-27) is July 31, 2026. Filing after this date incurs a penalty under Section 234F (up to ₹5,000).</p>
                 </div>
             </div>
         </section>
         
         <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
             <h2 class="text-xl font-semibold text-indigo-900 mb-4">Latest Tax Updates for FY 2025-26 (Budget 2025)</h2>
-            <p class="text-gray-700">Budget 2025 introduced key changes to capital gains tax: the revised LTCG exemption limit of **₹1.35 lakh** for equities/mutual funds, and the optional **12.5% flat rate** for property LTCG (without indexation). Always refer to the official notification on <a href="https://www.incometax.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500 font-medium">incometax.gov.in</a>.</p>
+            <p class="text-gray-700">Budget 2025 introduced key changes to capital gains tax: the revised LTCG exemption limit of ₹1.35 lakh for equities/mutual funds, and the optional 12.5% flat rate for property LTCG (without indexation). Always refer to the official notification on <a href="https://www.incometax.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500 font-medium">incometax.gov.in</a>.</p>
             <p class="text-gray-600 mt-3 text-sm">Last updated: September 21, 2025</p>
         </section>
     </main>
@@ -848,6 +862,7 @@
 
                 // 2. Determine Tax Rate
                 let taxRate = 0;
+                let baseTax = 0; // Initialize baseTax here
                 let gainType = isLTCG ? 'LTCG' : 'STCG';
                 let taxNote = '';
 
@@ -974,7 +989,7 @@
             if (today > advanceTaxDue) {
                 const pastLi = document.getElementById('past-advance-tax');
                 pastLi.classList.add('past-deadline');
-                pastLi.innerHTML = '<strong>Advance Tax (Final, FY 2024-25)</strong>: Deadline **passed** (March 15, 2025). <span class="penalty text-red-600">Penalty: 1% interest per month under Section 234C.</span>';
+                pastLi.innerHTML = '<strong>Advance Tax (Final, FY 2024-25)</strong>: Deadline passed (March 15, 2025). <span class="penalty text-red-600">Penalty: 1% interest per month under Section 234C.</span>';
             }
         }
 
