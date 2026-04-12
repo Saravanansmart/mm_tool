@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="UE5/pVdJlriCJfcPDhvrWA" async></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-GYW0708DQY');
     </script>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-W3MR5ZGL');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W3MR5ZGL');</script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plan your retirement for FY 2025-26 in India. Calculate your retirement corpus, monthly pension, and shortfall with inflation adjustments.">
-    <meta name="keywords" content="retirement planning calculator India, retirement corpus calculator 2025, pension calculator India, Budget 2025 retirement planning, NPS calculator 2025, FY 2025-26 retirement calculator, retirement savings planner, online pension calculator India, financial planning tools 2025, retirement income calculator, NPS investment calculator, tax-free retirement savings, retirement goal calculator, personal finance India 2025, retirement corpus projection, pension scheme calculator, Section 80C retirement benefits, financial security planner India">
+    <meta name="description"
+        content="Plan your retirement for FY 2025-26 in India. Calculate your retirement corpus, monthly pension, and shortfall with inflation adjustments.">
+    <meta name="keywords"
+        content="retirement planning calculator India, retirement corpus calculator 2025, pension calculator India, Budget 2025 retirement planning, NPS calculator 2025, FY 2025-26 retirement calculator, retirement savings planner, online pension calculator India, financial planning tools 2025, retirement income calculator, NPS investment calculator, tax-free retirement savings, retirement goal calculator, personal finance India 2025, retirement corpus projection, pension scheme calculator, Section 80C retirement benefits, financial security planner India">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
     <title>Retirement Planning Calculator India FY 2025-26</title>
@@ -29,77 +36,90 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-        body { 
-            font-family: 'Inter', sans-serif; 
+
+        body {
+            font-family: 'Inter', sans-serif;
             background: linear-gradient(180deg, #E8F0FE, #F9FAFB);
             min-height: 100vh;
             color: #4B5EAA;
             line-height: 1.6;
         }
+
         header {
             background: #2A3EB1;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-        .chart-container { 
-            max-width: 600px; 
-            margin: 20px auto; 
-            height: 300px; 
+
+        .chart-container {
+            max-width: 600px;
+            margin: 20px auto;
+            height: 300px;
             max-height: 300px;
         }
+
         .tooltip {
-            position: relative; 
-            display: inline-block; 
-            margin-left: 5px; 
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
             cursor: help;
             outline: none;
         }
+
         .tooltip::after {
-            content: attr(data-tooltip); 
-            position: absolute; 
-            top: -10px; 
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -10px;
             left: 50%;
-            transform: translate(-50%, -100%); 
-            background: #2A3EB1; 
+            transform: translate(-50%, -100%);
+            background: #2A3EB1;
             color: #FFFFFF;
-            padding: 5px 10px; 
-            border-radius: 4px; 
-            font-size: 0.8em; 
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
             white-space: nowrap;
-            opacity: 0; 
-            visibility: hidden; 
-            transition: opacity 0.2s, visibility 0.2s; 
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
             z-index: 10;
         }
-        .tooltip:hover::after, .tooltip:focus::after { 
-            opacity: 1; 
-            visibility: visible; 
+
+        .tooltip:hover::after,
+        .tooltip:focus::after {
+            opacity: 1;
+            visibility: visible;
         }
+
         .modal {
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); 
-            justify-content: center; 
-            align-items: center; 
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
             z-index: 1000;
             animation: scaleIn 0.3s ease;
         }
-        .modal.show { 
-            display: flex; 
+
+        .modal.show {
+            display: flex;
         }
+
         .modal-content {
             transform: scale(0.95);
             transition: transform 0.2s ease;
         }
+
         .modal.show .modal-content {
             transform: scale(1);
         }
-        .past-deadline { 
-            color: #DC2626; 
+
+        .past-deadline {
+            color: #DC2626;
         }
+
         .dropdown-content {
             display: none;
             position: absolute;
@@ -113,9 +133,12 @@
             top: 100%;
             right: 0;
         }
-        .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
+
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content {
             display: block;
         }
+
         .dropdown-content a {
             color: #4B5EAA;
             padding: 12px 16px;
@@ -124,20 +147,31 @@
             text-decoration: none;
             transition: background 0.2s ease, color 0.2s ease;
         }
+
         .dropdown-content a:hover {
             background: #E8F0FE;
             color: #F57C00;
         }
+
         @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        @media (max-width: 768px) { 
-            .chart-container { 
-                max-width: 100%; 
-                height: 250px; 
-                max-height: 250px; 
+            from {
+                opacity: 0;
+                transform: scale(0.9);
             }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                max-width: 100%;
+                height: 250px;
+                max-height: 250px;
+            }
+
             .dropdown-content {
                 min-width: 180px;
                 max-height: 250px;
@@ -238,10 +272,11 @@
     }
     </script>
 </head>
+
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3MR5ZGL"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3MR5ZGL" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <header class="sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
@@ -249,7 +284,8 @@
             <nav class="flex space-x-4">
                 <a href="/index.html" class="text-white hover:text-orange-500 font-medium">Home</a>
                 <div class="relative dropdown">
-                    <a href="/all-calculators.html" class="text-white hover:text-orange-500 font-medium" aria-expanded="false">Calculators</a>
+                    <a href="/all-calculators.html" class="text-white hover:text-orange-500 font-medium"
+                        aria-expanded="false">Calculators</a>
                     <div class="dropdown-content">
                         <a href="/all-calculators">All Calculators</a>
                         <a href="/income-tax.html">Income Tax Calculator</a>
@@ -276,21 +312,33 @@
     </header>
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <section class="mb-8">
-            <h1 class="text-3xl font-semibold text-indigo-900 text-center mb-6">Retirement Planning Calculator India FY 2025-26</h1>
-            <p class="text-center text-gray-600 mb-4">Plan your retirement by calculating your corpus, monthly pension, and shortfall with inflation adjustments for FY 2025-26. Explore related tools like our <a href="/income-tax.html" class="text-indigo-900 hover:text-orange-500">Income Tax Calculator</a> or <a href="/gst-calculator.html" class="text-indigo-900 hover:text-orange-500">GST Calculator</a> for comprehensive financial planning.</p>
+            <h1 class="text-3xl font-semibold text-indigo-900 text-center mb-6">Retirement Planning Calculator India FY
+                2025-26</h1>
+            <p class="text-center text-gray-600 mb-4">Plan your retirement by calculating your corpus, monthly pension,
+                and shortfall with inflation adjustments for FY 2025-26. Explore related tools like our <a
+                    href="/income-tax.html" class="text-indigo-900 hover:text-orange-500">Income Tax Calculator</a> or
+                <a href="/gst-calculator.html" class="text-indigo-900 hover:text-orange-500">GST Calculator</a> for
+                comprehensive financial planning.
+            </p>
             <div class="text-center">
-                <a href="/all-calculators" class="text-indigo-900 hover:text-orange-500 font-semibold">Back to All Calculators</a>
+                <a href="/all-calculators" class="text-indigo-900 hover:text-orange-500 font-semibold">Back to All
+                    Calculators</a>
             </div>
         </section>
         <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
             <h2 class="text-xl font-semibold text-indigo-900 mb-4 text-center">Tax Filing Deadlines (2025-26)</h2>
             <div class="text-center">
-                <span class="toggle-deadlines text-indigo-900 cursor-pointer hover:text-orange-500 block mb-2" tabindex="0" role="button">Show Deadlines</span>
+                <span class="toggle-deadlines text-indigo-900 cursor-pointer hover:text-orange-500 block mb-2"
+                    tabindex="0" role="button">Show Deadlines</span>
             </div>
             <div id="deadlinesList" class="hidden text-gray-600 max-w-xl mx-auto">
                 <ul class="list-disc pl-5">
-                    <li id="past-advance-tax"><strong>Advance Tax (Final, FY 2024-25)</strong>: Due March 15, 2025. <span class="penalty">Penalty: 1% interest per month under Section 234C.</span></li>
-                    <li><strong>ITR Filing (Non-Audit, FY 2025-26)</strong>: July 31, 2026. File at <a href="https://www.incometax.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500">incometax.gov.in</a>.</li>
+                    <li id="past-advance-tax"><strong>Advance Tax (Final, FY 2024-25)</strong>: Due March 15, 2025.
+                        <span class="penalty">Penalty: 1% interest per month under Section 234C.</span>
+                    </li>
+                    <li><strong>ITR Filing (Non-Audit, FY 2025-26)</strong>: July 31, 2026. File at <a
+                            href="https://www.incometax.gov.in" target="_blank"
+                            class="text-indigo-900 hover:text-orange-500">incometax.gov.in</a>.</li>
                 </ul>
             </div>
         </section>
@@ -301,45 +349,77 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label for="currentAge" class="block text-gray-800 font-medium">Current Age: <span class="tooltip" data-tooltip="Your current age in years" tabindex="0">?</span></label>
-                    <select id="currentAge" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white" aria-label="Select Current Age">
-                        ${Array.from({length: 31}, (_, i) => `<option value="${20 + i}" ${i === 10 ? 'selected' : ''}>${20 + i}</option>`).join('')}
+                    <label for="currentAge" class="block text-gray-800 font-medium">Current Age: <span class="tooltip"
+                            data-tooltip="Your current age in years" tabindex="0">?</span></label>
+                    <select id="currentAge"
+                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
+                        aria-label="Select Current Age">
+                        ${Array.from({length: 31}, (_, i) => `<option value="${20 + i}" ${i===10 ? 'selected' : '' }>
+                            ${20 + i}</option>`).join('')}
                     </select>
                 </div>
                 <div>
-                    <label for="retirementAge" class="block text-gray-800 font-medium">Retirement Age: <span class="tooltip" data-tooltip="Age you plan to retire" tabindex="0">?</span></label>
-                    <select id="retirementAge" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white" aria-label="Select Retirement Age">
-                        ${Array.from({length: 51}, (_, i) => `<option value="${25 + i}" ${i === 35 ? 'selected' : ''}>${25 + i}</option>`).join('')}
+                    <label for="retirementAge" class="block text-gray-800 font-medium">Retirement Age: <span
+                            class="tooltip" data-tooltip="Age you plan to retire" tabindex="0">?</span></label>
+                    <select id="retirementAge"
+                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
+                        aria-label="Select Retirement Age">
+                        ${Array.from({length: 51}, (_, i) => `<option value="${25 + i}" ${i===35 ? 'selected' : '' }>
+                            ${25 + i}</option>`).join('')}
                     </select>
                 </div>
                 <div>
-                    <label for="lifeExpectancy" class="block text-gray-800 font-medium">Life Expectancy: <span class="tooltip" data-tooltip="Expected lifespan in years" tabindex="0">?</span></label>
-                    <select id="lifeExpectancy" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white" aria-label="Select Life Expectancy">
-                        ${Array.from({length: 41}, (_, i) => `<option value="${60 + i}" ${i === 25 ? 'selected' : ''}>${60 + i}</option>`).join('')}
+                    <label for="lifeExpectancy" class="block text-gray-800 font-medium">Life Expectancy: <span
+                            class="tooltip" data-tooltip="Expected lifespan in years" tabindex="0">?</span></label>
+                    <select id="lifeExpectancy"
+                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
+                        aria-label="Select Life Expectancy">
+                        ${Array.from({length: 41}, (_, i) => `<option value="${60 + i}" ${i===25 ? 'selected' : '' }>
+                            ${60 + i}</option>`).join('')}
                     </select>
                 </div>
                 <div>
-                    <label for="monthlySavings" class="block text-gray-800 font-medium">Monthly Savings (₹): <span class="tooltip" data-tooltip="Amount saved monthly for retirement" tabindex="0">?</span></label>
-                    <input type="number" id="monthlySavings" min="0" value="10000" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Monthly Savings in Rupees">
+                    <label for="monthlySavings" class="block text-gray-800 font-medium">Monthly Savings (₹): <span
+                            class="tooltip" data-tooltip="Amount saved monthly for retirement"
+                            tabindex="0">?</span></label>
+                    <input type="number" id="monthlySavings" min="0" value="10000"
+                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                        aria-label="Monthly Savings in Rupees">
                 </div>
                 <div>
-                    <label for="returnRate" class="block text-gray-800 font-medium">Expected Return Rate (%): <span class="tooltip" data-tooltip="Annual return on investments (e.g., NPS, mutual funds)" tabindex="0">?</span></label>
-                    <input type="number" id="returnRate" min="1" max="15" value="10" step="0.1" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Expected Return Rate Percentage">
+                    <label for="returnRate" class="block text-gray-800 font-medium">Expected Return Rate (%): <span
+                            class="tooltip" data-tooltip="Annual return on investments (e.g., NPS, mutual funds)"
+                            tabindex="0">?</span></label>
+                    <input type="number" id="returnRate" min="1" max="15" value="10" step="0.1"
+                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                        aria-label="Expected Return Rate Percentage">
                 </div>
                 <div>
-                    <label for="inflationRate" class="block text-gray-800 font-medium">Inflation Rate (%): <span class="tooltip" data-tooltip="Expected annual inflation rate" tabindex="0">?</span></label>
-                    <input type="number" id="inflationRate" min="2" max="8" value="6" step="0.1" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Inflation Rate Percentage">
+                    <label for="inflationRate" class="block text-gray-800 font-medium">Inflation Rate (%): <span
+                            class="tooltip" data-tooltip="Expected annual inflation rate" tabindex="0">?</span></label>
+                    <input type="number" id="inflationRate" min="2" max="8" value="6" step="0.1"
+                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                        aria-label="Inflation Rate Percentage">
                 </div>
                 <div>
-                    <label for="targetExpenses" class="block text-gray-800 font-medium">Expected Monthly Expenses (₹): <span class="tooltip" data-tooltip="Post-retirement monthly expenses in today's value" tabindex="0">?</span></label>
-                    <input type="number" id="targetExpenses" min="0" value="50000" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Expected Monthly Expenses in Rupees">
+                    <label for="targetExpenses" class="block text-gray-800 font-medium">Expected Monthly Expenses (₹):
+                        <span class="tooltip" data-tooltip="Post-retirement monthly expenses in today's value"
+                            tabindex="0">?</span></label>
+                    <input type="number" id="targetExpenses" min="0" value="50000"
+                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                        aria-label="Expected Monthly Expenses in Rupees">
                 </div>
             </div>
             <div class="flex gap-4 mt-4 justify-center">
-                <button id="calcButton" onclick="calculateRetirement()" class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 disabled:bg-gray-400 transition-all duration-200" disabled aria-label="Calculate Retirement Plan">Calculate Plan</button>
-                <button onclick="resetForm()" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200" aria-label="Reset Form">Reset</button>
+                <button id="calcButton" onclick="calculateRetirement()"
+                    class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 disabled:bg-gray-400 transition-all duration-200"
+                    disabled aria-label="Calculate Retirement Plan">Calculate Plan</button>
+                <button onclick="resetForm()"
+                    class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200"
+                    aria-label="Reset Form">Reset</button>
             </div>
-            <p class="mt-2 text-sm text-gray-600 text-center">Enter your details to plan your retirement for FY 2025-26. Results are estimates; consult a financial advisor for personalized planning.</p>
+            <p class="mt-2 text-sm text-gray-600 text-center">Enter your details to plan your retirement for FY 2025-26.
+                Results are estimates; consult a financial advisor for personalized planning.</p>
         </section>
         <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50 hidden" id="resultsCard">
             <div id="errorMessage" class="text-red-600 hidden mb-4 text-center"></div>
@@ -348,7 +428,9 @@
                 <canvas id="taxChart"></canvas>
             </div>
             <div class="text-center mt-4">
-                <button onclick="resetForm()" class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-all duration-200" aria-label="Calculate Again">Calculate Again</button>
+                <button onclick="resetForm()"
+                    class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-all duration-200"
+                    aria-label="Calculate Again">Calculate Again</button>
             </div>
         </section>
         <section class="bg-white rounded-lg shadow-md p-6 mb-6">
@@ -356,39 +438,56 @@
             <div class="space-y-4">
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is a retirement corpus?</h3>
-                    <p class="text-gray-600">A retirement corpus is the total savings accumulated by retirement to fund post-retirement expenses, accounting for inflation and investment returns.</p>
+                    <p class="text-gray-600">A retirement corpus is the total savings accumulated by retirement to fund
+                        post-retirement expenses, accounting for inflation and investment returns.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">How does inflation affect retirement planning?</h3>
-                    <p class="text-gray-600">Inflation increases future expenses, requiring a larger corpus to maintain your lifestyle. A 6% inflation rate doubles costs in approximately 12 years.</p>
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">How does inflation affect
+                        retirement planning?</h3>
+                    <p class="text-gray-600">Inflation increases future expenses, requiring a larger corpus to maintain
+                        your lifestyle. A 6% inflation rate doubles costs in approximately 12 years.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is NPS in retirement planning?</h3>
-                    <p class="text-gray-600">The National Pension System (NPS) is a government-backed pension scheme offering tax benefits under Sections 80C and 80CCD, with options for equity and debt investments.</p>
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is NPS in retirement planning?
+                    </h3>
+                    <p class="text-gray-600">The National Pension System (NPS) is a government-backed pension scheme
+                        offering tax benefits under Sections 80C and 80CCD, with options for equity and debt
+                        investments.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">How much should I save monthly for retirement?</h3>
-                    <p class="text-gray-600">It depends on your current age, retirement age, expected expenses, inflation, and investment returns. Use this calculator to estimate based on your inputs.</p>
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">How much should I save monthly for
+                        retirement?</h3>
+                    <p class="text-gray-600">It depends on your current age, retirement age, expected expenses,
+                        inflation, and investment returns. Use this calculator to estimate based on your inputs.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">When is the ITR filing deadline for FY 2025-26?</h3>
-                    <p class="text-gray-600">July 31, 2026, for non-audit cases. Late filing incurs a ₹5,000 penalty under Section 234F.</p>
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">When is the ITR filing deadline for
+                        FY 2025-26?</h3>
+                    <p class="text-gray-600">July 31, 2026, for non-audit cases. Late filing incurs a ₹5,000 penalty
+                        under Section 234F.</p>
                 </div>
             </div>
         </section>
     </main>
     <div id="disclaimerModal" class="modal">
         <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
-            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500"
+                onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
             <h3 class="text-xl font-semibold text-indigo-900 mb-2">Disclaimer</h3>
-            <p class="text-gray-600">This calculator is for informational purposes only. Results are estimates and may not account for all circumstances, such as market risks or unexpected expenses. Consult a financial advisor for personalized retirement planning.</p>
+            <p class="text-gray-600">This calculator is for informational purposes only. Results are estimates and may
+                not account for all circumstances, such as market risks or unexpected expenses. Consult a financial
+                advisor for personalized retirement planning.</p>
         </div>
     </div>
     <div id="termsModal" class="modal">
         <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
-            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
+            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500"
+                onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
             <h3 class="text-xl font-semibold text-indigo-900 mb-2">Terms and Conditions</h3>
-            <p class="text-gray-600">By using this website, you agree to these Terms and Conditions. Calculators are for personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect data. The website and its content are owned by Financial Calculators and protected by intellectual property laws. Usage is governed by Indian laws.</p>
+            <p class="text-gray-600">By using this website, you agree to these Terms and Conditions. Calculators are for
+                personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to
+                incorrect data. The website and its content are owned by Financial Calculators and protected by
+                intellectual property laws. Usage is governed by Indian laws.</p>
         </div>
     </div>
     <footer class="bg-indigo-900 text-white text-center py-6">
@@ -426,47 +525,47 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    x: { 
-                        title: { 
-                            display: true, 
-                            text: 'Age', 
-                            color: '#4B5EAA', 
-                            font: { family: 'Inter' } 
-                        } 
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Age',
+                            color: '#4B5EAA',
+                            font: { family: 'Inter' }
+                        }
                     },
-                    y: { 
-                        beginAtZero: true, 
-                        title: { 
-                            display: true, 
-                            text: 'Corpus (₹)', 
-                            color: '#4B5EAA', 
-                            font: { family: 'Inter' } 
-                        } 
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Corpus (₹)',
+                            color: '#4B5EAA',
+                            font: { family: 'Inter' }
+                        }
                     }
                 },
-                plugins: { 
-                    legend: { display: false }, 
-                    title: { 
-                        display: true, 
-                        text: 'Retirement Corpus Growth', 
-                        color: '#2A3EB1', 
-                        font: { family: 'Inter', size: 16 } 
-                    } 
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Retirement Corpus Growth',
+                        color: '#2A3EB1',
+                        font: { family: 'Inter', size: 16 }
+                    }
                 }
             }
         };
 
         let taxChart;
-        window.onload = function() {
+        window.onload = function () {
             const ctx = document.getElementById('taxChart')?.getContext('2d');
             if (ctx) taxChart = new Chart(ctx, chartConfig);
             updateDeadlines();
             updateProgress();
             validateInputs();
             document.querySelectorAll('input, select').forEach(input => {
-                input?.addEventListener('input', () => { 
-                    validateInputs(); 
-                    updateProgress(); 
+                input?.addEventListener('input', () => {
+                    validateInputs();
+                    updateProgress();
                 });
             });
             document.querySelectorAll('.toggle-deadlines').forEach(btn => {
@@ -480,17 +579,17 @@
             });
             document.querySelectorAll('.faq-item h3').forEach(item => {
                 item?.addEventListener('click', () => {
-                    gtag('event', 'faq_click', { 
-                        event_category: 'FAQ', 
-                        event_label: item.textContent 
+                    gtag('event', 'faq_click', {
+                        event_category: 'FAQ',
+                        event_label: item.textContent
                     });
                 });
             });
             document.querySelectorAll('.dropdown-content a').forEach(link => {
                 link?.addEventListener('click', () => {
-                    gtag('event', 'dropdown_click', { 
-                        event_category: 'Navigation', 
-                        event_label: link.textContent 
+                    gtag('event', 'dropdown_click', {
+                        event_category: 'Navigation',
+                        event_label: link.textContent
                     });
                 });
             });
@@ -618,7 +717,7 @@
                 document.getElementById('resultsCard').classList.remove('hidden');
 
                 // Update chart
-                const chartLabels = Array.from({length: yearsToRetirement + 1}, (_, i) => currentAge + i);
+                const chartLabels = Array.from({ length: yearsToRetirement + 1 }, (_, i) => currentAge + i);
                 const chartData = chartLabels.map(age => {
                     const years = age - currentAge;
                     return monthlySavings * ((Math.pow(1 + monthlyRate, 12 * years) - 1) / monthlyRate) * (1 + monthlyRate);
@@ -629,9 +728,9 @@
 
                 calcButton.innerHTML = 'Calculate Plan';
                 calcButton.classList.remove('loading');
-                gtag('event', 'calculate_retirement', { 
-                    event_category: 'Retirement', 
-                    event_label: 'Calculate' 
+                gtag('event', 'calculate_retirement', {
+                    event_category: 'Retirement',
+                    event_label: 'Calculate'
                 });
             }, 300);
         }
@@ -674,18 +773,19 @@
                 deadlinesList.classList.add('hidden');
                 toggleBtn.textContent = 'Show Deadlines';
             }
-            gtag('event', 'toggle_deadlines', { 
-                event_category: 'Deadlines', 
-                event_label: 'Retirement Deadlines' 
+            gtag('event', 'toggle_deadlines', {
+                event_category: 'Deadlines',
+                event_label: 'Retirement Deadlines'
             });
         }
 
-        function openModal(modalId) { 
-            document.getElementById(modalId).classList.add('show'); 
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('show');
         }
-        function closeModal(modalId) { 
-            document.getElementById(modalId).classList.remove('show'); 
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
         }
     </script>
 </body>
+
 </html>
