@@ -480,35 +480,67 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
 
                 <div class="p-4 bg-indigo-50 rounded-lg">
-                    <h3 class="text-lg font-semibold text-indigo-800 mb-3 border-b pb-2 border-indigo-200">Income &
-                        Profile</h3>
-                    <div>
-                        <label for="ageGroup" class="block text-gray-800 font-medium">Age Group:</label>
-                        <select id="ageGroup"
-                            class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
-                            aria-label="Select Age Group">
-                            <option value="below60" selected>Below 60</option>
-                            <option value="60to80">60 to 80 (Senior Citizen)</option>
-                            <option value="above80">Above 80 (Super Senior Citizen)</option>
-                        </select>
+                    <h3 class="text-lg font-semibold text-indigo-800 mb-3 border-b pb-2 border-indigo-200">Basic Details & Income</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="financialYear" class="block text-gray-800 font-medium">Financial Year:</label>
+                            <select id="financialYear"
+                                class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
+                                aria-label="Select Financial Year">
+                                <option value="fy2025" selected>FY 2025-26 (AY 2026-27)</option>
+                                <option value="fy2024">FY 2024-25 (AY 2025-26)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="ageGroup" class="block text-gray-800 font-medium">Age Group:</label>
+                            <select id="ageGroup"
+                                class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
+                                aria-label="Select Age Group">
+                                <option value="below60" selected>Below 60</option>
+                                <option value="60to80">60 to 80 (Senior Citizen)</option>
+                                <option value="above80">Above 80 (Super Senior)</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="mt-4">
-                        <label for="grossSalary" class="block text-gray-800 font-medium">Annual Gross Salary (₹): <span
-                                class="tooltip"
-                                data-tooltip="Total salary before any tax exemptions or standard deductions."><i
-                                    class="fas fa-info-circle"></i></span></label>
-                        <input type="number" id="grossSalary" min="0" value="1000000"
-                            class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
-                            aria-label="Annual Gross Salary in Rupees">
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div>
+                            <label for="grossSalary" class="block text-gray-800 font-medium">Gross Salary (₹): <span
+                                    class="tooltip"
+                                    data-tooltip="Total salary before exemptions or standard deductions."><i
+                                        class="fas fa-info-circle"></i></span></label>
+                            <input type="number" id="grossSalary" min="0" value="1000000"
+                                class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                                aria-label="Gross Salary in Rupees">
+                        </div>
+                        <div>
+                            <label for="otherIncome" class="block text-gray-800 font-medium">Other Income (₹): <span
+                                    class="tooltip"
+                                    data-tooltip="Interest (FD/Savings), Capital Gains, Business, etc."><i
+                                        class="fas fa-info-circle"></i></span></label>
+                            <input type="number" id="otherIncome" min="0" value="0"
+                                class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                                aria-label="Other Income in Rupees">
+                        </div>
                     </div>
-                    <div class="mt-4">
-                        <label for="otherIncome" class="block text-gray-800 font-medium">Other Income (₹): <span
-                                class="tooltip"
-                                data-tooltip="Rental income, interest income (FD/Savings), business income, etc."><i
-                                    class="fas fa-info-circle"></i></span></label>
-                        <input type="number" id="otherIncome" min="0" value="0"
-                            class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
-                            aria-label="Other Income in Rupees">
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div>
+                            <label for="housePropertyIncome" class="block text-gray-800 font-medium text-sm">Rental Income (₹): <span
+                                    class="tooltip"
+                                    data-tooltip="Net Income from House Property (Rent)"><i
+                                        class="fas fa-info-circle"></i></span></label>
+                            <input type="number" id="housePropertyIncome" min="0" value="0"
+                                class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                                aria-label="Rental Income in Rupees">
+                        </div>
+                        <div>
+                            <label for="homeLoanInterest" class="block text-gray-800 font-medium text-sm">Home Loan Int. (₹): <span
+                                    class="tooltip"
+                                    data-tooltip="Interest covered u/s 24b. Max ₹2 Lakh for self-occupied property. Set off allowed only in Old Regime."><i
+                                        class="fas fa-info-circle"></i></span></label>
+                            <input type="number" id="homeLoanInterest" min="0" value="0"
+                                class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                                aria-label="Home Loan Interest in Rupees">
+                        </div>
                     </div>
                 </div>
 
@@ -867,36 +899,26 @@
         }
 
         function updateProgress() {
-            const inputs = ['ageGroup', 'grossSalary', 'otherIncome', 'basicSalary', 'hraReceived', 'rentPaid', 'cityType', 'section80C', 'section80E', 'section80D', 'npsDeduction', 'section80TTA', 'section80TTB'];
+            const inputs = ['ageGroup', 'grossSalary', 'otherIncome', 'housePropertyIncome', 'homeLoanInterest', 'basicSalary', 'hraReceived', 'rentPaid', 'cityType', 'section80C', 'section80E', 'section80D', 'npsDeduction', 'section80TTA', 'section80TTB'];
             let filled = inputs.reduce((count, id) => count + (document.getElementById(id)?.value !== '' && parseFloat(document.getElementById(id)?.value) >= 0 ? 1 : 0), 0);
             document.getElementById('taxProgress').style.width = `${(filled / inputs.length) * 100}%`;
         }
 
         function calculateHRAExemption(basicSalary, hraReceived, rentPaid, cityType) {
             if (!basicSalary || !hraReceived || !rentPaid) return 0;
-
-            // Note: Basic salary for HRA calculation can include Basic Pay + DA + Commission (based on fixed percentage of turnover). 
-            // Here, we use the provided annual basicSalary input.
-
             const hraPercentage = cityType === 'metro' ? 0.5 : 0.4;
-
-            // Condition 1: Actual HRA received
             let condition1 = hraReceived;
-
-            // Condition 2: Rent paid minus 10% of salary
             let condition2 = rentPaid - 0.1 * basicSalary;
-
-            // Condition 3: 50% or 40% of salary
             let condition3 = hraPercentage * basicSalary;
-
-            let exemption = Math.max(0, Math.min(condition1, condition2, condition3));
-            return exemption;
+            return Math.max(0, Math.min(condition1, condition2, condition3));
         }
 
         function validateInputs() {
             const ageGroup = document.getElementById('ageGroup').value;
             const salary = parseFloat(document.getElementById('grossSalary')?.value) || 0;
             const otherIncome = parseFloat(document.getElementById('otherIncome')?.value) || 0;
+            const housePropertyIncome = parseFloat(document.getElementById('housePropertyIncome')?.value) || 0;
+            const homeLoanInterest = parseFloat(document.getElementById('homeLoanInterest')?.value) || 0;
             const basicSalary = parseFloat(document.getElementById('basicSalary')?.value) || 0;
             const hraReceived = parseFloat(document.getElementById('hraReceived')?.value) || 0;
             const rentPaid = parseFloat(document.getElementById('rentPaid')?.value) || 0;
@@ -909,7 +931,7 @@
 
             const errorMessage = document.getElementById('errorMessage');
             const calcButton = document.getElementById('calcButton');
-            const inputs = ['grossSalary', 'otherIncome', 'basicSalary', 'hraReceived', 'rentPaid', 'section80C', 'section80E', 'section80D', 'npsDeduction', 'section80TTA', 'section80TTB'];
+            const inputs = ['grossSalary', 'otherIncome', 'housePropertyIncome', 'homeLoanInterest', 'basicSalary', 'hraReceived', 'rentPaid', 'section80C', 'section80E', 'section80D', 'npsDeduction', 'section80TTA', 'section80TTB'];
             inputs.forEach(id => document.getElementById(id)?.classList.remove('border-red-600'));
             errorMessage.style.display = 'none';
             errorMessage.innerHTML = '';
@@ -918,6 +940,8 @@
 
             if (salary < 0) errors.push('Gross salary cannot be negative.');
             if (otherIncome < 0) errors.push('Other income cannot be negative.');
+            if (housePropertyIncome < 0) errors.push('Rental income cannot be negative.');
+            if (homeLoanInterest < 0) errors.push('Home loan interest cannot be negative.');
             if (basicSalary < 0) errors.push('Basic salary cannot be negative.');
             if (hraReceived < 0) errors.push('HRA received cannot be negative.');
             if (rentPaid < 0) errors.push('Rent paid cannot be negative.');
@@ -939,53 +963,42 @@
                 return false;
             }
 
-            // Check if calculation can proceed (basic income inputs present)
-            if (salary + otherIncome > 0) {
+            if (salary + otherIncome + housePropertyIncome > 0) {
                 calcButton.disabled = false;
             } else {
                 calcButton.disabled = true;
                 return false;
             }
-
             return true;
         }
 
         function calculateOldRegimeTax(taxableIncome, ageGroup) {
             if (taxableIncome <= 0) return 0;
             let tax = 0;
-            let slabs;
             let baseExemption = 250000;
 
             if (ageGroup === '60to80') baseExemption = 300000;
             else if (ageGroup === 'above80') baseExemption = 500000;
 
             if (taxableIncome > baseExemption) {
-                // 5% slab: 2.5L/3L/5L to 5L
                 let taxable5 = Math.min(taxableIncome, 500000) - baseExemption;
                 if (taxable5 > 0) tax += taxable5 * 0.05;
 
-                // 20% slab: 5L to 10L
                 let taxable20 = Math.min(taxableIncome, 1000000) - 500000;
                 if (taxable20 > 0) tax += taxable20 * 0.20;
 
-                // 30% slab: Above 10L
                 let taxable30 = taxableIncome - 1000000;
                 if (taxable30 > 0) tax += taxable30 * 0.30;
             }
 
-            // Rebate under Section 87A (Income up to 5L)
-            if (taxableIncome <= 500000 && tax > 0) {
-                tax = Math.max(0, tax - 12500);
-            }
+            if (taxableIncome <= 500000 && tax > 0) tax = Math.max(0, tax - 12500);
 
-            // Surcharge is calculated on tax
             let surcharge = 0;
             if (taxableIncome > 5000000 && taxableIncome <= 10000000) surcharge = tax * 0.10;
             else if (taxableIncome > 10000000 && taxableIncome <= 20000000) surcharge = tax * 0.15;
             else if (taxableIncome > 20000000 && taxableIncome <= 50000000) surcharge = tax * 0.25;
             else if (taxableIncome > 50000000) surcharge = tax * 0.37;
 
-            // Health & Education Cess
             let cess = (tax + surcharge) * 0.04;
             return Math.round(tax + surcharge + cess);
         }
@@ -994,15 +1007,11 @@
             if (taxableIncome <= 0) return 0;
             let tax = 0;
 
-            // Standard Deduction is auto-applied to gross income for New Regime from FY 2023-24 onwards
-            const standardDeduction = 50000;
-            let actualTaxableIncome = Math.max(0, taxableIncome - standardDeduction);
-
-            // New Regime Slabs (FY 2025-26)
+            // Revised New Regime Slabs (Applicable FY 2024-25 onwards)
             let slabs = [
                 { limit: 300000, rate: 0 },
-                { limit: 600000, rate: 5 },
-                { limit: 900000, rate: 10 },
+                { limit: 700000, rate: 5 },
+                { limit: 1000000, rate: 10 },
                 { limit: 1200000, rate: 15 },
                 { limit: 1500000, rate: 20 },
                 { limit: Infinity, rate: 30 }
@@ -1010,8 +1019,8 @@
 
             let previousLimit = 0;
             for (let slab of slabs) {
-                if (actualTaxableIncome > previousLimit) {
-                    let taxableAtThisRate = Math.min(actualTaxableIncome, slab.limit) - previousLimit;
+                if (taxableIncome > previousLimit) {
+                    let taxableAtThisRate = Math.min(taxableIncome, slab.limit) - previousLimit;
                     if (taxableAtThisRate > 0) tax += taxableAtThisRate * (slab.rate / 100);
                     previousLimit = slab.limit;
                 } else {
@@ -1019,17 +1028,15 @@
                 }
             }
 
-            // Rebate under Section 87A (Income up to 7L, Tax up to 25k)
-            if (actualTaxableIncome <= 700000) tax = Math.max(0, tax - 25000);
+            // Rebate under Section 87A (Income up to 7L)
+            if (taxableIncome <= 700000) tax = Math.max(0, tax - 25000);
 
-            // Surcharge is calculated on tax
             let surcharge = 0;
-            if (actualTaxableIncome > 5000000 && actualTaxableIncome <= 10000000) surcharge = tax * 0.10;
-            else if (actualTaxableIncome > 10000000 && actualTaxableIncome <= 20000000) surcharge = tax * 0.15;
-            else if (actualTaxableIncome > 20000000 && actualTaxableIncome <= 50000000) surcharge = tax * 0.25;
-            else if (actualTaxableIncome > 50000000) surcharge = tax * 0.37;
+            if (taxableIncome > 5000000 && taxableIncome <= 10000000) surcharge = tax * 0.10;
+            else if (taxableIncome > 10000000 && taxableIncome <= 20000000) surcharge = tax * 0.15;
+            else if (taxableIncome > 20000000 && taxableIncome <= 50000000) surcharge = tax * 0.25;
+            else if (taxableIncome > 50000000) surcharge = tax * 0.37;
 
-            // Health & Education Cess
             let cess = (tax + surcharge) * 0.04;
             return Math.round(tax + surcharge + cess);
         }
@@ -1040,10 +1047,12 @@
             const calcButton = document.getElementById('calcButton');
             calcButton.classList.add('loading');
 
-            // Collect all inputs
+            const financialYear = document.getElementById('financialYear').value;
             const ageGroup = document.getElementById('ageGroup').value;
             const grossSalary = parseFloat(document.getElementById('grossSalary').value) || 0;
             const otherIncome = parseFloat(document.getElementById('otherIncome').value) || 0;
+            const housePropertyIncome = parseFloat(document.getElementById('housePropertyIncome').value) || 0;
+            const homeLoanInterest = parseFloat(document.getElementById('homeLoanInterest').value) || 0;
             const basicSalary = parseFloat(document.getElementById('basicSalary').value) || 0;
             const hraReceived = parseFloat(document.getElementById('hraReceived').value) || 0;
             const rentPaid = parseFloat(document.getElementById('rentPaid').value) || 0;
@@ -1056,45 +1065,35 @@
             const section80TTB = parseFloat(document.getElementById('section80TTB').value) || 0;
 
             setTimeout(() => {
-
-                // 1. Calculate HRA Exemption (Only applicable in Old Regime)
                 const hraExemption = calculateHRAExemption(basicSalary, hraReceived, rentPaid, cityType);
+                let interestDeduction = ageGroup === 'below60' ? section80TTA : section80TTB;
 
-                // 2. Determine applicable Interest Deduction
-                let interestDeduction = 0;
-                if (ageGroup === 'below60') {
-                    interestDeduction = section80TTA; // Max 10k for Savings Interest
-                } else {
-                    interestDeduction = section80TTB; // Max 50k for FD/Savings Interest
+                // Old Regime Calculation
+                let housePropertyOld = housePropertyIncome - homeLoanInterest;
+                // Maximum loss from HP that can be set off against other heads is 2 lakhs
+                if (housePropertyOld < -200000) {
+                    housePropertyOld = -200000;
                 }
-
-                // --- Old Regime Calculation ---
-                // Deductions claimed: Standard Deduction (50k for salaried), HRA, 80C, 80E, 80D, 80CCD(1B), Interest Deduction
+                let grossTotalIncomeOld = grossSalary + otherIncome + housePropertyOld;
                 let oldDeductions = 50000 + hraExemption + section80C + section80E + section80D + npsDeduction + interestDeduction;
-
-                // Gross Taxable Income before specific deductions
-                let grossTotalIncome = grossSalary + otherIncome;
-
-                let oldTaxableIncome = grossTotalIncome - oldDeductions;
-                oldTaxableIncome = Math.max(0, oldTaxableIncome);
+                let oldTaxableIncome = Math.max(0, grossTotalIncomeOld - oldDeductions);
                 const oldTax = calculateOldRegimeTax(oldTaxableIncome, ageGroup);
 
-                // --- New Regime Calculation ---
-                // Deductions claimed: Standard Deduction (50k for salaried) + None of the others
-                let newDeductions = 50000;
+                // New Regime Calculation
+                // Standard deduction increased to 75,000 under new regime from FY 2024-25
+                let standardDeductionNew = (financialYear === 'fy2024' || financialYear === 'fy2025') ? 75000 : 50000;
+                
+                // In new regime, loss from house property cannot be set off against salary/other income
+                let housePropertyNew = Math.max(0, housePropertyIncome - homeLoanInterest);
+                let grossTotalIncomeNew = grossSalary + otherIncome + housePropertyNew;
+                let newTaxableIncome = Math.max(0, grossTotalIncomeNew - standardDeductionNew);
+                const newTax = calculateNewRegimeTax(newTaxableIncome);
 
-                let newTaxableIncome = grossTotalIncome - newDeductions;
-                newTaxableIncome = Math.max(0, newTaxableIncome);
-                const newTax = calculateNewRegimeTax(grossTotalIncome); // Note: New Regime tax function handles the standard deduction internally
-
-                // 3. Prepare Results Output
-                const savings = Math.abs(oldTax - newTax);
                 const recommendation = oldTax < newTax
-                    ? `The <strong>Old Regime<strong> saves you <strong>₹${formatIndianNumber(newTax - oldTax)}<strong>.`
+                    ? `The <strong>Old Regime</strong> saves you <strong>₹${formatIndianNumber(newTax - oldTax)}</strong>.`
                     : newTax < oldTax
-                        ? `The <strong>New Regime<strong> saves you <strong>₹${formatIndianNumber(oldTax - newTax)}<strong>.`
-                        : `Both regimes result in the same tax liability of <strong>₹${formatIndianNumber(oldTax)}<strong>.`;
-
+                        ? `The <strong>New Regime</strong> saves you <strong>₹${formatIndianNumber(oldTax - newTax)}</strong>.`
+                        : `Both regimes result in the same tax liability of <strong>₹${formatIndianNumber(oldTax)}</strong>.`;
 
                 const result = `
                     <div class="space-y-4 font-semibold text-lg">
@@ -1124,7 +1123,6 @@
                 `;
                 document.getElementById('taxResult').innerHTML = result;
 
-                // Update Chart
                 taxChart.data.datasets[0].data = [oldTax, newTax];
                 taxChart.update();
 
@@ -1134,7 +1132,6 @@
 
                 document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth' });
 
-
                 gtag('event', 'calculate_tax', {
                     event_category: 'Calculator',
                     event_label: 'Income Tax Calculator'
@@ -1143,9 +1140,12 @@
         }
 
         function resetForm() {
+            document.getElementById('financialYear').value = 'fy2025';
             document.getElementById('ageGroup').value = 'below60';
             document.getElementById('grossSalary').value = '1000000';
             document.getElementById('otherIncome').value = '0';
+            document.getElementById('housePropertyIncome').value = '0';
+            document.getElementById('homeLoanInterest').value = '0';
             document.getElementById('basicSalary').value = '500000';
             document.getElementById('hraReceived').value = '150000';
             document.getElementById('rentPaid').value = '180000';
