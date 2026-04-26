@@ -669,6 +669,48 @@
                 padding: 6px;
             }
         }
+    
+
+        /* Unified mobile & touch improvements */
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .btn {
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                width: min(100%, 1000px);
+                margin: 16px auto;
+                padding: 16px;
+            }
+
+            .nav-container,
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
+
+            .card,
+            .intro-section,
+            .content-section,
+            .faq-section {
+                padding: 16px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
     </style>
     <script type="application/ld+json">
     {
@@ -936,9 +978,9 @@
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcPPF()" disabled
+                <button type="button" id="calcButton" onclick="calcPPF()" disabled
                     aria-label="Calculate PPF Returns">Calculate</button>
-                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
+                <button type="button" onclick="resetForm()" aria-label="Reset Form">Reset</button>
             </div>
             <div class="note">Enter annual investment in ₹ (₹500 to ₹1,50,000). PPF maturity is calculated with annual
                 compounding at the end of each financial year. Interest (currently 7.1% for FY 2025-26) and maturity
@@ -982,7 +1024,7 @@
                     <tbody></tbody>
                 </table>
             </div>
-            <button onclick="resetForm()">Calculate Again</button>
+            <button type="button" onclick="resetForm()">Calculate Again</button>
         </div>
         <div class="card">
             <h2>Important PPF Deadlines FY 2025-26</h2>

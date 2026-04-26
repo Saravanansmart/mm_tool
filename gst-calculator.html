@@ -187,6 +187,48 @@
                 max-height: 250px;
             }
         }
+    
+
+        /* Unified mobile & touch improvements */
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .btn {
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                width: min(100%, 1000px);
+                margin: 16px auto;
+                padding: 16px;
+            }
+
+            .nav-container,
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
+
+            .card,
+            .intro-section,
+            .content-section,
+            .faq-section {
+                padding: 16px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
     </style>
     <!-- Schema Markup: WebApplication -->
     <script type="application/ld+json">
@@ -422,10 +464,10 @@ o-900 hover:text-orange-500 font-semibold">Back to All Calculators</a>
                 </div>
             </div>
             <div class="flex gap-4 mt-4 justify-center">
-                <button id="calcButton" onclick="calculateGSTPenalty()"
+                <button type="button" id="calcButton" onclick="calculateGSTPenalty()"
                     class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 disabled:bg-gray-400 transition-all duration-200"
                     disabled aria-label="Calculate GST Penalty">Calculate Penalty</button>
-                <button onclick="resetForm()"
+                <button type="button" onclick="resetForm()"
                     class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200"
                     aria-label="Reset Form">Reset</button>
             </div>
@@ -439,7 +481,7 @@ o-900 hover:text-orange-500 font-semibold">Back to All Calculators</a>
                 <canvas id="taxChart"></canvas>
             </div>
             <div class="text-center mt-4">
-                <button onclick="resetForm()"
+                <button type="button" onclick="resetForm()"
                     class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-all duration-200"
                     aria-label="Calculate Again">Calculate Again</button>
             </div>

@@ -416,6 +416,48 @@
             border-radius: 8px;
             line-height: 1.8;
         }
+    
+
+        /* Unified mobile & touch improvements */
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .btn {
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                width: min(100%, 1000px);
+                margin: 16px auto;
+                padding: 16px;
+            }
+
+            .nav-container,
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
+
+            .card,
+            .intro-section,
+            .content-section,
+            .faq-section {
+                padding: 16px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
     </style>
 </head>
 
@@ -497,8 +539,8 @@
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcNPS()" disabled>Calculate</button>
-                <button onclick="resetForm()">Reset</button>
+                <button type="button" id="calcButton" onclick="calcNPS()" disabled>Calculate</button>
+                <button type="button" onclick="resetForm()">Reset</button>
             </div>
             <div class="note">Enter monthly contribution in ₹ (minimum ₹500 for Tier I). NPS returns are market-linked
                 and subject to risks. At least 40% of the corpus must be used for annuity purchase at retirement.</div>
