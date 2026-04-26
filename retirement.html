@@ -405,30 +405,21 @@
                             data-tooltip="Your current age in years" tabindex="0">?</span></label>
                     <select id="currentAge"
                         class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
-                        aria-label="Select Current Age">
-                        ${Array.from({length: 31}, (_, i) => `<option value="${20 + i}" ${i===10 ? 'selected' : '' }>
-                            ${20 + i}</option>`).join('')}
-                    </select>
+                        aria-label="Select Current Age"></select>
                 </div>
                 <div>
                     <label for="retirementAge" class="block text-gray-800 font-medium">Retirement Age: <span
                             class="tooltip" data-tooltip="Age you plan to retire" tabindex="0">?</span></label>
                     <select id="retirementAge"
                         class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
-                        aria-label="Select Retirement Age">
-                        ${Array.from({length: 51}, (_, i) => `<option value="${25 + i}" ${i===35 ? 'selected' : '' }>
-                            ${25 + i}</option>`).join('')}
-                    </select>
+                        aria-label="Select Retirement Age"></select>
                 </div>
                 <div>
                     <label for="lifeExpectancy" class="block text-gray-800 font-medium">Life Expectancy: <span
                             class="tooltip" data-tooltip="Expected lifespan in years" tabindex="0">?</span></label>
                     <select id="lifeExpectancy"
                         class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
-                        aria-label="Select Life Expectancy">
-                        ${Array.from({length: 41}, (_, i) => `<option value="${60 + i}" ${i===25 ? 'selected' : '' }>
-                            ${60 + i}</option>`).join('')}
-                    </select>
+                        aria-label="Select Life Expectancy"></select>
                 </div>
                 <div>
                     <label for="monthlySavings" class="block text-gray-800 font-medium">Monthly Savings (₹): <span
@@ -608,7 +599,23 @@
         };
 
         let taxChart;
+        function populateSelectOptions(selectId, start, end, selectedValue) {
+            const select = document.getElementById(selectId);
+            if (!select) return;
+            select.innerHTML = '';
+            for (let value = start; value <= end; value++) {
+                const option = document.createElement('option');
+                option.value = String(value);
+                option.textContent = String(value);
+                if (value === selectedValue) option.selected = true;
+                select.appendChild(option);
+            }
+        }
+
         window.onload = function () {
+            populateSelectOptions('currentAge', 20, 50, 30);
+            populateSelectOptions('retirementAge', 25, 75, 60);
+            populateSelectOptions('lifeExpectancy', 60, 100, 85);
             const ctx = document.getElementById('taxChart')?.getContext('2d');
             if (ctx) taxChart = new Chart(ctx, chartConfig);
             updateDeadlines();
@@ -685,7 +692,7 @@
             const calcButton = document.getElementById('calcButton');
             const inputs = ['currentAge', 'retirementAge', 'lifeExpectancy', 'monthlySavings', 'returnRate', 'inflationRate', 'targetExpenses'];
             inputs.forEach(id => document.getElementById(id)?.classList.remove('border-red-600'));
-            errorMessage.style.display = 'none';
+            errorMessage.classList.add('hidden');
             errorMessage.innerHTML = '';
 
             let errors = [];
@@ -718,7 +725,7 @@
 
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
-                errorMessage.style.display = 'block';
+                errorMessage.classList.remove('hidden');
                 calcButton.disabled = true;
                 return false;
             }
@@ -747,13 +754,19 @@
 
                 // Calculate corpus (future value of monthly contributions)
                 const monthlyRate = returnRate / 12;
-                const corpus = monthlySavings * ((Math.pow(1 + monthlyRate, 12 * yearsToRetirement) - 1) / monthlyRate) * (1 + monthlyRate);
+                const corpus = monthlyRate === 0
+                    ? monthlySavings * 12 * yearsToRetirement
+                    : monthlySavings * ((Math.pow(1 + monthlyRate, 12 * yearsToRetirement) - 1) / monthlyRate) * (1 + monthlyRate);
 
                 // Inflation-adjusted expenses
                 const adjustedExpenses = targetExpenses * Math.pow(1 + inflationRate, yearsToRetirement);
 
                 // Monthly pension (annuity formula)
-                const monthlyPension = corpus * monthlyRate / (1 - Math.pow(1 + monthlyRate, -12 * pensionYears));
+                const monthlyPension = pensionYears <= 0
+                    ? 0
+                    : (monthlyRate === 0
+                        ? corpus / (12 * pensionYears)
+                        : corpus * monthlyRate / (1 - Math.pow(1 + monthlyRate, -12 * pensionYears)));
 
                 // Shortfall or surplus
                 const shortfallSurplus = monthlyPension - adjustedExpenses;
@@ -772,6 +785,7 @@
                 const chartLabels = Array.from({ length: yearsToRetirement + 1 }, (_, i) => currentAge + i);
                 const chartData = chartLabels.map(age => {
                     const years = age - currentAge;
+                    if (monthlyRate === 0) return monthlySavings * 12 * years;
                     return monthlySavings * ((Math.pow(1 + monthlyRate, 12 * years) - 1) / monthlyRate) * (1 + monthlyRate);
                 });
                 if (taxChart) {
@@ -798,7 +812,7 @@
             document.getElementById('inflationRate').value = '6';
             document.getElementById('targetExpenses').value = '50000';
             document.getElementById('taxResult').innerHTML = '';
-            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('errorMessage').classList.add('hidden');
             document.getElementById('resultsCard').classList.add('hidden');
             if (taxChart) {
                 taxChart.data.labels = [];
