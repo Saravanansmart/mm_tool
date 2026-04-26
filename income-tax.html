@@ -30,6 +30,15 @@
     <meta name="author" content="Financial Calculators">
     <link rel="canonical" href="https://moneymindtool.com/income-tax.html">
     <title>Income Tax Calculator India FY 2025-26 - Optimize Tax Savings</title>
+    <meta name="theme-color" content="#2A3EB1">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MoneyMindTool">
+    <meta property="og:title" content="Income Tax Calculator India FY 2025-26 - Optimize Tax Savings">
+    <meta property="og:description" content="Calculate your income tax for FY 2025-26 (AY 2026-27) with our free India Income Tax Calculator. Compare old and new tax regimes, claim deductions (80C, 80E, 80D, 80CCD(1B), HRA, 80TTA, 80TTB), and plan for ITR filing deadlines. Optimize your tax savings today!">
+    <meta property="og:url" content="https://moneymindtool.com/income-tax.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Income Tax Calculator India FY 2025-26 - Optimize Tax Savings">
+    <meta name="twitter:description" content="Calculate your income tax for FY 2025-26 (AY 2026-27) with our free India Income Tax Calculator. Compare old and new tax regimes, claim deductions (80C, 80E, 80D, 80CCD(1B), HRA, 80TTA, 80TTB), and plan for ITR filing deadlines. Optimize your tax savings today!">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
@@ -201,6 +210,48 @@
             border-bottom: 1px dashed #E2E8F0;
             padding-bottom: 10px;
         }
+    
+
+        /* Unified mobile & touch improvements */
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .btn {
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                width: min(100%, 1000px);
+                margin: 16px auto;
+                padding: 16px;
+            }
+
+            .nav-container,
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
+
+            .card,
+            .intro-section,
+            .content-section,
+            .faq-section {
+                padding: 16px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
     </style>
     <script type="application/ld+json">
     {
@@ -613,10 +664,10 @@
 
             </div>
             <div class="flex gap-4 mt-8 justify-center">
-                <button id="calcButton" onclick="calcTax()" disabled
+                <button type="button" id="calcButton" onclick="calcTax()" disabled
                     class="bg-orange-600 text-white px-8 py-3 rounded-lg hover:bg-orange-700 disabled:bg-gray-400 font-semibold transition-all duration-200"
                     aria-label="Calculate Tax">Calculate Comparison</button>
-                <button onclick="resetForm()"
+                <button type="button" onclick="resetForm()"
                     class="bg-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-600 font-semibold transition-all duration-200"
                     aria-label="Reset Form">Reset</button>
             </div>
@@ -631,7 +682,7 @@
                 <canvas id="taxChart"></canvas>
             </div>
             <div class="text-center mt-4">
-                <button onclick="document.getElementById('grossSalary').scrollIntoView({ behavior: 'smooth' });"
+                <button type="button" onclick="document.getElementById('grossSalary').scrollIntoView({ behavior: 'smooth' });"
                     class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-all duration-200"
                     aria-label="Calculate Again">Adjust & Calculate Again</button>
             </div>
@@ -1188,8 +1239,6 @@
                 itrItem.innerHTML = '<strong>ITR Filing (Non-Audit, FY 2025-26)</strong>: Due <strong>July 31, 2026<strong>. File at <a href="https://www.incometax.gov.in" target="_blank" class="text-indigo-900 hover:text-orange-500" aria-label="Visit Income Tax India website">incometax.gov.in</a>.';
             }
 
-            // Remove PM Vidyalaxmi item as it's not a core tax deadline
-            document.getElementById('pm-vidyalaxmi')?.remove();
         }
 
         function toggleDeadlines() {

@@ -28,8 +28,17 @@
         content="EPF calculator 2025, Employee Provident Fund calculator, EPF maturity amount, EPF interest rate 2025, EPF contribution calculator, PF calculator India, FY 2025-26 EPF calculator, Section 80C tax benefits, EPF withdrawal calculator, retirement savings calculator, financial planning India 2025, EPF balance calculator, EPF interest calculation, PF eligibility calculator, online EPF calculator India, personal finance tools 2025">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
-    <link rel="canonical" href="https://moneymindtool.com/epf-calculator.html">
+    <link rel="canonical" href="https://moneymindtool.com/epf-calculators.html">
     <title>EPF Calculator India 2025 - Retirement Corpus Projection</title>
+    <meta name="theme-color" content="#2A3EB1">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MoneyMindTool">
+    <meta property="og:title" content="EPF Calculator India 2025 - Retirement Corpus Projection">
+    <meta property="og:description" content="Free EPF Calculator India 2025 for FY 2025-26. Calculate your Employee Provident Fund maturity amount, contributions, and interest instantly, including salary growth and age.">
+    <meta property="og:url" content="https://moneymindtool.com/epf-calculators.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EPF Calculator India 2025 - Retirement Corpus Projection">
+    <meta name="twitter:description" content="Free EPF Calculator India 2025 for FY 2025-26. Calculate your Employee Provident Fund maturity amount, contributions, and interest instantly, including salary growth and age.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <style>
@@ -563,6 +572,48 @@
             list-style-type: disc;
             padding-left: 20px;
         }
+    
+
+        /* Unified mobile & touch improvements */
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .btn {
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                width: min(100%, 1000px);
+                margin: 16px auto;
+                padding: 16px;
+            }
+
+            .nav-container,
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
+
+            .card,
+            .intro-section,
+            .content-section,
+            .faq-section {
+                padding: 16px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
     </style>
     <script type="application/ld+json">
     {
@@ -848,9 +899,9 @@
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcEPF()" disabled
+                <button type="button" id="calcButton" onclick="calcEPF()" disabled
                     aria-label="Calculate EPF Maturity Amount">Calculate</button>
-                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
+                <button type="button" onclick="resetForm()" aria-label="Reset Form">Reset</button>
             </div>
             <div class="note">Calculations use an estimated interest rate of 8.25% p.a., compounded monthly/credited
                 annually. Salary growth and current balance inputs ensure a more accurate projection.</div>
@@ -901,7 +952,7 @@
                     </table>
                 </div>
             </div>
-            <button onclick="resetForm()" aria-label="Calculate Again">Calculate Again</button>
+            <button type="button" onclick="resetForm()" aria-label="Calculate Again">Calculate Again</button>
         </div>
         <div class="card">
             <h2>Important EPF Deadlines FY 2025-26</h2>
