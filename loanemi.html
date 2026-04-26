@@ -30,6 +30,16 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
     <title>Loan EMI Calculator India 2025 - Free Home, Car, Personal Loan EMI</title>
+    <link rel="canonical" href="https://moneymindtool.com/loanemi.html">
+    <meta name="theme-color" content="#2A3EB1">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MoneyMindTool">
+    <meta property="og:title" content="Loan EMI Calculator India 2025 - Free Home, Car, Personal Loan EMI">
+    <meta property="og:description" content="Free Loan EMI Calculator India 2025 for home, car, and personal loans (₹50,000–₹1 crore). Calculate monthly EMI, total interest, repayment schedule, and explore tax benefits, foreclosure, and prepayment options for FY 2025-26 instantly.">
+    <meta property="og:url" content="https://moneymindtool.com/loanemi.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Loan EMI Calculator India 2025 - Free Home, Car, Personal Loan EMI">
+    <meta name="twitter:description" content="Free Loan EMI Calculator India 2025 for home, car, and personal loans (₹50,000–₹1 crore). Calculate monthly EMI, total interest, repayment schedule, and explore tax benefits, foreclosure, and prepayment options for FY 2025-26 instantly.">
     <!-- Include Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <!-- Include Font Awesome for Icons -->
@@ -673,6 +683,48 @@
                 height: 200px;
             }
         }
+    
+
+        /* Unified mobile & touch improvements */
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .btn {
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                width: min(100%, 1000px);
+                margin: 16px auto;
+                padding: 16px;
+            }
+
+            .nav-container,
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
+
+            .card,
+            .intro-section,
+            .content-section,
+            .faq-section {
+                padding: 16px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
     </style>
     <!-- Updated Schema Markup -->
     <script type="application/ld+json">
@@ -947,8 +999,8 @@
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcLoan()" disabled aria-label="Calculate Loan EMI">Calculate</button>
-                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
+                <button type="button" id="calcButton" onclick="calcLoan()" disabled aria-label="Calculate Loan EMI">Calculate</button>
+                <button type="button" onclick="resetForm()" aria-label="Reset Form">Reset</button>
             </div>
             <div class="note">Enter loan amount in ₹ (e.g., 10,00,000 for 10 Lakh), annual interest rate (8–24%), and
                 repayment tenure (1–30 years or 12–360 months). EMI is calculated using the reducing balance method: EMI
@@ -977,7 +1029,7 @@
                     <tbody></tbody>
                 </table>
             </div>
-            <button onclick="resetForm()">Calculate Again</button>
+            <button type="button" onclick="resetForm()">Calculate Again</button>
         </div>
         <div class="card">
             <h2>Important Loan Deadlines FY 2025-26</h2>
