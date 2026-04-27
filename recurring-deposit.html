@@ -29,6 +29,16 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
     <title>RD Calculator India FY 2025-26 - Calculate Recurring Deposit Maturity</title>
+    <link rel="canonical" href="https://moneymindtool.com/recurring-deposit.html">
+    <meta name="theme-color" content="#2A3EB1">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MoneyMindTool">
+    <meta property="og:title" content="RD Calculator India FY 2025-26 - Calculate Recurring Deposit Maturity">
+    <meta property="og:description" content="Calculate RD maturity for FY 2025-26 with our free Recurring Deposit Calculator for India. Estimate maturity amount, interest earned, and total savings for your RD investment plan with accurate quarterly compounding.">
+    <meta property="og:url" content="https://moneymindtool.com/recurring-deposit.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RD Calculator India FY 2025-26 - Calculate Recurring Deposit Maturity">
+    <meta name="twitter:description" content="Calculate RD maturity for FY 2025-26 with our free Recurring Deposit Calculator for India. Estimate maturity amount, interest earned, and total savings for your RD investment plan with accurate quarterly compounding.">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
@@ -516,6 +526,48 @@
                 min-width: 150px;
             }
         }
+    
+
+        /* Unified mobile & touch improvements */
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .btn {
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                width: min(100%, 1000px);
+                margin: 16px auto;
+                padding: 16px;
+            }
+
+            .nav-container,
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
+
+            .card,
+            .intro-section,
+            .content-section,
+            .faq-section {
+                padding: 16px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
     </style>
     <script type="application/ld+json">
     {
@@ -590,7 +642,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <header>
         <div class="nav-container">
-            <h1>Financial Calculators</h1>
+            <h1>moneymindtool</h1>
             <nav class="nav-menu">
                 <a href="/index.html">Home</a>
                 <div class="dropdown">
@@ -655,8 +707,8 @@
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcRD()" disabled>Calculate</button>
-                <button onclick="resetForm()">Reset</button>
+                <button type="button" id="calcButton" onclick="calcRD()" disabled>Calculate</button>
+                <button type="button" onclick="resetForm()">Reset</button>
             </div>
             <div class="note">Enter monthly deposit in ₹ (minimum ₹100 for many banks/post offices). RD interest is
                 compounded quarterly. Interest rates (typically 4-8% p.a. in FY 2025-26) vary by bank and tenure.
@@ -774,7 +826,7 @@
             <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a> |
             <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
         </div>
-        <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
+        <p class="rights-reserved">© 2026 digicreature technologies. All Rights Reserved.</p>
     </footer>
     <script>
         function formatIndianNumber(num) {

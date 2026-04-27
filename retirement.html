@@ -30,6 +30,16 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
     <title>Retirement Planning Calculator India FY 2025-26</title>
+    <link rel="canonical" href="https://moneymindtool.com/retirement.html">
+    <meta name="theme-color" content="#2A3EB1">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MoneyMindTool">
+    <meta property="og:title" content="Retirement Planning Calculator India FY 2025-26">
+    <meta property="og:description" content="Plan your retirement for FY 2025-26 in India. Calculate your retirement corpus, monthly pension, and shortfall with inflation adjustments.">
+    <meta property="og:url" content="https://moneymindtool.com/retirement.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Retirement Planning Calculator India FY 2025-26">
+    <meta name="twitter:description" content="Plan your retirement for FY 2025-26 in India. Calculate your retirement corpus, monthly pension, and shortfall with inflation adjustments.">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js CDN -->
@@ -177,6 +187,48 @@
                 max-height: 250px;
             }
         }
+    
+
+        /* Unified mobile & touch improvements */
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .btn {
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                width: min(100%, 1000px);
+                margin: 16px auto;
+                padding: 16px;
+            }
+
+            .nav-container,
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
+
+            .card,
+            .intro-section,
+            .content-section,
+            .faq-section {
+                padding: 16px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
     </style>
     <!-- Schema Markup: WebApplication -->
     <script type="application/ld+json">
@@ -280,7 +332,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <header class="sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-white">Financial Calculators</h1>
+            <h1 class="text-2xl font-bold text-white">moneymindtool</h1>
             <nav class="flex space-x-4">
                 <a href="/index.html" class="text-white hover:text-orange-500 font-medium">Home</a>
                 <div class="relative dropdown">
@@ -353,30 +405,21 @@
                             data-tooltip="Your current age in years" tabindex="0">?</span></label>
                     <select id="currentAge"
                         class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
-                        aria-label="Select Current Age">
-                        ${Array.from({length: 31}, (_, i) => `<option value="${20 + i}" ${i===10 ? 'selected' : '' }>
-                            ${20 + i}</option>`).join('')}
-                    </select>
+                        aria-label="Select Current Age"></select>
                 </div>
                 <div>
                     <label for="retirementAge" class="block text-gray-800 font-medium">Retirement Age: <span
                             class="tooltip" data-tooltip="Age you plan to retire" tabindex="0">?</span></label>
                     <select id="retirementAge"
                         class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
-                        aria-label="Select Retirement Age">
-                        ${Array.from({length: 51}, (_, i) => `<option value="${25 + i}" ${i===35 ? 'selected' : '' }>
-                            ${25 + i}</option>`).join('')}
-                    </select>
+                        aria-label="Select Retirement Age"></select>
                 </div>
                 <div>
                     <label for="lifeExpectancy" class="block text-gray-800 font-medium">Life Expectancy: <span
                             class="tooltip" data-tooltip="Expected lifespan in years" tabindex="0">?</span></label>
                     <select id="lifeExpectancy"
                         class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
-                        aria-label="Select Life Expectancy">
-                        ${Array.from({length: 41}, (_, i) => `<option value="${60 + i}" ${i===25 ? 'selected' : '' }>
-                            ${60 + i}</option>`).join('')}
-                    </select>
+                        aria-label="Select Life Expectancy"></select>
                 </div>
                 <div>
                     <label for="monthlySavings" class="block text-gray-800 font-medium">Monthly Savings (₹): <span
@@ -411,10 +454,10 @@
                 </div>
             </div>
             <div class="flex gap-4 mt-4 justify-center">
-                <button id="calcButton" onclick="calculateRetirement()"
+                <button type="button" id="calcButton" onclick="calculateRetirement()"
                     class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 disabled:bg-gray-400 transition-all duration-200"
                     disabled aria-label="Calculate Retirement Plan">Calculate Plan</button>
-                <button onclick="resetForm()"
+                <button type="button" onclick="resetForm()"
                     class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200"
                     aria-label="Reset Form">Reset</button>
             </div>
@@ -428,7 +471,7 @@
                 <canvas id="taxChart"></canvas>
             </div>
             <div class="text-center mt-4">
-                <button onclick="resetForm()"
+                <button type="button" onclick="resetForm()"
                     class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-all duration-200"
                     aria-label="Calculate Again">Calculate Again</button>
             </div>
@@ -504,7 +547,7 @@
             <span>|</span>
             <a href="#" onclick="openModal('termsModal')" class="hover:text-orange-500">Terms & Conditions</a>
         </div>
-        <p class="mt-2 text-sm">© 2025 Financial Calculators. All Rights Reserved.</p>
+        <p class="mt-2 text-sm">© 2026 digicreature technologies. All Rights Reserved.</p>
     </footer>
     <script>
         // Chart.js configuration
@@ -556,7 +599,23 @@
         };
 
         let taxChart;
+        function populateSelectOptions(selectId, start, end, selectedValue) {
+            const select = document.getElementById(selectId);
+            if (!select) return;
+            select.innerHTML = '';
+            for (let value = start; value <= end; value++) {
+                const option = document.createElement('option');
+                option.value = String(value);
+                option.textContent = String(value);
+                if (value === selectedValue) option.selected = true;
+                select.appendChild(option);
+            }
+        }
+
         window.onload = function () {
+            populateSelectOptions('currentAge', 20, 50, 30);
+            populateSelectOptions('retirementAge', 25, 75, 60);
+            populateSelectOptions('lifeExpectancy', 60, 100, 85);
             const ctx = document.getElementById('taxChart')?.getContext('2d');
             if (ctx) taxChart = new Chart(ctx, chartConfig);
             updateDeadlines();
@@ -633,7 +692,7 @@
             const calcButton = document.getElementById('calcButton');
             const inputs = ['currentAge', 'retirementAge', 'lifeExpectancy', 'monthlySavings', 'returnRate', 'inflationRate', 'targetExpenses'];
             inputs.forEach(id => document.getElementById(id)?.classList.remove('border-red-600'));
-            errorMessage.style.display = 'none';
+            errorMessage.classList.add('hidden');
             errorMessage.innerHTML = '';
 
             let errors = [];
@@ -666,7 +725,7 @@
 
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
-                errorMessage.style.display = 'block';
+                errorMessage.classList.remove('hidden');
                 calcButton.disabled = true;
                 return false;
             }
@@ -695,13 +754,19 @@
 
                 // Calculate corpus (future value of monthly contributions)
                 const monthlyRate = returnRate / 12;
-                const corpus = monthlySavings * ((Math.pow(1 + monthlyRate, 12 * yearsToRetirement) - 1) / monthlyRate) * (1 + monthlyRate);
+                const corpus = monthlyRate === 0
+                    ? monthlySavings * 12 * yearsToRetirement
+                    : monthlySavings * ((Math.pow(1 + monthlyRate, 12 * yearsToRetirement) - 1) / monthlyRate) * (1 + monthlyRate);
 
                 // Inflation-adjusted expenses
                 const adjustedExpenses = targetExpenses * Math.pow(1 + inflationRate, yearsToRetirement);
 
                 // Monthly pension (annuity formula)
-                const monthlyPension = corpus * monthlyRate / (1 - Math.pow(1 + monthlyRate, -12 * pensionYears));
+                const monthlyPension = pensionYears <= 0
+                    ? 0
+                    : (monthlyRate === 0
+                        ? corpus / (12 * pensionYears)
+                        : corpus * monthlyRate / (1 - Math.pow(1 + monthlyRate, -12 * pensionYears)));
 
                 // Shortfall or surplus
                 const shortfallSurplus = monthlyPension - adjustedExpenses;
@@ -720,11 +785,14 @@
                 const chartLabels = Array.from({ length: yearsToRetirement + 1 }, (_, i) => currentAge + i);
                 const chartData = chartLabels.map(age => {
                     const years = age - currentAge;
+                    if (monthlyRate === 0) return monthlySavings * 12 * years;
                     return monthlySavings * ((Math.pow(1 + monthlyRate, 12 * years) - 1) / monthlyRate) * (1 + monthlyRate);
                 });
-                taxChart.data.labels = chartLabels;
-                taxChart.data.datasets[0].data = chartData;
-                taxChart.update();
+                if (taxChart) {
+                    taxChart.data.labels = chartLabels;
+                    taxChart.data.datasets[0].data = chartData;
+                    taxChart.update();
+                }
 
                 calcButton.innerHTML = 'Calculate Plan';
                 calcButton.classList.remove('loading');
@@ -744,11 +812,13 @@
             document.getElementById('inflationRate').value = '6';
             document.getElementById('targetExpenses').value = '50000';
             document.getElementById('taxResult').innerHTML = '';
-            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('errorMessage').classList.add('hidden');
             document.getElementById('resultsCard').classList.add('hidden');
-            taxChart.data.labels = [];
-            taxChart.data.datasets[0].data = [];
-            taxChart.update();
+            if (taxChart) {
+                taxChart.data.labels = [];
+                taxChart.data.datasets[0].data = [];
+                taxChart.update();
+            }
             updateProgress();
             validateInputs();
         }

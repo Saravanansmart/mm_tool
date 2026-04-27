@@ -29,6 +29,16 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Financial Calculators">
     <title>PPF Calculator India 2025 - Free Maturity & Returns Calculation</title>
+    <link rel="canonical" href="https://moneymindtool.com/ppf.html">
+    <meta name="theme-color" content="#2A3EB1">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MoneyMindTool">
+    <meta property="og:title" content="PPF Calculator India 2025 - Free Maturity & Returns Calculation">
+    <meta property="og:description" content="Free PPF Calculator India 2025 for FY 2025-26. Calculate Public Provident Fund maturity amount, interest earned, tax-free savings, and plan for Section 80C deductions instantly. Understand PPF eligibility, withdrawal rules, and investment limits.">
+    <meta property="og:url" content="https://moneymindtool.com/ppf.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PPF Calculator India 2025 - Free Maturity & Returns Calculation">
+    <meta name="twitter:description" content="Free PPF Calculator India 2025 for FY 2025-26. Calculate Public Provident Fund maturity amount, interest earned, tax-free savings, and plan for Section 80C deductions instantly. Understand PPF eligibility, withdrawal rules, and investment limits.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
@@ -659,6 +669,48 @@
                 padding: 6px;
             }
         }
+    
+
+        /* Unified mobile & touch improvements */
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .btn {
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                width: min(100%, 1000px);
+                margin: 16px auto;
+                padding: 16px;
+            }
+
+            .nav-container,
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
+
+            .card,
+            .intro-section,
+            .content-section,
+            .faq-section {
+                padding: 16px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
     </style>
     <script type="application/ld+json">
     {
@@ -834,7 +886,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <header>
         <div class="nav-container">
-            <h1>Financial Calculators</h1>
+            <h1>moneymindtool</h1>
             <nav class="nav-menu">
                 <a href="/index.html">Home</a>
                 <div class="dropdown">
@@ -926,9 +978,9 @@
                 </div>
             </div>
             <div class="input-group">
-                <button id="calcButton" onclick="calcPPF()" disabled
+                <button type="button" id="calcButton" onclick="calcPPF()" disabled
                     aria-label="Calculate PPF Returns">Calculate</button>
-                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
+                <button type="button" onclick="resetForm()" aria-label="Reset Form">Reset</button>
             </div>
             <div class="note">Enter annual investment in ₹ (₹500 to ₹1,50,000). PPF maturity is calculated with annual
                 compounding at the end of each financial year. Interest (currently 7.1% for FY 2025-26) and maturity
@@ -972,7 +1024,7 @@
                     <tbody></tbody>
                 </table>
             </div>
-            <button onclick="resetForm()">Calculate Again</button>
+            <button type="button" onclick="resetForm()">Calculate Again</button>
         </div>
         <div class="card">
             <h2>Important PPF Deadlines FY 2025-26</h2>
@@ -1130,7 +1182,7 @@
             <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a> |
             <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
         </div>
-        <p class="rights-reserved">© 2025 DigiCreature Technologies. All Rights Reserved.</p>
+        <p class="rights-reserved">© 2026 digicreature technologies. All Rights Reserved.</p>
     </footer>
     <script>
         function formatIndianNumber(num) {
