@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate your exact monthly in-hand take-home salary from your CTC. Deduct EPF, Professional Tax, and TDS instantly with our free India Salary Calculator.">
+    <meta name="keywords" content="calculator, finance india, moneymindtool">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="canonical" href="https://moneymindtool.com/salary-calculator.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="In-Hand Salary Calculator (CTC to Net Pay) India FY 2025-26">
+    <meta property="og:description" content="Calculate your exact monthly in-hand take-home salary from your CTC. Deduct EPF, Professional Tax, and TDS instantly with our free India Salary Calculator.">
+    <meta property="og:url" content="https://moneymindtool.com/salary-calculator.html">
+    <meta property="og:site_name" content="MoneyMindTool">
+    <meta property="og:image" content="https://moneymindtool.com/assets/og-image.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="In-Hand Salary Calculator (CTC to Net Pay) India FY 2025-26">
+    <meta name="twitter:description" content="Calculate your exact monthly in-hand take-home salary from your CTC. Deduct EPF, Professional Tax, and TDS instantly with our free India Salary Calculator.">
+    <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
+    
+    <title>In-Hand Salary Calculator (CTC to Net Pay) India FY 2025-26</title>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moneymindtool.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://moneymindtool.com/all-calculators.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "In-Hand Salary Calculator (CTC to Net Pay)",
+        "item": "https://moneymindtool.com/salary-calculator.html"
+      }]
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, #E8F0FE, #F9FAFB); min-height: 100vh; color: #1F2937; line-height: 1.6; }
+        header { background: #2A3EB1; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="logo text-2xl font-bold text-white">MoneyMindTool</div>
+            <nav class="flex space-x-4">
+                <a href="/index.html" class="text-white hover:text-orange-500 font-medium">Home</a>
+                <a href="/all-calculators.html" class="text-white hover:text-orange-500 font-medium">Calculators</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <section class="mb-8">
+            <h1 class="text-3xl font-semibold text-indigo-900 text-center mb-6">In-Hand Salary Calculator (CTC to Net Pay)</h1>
+            <p class="text-center text-gray-600 mb-4">Calculate your exact monthly in-hand take-home salary from your CTC. Deduct EPF, Professional Tax, and TDS instantly with our free India Salary Calculator.</p>
+        </section>
+        
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-gray-800 font-medium">Annual CTC (₹):</label>
+                    <input type="number" id="ctc" value="1200000" class="w-full p-2 border border-indigo-200 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-gray-800 font-medium">Basic Salary (% of CTC):</label>
+                    <input type="number" id="basicPercent" value="50" class="w-full p-2 border border-indigo-200 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-gray-800 font-medium">Annual Bonus Included in CTC (₹):</label>
+                    <input type="number" id="bonus" value="100000" class="w-full p-2 border border-indigo-200 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-gray-800 font-medium">Monthly Professional Tax (₹):</label>
+                    <input type="number" id="pt" value="200" class="w-full p-2 border border-indigo-200 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-gray-800 font-medium">Monthly Estimated TDS (₹):</label>
+                    <input type="number" id="tds" value="5000" class="w-full p-2 border border-indigo-200 rounded-lg">
+                </div>
+                <div class="flex items-center mt-6">
+                    <input type="checkbox" id="capEpf" class="mr-2 h-5 w-5 text-indigo-600" checked>
+                    <label class="text-gray-800 font-medium">Cap EPF to ₹1,800/month</label>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <button onclick="calculateSalary()" class="bg-orange-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-600">Calculate Take-Home</button>
+            </div>
+        
+        </section>
+        
+        <section id="resultsCard" class="hidden bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50 text-center">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Calculation Results</h2>
+            <div id="result"></div>
+        </section>
+    </main>
+    
+    <footer class="mt-auto bg-indigo-900 text-white text-center py-6 ">
+        <p class="text-sm opacity-80 mt-2">© 2026 Digicreature Technologies. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        
+        function calculateSalary() {
+            let ctc = parseFloat(document.getElementById('ctc').value) || 0;
+            let basicPercent = parseFloat(document.getElementById('basicPercent').value) || 50;
+            let bonus = parseFloat(document.getElementById('bonus').value) || 0;
+            let pt = parseFloat(document.getElementById('pt').value) || 200;
+            let tds = parseFloat(document.getElementById('tds').value) || 0;
+            
+            let gross = ctc - bonus;
+            let monthlyGross = gross / 12;
+            let basic = monthlyGross * (basicPercent / 100);
+            
+            let epf = basic * 0.12;
+            if(epf > 1800 && document.getElementById('capEpf').checked) epf = 1800;
+            
+            let inHand = monthlyGross - epf - pt - tds;
+            
+            document.getElementById('result').innerHTML = `
+                <div class="text-2xl font-bold text-indigo-900 mb-2">Monthly In-Hand: ₹${Math.round(inHand).toLocaleString()}</div>
+                <div class="text-gray-700 mt-2">Monthly Gross: ₹${Math.round(monthlyGross).toLocaleString()}</div>
+                <div class="text-gray-700">Monthly EPF Deduction: ₹${Math.round(epf).toLocaleString()}</div>
+                <div class="text-gray-700">Monthly PT: ₹${Math.round(pt).toLocaleString()}</div>
+                <div class="text-gray-700">Monthly TDS: ₹${Math.round(tds).toLocaleString()}</div>
+            `;
+            document.getElementById('resultsCard').classList.remove('hidden');
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-GYW0708DQY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate how much interest you can save on your Home Loan or Personal Loan by making extra EMI payments or lump-sum prepayments.">
+    <meta name="keywords" content="calculator, finance india, moneymindtool">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="canonical" href="https://moneymindtool.com/loan-prepayment.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Loan Prepayment Calculator India - Save Interest">
+    <meta property="og:description" content="Calculate how much interest you can save on your Home Loan or Personal Loan by making extra EMI payments or lump-sum prepayments.">
+    <meta property="og:url" content="https://moneymindtool.com/loan-prepayment.html">
+    <meta property="og:site_name" content="MoneyMindTool">
+    <meta property="og:image" content="https://moneymindtool.com/assets/og-image.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Loan Prepayment Calculator India - Save Interest">
+    <meta name="twitter:description" content="Calculate how much interest you can save on your Home Loan or Personal Loan by making extra EMI payments or lump-sum prepayments.">
+    <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
+    
+    <title>Loan Prepayment Calculator India - Save Interest</title>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moneymindtool.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://moneymindtool.com/all-calculators.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Loan Prepayment Calculator",
+        "item": "https://moneymindtool.com/loan-prepayment.html"
+      }]
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, #E8F0FE, #F9FAFB); min-height: 100vh; color: #1F2937; line-height: 1.6; }
+        header { background: #2A3EB1; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="logo text-2xl font-bold text-white">MoneyMindTool</div>
+            <nav class="flex space-x-4">
+                <a href="/index.html" class="text-white hover:text-orange-500 font-medium">Home</a>
+                <a href="/all-calculators.html" class="text-white hover:text-orange-500 font-medium">Calculators</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <section class="mb-8">
+            <h1 class="text-3xl font-semibold text-indigo-900 text-center mb-6">Loan Prepayment Calculator</h1>
+            <p class="text-center text-gray-600 mb-4">Calculate how much interest you can save on your Home Loan or Personal Loan by making extra EMI payments or lump-sum prepayments.</p>
+        </section>
+        
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-gray-800 font-medium">Outstanding Loan Amount (₹):</label>
+                    <input type="number" id="loanAmount" value="5000000" class="w-full p-2 border border-indigo-200 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-gray-800 font-medium">Interest Rate (% p.a):</label>
+                    <input type="number" id="interestRate" value="8.5" step="0.1" class="w-full p-2 border border-indigo-200 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-gray-800 font-medium">Remaining Tenure (Years):</label>
+                    <input type="number" id="tenure" value="15" class="w-full p-2 border border-indigo-200 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-gray-800 font-medium">Extra Monthly Prepayment (₹):</label>
+                    <input type="number" id="prepayAmount" value="10000" class="w-full p-2 border border-indigo-200 rounded-lg">
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <button onclick="calculatePrepayment()" class="bg-orange-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-600">Calculate Savings</button>
+            </div>
+        
+        </section>
+        
+        <section id="resultsCard" class="hidden bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50 text-center">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Calculation Results</h2>
+            <div id="result"></div>
+        </section>
+    </main>
+    
+    <footer class="mt-auto bg-indigo-900 text-white text-center py-6 ">
+        <p class="text-sm opacity-80 mt-2">© 2026 Digicreature Technologies. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        
+        function calculatePrepayment() {
+            let p = parseFloat(document.getElementById('loanAmount').value);
+            let r = parseFloat(document.getElementById('interestRate').value) / 12 / 100;
+            let n = parseFloat(document.getElementById('tenure').value) * 12;
+            let prepay = parseFloat(document.getElementById('prepayAmount').value) || 0;
+            
+            let emi = p * r * (Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            let totalInterestNormal = (emi * n) - p;
+            
+            let balance = p;
+            let months = 0;
+            let totalInterestPrepay = 0;
+            
+            while(balance > 0 && months < 1000) {
+                let interest = balance * r;
+                totalInterestPrepay += interest;
+                let principalPaid = emi - interest + prepay;
+                balance -= principalPaid;
+                months++;
+            }
+            
+            let saved = totalInterestNormal - totalInterestPrepay;
+            let timeSaved = n - months;
+            
+            document.getElementById('result').innerHTML = `
+                <div class="text-2xl font-bold text-green-600 mb-2">Total Interest Saved: ₹${Math.round(saved > 0 ? saved : 0).toLocaleString()}</div>
+                <div class="text-xl font-bold text-indigo-900 mb-2">Tenure Reduced By: ${Math.floor(timeSaved/12)} Yrs & ${timeSaved%12} Mos</div>
+                <div class="text-gray-700 mt-4">Original EMI: ₹${Math.round(emi).toLocaleString()}</div>
+                <div class="text-gray-700 mt-2">New Monthly Payment: ₹${Math.round(emi + prepay).toLocaleString()}</div>
+            `;
+            document.getElementById('resultsCard').classList.remove('hidden');
+        }
+        
+    </script>
+</body>
+</html>

@@ -110,5 +110,24 @@
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
-
+<url>
+  <loc>https://moneymindtool.com/salary-calculator.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://moneymindtool.com/loan-prepayment.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://moneymindtool.com/ssy-calculator.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://moneymindtool.com/step-up-sip.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
 </urlset>
