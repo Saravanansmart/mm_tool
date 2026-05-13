@@ -30,16 +30,6 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="MoneyMindTool">
     <title>Home Loan EMI Calculator India 2025 - Free EMI & Interest Calculation</title>
-    <link rel="canonical" href="https://moneymindtool.com/home-loan.html">
-    <meta name="theme-color" content="#2A3EB1">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="MoneyMindTool">
-    <meta property="og:title" content="Home Loan EMI Calculator India 2025 - Free EMI & Interest Calculation">
-    <meta property="og:description" content="Free Home Loan EMI Calculator India 2025 for FY 2025-26. Calculate EMI, total interest, and tax benefits for home loans instantly.">
-    <meta property="og:url" content="https://moneymindtool.com/home-loan.html">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Home Loan EMI Calculator India 2025 - Free EMI & Interest Calculation">
-    <meta name="twitter:description" content="Free Home Loan EMI Calculator India 2025 for FY 2025-26. Calculate EMI, total interest, and tax benefits for home loans instantly.">
     <!-- Include Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
@@ -79,7 +69,7 @@
             align-items: center;
         }
 
-        .nav-container h1 {
+        .nav-container .logo {
             font-size: 1.8em;
             font-weight: 600;
         }
@@ -575,7 +565,7 @@
         }
 
         @media (max-width: 1024px) {
-            .nav-container h1 {
+            .nav-container .logo {
                 font-size: 1.5em;
             }
 
@@ -666,48 +656,6 @@
                 padding: 6px;
             }
         }
-    
-
-        /* Unified mobile & touch improvements */
-        button,
-        input[type="button"],
-        input[type="submit"],
-        .btn {
-            min-height: 44px;
-            touch-action: manipulation;
-        }
-
-        @media (max-width: 1024px) {
-            .container {
-                width: min(100%, 1000px);
-                margin: 16px auto;
-                padding: 16px;
-            }
-
-            .nav-container,
-            .nav-menu {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
-            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
-            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
-
-            .card,
-            .intro-section,
-            .content-section,
-            .faq-section {
-                padding: 16px;
-            }
-
-            button {
-                width: 100%;
-            }
-        }
-
     </style>
     <!-- Schema Markup for Web Application, FAQ, HowTo, and SoftwareApplication -->
     <script type="application/ld+json">
@@ -851,6 +799,41 @@
       "description": "Free online Home Loan EMI Calculator for FY 2025-26 to calculate EMI, total interest, and tax benefits in India."
     }
     </script>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Home Loan EMI Calculator India 2025 - Free EMI & Interest Calculation">
+    <meta property="og:description" content="Free Home Loan EMI Calculator India 2025 for FY 2025-26. Calculate EMI, total interest, and tax benefits for home loans instantly.">
+    <meta property="og:url" content="https://moneymindtool.com/home-loan.html">
+    <meta property="og:site_name" content="MoneyMindTool">
+    <meta property="og:image" content="https://moneymindtool.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Home Loan EMI Calculator India 2025 - Free EMI & Interest Calculation">
+    <meta name="twitter:description" content="Free Home Loan EMI Calculator India 2025 for FY 2025-26. Calculate EMI, total interest, and tax benefits for home loans instantly.">
+    <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moneymindtool.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://moneymindtool.com/all-calculators.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Home Loan EMI Calculator India 2025",
+        "item": "https://moneymindtool.com/home-loan.html"
+      }]
+    }
+    </script>
 </head>
 
 <body>
@@ -860,7 +843,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <header>
         <div class="nav-container">
-            <h1>MoneyMindTool</h1>
+            <div class="logo">MoneyMindTool</div>
             <nav class="nav-menu">
                 <a href="/index.html">Home</a>
                 <div class="dropdown">
@@ -952,9 +935,9 @@
                 </div>
             </div>
             <div class="input-group">
-                <button type="button" id="calcButton" onclick="calcEMI()" disabled
+                <button id="calcButton" onclick="calcEMI()" disabled
                     aria-label="Calculate Home Loan EMI">Calculate</button>
-                <button type="button" onclick="resetForm()" aria-label="Reset Form">Reset</button>
+                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
             </div>
             <div class="note">Enter loan amount in ₹ (₹1 lakh to ₹10 crore), interest rate (5% to 15%), and tenure (1 to
                 30 years). EMI is calculated monthly, with tax benefits under Sections 24(b) and 80C. Results are
@@ -977,7 +960,7 @@
                     <tbody></tbody>
                 </table>
             </div>
-            <button type="button" onclick="resetForm()">Calculate Again</button>
+            <button onclick="resetForm()">Calculate Again</button>
         </div>
         <div class="card">
             <h2>Important Home Loan Deadlines FY 2025-26</h2>

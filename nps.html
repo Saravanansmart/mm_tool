@@ -29,33 +29,6 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="MoneyMindTool">
     <title>NPS Calculator India FY 2025-26 - Plan Your Retirement</title>
-    <link rel="canonical" href="https://moneymindtool.com/nps.html">
-    <meta name="theme-color" content="#2A3EB1">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="MoneyMindTool">
-    <meta property="og:title" content="NPS Calculator India FY 2025-26 - Plan Your Retirement">
-    <meta property="og:description" content="Calculate your NPS retirement corpus and pension for FY 2025-26 in India with our free National Pension System Calculator. Plan your retirement with ease.">
-    <meta property="og:url" content="https://moneymindtool.com/nps.html">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="NPS Calculator India FY 2025-26 - Plan Your Retirement">
-    <meta name="twitter:description" content="Calculate your NPS retirement corpus and pension for FY 2025-26 in India with our free National Pension System Calculator. Plan your retirement with ease.">
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "NPS Calculator India FY 2025-26 - Plan Your Retirement",
-            "url": "https://moneymindtool.com/nps.html",
-            "description": "Calculate your NPS retirement corpus and pension for FY 2025-26 in India with our free National Pension System Calculator. Plan your retirement with ease.",
-            "applicationCategory": "FinanceApplication",
-            "operatingSystem": "Any",
-            "isAccessibleForFree": true,
-            "publisher": {
-                "@type": "Organization",
-                "name": "MoneyMindTool",
-                "url": "https://moneymindtool.com/"
-            }
-        }
-    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
@@ -92,7 +65,7 @@
             align-items: center;
         }
 
-        .nav-container h1 {
+        .nav-container .logo {
             font-size: 1.8em;
             font-weight: 700;
         }
@@ -416,49 +389,42 @@
             border-radius: 8px;
             line-height: 1.8;
         }
-    
-
-        /* Unified mobile & touch improvements */
-        button,
-        input[type="button"],
-        input[type="submit"],
-        .btn {
-            min-height: 44px;
-            touch-action: manipulation;
-        }
-
-        @media (max-width: 1024px) {
-            .container {
-                width: min(100%, 1000px);
-                margin: 16px auto;
-                padding: 16px;
-            }
-
-            .nav-container,
-            .nav-menu {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
-            h2 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
-            h3 { font-size: clamp(1.05rem, 3.6vw, 1.2rem); }
-
-            .card,
-            .intro-section,
-            .content-section,
-            .faq-section {
-                padding: 16px;
-            }
-
-            button {
-                width: 100%;
-            }
-        }
-
     </style>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NPS Calculator India FY 2025-26 - Plan Your Retirement">
+    <meta property="og:description" content="Calculate your NPS retirement corpus and pension for FY 2025-26 in India with our free National Pension System Calculator. Plan your retirement with ease.">
+    <meta property="og:url" content="https://moneymindtool.com/nps.html">
+    <meta property="og:site_name" content="MoneyMindTool">
+    <meta property="og:image" content="https://moneymindtool.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NPS Calculator India FY 2025-26 - Plan Your Retirement">
+    <meta name="twitter:description" content="Calculate your NPS retirement corpus and pension for FY 2025-26 in India with our free National Pension System Calculator. Plan your retirement with ease.">
+    <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moneymindtool.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://moneymindtool.com/all-calculators.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "NPS Calculator India FY 2025",
+        "item": "https://moneymindtool.com/nps.html"
+      }]
+    }
+    </script>
 </head>
 
 <body>
@@ -468,7 +434,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <header>
         <div class="nav-container">
-            <h1>MoneyMindTool</h1>
+            <div class="logo">MoneyMindTool</div>
             <nav class="nav-menu">
                 <a href="/index.html">Home</a>
                 <div class="dropdown">
@@ -543,8 +509,8 @@
                 </div>
             </div>
             <div class="input-group">
-                <button type="button" id="calcButton" onclick="calcNPS()" disabled>Calculate</button>
-                <button type="button" onclick="resetForm()">Reset</button>
+                <button id="calcButton" onclick="calcNPS()" disabled>Calculate</button>
+                <button onclick="resetForm()">Reset</button>
             </div>
             <div class="note">Enter monthly contribution in ₹ (minimum ₹500 for Tier I). NPS returns are market-linked
                 and subject to risks. At least 40% of the corpus must be used for annuity purchase at retirement.</div>

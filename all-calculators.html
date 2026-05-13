@@ -106,7 +106,7 @@
             align-items: center;
         }
 
-        .nav-container h1 {
+        .nav-container .logo {
             font-size: 1.8em;
             font-weight: 700;
         }
@@ -385,7 +385,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .nav-container h1 {
+            .nav-container .logo {
                 font-size: 1.5em;
             }
 
@@ -397,6 +397,9 @@
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
+            }
+            .nav-container .logo {
+                font-size: 1.5em;
             }
 
             .container {
@@ -549,7 +552,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <header>
         <div class="nav-container">
-            <h1>MoneyMindTool</h1>
+            <div class="logo">MoneyMindTool</div>
             <nav class="nav-menu">
                 <a href="https://moneymindtool.com/">Home</a>
                 <div class="dropdown">
