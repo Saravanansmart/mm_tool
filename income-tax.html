@@ -244,7 +244,7 @@
           "name": "What are the tax slabs for FY 2025-26?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Old regime: Varies by age (e.g., up to ₹2.5 lakh exempt for below 60). New regime: Up to ₹3 lakh exempt, ₹60,000 rebate up to ₹12 lakh."
+            "text": "Old regime: Varies by age (e.g., up to ₹2.5 lakh exempt for below 60). New regime: Up to ₹4 lakh exempt, ₹60,000 rebate up to ₹12 lakh."
           }
         },
         {
@@ -513,7 +513,7 @@
 
         <section class="bg-white rounded-lg shadow-2xl p-8 mb-6 border-4 border-indigo-700">
             <h2 class="text-2xl font-bold text-indigo-900 mb-4 text-center"><i
-                    class="fas fa-balance-scale mr-2"></i>Compare Regimes & Calculate Tax</h2>
+                    class="fas fa-calculator mr-2"></i>Calculate Your Tax</h2>
             <div class="w-full bg-indigo-100 rounded-full h-2 mb-6">
                 <div id="taxProgress" class="bg-orange-500 h-2 rounded-full transition-all duration-500"
                     style="width: 0;"></div>
@@ -523,9 +523,19 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
 
-                <div class="p-4 bg-indigo-50 rounded-lg">
+                <div class="p-4 bg-indigo-50 rounded-lg md:col-span-2">
                     <h3 class="text-lg font-semibold text-indigo-800 mb-3 border-b pb-2 border-indigo-200">Basic Details & Income</h3>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label for="taxRegime" class="block text-gray-800 font-medium">Tax Regime:</label>
+                            <select id="taxRegime"
+                                class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
+                                aria-label="Select Tax Regime" onchange="handleRegimeChange()">
+                                <option value="new" selected>New Tax Regime</option>
+                                <option value="old">Old Tax Regime</option>
+                                <option value="compare">Compare Both</option>
+                            </select>
+                        </div>
                         <div>
                             <label for="financialYear" class="block text-gray-800 font-medium">Financial Year:</label>
                             <select id="financialYear"
@@ -546,15 +556,19 @@
                             </select>
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-4 mt-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                         <div>
-                            <label for="grossSalary" class="block text-gray-800 font-medium">Gross Salary (₹): <span
+                            <label for="grossSalary" class="block text-gray-800 font-medium">Income from Salary (₹): <span
                                     class="tooltip"
-                                    data-tooltip="Total salary before exemptions or standard deductions."><i
+                                    data-tooltip="Total salary income. Check the box below if you want the calculator to automatically deduct the standard deduction."><i
                                         class="fas fa-info-circle"></i></span></label>
                             <input type="number" id="grossSalary" min="0" value="1000000"
                                 class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                                 aria-label="Gross Salary in Rupees">
+                            <div class="mt-2 flex items-center">
+                                <input type="checkbox" id="applyStandardDeduction" checked class="w-4 h-4 text-orange-600 border-gray-300 rounded focus:ring-orange-500">
+                                <label for="applyStandardDeduction" class="ml-2 block text-sm text-gray-700">Apply Standard Deduction (Auto)</label>
+                            </div>
                         </div>
                         <div>
                             <label for="otherIncome" class="block text-gray-800 font-medium">Other Income (₹): <span
@@ -588,7 +602,17 @@
                     </div>
                 </div>
 
-                <div class="p-4 bg-indigo-50 rounded-lg">
+                <div class="p-4 bg-indigo-50 rounded-lg md:col-span-2" id="commonDeductionsSection">
+                    <h3 class="text-lg font-semibold text-indigo-800 mb-3 border-b pb-2 border-indigo-200">Deductions (Allowed in Both Regimes)</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="section80CCD2" class="block text-gray-800 font-medium text-sm">Sec 124 (formerly 80CCD(2)) NPS (₹): <span class="tooltip" data-tooltip="Employer NPS. Allowed in both regimes. Max 10% (14% for Govt employees) of Basic Salary."><i class="fas fa-info-circle"></i></span></label>
+                            <input type="number" id="section80CCD2" min="0" value="0" class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200" aria-label="Section 80CCD(2) Employer NPS">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-indigo-50 rounded-lg md:col-span-2" id="hraSection" style="display: none;">
                     <h3 class="text-lg font-semibold text-indigo-800 mb-3 border-b pb-2 border-indigo-200">HRA &
                         Deductions (Old Regime)</h3>
                     <div>
@@ -626,21 +650,21 @@
                     </div>
                 </div>
 
-                <div class="p-4 bg-indigo-50 rounded-lg md:col-span-2">
+                <div class="p-4 bg-indigo-50 rounded-lg md:col-span-2" id="deductionsSection" style="display: none;">
                     <h3 class="text-lg font-semibold text-indigo-800 mb-3 border-b pb-2 border-indigo-200">Investment &
                         Other Deductions</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div>
-                            <label for="section80C" class="block text-gray-800 font-medium text-sm">80C Deduction (₹):
+                            <label for="section80C" class="block text-gray-800 font-medium text-sm">Sec 123 (formerly 80C) (₹):
                                 <span class="tooltip"
                                     data-tooltip="Max ₹1.5 lakh (PPF, ELSS, Life Insurance, Tuition Fees, etc.)"><i
                                         class="fas fa-info-circle"></i></span></label>
                             <input type="number" id="section80C" min="0" max="150000" value="150000"
                                 class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
-                                aria-label="Section 80C Deduction">
+                                aria-label="Section 123 Deduction">
                         </div>
                         <div>
-                            <label for="npsDeduction" class="block text-gray-800 font-medium text-sm">NPS (80CCD(1B))
+                            <label for="npsDeduction" class="block text-gray-800 font-medium text-sm">NPS (Sec 124(3)/formerly 80CCD(1B))
                                 (₹): <span class="tooltip"
                                     data-tooltip="Additional deduction for NPS contribution. Max ₹50,000."><i
                                         class="fas fa-info-circle"></i></span></label>
@@ -691,7 +715,7 @@
             <div class="flex gap-4 mt-8 justify-center">
                 <button id="calcButton" onclick="calcTax()" disabled
                     class="bg-orange-600 text-white px-8 py-3 rounded-lg hover:bg-orange-700 disabled:bg-gray-400 font-semibold transition-all duration-200"
-                    aria-label="Calculate Tax">Calculate Comparison</button>
+                    aria-label="Calculate Tax">Calculate Tax</button>
                 <button onclick="resetForm()"
                     class="bg-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-600 font-semibold transition-all duration-200"
                     aria-label="Reset Form">Reset</button>
@@ -700,7 +724,7 @@
 
         <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50 hidden" id="resultsCard">
             <h2 class="text-2xl font-bold text-indigo-900 mb-4 text-center"><i class="fas fa-chart-bar mr-2"></i>Tax
-                Liability Comparison</h2>
+                Liability Result</h2>
             <div id="errorMessage" class="text-red-600 hidden mb-4 text-center"></div>
             <div id="taxResult" class="text-gray-800 mb-4 text-left p-4 bg-indigo-50 rounded-lg"></div>
             <div class="chart-container">
@@ -719,15 +743,15 @@
             <div class="space-y-6">
 
                 <div class="deduction-item">
-                    <h3 class="text-xl font-semibold text-indigo-900">1. Section 80C & 80CCD(1B) <i
+                    <h3 class="text-xl font-semibold text-indigo-900">1. Sec 123 & 124(3) (formerly 80C & 80CCD(1B)) <i
                             class="fas fa-piggy-bank text-orange-500 ml-2"></i></h3>
                     <p class="text-gray-600 mt-2">These sections provide the core tax-saving mechanism under the
                         <strong>Old Regime</strong>. They reward long-term savings and necessary expenses:
                     </p>
                     <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700">
-                        <li><strong>Section 80C:</strong> Deducts up to <strong>₹1.5 Lakh</strong> for investments (PPF,
+                        <li><strong>Section 123 (old 80C):</strong> Deducts up to <strong>₹1.5 Lakh</strong> for investments (PPF,
                             ELSS, NSC, Life Insurance, home loan principal).</li>
-                        <li><strong>Section 80CCD(1B):</strong> Allows an <strong>additional ₹50,000</strong> for
+                        <li><strong>Section 124(3) (old 80CCD(1B)):</strong> Allows an <strong>additional ₹50,000</strong> for
                             contributions made to the National Pension System (NPS Tier-I account). This benefit is
                             separate from the ₹1.5 Lakh limit.</li>
                     </ul>
@@ -748,7 +772,7 @@
                 </div>
 
                 <div class="deduction-item">
-                    <h3 class="text-xl font-semibold text-indigo-900">3. Section 80D (Health Insurance) <i
+                    <h3 class="text-xl font-semibold text-indigo-900">3. Section 126 (formerly 80D) Health Insurance <i
                             class="fas fa-heartbeat text-orange-500 ml-2"></i></h3>
                     <p class="text-gray-600 mt-2">Deduction for medical expenses and health insurance premiums,
                         available under the <strong>Old Regime</strong>:</p>
@@ -775,6 +799,17 @@
                     </ul>
                 </div>
 
+                <div class="deduction-item">
+                    <h3 class="text-xl font-semibold text-indigo-900">5. New Regime Default (Sec 202 - formerly 115BAC) <i
+                            class="fas fa-star text-orange-500 ml-2"></i></h3>
+                    <p class="text-gray-600 mt-2">Under the Income Tax Act 2025, the <strong>New Regime</strong> is the default. While it removes Old Regime deductions, it still allows specific powerful deductions:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700">
+                        <li><strong>Standard Deduction:</strong> ₹75,000 flat deduction from salary or pension.</li>
+                        <li><strong>Sec 124 (old 80CCD(2)):</strong> Deduction for Employer's contribution to your NPS account.</li>
+                        <li><strong>Sec 80CCH:</strong> Contribution to the Agniveer Corpus Fund.</li>
+                    </ul>
+                </div>
+
             </div>
         </section>
 
@@ -784,19 +819,12 @@
             <div class="space-y-4">
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What are the key differences
-                        between the Old and New Tax Regimes?</h3>
-                    <p class="text-gray-600">The <strong>Old Regime</strong> offers higher tax exemptions (like HRA and
-                        80C) but uses higher slab rates. The <strong>New Regime</strong> offers lower slab rates and a
-                        higher basic exemption limit (up to ₹3 lakh), but requires you to forego almost all common
-                        deductions and exemptions.</p>
+                        between the Old and New Tax Regimes (Section 202 under ITA 2025)?</h3>
+                    <p class="text-gray-600">The <strong>New Regime (Sec 202, formerly 115BAC)</strong> is the default under the new Income Tax Act 2025. For Tax Year 2025-26, it offers lower slab rates, a higher basic exemption limit of ₹4 lakh, and makes income up to ₹12.75 lakh tax-free (including standard deduction). However, you must forego common deductions like Sec 123 (old 80C) and HRA. The <strong>Old Regime</strong> uses higher slab rates but allows you to claim all your deductions and exemptions.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">Can I claim Standard Deduction
-                        (₹50,000) under the New Regime for FY 2025-26?</h3>
-                    <p class="text-gray-600">Yes, since FY 2023-24, the <strong>Standard Deduction of ₹50,000 is
-                            available under the New Tax Regime</strong> for salaried individuals, making it more
-                        attractive for middle-income taxpayers. This is in addition to the increased basic exemption
-                        limit.</p>
+                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What deductions are allowed under the New Regime for Tax Year 2025-26?</h3>
+                    <p class="text-gray-600">While most deductions are disallowed, you <strong>can</strong> claim the <strong>Standard Deduction of ₹75,000</strong> against your salary/pension. You can also claim deductions for Employer's contribution to NPS under <strong>Section 124</strong> (formerly 80CCD(2)) and Agniveer Corpus Fund under <strong>Section 80CCH</strong>.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is the ITR filing deadline for
@@ -943,7 +971,11 @@
         }
 
         function updateProgress() {
-            const inputs = ['ageGroup', 'grossSalary', 'otherIncome', 'housePropertyIncome', 'homeLoanInterest', 'basicSalary', 'hraReceived', 'rentPaid', 'cityType', 'section80C', 'section80E', 'section80D', 'npsDeduction', 'section80TTA', 'section80TTB'];
+            const regime = document.getElementById('taxRegime').value;
+            let inputs = ['ageGroup', 'grossSalary', 'otherIncome', 'housePropertyIncome', 'homeLoanInterest'];
+            if (regime === 'old' || regime === 'compare') {
+                inputs = inputs.concat(['basicSalary', 'hraReceived', 'rentPaid', 'cityType', 'section80C', 'section80E', 'section80D', 'npsDeduction', 'section80TTA', 'section80TTB']);
+            }
             let filled = inputs.reduce((count, id) => count + (document.getElementById(id)?.value !== '' && parseFloat(document.getElementById(id)?.value) >= 0 ? 1 : 0), 0);
             document.getElementById('taxProgress').style.width = `${(filled / inputs.length) * 100}%`;
         }
@@ -955,6 +987,30 @@
             let condition2 = rentPaid - 0.1 * basicSalary;
             let condition3 = hraPercentage * basicSalary;
             return Math.max(0, Math.min(condition1, condition2, condition3));
+        }
+
+        function handleRegimeChange() {
+            const regime = document.getElementById('taxRegime').value;
+            const hraSection = document.getElementById('hraSection');
+            const deductionsSection = document.getElementById('deductionsSection');
+            const calcButton = document.getElementById('calcButton');
+
+            if (regime === 'new') {
+                hraSection.style.display = 'none';
+                deductionsSection.style.display = 'none';
+                calcButton.textContent = 'Calculate Tax';
+            } else if (regime === 'old') {
+                hraSection.style.display = 'block';
+                deductionsSection.style.display = 'block';
+                calcButton.textContent = 'Calculate Tax';
+            } else {
+                hraSection.style.display = 'block';
+                deductionsSection.style.display = 'block';
+                calcButton.textContent = 'Calculate Comparison';
+            }
+
+            validateInputs();
+            updateProgress();
         }
 
         function validateInputs() {
@@ -972,6 +1028,10 @@
             const nps = parseFloat(document.getElementById('npsDeduction')?.value) || 0;
             const section80TTA = parseFloat(document.getElementById('section80TTA')?.value) || 0;
             const section80TTB = parseFloat(document.getElementById('section80TTB')?.value) || 0;
+            const section80CCD2 = parseFloat(document.getElementById('section80CCD2')?.value) || 0;
+            
+            const regime = document.getElementById('taxRegime').value;
+            const financialYear = document.getElementById('financialYear').value;
 
             const errorMessage = document.getElementById('errorMessage');
             const calcButton = document.getElementById('calcButton');
@@ -986,17 +1046,21 @@
             if (otherIncome < 0) errors.push('Other income cannot be negative.');
             if (housePropertyIncome < 0) errors.push('Rental income cannot be negative.');
             if (homeLoanInterest < 0) errors.push('Home loan interest cannot be negative.');
-            if (basicSalary < 0) errors.push('Basic salary cannot be negative.');
-            if (hraReceived < 0) errors.push('HRA received cannot be negative.');
-            if (rentPaid < 0) errors.push('Rent paid cannot be negative.');
+            if (section80CCD2 < 0) errors.push('Section 80CCD(2) cannot be negative.');
 
-            if (section80C < 0 || section80C > 150000) errors.push('Section 80C must be ₹0 to ₹1.5 lakh.');
-            if (section80D < 0 || section80D > 75000) errors.push('Section 80D must be ₹0 to ₹75,000 (Self+Parents).');
-            if (nps < 0 || nps > 50000) errors.push('NPS deduction must be ₹0 to ₹50,000.');
+            if (regime === 'old' || regime === 'compare') {
+                if (basicSalary < 0) errors.push('Basic salary cannot be negative.');
+                if (hraReceived < 0) errors.push('HRA received cannot be negative.');
+                if (rentPaid < 0) errors.push('Rent paid cannot be negative.');
 
-            if (ageGroup !== 'below60' && section80TTA > 0) errors.push('80TTA is not applicable for age 60 or above.');
-            if (ageGroup === 'below60' && section80TTB > 0) errors.push('80TTB is only for senior citizens.');
-            if (ageGroup !== 'below60' && section80TTB > 50000) errors.push('80TTB must be ₹0 to ₹50,000 for senior citizens.');
+                if (section80C < 0 || section80C > 150000) errors.push('Section 80C must be ₹0 to ₹1.5 lakh.');
+                if (section80D < 0 || section80D > 75000) errors.push('Section 80D must be ₹0 to ₹75,000 (Self+Parents).');
+                if (nps < 0 || nps > 50000) errors.push('NPS deduction must be ₹0 to ₹50,000.');
+
+                if (ageGroup !== 'below60' && section80TTA > 0) errors.push('80TTA is not applicable for age 60 or above.');
+                if (ageGroup === 'below60' && section80TTB > 0) errors.push('80TTB is only for senior citizens.');
+                if (ageGroup !== 'below60' && section80TTB > 50000) errors.push('80TTB must be ₹0 to ₹50,000 for senior citizens.');
+            }
 
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
@@ -1044,22 +1108,44 @@
             else if (taxableIncome > 50000000) surcharge = tax * 0.37;
 
             let cess = (tax + surcharge) * 0.04;
-            return Math.round(tax + surcharge + cess);
+            return {
+                baseTax: Math.round(tax),
+                surcharge: Math.round(surcharge),
+                cess: Math.round(cess),
+                totalTax: Math.round(tax + surcharge + cess)
+            };
         }
 
-        function calculateNewRegimeTax(taxableIncome) {
+        function calculateNewRegimeTax(taxableIncome, financialYear) {
             if (taxableIncome <= 0) return 0;
             let tax = 0;
+            let slabs = [];
+            let rebateLimit = 0;
 
-            // Revised New Regime Slabs (Applicable FY 2024-25 onwards)
-            let slabs = [
-                { limit: 300000, rate: 0 },
-                { limit: 700000, rate: 5 },
-                { limit: 1000000, rate: 10 },
-                { limit: 1200000, rate: 15 },
-                { limit: 1500000, rate: 20 },
-                { limit: Infinity, rate: 30 }
-            ];
+            if (financialYear === 'fy2025') {
+                // FY 2025-26 (AY 2026-27) Budget 2025 slabs
+                slabs = [
+                    { limit: 400000, rate: 0 },
+                    { limit: 800000, rate: 5 },
+                    { limit: 1200000, rate: 10 },
+                    { limit: 1600000, rate: 15 },
+                    { limit: 2000000, rate: 20 },
+                    { limit: 2400000, rate: 25 },
+                    { limit: Infinity, rate: 30 }
+                ];
+                rebateLimit = 1200000;
+            } else {
+                // FY 2024-25 (AY 2025-26) July 2024 Budget slabs
+                slabs = [
+                    { limit: 300000, rate: 0 },
+                    { limit: 700000, rate: 5 },
+                    { limit: 1000000, rate: 10 },
+                    { limit: 1200000, rate: 15 },
+                    { limit: 1500000, rate: 20 },
+                    { limit: Infinity, rate: 30 }
+                ];
+                rebateLimit = 700000;
+            }
 
             let previousLimit = 0;
             for (let slab of slabs) {
@@ -1072,17 +1158,28 @@
                 }
             }
 
-            // Rebate under Section 87A (Income up to 7L)
-            if (taxableIncome <= 700000) tax = Math.max(0, tax - 25000);
+            // Rebate under Section 87A with Marginal Relief
+            if (taxableIncome <= rebateLimit) {
+                tax = 0;
+            } else {
+                let excessIncome = taxableIncome - rebateLimit;
+                if (tax > excessIncome) {
+                    tax = excessIncome;
+                }
+            }
 
             let surcharge = 0;
             if (taxableIncome > 5000000 && taxableIncome <= 10000000) surcharge = tax * 0.10;
             else if (taxableIncome > 10000000 && taxableIncome <= 20000000) surcharge = tax * 0.15;
-            else if (taxableIncome > 20000000 && taxableIncome <= 50000000) surcharge = tax * 0.25;
-            else if (taxableIncome > 50000000) surcharge = tax * 0.37;
+            else if (taxableIncome > 20000000) surcharge = tax * 0.25; // Surcharge capped at 25% under New Regime
 
             let cess = (tax + surcharge) * 0.04;
-            return Math.round(tax + surcharge + cess);
+            return {
+                baseTax: Math.round(tax),
+                surcharge: Math.round(surcharge),
+                cess: Math.round(cess),
+                totalTax: Math.round(tax + surcharge + cess)
+            };
         }
 
         function calcTax() {
@@ -1107,42 +1204,72 @@
             const npsDeduction = parseFloat(document.getElementById('npsDeduction').value) || 0;
             const section80TTA = parseFloat(document.getElementById('section80TTA').value) || 0;
             const section80TTB = parseFloat(document.getElementById('section80TTB').value) || 0;
+            const section80CCD2 = parseFloat(document.getElementById('section80CCD2').value) || 0;
+
+            const taxRegime = document.getElementById('taxRegime').value;
 
             setTimeout(() => {
                 const hraExemption = calculateHRAExemption(basicSalary, hraReceived, rentPaid, cityType);
                 let interestDeduction = ageGroup === 'below60' ? section80TTA : section80TTB;
 
+                let oldTaxObj = { totalTax: 0, baseTax: 0, cess: 0, surcharge: 0 };
+                let newTaxObj = { totalTax: 0, baseTax: 0, cess: 0, surcharge: 0 };
+                let oldTax = 0, newTax = 0;
+                let oldTaxableIncome = 0, newTaxableIncome = 0;
+                let applyStdDed = document.getElementById('applyStandardDeduction')?.checked;
+
                 // Old Regime Calculation
-                let housePropertyOld = housePropertyIncome - homeLoanInterest;
-                // Maximum loss from HP that can be set off against other heads is 2 lakhs
-                if (housePropertyOld < -200000) {
-                    housePropertyOld = -200000;
+                let standardDeductionOld = 0;
+                if (taxRegime === 'old' || taxRegime === 'compare') {
+                    let housePropertyOld = housePropertyIncome - homeLoanInterest;
+                    // Maximum loss from HP that can be set off against other heads is 2 lakhs
+                    if (housePropertyOld < -200000) {
+                        housePropertyOld = -200000;
+                    }
+                    if (applyStdDed) {
+                        standardDeductionOld = Math.min(grossSalary, 50000);
+                    }
+                    let netSalaryOld = grossSalary - standardDeductionOld;
+                    let grossTotalIncomeOld = netSalaryOld + otherIncome + housePropertyOld;
+                    let oldDeductions = hraExemption + section80C + section80E + section80D + npsDeduction + interestDeduction + section80CCD2;
+                    oldTaxableIncome = Math.max(0, grossTotalIncomeOld - oldDeductions);
+                    oldTaxObj = calculateOldRegimeTax(oldTaxableIncome, ageGroup);
+                    oldTax = oldTaxObj.totalTax;
                 }
-                let grossTotalIncomeOld = grossSalary + otherIncome + housePropertyOld;
-                let oldDeductions = 50000 + hraExemption + section80C + section80E + section80D + npsDeduction + interestDeduction;
-                let oldTaxableIncome = Math.max(0, grossTotalIncomeOld - oldDeductions);
-                const oldTax = calculateOldRegimeTax(oldTaxableIncome, ageGroup);
 
                 // New Regime Calculation
-                // Standard deduction increased to 75,000 under new regime from FY 2024-25
-                let standardDeductionNew = (financialYear === 'fy2024' || financialYear === 'fy2025') ? 75000 : 50000;
-                
-                // In new regime, loss from house property cannot be set off against salary/other income
-                let housePropertyNew = Math.max(0, housePropertyIncome - homeLoanInterest);
-                let grossTotalIncomeNew = grossSalary + otherIncome + housePropertyNew;
-                let newTaxableIncome = Math.max(0, grossTotalIncomeNew - standardDeductionNew);
-                const newTax = calculateNewRegimeTax(newTaxableIncome);
+                let standardDeductionNew = 0;
+                if (taxRegime === 'new' || taxRegime === 'compare') {
+                    if (applyStdDed) {
+                        // Standard deduction increased to 75,000 under new regime from FY 2024-25
+                        let stdDedLimitNew = (financialYear === 'fy2024' || financialYear === 'fy2025') ? 75000 : 50000;
+                        standardDeductionNew = Math.min(grossSalary, stdDedLimitNew);
+                    }
+                    let netSalaryNew = grossSalary - standardDeductionNew;
+                    
+                    // In new regime, loss from house property cannot be set off against salary/other income
+                    let housePropertyNew = Math.max(0, housePropertyIncome - homeLoanInterest);
+                    let grossTotalIncomeNew = netSalaryNew + otherIncome + housePropertyNew;
+                    newTaxableIncome = Math.max(0, grossTotalIncomeNew - section80CCD2);
+                    newTaxObj = calculateNewRegimeTax(newTaxableIncome, financialYear);
+                    newTax = newTaxObj.totalTax;
+                }
 
-                const recommendation = oldTax < newTax
-                    ? `The <strong>Old Regime</strong> saves you <strong>₹${formatIndianNumber(newTax - oldTax)}</strong>.`
-                    : newTax < oldTax
-                        ? `The <strong>New Regime</strong> saves you <strong>₹${formatIndianNumber(oldTax - newTax)}</strong>.`
-                        : `Both regimes result in the same tax liability of <strong>₹${formatIndianNumber(oldTax)}</strong>.`;
+                let resultHtml = `<div class="space-y-4 font-semibold text-lg">`;
 
-                const result = `
-                    <div class="space-y-4 font-semibold text-lg">
+                if (taxRegime === 'compare') {
+                    const recommendation = oldTax < newTax
+                        ? `The <strong>Old Regime</strong> saves you <strong>₹${formatIndianNumber(newTax - oldTax)}</strong>.`
+                        : newTax < oldTax
+                            ? `The <strong>New Regime</strong> saves you <strong>₹${formatIndianNumber(oldTax - newTax)}</strong>.`
+                            : `Both regimes result in the same tax liability of <strong>₹${formatIndianNumber(oldTax)}</strong>.`;
+
+                    resultHtml += `
                         <div class="text-center font-extrabold text-2xl text-indigo-800 border-b pb-2 mb-4">Final Comparison</div>
-                        
+                        <div class="grid grid-cols-2 text-sm text-gray-600 mb-2">
+                            <span>Standard Deduction (Old): ₹${formatIndianNumber(standardDeductionOld)}</span>
+                            <span class="text-right">Standard Deduction (New): ₹${formatIndianNumber(standardDeductionNew)}</span>
+                        </div>
                         <div class="grid grid-cols-2">
                             <span class="text-indigo-900">Taxable Income (Old Regime):</span>
                             <span class="text-right">₹${formatIndianNumber(oldTaxableIncome)}</span>
@@ -1162,10 +1289,69 @@
                         </div>
                         <div class="mt-4 pt-4 border-t border-indigo-200 text-center text-orange-600 font-extrabold text-xl">
                             ${recommendation}
+                        </div>`;
+                    
+                    taxChart.data.datasets[0].data = [oldTax, newTax];
+                    taxChart.data.labels = ['Old Regime', 'New Regime'];
+                    document.querySelector('.chart-container').style.display = 'block';
+                } else if (taxRegime === 'new') {
+                    resultHtml += `
+                        <div class="text-center font-extrabold text-2xl text-indigo-800 border-b pb-2 mb-4">New Tax Regime Result</div>
+                        <div class="grid grid-cols-2 text-sm text-gray-600 mb-2">
+                            <span>Standard Deduction Applied:</span>
+                            <span class="text-right">₹${formatIndianNumber(standardDeductionNew)}</span>
                         </div>
-                    </div>
-                `;
-                document.getElementById('taxResult').innerHTML = result;
+                        <div class="grid grid-cols-2">
+                            <span class="text-indigo-900">Taxable Income:</span>
+                            <span class="text-right">₹${formatIndianNumber(newTaxableIncome)}</span>
+                        </div>
+                        <div class="grid grid-cols-2 text-sm text-gray-600 font-normal mt-2">
+                            <span>Base Tax:</span>
+                            <span class="text-right">₹${formatIndianNumber(newTaxObj.baseTax)}</span>
+                        </div>
+                        ${newTaxObj.surcharge > 0 ? `<div class="grid grid-cols-2 text-sm text-gray-600 font-normal"><span>Surcharge:</span><span class="text-right">₹${formatIndianNumber(newTaxObj.surcharge)}</span></div>` : ''}
+                        <div class="grid grid-cols-2 text-sm text-gray-600 font-normal">
+                            <span>Health & Education Cess (4%):</span>
+                            <span class="text-right">₹${formatIndianNumber(newTaxObj.cess)}</span>
+                        </div>
+                        <hr class="border-gray-200">
+                        <div class="grid grid-cols-2 text-xl font-extrabold">
+                            <span class="text-indigo-900">Total Tax Payable:</span>
+                            <span class="text-right text-green-600">₹${formatIndianNumber(newTax)}</span>
+                        </div>`;
+                    
+                    document.querySelector('.chart-container').style.display = 'none';
+                } else if (taxRegime === 'old') {
+                    resultHtml += `
+                        <div class="text-center font-extrabold text-2xl text-indigo-800 border-b pb-2 mb-4">Old Tax Regime Result</div>
+                        <div class="grid grid-cols-2 text-sm text-gray-600 mb-2">
+                            <span>Standard Deduction Applied:</span>
+                            <span class="text-right">₹${formatIndianNumber(standardDeductionOld)}</span>
+                        </div>
+                        <div class="grid grid-cols-2">
+                            <span class="text-indigo-900">Taxable Income:</span>
+                            <span class="text-right">₹${formatIndianNumber(oldTaxableIncome)}</span>
+                        </div>
+                        <div class="grid grid-cols-2 text-sm text-gray-600 font-normal mt-2">
+                            <span>Base Tax:</span>
+                            <span class="text-right">₹${formatIndianNumber(oldTaxObj.baseTax)}</span>
+                        </div>
+                        ${oldTaxObj.surcharge > 0 ? `<div class="grid grid-cols-2 text-sm text-gray-600 font-normal"><span>Surcharge:</span><span class="text-right">₹${formatIndianNumber(oldTaxObj.surcharge)}</span></div>` : ''}
+                        <div class="grid grid-cols-2 text-sm text-gray-600 font-normal">
+                            <span>Health & Education Cess (4%):</span>
+                            <span class="text-right">₹${formatIndianNumber(oldTaxObj.cess)}</span>
+                        </div>
+                        <hr class="border-gray-200">
+                        <div class="grid grid-cols-2 text-xl font-extrabold">
+                            <span class="text-indigo-900">Total Tax Payable:</span>
+                            <span class="text-right text-red-600">₹${formatIndianNumber(oldTax)}</span>
+                        </div>`;
+                    
+                    document.querySelector('.chart-container').style.display = 'none';
+                }
+
+                resultHtml += `</div>`;
+                document.getElementById('taxResult').innerHTML = resultHtml;
 
                 taxChart.data.datasets[0].data = [oldTax, newTax];
                 taxChart.update();
@@ -1184,6 +1370,7 @@
         }
 
         function resetForm() {
+            document.getElementById('taxRegime').value = 'new';
             document.getElementById('financialYear').value = 'fy2025';
             document.getElementById('ageGroup').value = 'below60';
             document.getElementById('grossSalary').value = '1000000';
@@ -1207,7 +1394,8 @@
             taxChart.data.datasets[0].data = [0, 0];
             taxChart.update();
             updateProgress();
-            validateInputs();
+            taxChart.update();
+            handleRegimeChange(); // Also resets visibility of sections
         }
 
         function updateDeadlines() {
