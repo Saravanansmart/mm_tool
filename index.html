@@ -22,676 +22,36 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description"
-        content="Free FY 2025-26 financial calculators for India: income tax, SIP, FD, loan EMI, and more. Explore expert guides on tax planning, GST 2.0 changes (effective 22 Sept 2025), and investment strategies to secure your financial future.">
-    <meta name="keywords"
-        content="financial calculators India, income tax calculator 2025, SIP calculator 2025, GST 2.0, GST changes 2025, GST FAQs, fixed deposit calculator, HRA exemption calculator, tax planning 2025, financial planning India">
+        content="Free financial calculators for India including income tax, SIP, EMI, FD, and investment planning tools. Simple calculators with practical finance guides for Indian users.">
+
     <meta name="robots" content="index, follow">
+
     <meta name="author" content="MoneyMindTool">
+
     <link rel="canonical" href="https://moneymindtool.com/">
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Free Financial Calculators for India FY 2025-26 | MoneyMindTool">
+    <meta property="og:title" content="Financial Calculators for India | MoneyMindTool">
     <meta property="og:description"
-        content="Calculate taxes, SIP returns, FDs, and EMIs for FY 2025-26. Plus: expert guides on GST 2.0 changes (effective 22 Sept 2025), tax planning, and investments for Indian users.">
+        content="Use free tax, SIP, EMI, FD, and investment calculators for India with practical financial planning guides from MoneyMindTool.">
     <meta property="og:url" content="https://moneymindtool.com/">
     <meta property="og:site_name" content="MoneyMindTool">
     <meta property="og:image" content="https://moneymindtool.com/assets/og-image.png">
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free Financial Calculators for India FY 2025-26 | MoneyMindTool">
+    <meta name="twitter:title" content="Financial Calculators for India | MoneyMindTool">
     <meta name="twitter:description"
-        content="Accurate calculators for taxes, investments, and loans (FY 2025-26) + practical guides on GST 2.0 and financial planning for India.">
+        content="Free calculators for tax, SIP, EMI, FD, and investment planning in India.">
     <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
-    <meta name="news_keywords"
-        content="GST 2025, GST 2.0, GST FAQ, financial calculators India, FY 2025-26, tax planning India">
-    <title>Free Financial Calculators for India FY 2025-26 | MoneyMindTool</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap&font-display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #E8EAF6, #F5F7FA);
-            min-height: 100vh;
-            color: #212121;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            background: #1A237E;
-            color: #FFFFFF;
-            padding: 15px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-container h1 {
-            font-size: 1.8em;
-            font-weight: 700;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: #FFFFFF;
-            text-decoration: none;
-            font-size: 1em;
-            margin-left: 20px;
-            font-weight: 600;
-        }
-
-        .nav-menu a:hover {
-            color: #FF6F00;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: #F9FAFB;
-            min-width: 220px;
-            max-height: 300px;
-            overflow-y: auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            z-index: 1000;
-            top: 100%;
-            right: 0;
-            scrollbar-width: thin;
-            scrollbar-color: #F57C00 #E8F0FE;
-        }
-
-        .dropdown-content::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .dropdown-content::-webkit-scrollbar-track {
-            background: #E8F0FE;
-            border-radius: 8px;
-        }
-
-        .dropdown-content::-webkit-scrollbar-thumb {
-            background: #F57C00;
-            border-radius: 8px;
-        }
-
-        .dropdown-content::-webkit-scrollbar-thumb:hover {
-            background: #E65100;
-        }
-
-        .dropdown-content a {
-            color: #4B5EAA;
-            padding: 12px 16px;
-            display: block;
-            font-weight: 400;
-            margin: 0;
-            text-decoration: none;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .dropdown-content a:hover {
-            background: #E8F0FE;
-            color: #F57C00;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .dropdown-content {
-                min-width: 180px;
-                max-height: 250px;
-            }
-        }
-
-        .hero {
-            background: linear-gradient(90deg, #1A237E, #3F51B5);
-            color: #FFFFFF;
-            text-align: center;
-            padding: 60px 20px;
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero h1 {
-            font-size: 2.8em;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .hero a {
-            display: inline-block;
-            font-size: 1.1em;
-            font-weight: 700;
-            padding: 12px 24px;
-            border-radius: 8px;
-            background: #FF6F00;
-            color: #FFFFFF;
-            text-decoration: none;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-
-        .hero a:hover {
-            background: #F57C00;
-            transform: scale(1.05);
-        }
-
-        .intro-section {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .intro-section h2 {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #1A237E;
-            margin-bottom: 15px;
-        }
-
-        .intro-section p {
-            font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            flex: 1;
-        }
-
-        .section-title {
-            font-size: 2.2em;
-            font-weight: 700;
-            text-align: center;
-            margin: 30px 0;
-            color: #1A237E;
-        }
-
-        .article {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #E0E0E0;
-        }
-
-        .article h2 {
-            font-size: 1.8em;
-            font-weight: 600;
-            color: #1A237E;
-            margin-bottom: 15px;
-        }
-
-        .article h3 {
-            font-size: 1.4em;
-            font-weight: 600;
-            color: #1A237E;
-            margin: 15px 0 10px;
-        }
-
-        .article p {
-            font-size: 1em;
-            color: #616161;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .article ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .article ul li {
-            font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
-            margin-bottom: 8px;
-        }
-
-        .article a {
-            color: #FF6F00;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .article a:hover {
-            color: #F57C00;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #E0E0E0;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .card h2 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #1A237E;
-        }
-
-        .card p {
-            font-size: 1em;
-            color: #616161;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-
-        .card a {
-            display: inline-block;
-            font-size: 1em;
-            font-weight: 700;
-            padding: 10px 20px;
-            border-radius: 8px;
-            background: #FF6F00;
-            color: #FFFFFF;
-            text-align: center;
-            text-decoration: none;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-
-        .card a:hover {
-            background: #F57C00;
-            transform: scale(1.05);
-        }
-
-        .show-more {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .show-more a {
-            display: inline-block;
-            font-size: 1.1em;
-            font-weight: 700;
-            padding: 12px 24px;
-            border-radius: 8px;
-            background: #FF6F00;
-            color: #FFFFFF;
-            text-decoration: none;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-
-        .show-more a:hover {
-            background: #F57C00;
-            transform: scale(1.05);
-        }
-
-        .cta-banner {
-            background: #3F51B5;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 40px 20px;
-            margin: 40px 0;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-banner h2 {
-            font-size: 2em;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .cta-banner p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .cta-banner a {
-            display: inline-block;
-            font-size: 1.1em;
-            font-weight: 700;
-            padding: 12px 24px;
-            border-radius: 8px;
-            background: #FF6F00;
-            color: #FFFFFF;
-            text-decoration: none;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-
-        .cta-banner a:hover {
-            background: #F57C00;
-            transform: scale(1.05);
-        }
-
-        .faq-section {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .faq-section h2 {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #1A237E;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .faq-item {
-            background: #FFFFFF;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .faq-item h3 {
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #1A237E;
-            margin-bottom: 10px;
-        }
-
-        .faq-item p {
-            font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
-        }
-
-        .featured-blogs,
-        .blog-teaser {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .featured-blogs h2,
-        .blog-teaser h2 {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #1A237E;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .blog-card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .blog-card h3 {
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #1A237E;
-            margin-bottom: 10px;
-        }
-
-        .blog-card p {
-            font-size: 0.95em;
-            color: #616161;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .blog-card a {
-            font-size: 0.9em;
-            font-weight: 700;
-            color: #FF6F00;
-            text-decoration: none;
-        }
-
-        .blog-card a:hover {
-            color: #F57C00;
-        }
-
-        .footer {
-            background: #1A237E;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            margin-top: auto;
-        }
-
-        .footer-links a {
-            color: #FFFFFF;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1em;
-        }
-
-        .footer-links a:hover {
-            color: #FF6F00;
-        }
-
-        .rights-reserved {
-            font-size: 0.9em;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            animation: scaleIn 0.3s ease;
-        }
-
-        .modal-content {
-            background: #FFFFFF;
-            max-width: 500px;
-            width: 90%;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            color: #212121;
-            position: relative;
-            transform: scale(0.95);
-            transition: transform 0.2s ease;
-        }
-
-        .modal.show .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-content h3 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 10px 0;
-            color: #1A237E;
-        }
-
-        .modal-content p {
-            font-size: 0.9em;
-            line-height: 1.5;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5em;
-            color: #212121;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .close:hover {
-            color: #FF6F00;
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 2.2em;
-            }
-
-            .hero p {
-                font-size: 1em;
-            }
-
-            .card-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .nav-container h1 {
-                font-size: 1.5em;
-            }
-
-            .nav-menu a {
-                margin-left: 15px;
-            }
-
-            .blog-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 40px 15px;
-            }
-
-            .hero h1 {
-                font-size: 1.8em;
-            }
-
-            .hero p {
-                font-size: 0.9em;
-            }
-
-            .section-title {
-                font-size: 1.8em;
-            }
-
-            .container {
-                padding: 10px;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .card {
-                padding: 15px;
-            }
-
-            .footer {
-                padding: 15px;
-                font-size: 0.9em;
-            }
-
-            .rights-reserved {
-                font-size: 0.8em;
-            }
-
-            .modal-content {
-                padding: 15px;
-            }
-
-            .nav-container {
-                flex-direction: column;
-            }
-
-            .nav-menu {
-                margin-top: 10px;
-            }
-
-            .nav-menu a {
-                margin: 5px 10px;
-            }
-
-            .dropdown-content {
-                min-width: 150px;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Tax, SIP, EMI & Investment Calculators for India | MoneyMindTool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
 
     <script type="application/ld+json">
     {
@@ -897,6 +257,19 @@
       ]
     }
     </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moneymindtool.com/"
+      }]
+    }
+    </script>
 </head>
 
 <body>
@@ -906,7 +279,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <header>
         <div class="nav-container">
-            <h1>MoneyMindTool</h1>
+            <div class="logo">MoneyMindTool</div>
             <nav class="nav-menu">
                 <a href="https://moneymindtool.com/">Home</a>
                 <a href="https://moneymindtool.com/blog.html">Blog</a>
@@ -932,6 +305,10 @@
                         <a href="https://moneymindtool.com/gst-calculator.html">GST Interest & Late Fee Calculator</a>
                         <a href="https://moneymindtool.com/retirement.html">Retirement Planning Calculator</a>
                         <a href="https://moneymindtool.com/epf-calculators.html">EPF Calculator</a>
+                        <a href="https://moneymindtool.com/salary-calculator.html">In-Hand Salary Calculator</a>
+                        <a href="https://moneymindtool.com/loan-prepayment.html">Loan Prepayment Calculator</a>
+                        <a href="https://moneymindtool.com/ssy-calculator.html">SSY Calculator</a>
+                        <a href="https://moneymindtool.com/step-up-sip.html">Step-Up SIP Calculator</a>
                     </div>
                 </div>
             </nav>
@@ -942,7 +319,7 @@
         <h1>Plan Your Finances with Ease</h1>
         <p>Discover free financial calculators for FY 2025-26, tailored for Indian users. <br>Calculate taxes,
             investments, and loan EMIs with accurate, user-friendly tools to achieve your financial goals.</p>
-        <a href="#calculators">Explore Top Calculators</a>
+        <a href="#calculators" title="Explore Top Calculators">Explore Top Calculators</a>
     </div>
     <div class="intro-section">
         <h2>Empower Your Financial Future</h2>
@@ -961,7 +338,8 @@
                     taxpayers. Easily compare the New and Old Tax Regimes, factor in deductions like Section 80C (up to
                     ₹1.5 lakh), 80D, and HRA exemptions, and optimize your tax strategy. Updated with the latest tax
                     slabs, this tool helps salaried individuals, freelancers, and businesses save time and money.</p>
-                <a href="https://moneymindtool.com/income-tax.html">Calculate Now</a>
+                <a href="https://moneymindtool.com/income-tax.html" title="Go to Income Tax Calculator">Calculate
+                    Now</a>
             </div>
             <div class="card" onclick="window.location.href='https://moneymindtool.com/sip.html'">
                 <h2>SIP Calculator</h2>
@@ -969,25 +347,54 @@
                     future returns based on monthly contributions, expected rates, and tenure to meet goals like
                     retirement or education funding. Leverage the power of compounding to maximize your mutual fund
                     investments with accurate projections.</p>
-                <a href="https://moneymindtool.com/sip.html">Calculate Now</a>
+                <a href="https://moneymindtool.com/sip.html" title="Go to SIP Calculator">Calculate Now</a>
             </div>
             <div class="card" onclick="window.location.href='https://moneymindtool.com/fixed-deposit.html'">
                 <h2>Fixed Deposit Calculator</h2>
                 <p>Plan secure savings with our Fixed Deposit Calculator for FY 2025-26. Estimate maturity amounts and
                     interest with quarterly compounding, using the latest rates from top Indian banks like SBI and HDFC.
                     Compare tenures and rates to find the best FD option for your financial goals.</p>
-                <a href="https://moneymindtool.com/fixed-deposit.html">Calculate Now</a>
+                <a href="https://moneymindtool.com/fixed-deposit.html" title="Go to Fixed Deposit Calculator">Calculate
+                    Now</a>
             </div>
             <div class="card" onclick="window.location.href='https://moneymindtool.com/loanemi.html'">
                 <h2>Loan EMI Calculator</h2>
                 <p>Calculate EMIs for home, car, or personal loans with our Loan EMI Calculator for FY 2025-26. Input
                     loan amount, interest rate, and tenure to get precise monthly payment and total interest estimates.
                     Plan your repayments effectively to ensure affordability for Indian borrowers.</p>
-                <a href="https://moneymindtool.com/loanemi.html">Calculate Now</a>
+                <a href="https://moneymindtool.com/loanemi.html" title="Go to Loan EMI Calculator">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='https://moneymindtool.com/salary-calculator.html'">
+                <h2>In-Hand Salary Calculator</h2>
+                <p>Calculate your exact monthly in-hand take-home salary from your CTC. Deduct EPF, Professional Tax,
+                    and TDS instantly with our free India Salary Calculator.</p>
+                <a href="https://moneymindtool.com/salary-calculator.html"
+                    title="Go to In-Hand Salary Calculator">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='https://moneymindtool.com/loan-prepayment.html'">
+                <h2>Loan Prepayment Calculator</h2>
+                <p>Calculate how much interest you can save on your Home Loan or Personal Loan by making extra EMI
+                    payments or lump-sum prepayments.</p>
+                <a href="https://moneymindtool.com/loan-prepayment.html"
+                    title="Go to Loan Prepayment Calculator">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='https://moneymindtool.com/ssy-calculator.html'">
+                <h2>SSY Calculator</h2>
+                <p>Free SSY Calculator to estimate maturity amount and tax savings for your daughter under the Sukanya
+                    Samriddhi Yojana scheme for FY 2025-26.</p>
+                <a href="https://moneymindtool.com/ssy-calculator.html" title="Go to SSY Calculator">Calculate Now</a>
+            </div>
+            <div class="card" onclick="window.location.href='https://moneymindtool.com/step-up-sip.html'">
+                <h2>Step-Up SIP Calculator</h2>
+                <p>Plan your wealth creation effectively by increasing your mutual fund SIP annually. Use our free
+                    Step-Up SIP calculator for accurate return projections.</p>
+                <a href="https://moneymindtool.com/step-up-sip.html" title="Go to Step-Up SIP Calculator">Calculate
+                    Now</a>
             </div>
         </div>
         <div class="show-more">
-            <a href="https://moneymindtool.com/all-calculators">Show More Calculators</a>
+            <a href="https://moneymindtool.com/all-calculators" title="Show More Financial Calculators">Show More
+                Calculators</a>
         </div>
     </div>
 
@@ -1001,29 +408,34 @@
                 <h3>Master Your Taxes with Our Income Tax Calculator</h3>
                 <p>Learn how to save on taxes in FY 2025-26 using our Income Tax Calculator. Compare Old and New Tax
                     Regimes, optimize deductions like Section 80C, and plan smarter.</p>
-                <a href="https://moneymindtool.com/blog.html#income-tax-calculator">Read More</a>
+                <a href="https://moneymindtool.com/blog.html#income-tax-calculator"
+                    title="Read more about Income Tax Calculator">Read More</a>
             </div>
             <div class="blog-card">
                 <h3>Save More on Rent: How to Use Our HRA Exemption Calculator</h3>
                 <p>Maximize your HRA exemptions in FY 2025-26. Our guide shows salaried employees how to use our HRA
                     Exemption Calculator to reduce taxable income effectively.</p>
-                <a href="https://moneymindtool.com/blog.html#hra-exemption-calculator">Read More</a>
+                <a href="https://moneymindtool.com/blog.html#hra-exemption-calculator"
+                    title="Read more about HRA Exemption Calculator">Read More</a>
             </div>
             <div class="blog-card">
                 <h3>Plan Fixed Deposits with Our FD Calculator</h3>
                 <p>Discover how to grow your savings securely in FY 2025-26. Use our Fixed Deposit Calculator to compare
                     rates and tenures for maximum returns.</p>
-                <a href="https://moneymindtool.com/blog.html#fixed-deposit-calculator">Read More</a>
+                <a href="https://moneymindtool.com/blog.html#fixed-deposit-calculator"
+                    title="Read more about Fixed Deposit Calculator">Read More</a>
             </div>
             <div class="blog-card">
                 <h3>Build Wealth with Our Recurring Deposit Calculator</h3>
                 <p>Start saving systematically for FY 2025-26. Our RD Calculator helps you plan recurring deposits to
                     achieve goals like buying a car or funding a vacation.</p>
-                <a href="https://moneymindtool.com/blog.html#recurring-deposit-calculator">Read More</a>
+                <a href="https://moneymindtool.com/blog.html#recurring-deposit-calculator"
+                    title="Read more about Recurring Deposit Calculator">Read More</a>
             </div>
         </div>
         <div class="show-more">
-            <a href="https://moneymindtool.com/blog.html">Explore All Insights</a>
+            <a href="https://moneymindtool.com/blog.html" title="Explore All Financial Insights">Explore All
+                Insights</a>
         </div>
     </div>
 
@@ -1031,7 +443,7 @@
         <h2>Take Control of Your Finances Today</h2>
         <p>Use our free calculators to plan your taxes, investments, and loans for FY 2025-26. <br>Get accurate,
             India-specific results based on the latest financial guidelines to achieve your goals with confidence.</p>
-        <a href="https://moneymindtool.com/all-calculators">Start Calculating Now</a>
+        <a href="https://moneymindtool.com/all-calculators" title="Start Calculating Now">Start Calculating Now</a>
     </div>
 
     <div class="faq-section" id="faqs">
@@ -1094,18 +506,21 @@
                 <h3>Recent GST Reforms (GST 2.0)</h3>
                 <p>Summary and practical actions for businesses following the GST changes effective 22 Sept 2025. Learn
                     how ITC, pricing, and invoices are impacted and what to do first.</p>
-                <a href="https://moneymindtool.com/blog.html#gst-changes">Read More</a>
+                <a href="https://moneymindtool.com/blog.html#gst-changes" title="Read more about GST Reforms">Read
+                    More</a>
             </div>
             <div class="blog-card">
                 <h3>Income-Tax Act 2025: Simplified Tax Law Effective April 2026 – Key Changes Explained</h3>
                 <p>The new Income-Tax Act 2025 (enacted August 2025) replaces the 1961 Act with a simpler, modern
                     framework.</p>
-                <a href="https://moneymindtool.com/blog.html#income-tax-act-2025">Read More</a>
+                <a href="https://moneymindtool.com/blog.html#income-tax-act-2025"
+                    title="Read more about Income-Tax Act 2025">Read More</a>
             </div>
             <div class="blog-card">
                 <h3>New Labour Codes 2025: Gratuity After Just 1 Year for Fixed-Term & Contract Workers</h3>
                 <p>The four new Labour Codes (effective 21 November 2025) bring major social security reforms.</p>
-                <a href="https://moneymindtool.com/blog.html#new-labour-codes-gratuity-2025">Read More</a>
+                <a href="https://moneymindtool.com/blog.html#new-labour-codes-gratuity-2025"
+                    title="Read more about New Labour Codes 2025">Read More</a>
             </div>
         </div>
     </div>
@@ -1179,7 +594,7 @@
             <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a> |
             <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a>
         </div>
-        <p class="rights-reserved">© 2026 digicreature technologies. All Rights Reserved.</p>
+        <p class="rights-reserved">© 2026 Digicreature Technologies. All Rights Reserved.</p>
     </footer>
 
     <script>
