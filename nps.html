@@ -1,607 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="UE5/pVdJlriCJfcPDhvrWA" async></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-GYW0708DQY');
+        gtag('js', new Date()); gtag('config', 'G-GYW0708DQY');
     </script>
-    <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-W3MR5ZGL');</script>
-    <!-- End Google Tag Manager -->
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W3MR5ZGL');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Calculate your NPS retirement corpus and pension for FY 2025-26 in India with our free National Pension System Calculator. Plan your retirement with ease.">
-    <meta name="keywords"
-        content="NPS calculator India, NPS retirement corpus 2025, National Pension System calculator, FY 2025-26 NPS, retirement planning India, NPS investment calculator, NPS tax benefits 2025, online NPS calculator India, pension planner 2025, Section 80C NPS calculator, NPS return calculator, retirement savings calculator India, NPS corpus projection, financial planning tools 2025, NPS benefits for salaried, pension scheme calculator India, NPS wealth calculator, retirement income planner India">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Free NPS Calculator India FY 2025-26. Estimate your National Pension System retirement corpus, lump-sum withdrawal, annuity, and monthly pension instantly.">
+    <meta name="keywords" content="NPS calculator India, NPS retirement corpus 2025, National Pension System calculator, FY 2025-26 NPS, retirement planning India, NPS investment calculator, NPS tax benefits 2025, Section 80CCD calculator, NPS return calculator, retirement savings calculator India, NPS corpus projection, pension scheme calculator India">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
-    <title>NPS Calculator India FY 2025-26 - Plan Your Retirement</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #E8EAF6, #F5F7FA);
-            min-height: 100vh;
-            color: #212121;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            background: #1A237E;
-            color: #FFFFFF;
-            padding: 15px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-container .logo {
-            font-size: 1.8em;
-            font-weight: 700;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: #FFFFFF;
-            text-decoration: none;
-            font-size: 1em;
-            margin-left: 20px;
-            font-weight: 600;
-        }
-
-        .nav-menu a:hover {
-            color: #FF6F00;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: #F9FAFB;
-            min-width: 220px;
-            max-height: 300px;
-            overflow-y: auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            z-index: 1000;
-            top: 100%;
-            right: 0;
-        }
-
-        .dropdown-content a {
-            color: #212121;
-            padding: 12px 16px;
-            display: block;
-            font-weight: 400;
-            margin: 0;
-        }
-
-        .dropdown-content a:hover {
-            background: #F5F7FA;
-            color: #FF6F00;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px 20px 40px;
-            flex: 1;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            text-align: center;
-            margin: 20px 0;
-            color: #1A237E;
-        }
-
-        .intro-section {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .intro-section p {
-            font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #E0E0E0;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        h2 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 10px 0;
-            color: #1A237E;
-        }
-
-        label {
-            font-size: 1em;
-            font-weight: 400;
-            margin: 8px 0;
-            display: block;
-            color: #212121;
-        }
-
-        input {
-            font-size: 1em;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #E0E0E0;
-            border-radius: 8px;
-            background: #F5F5F5;
-            color: #212121;
-            width: 100%;
-            max-width: 200px;
-            transition: border 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        input:focus {
-            outline: none;
-            border: 1px solid #FF6F00;
-            box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
-        }
-
-        input.error {
-            border: 1px solid #D32F2F;
-            box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
-        }
-
-        .input-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
-        }
-
-        button {
-            font-size: 1em;
-            font-weight: 700;
-            padding: 10px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 8px;
-            background: #FF6F00;
-            color: #FFFFFF;
-            cursor: pointer;
-            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        button:hover {
-            background: #F57C00;
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
-        }
-
-        button:disabled {
-            background: #B0BEC5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .results {
-            font-size: 1em;
-            margin-top: 15px;
-            color: #212121;
-            font-weight: 400;
-            text-align: center;
-        }
-
-        .results-card {
-            display: none;
-            border: 2px solid #FF6F00;
-        }
-
-        .results-card.visible {
-            display: block;
-        }
-
-        .faq-section {
-            margin: 40px 0;
-        }
-
-        .faq-section h2 {
-            font-size: 1.8em;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .faq-item {
-            margin: 20px 0;
-            padding: 15px;
-            border-left: 4px solid #1A237E;
-            background: #FFFFFF;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .faq-item h3 {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #1A237E;
-            margin-bottom: 10px;
-        }
-
-        .faq-item p {
-            font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
-        }
-
-        .footer {
-            background: #1A237E;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            margin-top: auto;
-        }
-
-        .footer-links a {
-            color: #FFFFFF;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1em;
-            font-weight: 400;
-        }
-
-        .footer-links a:hover {
-            color: #FF6F00;
-        }
-
-        .rights-reserved {
-            font-size: 0.9em;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            animation: scaleIn 0.3s ease;
-        }
-
-        .modal-content {
-            background: #FFFFFF;
-            max-width: 500px;
-            width: 90%;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            color: #212121;
-            position: relative;
-            transform: scale(0.95);
-            transition: transform 0.2s ease;
-        }
-
-        .modal.show .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-content h3 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 10px 0;
-            color: #1A237E;
-        }
-
-        .modal-content p {
-            font-size: 0.9em;
-            line-height: 1.5;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5em;
-            color: #212121;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .close:hover {
-            color: #FF6F00;
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .result-detail {
-            margin: 15px 0;
-            padding: 10px;
-            background: #F5F7FA;
-            border-radius: 8px;
-            line-height: 1.8;
-        }
-    </style>
-
+    <title>NPS Calculator India FY 2025-26 - Pension Corpus & Monthly Payout</title>
+    <link rel="canonical" href="https://moneymindtool.com/nps.html">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta property="og:type" content="website">
-    <meta property="og:title" content="NPS Calculator India FY 2025-26 - Plan Your Retirement">
-    <meta property="og:description" content="Calculate your NPS retirement corpus and pension for FY 2025-26 in India with our free National Pension System Calculator. Plan your retirement with ease.">
+    <meta property="og:title" content="NPS Calculator India FY 2025-26 - Pension Corpus & Payout">
+    <meta property="og:description" content="Estimate your NPS retirement corpus, annuity, and monthly pension for FY 2025-26 with our free calculator.">
     <meta property="og:url" content="https://moneymindtool.com/nps.html">
     <meta property="og:site_name" content="MoneyMindTool">
     <meta property="og:image" content="https://moneymindtool.com/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="NPS Calculator India FY 2025-26 - Plan Your Retirement">
-    <meta name="twitter:description" content="Calculate your NPS retirement corpus and pension for FY 2025-26 in India with our free National Pension System Calculator. Plan your retirement with ease.">
+    <meta name="twitter:title" content="NPS Calculator India FY 2025-26">
+    <meta name="twitter:description" content="Calculate NPS corpus, lump sum, and monthly pension instantly for FY 2025-26.">
     <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://moneymindtool.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Calculators",
-        "item": "https://moneymindtool.com/all-calculators.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "NPS Calculator India FY 2025",
-        "item": "https://moneymindtool.com/nps.html"
-      }]
-    }
-    </script>
-</head>
+    <link rel="stylesheet" href="/theme.css">
 
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"NPS Calculator India","description":"Free NPS Calculator to estimate retirement corpus, annuity, lump-sum withdrawal, and monthly pension under the National Pension System for FY 2025-26.","url":"https://moneymindtool.com/nps.html","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://moneymindtool.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://moneymindtool.com/all-calculators.html"},{"@type":"ListItem","position":3,"name":"NPS Calculator","item":"https://moneymindtool.com/nps.html"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is the National Pension System (NPS)?","acceptedAnswer":{"@type":"Answer","text":"The National Pension System is a voluntary, defined-contribution retirement scheme regulated by PFRDA. It builds a retirement corpus through market-linked investments and provides monthly pension via annuity post-retirement."}},
+      {"@type":"Question","name":"How is the NPS corpus calculated?","acceptedAnswer":{"@type":"Answer","text":"The corpus is calculated using the future value of an annuity-due formula based on monthly contributions, expected return, and tenure. At retirement, a minimum of 40% must be used to purchase an annuity; the rest is taken as a lump sum."}},
+      {"@type":"Question","name":"Who can invest in NPS in India?","acceptedAnswer":{"@type":"Answer","text":"Any Indian citizen aged 18 to 70, including salaried, self-employed, and NRIs, can subscribe to NPS Tier I account. Government employees joining after 2004 are mandatorily covered."}},
+      {"@type":"Question","name":"What are the tax benefits of NPS?","acceptedAnswer":{"@type":"Answer","text":"Up to ₹1.5 lakh under Section 80C and an additional ₹50,000 under Section 80CCD(1B), totalling ₹2 lakh deduction. Up to 60% lump sum at retirement is tax-free; annuity income is taxed as per slab."}},
+      {"@type":"Question","name":"Are NPS returns guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. NPS returns are market-linked because contributions are invested in equity, corporate bonds, and government securities. The calculator uses an assumed return rate for estimation."}},
+      {"@type":"Question","name":"What is the minimum NPS contribution?","acceptedAnswer":{"@type":"Answer","text":"Tier I requires a minimum of ₹500 per contribution and ₹1,000 per year to keep the account active. There is no upper limit."}}
+    ]}</script>
+</head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3MR5ZGL" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">MoneyMindTool</div>
-            <nav class="nav-menu">
+    <header class="mm-header">
+        <div class="mm-nav-wrap">
+            <a href="/index.html" class="mm-logo">Money<span>Mind</span>Tool</a>
+            <nav class="mm-nav" aria-label="Primary">
                 <a href="/index.html">Home</a>
-                <div class="dropdown">
-                    <a href="#">Calculators</a>
-                    <div class="dropdown-content">
-                        <a href="/all-calculators">All Calculators</a>
-                        <a href="/income-tax.html">Income Tax Calculator</a>
-                        <a href="/simple-interest.html">Simple Interest Calculator</a>
-                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
-                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
-                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
-                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                <a href="/blog.html" class="mm-mobile-hide">Blog</a>
+                <div class="mm-dropdown">
+                    <button aria-haspopup="true">Calculators ▾</button>
+                    <div class="mm-dropdown-menu" role="menu">
                         <a href="/sip.html">SIP Calculator</a>
-                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/lumpsum.html">Lumpsum Calculator</a>
+                        <a href="/mutual-fund-returns.html">Mutual Fund Returns</a>
+                        <a href="/step-up-sip.html">Step-Up SIP</a>
                         <a href="/ppf.html">PPF Calculator</a>
                         <a href="/nps.html">NPS Calculator</a>
-                        <a href="/hra.html">HRA Exemption Calculator</a>
-                        <a href="/gratuity.html">Gratuity Calculator</a>
-                        <a href="/loanemi.html">Loan EMI Calculator</a>
-                        <a href="/home-loan.html">Home EMI Calculator</a>
-                        <a href="/capital-gains.html">Capital Gains Calculator</a>
-                        <a href="gst-calculator.html">GST Interest & Late Fee Calculator</a>
-                        <a href="/retirement.html">Retirement Planning Calculator</a>
-                                            <a href="https://moneymindtool.com/salary-calculator.html">In-Hand Salary Calculator</a>
-                        <a href="https://moneymindtool.com/loan-prepayment.html">Loan Prepayment Calculator</a>
-                        <a href="https://moneymindtool.com/ssy-calculator.html">SSY Calculator</a>
-                        <a href="https://moneymindtool.com/step-up-sip.html">Step-Up SIP Calculator</a>
+                        <a href="/fixed-deposit.html">FD Calculator</a>
+                        <a href="/recurring-deposit.html">RD Calculator</a>
+                        <a href="/ssy-calculator.html">SSY Calculator</a>
+                        <a href="/income-tax.html">Income Tax</a>
+                        <a href="/salary-calculator.html">Salary Calculator</a>
+                        <a href="/home-loan.html">Home Loan EMI</a>
+                        <a href="/all-calculators.html" class="all">View All →</a>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-    <div class="container">
-        <h1>NPS Calculator FY 2025-26</h1>
-        <div class="intro-section">
-            <p>Plan your retirement with our free NPS Calculator for FY 2025-26, designed for Indian investors. Estimate
-                your National Pension System (NPS) retirement corpus and monthly pension by entering your monthly
-                contribution, age, expected return rate, and annuity details.</p>
-            <p>NPS is a government-backed scheme that helps you build a substantial retirement fund through
-                market-linked investments. Our tool simplifies complex calculations, providing accurate estimates to
-                help you make informed decisions for FY 2025-26. Start planning your financial future today!</p>
-        </div>
-        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
-        <div class="card">
-            <h2>NPS Calculator</h2>
-            <div class="input-group">
-                <div>
-                    <label for="monthlyContribution">Monthly Contribution (₹):</label>
-                    <input type="number" id="monthlyContribution" min="0" value="5000">
-                </div>
-                <div>
-                    <label for="currentAge">Current Age (Years):</label>
-                    <input type="number" id="currentAge" min="18" value="30">
-                </div>
-                <div>
-                    <label for="retirementAge">Retirement Age (Years):</label>
-                    <input type="number" id="retirementAge" min="18" value="60">
-                </div>
-            </div>
-            <div class="input-group">
-                <div>
-                    <label for="returnRate">Expected Return Rate (%):</label>
-                    <input type="number" id="returnRate" min="0" step="0.1" value="10">
-                </div>
-                <div>
-                    <label for="annuityPercent">Annuity Purchase (%):</label>
-                    <input type="number" id="annuityPercent" min="40" value="40">
-                </div>
-                <div>
-                    <label for="annuityRate">Annuity Return Rate (%):</label>
-                    <input type="number" id="annuityRate" min="0" step="0.1" value="6">
-                </div>
-            </div>
-            <div class="input-group">
-                <button id="calcButton" onclick="calcNPS()" disabled>Calculate</button>
-                <button onclick="resetForm()">Reset</button>
-            </div>
-            <div class="note">Enter monthly contribution in ₹ (minimum ₹500 for Tier I). NPS returns are market-linked
-                and subject to risks. At least 40% of the corpus must be used for annuity purchase at retirement.</div>
-        </div>
-        <div class="card results-card">
-            <div class="error-message" id="errorMessage"></div>
-            <div class="results" id="npsResult"></div>
-        </div>
 
-        <div class="formula-section">
-            <h3>NPS Corpus Calculation Formula (Future Value of Annuity Due)</h3>
-            <p>The calculation assumes investments are made at the beginning of each period (monthly contribution) and
-                calculates the compounded future value of the total corpus.</p>
-            <div style="font-size: 1.2em; font-weight: 500; color: #FF6F00; margin: 10px 0;">
-                FV = R [ {(1+i)^n - 1}{i}] / (1+i)
+    <nav class="mm-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span>
+        <a href="/all-calculators.html">Calculators</a><span class="sep">/</span>
+        <span class="current">NPS Calculator</span>
+    </nav>
+
+    <main class="mm-main">
+        <section class="mm-hero">
+            <span class="pill">FY 2025-26 · Section 80CCD(1B)</span>
+            <h1>NPS Calculator</h1>
+            <p>Plan your retirement. Estimate your National Pension System corpus, lump-sum withdrawal, annuity value, and monthly pension instantly.</p>
+        </section>
+
+        <section class="mm-card">
+            <h2>Calculate NPS Corpus & Pension</h2>
+            <div class="mm-form-grid">
+                <div class="mm-field">
+                    <label for="monthlyContribution">Monthly Contribution (₹)</label>
+                    <input type="number" id="monthlyContribution" min="0" value="5000" class="mm-input">
+                    <div class="hint">Minimum ₹500 for Tier I.</div>
+                </div>
+                <div class="mm-field">
+                    <label for="currentAge">Current Age (years)</label>
+                    <input type="number" id="currentAge" min="18" value="30" class="mm-input">
+                </div>
+                <div class="mm-field">
+                    <label for="retirementAge">Retirement Age (years)</label>
+                    <input type="number" id="retirementAge" min="18" value="60" class="mm-input">
+                    <div class="hint">Up to 70 years.</div>
+                </div>
+                <div class="mm-field">
+                    <label for="returnRate">Expected Return Rate (%)</label>
+                    <input type="number" id="returnRate" min="0" step="0.1" value="10" class="mm-input">
+                    <div class="hint">Market-linked, typically 9–12%.</div>
+                </div>
+                <div class="mm-field">
+                    <label for="annuityPercent">Annuity Purchase (%)</label>
+                    <input type="number" id="annuityPercent" min="40" value="40" class="mm-input">
+                    <div class="hint">Minimum 40% mandatory.</div>
+                </div>
+                <div class="mm-field">
+                    <label for="annuityRate">Annuity Return Rate (%)</label>
+                    <input type="number" id="annuityRate" min="0" step="0.1" value="6" class="mm-input">
+                </div>
             </div>
-            <p style="text-align: left; font-size: 0.9em; color: #1A237E;">Where:</p>
-            <ul
-                style="text-align: left; font-size: 0.9em; color: #616161; list-style: none; padding-left: 0; margin-top: 5px;">
-                <li>FV = Future Value / Retirement Corpus (₹)</li>
-                <li>R = Monthly Contribution (₹)</li>
-                <li>i = Monthly Rate ({Annual Rate}/{12})</li>
-                <li>n = Total Investment Months</li>
+            <div class="mm-actions">
+                <button id="calcButton" onclick="calcNPS()" class="mm-btn">Calculate Pension</button>
+                <button onclick="resetForm()" class="mm-btn mm-btn-secondary">Reset</button>
+            </div>
+        </section>
+
+        <section class="mm-result-card hidden" id="resultsCard">
+            <div class="label">Total Retirement Corpus</div>
+            <div class="value" id="npsCorpusOut">—</div>
+            <div class="subline" id="npsResultDetail"></div>
+            <div class="error-message" id="errorMessage" style="color:#fca5a5; margin-top:10px;"></div>
+            <div class="results hidden" id="npsResult"></div>
+        </section>
+
+        <section class="mm-card">
+            <h2>What is NPS?</h2>
+            <p>The <strong>National Pension System (NPS)</strong> is a voluntary, defined-contribution pension scheme regulated by the <strong>Pension Fund Regulatory and Development Authority (PFRDA)</strong>. Launched for government employees in 2004 and opened to all Indian citizens in 2009, it is one of the lowest-cost retirement products in the world.</p>
+            <p>Contributions are invested across <strong>equity, corporate bonds, government securities, and alternative assets</strong> through professional fund managers. At retirement, you can withdraw up to 60% of the corpus as a tax-free lump sum and use the remaining minimum 40% to purchase an annuity that provides regular monthly pension for life.</p>
+            <p>NPS is open to any Indian citizen aged 18-70, including NRIs and OCIs, and offers two account types: <strong>Tier I</strong> (mandatory, lock-in until 60) and <strong>Tier II</strong> (voluntary, flexible withdrawals).</p>
+        </section>
+
+        <section class="mm-card">
+            <h2>Key Features at a Glance</h2>
+            <ul>
+                <li><strong>Eligibility:</strong> Indian citizens 18–70 years.</li>
+                <li><strong>Minimum contribution:</strong> ₹500 per contribution; ₹1,000 per year to keep active.</li>
+                <li><strong>Investment options:</strong> Active Choice (you decide allocation) or Auto Choice (life-cycle based).</li>
+                <li><strong>Lock-in:</strong> Tier I until age 60 (with partial withdrawal rules).</li>
+                <li><strong>At retirement:</strong> Up to 60% lump sum (tax-free) + minimum 40% annuity.</li>
+                <li><strong>Returns:</strong> Market-linked — historically 9–12% over the long term.</li>
             </ul>
-        </div>
-        <div class="faq-section">
+        </section>
+
+        <section class="mm-card">
+            <h2>Tax Benefits of NPS</h2>
+            <p>NPS offers the highest tax saving potential among Indian retirement products:</p>
+            <ul>
+                <li><strong>Section 80CCD(1):</strong> Employee contribution up to 10% of salary, within the ₹1.5 lakh Section 80C ceiling.</li>
+                <li><strong>Section 80CCD(1B):</strong> An exclusive additional deduction of <strong>₹50,000</strong>, over and above 80C. Available in both old and new tax regimes.</li>
+                <li><strong>Section 80CCD(2):</strong> Employer contribution up to 10% of salary (14% for government employees) — deductible separately with no upper cap on the deduction itself.</li>
+                <li><strong>At maturity:</strong> Up to 60% lump-sum withdrawal is tax-free; the 40% used for annuity is also tax-exempt at the time of purchase. Monthly pension income is taxable as per your slab.</li>
+            </ul>
+        </section>
+
+        <section class="mm-card">
+            <h2>How the Calculation Works</h2>
+            <p>The calculator uses the <strong>future value of annuity-due</strong> formula for monthly contributions compounded monthly until your retirement age:</p>
+            <p><strong>FV = R × [((1+i)<sup>n</sup> − 1) / i] × (1+i)</strong></p>
+            <p>Where R = monthly contribution, i = monthly rate (annual rate ÷ 12), n = total months.</p>
+            <p><strong>Worked example:</strong> ₹5,000/month from age 30 to 60 at 10% return builds a corpus of ~<strong>₹1.14 crore</strong>. With 40% annuity at 6%, you receive a tax-free lump sum of ~₹68 lakh and a monthly pension of ~₹22,800.</p>
+        </section>
+
+        <section class="mm-card">
             <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <h3>What is an NPS Calculator?</h3>
-                <p>An NPS Calculator is an online tool that estimates the retirement corpus and monthly pension under
-                    the National Pension System (NPS) in India, based on monthly contributions, age, expected returns,
-                    and annuity purchase percentage.</p>
+            <div class="mm-faq">
+                <details><summary>Who can open an NPS account?</summary><div>Any Indian citizen, including NRI and OCI, aged 18 to 70. Both salaried and self-employed individuals can subscribe.</div></details>
+                <details><summary>How much can I claim as tax deduction?</summary><div>Up to ₹1.5 lakh under 80C plus an additional ₹50,000 under 80CCD(1B) — total ₹2 lakh per year. Employer contribution under 80CCD(2) is deductible separately.</div></details>
+                <details><summary>Is NPS withdrawal taxable?</summary><div>Up to 60% lump-sum at retirement is tax-free. The 40% used for annuity is exempt at purchase, but monthly pension is taxable per slab.</div></details>
+                <details><summary>What returns can I expect from NPS?</summary><div>Historically 9–12% p.a. for equity-heavy allocations. Returns are market-linked and not guaranteed.</div></details>
+                <details><summary>Can I withdraw before retirement?</summary><div>Partial withdrawal (up to 25% of own contribution) is allowed after 3 years for specific purposes like education, marriage, or critical illness.</div></details>
+                <details><summary>NPS vs PPF — which is better?</summary><div>PPF gives guaranteed tax-free returns (~7.1%). NPS is market-linked with potentially higher returns plus an extra ₹50,000 deduction under 80CCD(1B). Most investors use both.</div></details>
             </div>
-            <div class="faq-item">
-                <h3>How is the NPS corpus calculated?</h3>
-                <p>The NPS corpus is calculated using the compound interest formula for monthly contributions over the
-                    investment period. At retirement, a minimum of 40% of the corpus is used to purchase an annuity, and
-                    the rest is paid as a lump sum.</p>
+        </section>
+
+        <section class="mm-related">
+            <h2>Related Calculators</h2>
+            <div class="mm-related-grid">
+                <a href="/ppf.html">PPF Calculator</a>
+                <a href="/epf-calculators.html">EPF Calculator</a>
+                <a href="/ssy-calculator.html">SSY Calculator</a>
+                <a href="/fixed-deposit.html">FD Calculator</a>
+                <a href="/recurring-deposit.html">RD Calculator</a>
+                <a href="/retirement.html">Retirement Planner</a>
+                <a href="/all-calculators.html" class="primary">View All →</a>
             </div>
-            <div class="faq-item">
-                <h3>Who can invest in NPS in India?</h3>
-                <p>Indian citizens aged 18 to 70 years, including salaried and self-employed individuals, can invest in
-                    NPS. It is designed to build a retirement corpus through market-linked investments.</p>
+        </section>
+    </main>
+
+    <footer class="mm-footer">
+        <div class="mm-footer-grid">
+            <div>
+                <div class="brand">Money<span>Mind</span>Tool</div>
+                <p class="tagline">Free, fast, accurate financial calculators for Indian investors. FY 2025-26 updated.</p>
             </div>
-            <div class="faq-item">
-                <h3>Are NPS returns guaranteed for FY 2025-26?</h3>
-                <p>No, NPS returns are market-linked and not guaranteed. The calculator uses an assumed return rate
-                    (e.g., 10%) for estimation. Actual returns depend on market performance.</p>
+            <div>
+                <h4>Savings</h4>
+                <ul>
+                    <li><a href="/ppf.html">PPF</a></li>
+                    <li><a href="/nps.html">NPS</a></li>
+                    <li><a href="/epf-calculators.html">EPF</a></li>
+                    <li><a href="/ssy-calculator.html">SSY</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Investments</h4>
+                <ul>
+                    <li><a href="/sip.html">SIP</a></li>
+                    <li><a href="/lumpsum.html">Lumpsum</a></li>
+                    <li><a href="/fixed-deposit.html">FD</a></li>
+                    <li><a href="/recurring-deposit.html">RD</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Tax & Salary</h4>
+                <ul>
+                    <li><a href="/income-tax.html">Income Tax</a></li>
+                    <li><a href="/salary-calculator.html">Salary</a></li>
+                    <li><a href="/hra.html">HRA</a></li>
+                </ul>
             </div>
         </div>
-    </div>
-    <div id="disclaimerModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
-            <h3>Disclaimer</h3>
-            <p>The calculators on this website are provided for informational and educational purposes only. Results are
-                estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax
-                laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results.
-                Consult a qualified financial advisor or tax professional before making decisions. We are not liable for
-                any losses or damages arising from the use of these calculators.</p>
-        </div>
-    </div>
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('termsModal')">×</span>
-            <h3>Terms and Conditions</h3>
-            <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal,
-                non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect
-                data. The website and its content is owned by MoneyMindTool and protected by intellectual
-                property laws. Do not reproduce or distribute without permission. We may update or discontinue the
-                website at any time. We are not liable for any direct, indirect, or consequential damages from using
-                this site. Usage is governed by Indian laws.</p>
-        </div>
-    </div>
-    <div id="privacyModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('privacyModal')">×</span>
-            <h3>Privacy Policy</h3>
-            <p>We respect your privacy. This calculator works <strong>100% offline in your browser</strong> — no
-                personal data is collected, stored, or transmitted via the calculator. We use Google Analytics for
-                anonymous traffic analysis to improve user experience only.</p>
-        </div>
-    </div>
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
-            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a> |
-            <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
-        </div>
-        <p class="rights-reserved">© 2026 Digicreature Technologies. All Rights Reserved.</p>
+        <p class="mm-copyright">© 2026 Digicreature Technologies. All Rights Reserved.</p>
     </footer>
+
     <script>
         function formatIndianNumber(num) {
             if (isNaN(num)) return "0";
@@ -668,7 +301,7 @@
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
                 errorMessage.style.display = 'block';
-                document.querySelector('.results-card').classList.add('visible');
+                document.getElementById('resultsCard').classList.remove('hidden');
                 calcButton.disabled = true;
                 return false;
             }
@@ -698,16 +331,15 @@
             let monthlyPension = annuityCorpus * (annuityRate / 12);
             let lumpSum = corpus * (1 - annuityPercent);
 
-            document.getElementById('npsResult').innerHTML = `
-                <div class="result-detail">
-                    <strong>Total Retirement Corpus (Estimated):</strong> ₹${formatIndianNumber(corpus)}<br>
-                    <strong>Lump Sum Withdrawal (Tax-Free up to 60%):</strong> ₹${formatIndianNumber(lumpSum)}<br>
-                    <strong>Annuity Corpus Value (${annuityPercent * 100}%):</strong> ₹${formatIndianNumber(annuityCorpus)}<br>
-                    <strong>Estimated Monthly Pension:</strong> ₹${formatIndianNumber(monthlyPension)}
-                </div>
-            `;
-            document.querySelector('.results-card').classList.add('visible');
-            document.querySelector('.results-card').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('npsCorpusOut').textContent = '₹' + formatIndianNumber(corpus);
+            document.getElementById('npsResultDetail').innerHTML = `
+                <div><span>Lump Sum (Tax-Free up to 60%)</span><span>₹${formatIndianNumber(lumpSum)}</span></div>
+                <div><span>Annuity Corpus (${(annuityPercent * 100).toFixed(0)}%)</span><span>₹${formatIndianNumber(annuityCorpus)}</span></div>
+                <div><span>Estimated Monthly Pension</span><span>₹${formatIndianNumber(monthlyPension)}</span></div>
+                <div><span>Investment Tenure</span><span>${(months/12).toFixed(0)} years</span></div>`;
+
+            document.getElementById('resultsCard').classList.remove('hidden');
+            document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
 
             // Track NPS calculation event
             gtag('event', 'calculate_nps', {
@@ -723,23 +355,9 @@
             document.getElementById('returnRate').value = '10';
             document.getElementById('annuityPercent').value = '40';
             document.getElementById('annuityRate').value = '6';
-            document.getElementById('npsResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
-            document.querySelector('.results-card').classList.remove('visible');
-            document.getElementById('calcButton').disabled = true;
+            document.getElementById('resultsCard').classList.add('hidden');
             validateInputs();
-        }
-
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'flex';
-            modal.classList.add('show');
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'none';
-            modal.classList.remove('show');
         }
 
         window.onload = function () {
@@ -753,5 +371,4 @@
         };
     </script>
 </body>
-
 </html>

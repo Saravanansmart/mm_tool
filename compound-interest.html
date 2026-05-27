@@ -1,771 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="UE5/pVdJlriCJfcPDhvrWA" async></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-GYW0708DQY');
+        gtag('js', new Date()); gtag('config', 'G-GYW0708DQY');
     </script>
-    <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-W3MR5ZGL');</script>
-    <!-- End Google Tag Manager -->
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W3MR5ZGL');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Calculate compound interest for FY 2025-26 with our free Compound Interest Calculator for India. Estimate total amount and interest earned for investments or loans with flexible compounding frequencies.">
-    <meta name="keywords"
-        content="compound interest calculator India, compound interest calculator 2025, investment calculator FY 2025-26, financial planning India, interest calculator online, compound interest growth calculator, investment return calculator 2025, savings growth calculator India, online compound interest calculator, wealth creation calculator, compound interest formula calculator, personal finance tools India 2025, investment planner 2025, compound interest projection, safe investment calculator India, financial growth calculator, compound interest savings, long-term investment calculator India">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Calculate compound interest for FY 2025-26 with our free Compound Interest Calculator for India. Estimate total amount and interest earned for investments or loans with flexible compounding frequencies.">
+    <meta name="keywords" content="compound interest calculator India, compound interest calculator 2025, investment calculator FY 2025-26, financial planning India, interest calculator online, compound interest growth calculator, investment return calculator 2025, savings growth calculator India, online compound interest calculator, wealth creation calculator, compound interest formula calculator, personal finance tools India 2025, investment planner 2025, compound interest projection, safe investment calculator India">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
     <title>Compound Interest Calculator India FY 2025-26</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #E8EAF6, #F5F7FA);
-            min-height: 100vh;
-            color: #212121;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            background: #1A237E;
-            color: #FFFFFF;
-            padding: 15px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-container .logo {
-            font-size: 1.8em;
-            font-weight: 700;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: #FFFFFF;
-            text-decoration: none;
-            font-size: 1em;
-            margin-left: 20px;
-            font-weight: 600;
-        }
-
-        .nav-menu a:hover {
-            color: #FF6F00;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: #F9FAFB;
-            min-width: 220px;
-            max-height: 300px;
-            overflow-y: auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            z-index: 1000;
-            top: 100%;
-            right: 0;
-        }
-
-        .dropdown-content a {
-            color: #212121;
-            padding: 12px 16px;
-            display: block;
-            font-weight: 400;
-            margin: 0;
-        }
-
-        .dropdown-content a:hover {
-            background: #F5F7FA;
-            color: #FF6F00;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            flex: 1;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            text-align: center;
-            margin: 20px 0;
-            color: #1A237E;
-        }
-
-        .intro-section {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .intro-section p {
-            font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #E0E0E0;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        h2 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 10px 0;
-            color: #1A237E;
-        }
-
-        label {
-            font-size: 1em;
-            font-weight: 400;
-            margin: 8px 0;
-            display: block;
-            color: #212121;
-            position: relative;
-        }
-
-        .input-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
-        }
-
-        input,
-        select {
-            font-size: 1em;
-            padding: 10px 10px 10px 30px;
-            margin: 8px 0;
-            border: 1px solid #E0E0E0;
-            border-radius: 8px;
-            background: #F5F5F5;
-            color: #212121;
-            width: 100%;
-            max-width: 200px;
-            transition: border 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        select {
-            appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="%23212121" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            padding-right: 30px;
-            padding-left: 10px;
-            /* Reset left padding for select */
-            cursor: pointer;
-        }
-
-        input:focus,
-        select:focus {
-            outline: none;
-            border: 1px solid #FF6F00;
-            box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
-        }
-
-        input.error,
-        select.error {
-            border: 1px solid #D32F2F;
-            box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
-        }
-
-        .input-icon {
-            position: relative;
-        }
-
-        .input-icon::before {
-            content: '₹';
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(5px);
-            /* Adjusted for better alignment */
-            color: #616161;
-            font-size: 1em;
-            pointer-events: none;
-            /* Ensure text input remains clickable */
-        }
-
-        .input-icon.percent::before {
-            content: '%';
-            left: unset;
-            right: 10px;
-            padding: 0;
-            transform: translateY(5px);
-        }
-
-        /* Style adjustments for inputs inside icon wrapper */
-        .input-icon input {
-            padding-left: 30px;
-        }
-
-        .input-icon.percent input {
-            padding-left: 10px;
-            padding-right: 30px;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            margin-left: 5px;
-            cursor: help;
-            outline: none;
-        }
-
-        .tooltip::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translate(-50%, -100%);
-            background: #1A237E;
-            color: #FFFFFF;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s, visibility 0.2s;
-            z-index: 10;
-        }
-
-        .tooltip:hover::after,
-        .tooltip:focus::after {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        button {
-            font-size: 1em;
-            font-weight: 700;
-            padding: 10px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 8px;
-            background: #FF6F00;
-            color: #FFFFFF;
-            cursor: pointer;
-            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            min-height: 48px;
-        }
-
-        button:hover {
-            background: #F57C00;
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
-        }
-
-        button:disabled {
-            background: #B0BEC5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        button.loading::after {
-            content: '';
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid #FFFFFF;
-            border-top: 2px solid transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-left: 8px;
-            vertical-align: middle;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .results {
-            font-size: 1em;
-            margin-top: 15px;
-            color: #212121;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .results strong {
-            display: block;
-            font-size: 1.2em;
-            color: #FF6F00;
-            margin-top: 5px;
-        }
-
-        .error-message {
-            font-size: 0.9em;
-            color: #D32F2F;
-            margin: 8px 0;
-            display: none;
-        }
-
-        .note {
-            font-size: 0.9em;
-            color: #616161;
-            margin: 8px 0;
-            line-height: 1.5;
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin: 20px 0;
-            color: #1A237E;
-            text-decoration: none;
-            font-size: 1em;
-            font-weight: 600;
-        }
-
-        .back-link:hover {
-            color: #FF6F00;
-        }
-
-        .results-card {
-            display: none;
-            border: 2px solid #FF6F00;
-        }
-
-        .results-card.visible {
-            display: block;
-        }
-
-        .faq-section,
-        .formula-section {
-            margin: 40px 0;
-        }
-
-        .faq-section h2,
-        .formula-section h2 {
-            font-size: 1.8em;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .faq-item {
-            margin: 20px 0;
-            padding: 15px;
-            border-left: 4px solid #1A237E;
-            background: #FFFFFF;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .faq-item h3 {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #1A237E;
-            margin-bottom: 10px;
-        }
-
-        .faq-item p {
-            font-size: 1em;
-            color: #616161;
-            line-height: 1.5;
-        }
-
-        .formula-box {
-            padding: 20px;
-            background: #E8EAF6;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid #C5CAE9;
-        }
-
-        .formula-box h3 {
-            margin-top: 0;
-            color: #1A237E;
-        }
-
-        .formula-equation {
-            font-size: 1.1em;
-            font-weight: 700;
-            color: #FF6F00;
-            margin: 10px 0;
-        }
-
-        .formula-key {
-            text-align: left;
-            margin-top: 15px;
-            font-size: 0.9em;
-            color: #616161;
-        }
-
-        .formula-key ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-
-        .footer {
-            background: #1A237E;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            margin-top: auto;
-        }
-
-        .footer-links a {
-            color: #FFFFFF;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1em;
-            font-weight: 400;
-        }
-
-        .footer-links a:hover {
-            color: #FF6F00;
-        }
-
-        .rights-reserved {
-            font-size: 0.9em;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            animation: scaleIn 0.3s ease;
-        }
-
-        .modal-content {
-            background: #FFFFFF;
-            max-width: 500px;
-            width: 90%;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            color: #212121;
-            position: relative;
-            transform: scale(0.95);
-            transition: transform 0.2s ease;
-        }
-
-        .modal.show .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-content h3 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 10px 0;
-            color: #1A237E;
-        }
-
-        .modal-content p {
-            font-size: 0.9em;
-            line-height: 1.5;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5em;
-            color: #212121;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .close:hover {
-            color: #FF6F00;
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .progress-bar {
-            width: 100%;
-            background: #E0E0E0;
-            border-radius: 8px;
-            height: 8px;
-            margin: 10px 0;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background: #FF6F00;
-            width: 0;
-            transition: width 0.3s ease;
-        }
-    </style>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Compound Interest Calculator India",
-      "description": "Calculate compound interest for FY 2025-26 with our free Compound Interest Calculator for India. Estimate total amount and interest earned for investments or loans with flexible compounding frequencies.",
-      "url": "https://moneymindtool.com/compound-interest.html",
-      "applicationCategory": "Financial",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is a Compound Interest Calculator?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A Compound Interest Calculator is an online tool that estimates the total amount and interest earned on an investment or loan, based on the principal amount, annual interest rate, duration, and compounding frequency."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is compound interest calculated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Compound interest is calculated using the formula A = P * (1 + r/(n*100))^(n*t), where A is the total amount, P is the principal, r is the annual interest rate, n is the number of compounding periods per year, and t is the time in years."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What compounding frequencies are available?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The calculator supports monthly, quarterly, half-yearly, and yearly compounding frequencies, allowing you to match the terms of various investments or loans."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is compound interest taxable in FY 2025-26?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Taxation depends on the investment type. For example, interest from fixed deposits or bonds is taxable under the investor’s income tax slab in FY 2025-26, with TDS applicable if interest exceeds ₹40,000 (₹50,000 for senior citizens) annually."
-          }
-        }
-      ]
-    }
-    </script>
-
+    <link rel="canonical" href="https://moneymindtool.com/compound-interest.html">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta property="og:type" content="website">
     <meta property="og:title" content="Compound Interest Calculator India FY 2025-26">
-    <meta property="og:description" content="Calculate compound interest for FY 2025-26 with our free Compound Interest Calculator for India. Estimate total amount and interest earned for investments or loans with flexible compounding frequencies.">
+    <meta property="og:description" content="Calculate compound interest for FY 2025-26 with our free Compound Interest Calculator for India. Flexible compounding frequencies.">
     <meta property="og:url" content="https://moneymindtool.com/compound-interest.html">
     <meta property="og:site_name" content="MoneyMindTool">
     <meta property="og:image" content="https://moneymindtool.com/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Compound Interest Calculator India FY 2025-26">
-    <meta name="twitter:description" content="Calculate compound interest for FY 2025-26 with our free Compound Interest Calculator for India. Estimate total amount and interest earned for investments or loans with flexible compounding frequencies.">
+    <meta name="twitter:description" content="Free Compound Interest Calculator India with monthly, quarterly, half-yearly, yearly compounding.">
     <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://moneymindtool.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Calculators",
-        "item": "https://moneymindtool.com/all-calculators.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Compound Interest Calculator India FY 2025",
-        "item": "https://moneymindtool.com/compound-interest.html"
-      }]
-    }
-    </script>
-</head>
+    <link rel="stylesheet" href="/theme.css">
 
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Interest Calculator India","description":"Calculate compound interest for FY 2025-26 with flexible compounding frequencies.","url":"https://moneymindtool.com/compound-interest.html","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://moneymindtool.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://moneymindtool.com/all-calculators.html"},{"@type":"ListItem","position":3,"name":"Compound Interest Calculator","item":"https://moneymindtool.com/compound-interest.html"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is a Compound Interest Calculator?","acceptedAnswer":{"@type":"Answer","text":"A Compound Interest Calculator is an online tool that estimates the total amount and interest earned on an investment or loan, based on the principal amount, annual interest rate, duration, and compounding frequency."}},
+      {"@type":"Question","name":"How is compound interest calculated?","acceptedAnswer":{"@type":"Answer","text":"Compound interest is calculated using the formula A = P * (1 + r/n)^(n*t), where A is the total amount, P is the principal, r is the annual interest rate, n is the number of compounding periods per year, and t is the time in years."}},
+      {"@type":"Question","name":"What compounding frequencies are available?","acceptedAnswer":{"@type":"Answer","text":"The calculator supports monthly, quarterly, half-yearly, and yearly compounding frequencies, allowing you to match the terms of various investments or loans."}},
+      {"@type":"Question","name":"Is compound interest taxable in FY 2025-26?","acceptedAnswer":{"@type":"Answer","text":"Taxation depends on the investment type. Interest from fixed deposits or bonds is taxable under the investor's income tax slab in FY 2025-26, with TDS applicable if interest exceeds ₹40,000 (₹50,000 for senior citizens) annually."}}
+    ]}</script>
+</head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3MR5ZGL" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">MoneyMindTool</div>
-            <nav class="nav-menu">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3MR5ZGL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <header class="mm-header">
+        <div class="mm-nav-wrap">
+            <a href="/index.html" class="mm-logo">Money<span>Mind</span>Tool</a>
+            <nav class="mm-nav" aria-label="Primary">
                 <a href="/index.html">Home</a>
-                <div class="dropdown">
-                    <a href="#">Calculators</a>
-                    <div class="dropdown-content">
-                        <a href="https://moneymindtool.com/all-calculators.html" aria-label="All Calculators">All
-                            Calculators</a>
-                        <a href="https://moneymindtool.com/income-tax.html" aria-label="Income Tax Calculator">Income
-                            Tax Calculator</a>
-                        <a href="https://moneymindtool.com/simple-interest.html"
-                            aria-label="Simple Interest Calculator">Simple Interest Calculator</a>
-                        <a href="https://moneymindtool.com/fixed-deposit.html"
-                            aria-label="Fixed Deposit Calculator">Fixed Deposit Calculator</a>
-                        <a href="https://moneymindtool.com/recurring-deposit.html"
-                            aria-label="Recurring Deposit Calculator">Recurring Deposit Calculator</a>
-                        <a href="https://moneymindtool.com/educational-loan.html"
-                            aria-label="Educational Loan EMI Calculator">Educational Loan EMI Calculator</a>
-                        <a href="https://moneymindtool.com/personal-loan.html"
-                            aria-label="Personal Loan EMI Calculator">Personal Loan EMI Calculator</a>
-                        <a href="https://moneymindtool.com/sip.html" aria-label="SIP Calculator">SIP Calculator</a>
-                        <a href="https://moneymindtool.com/compound-interest.html"
-                            aria-label="Compound Interest Calculator">Compound Interest Calculator</a>
-                        <a href="https://moneymindtool.com/ppf.html" aria-label="PPF Calculator">PPF Calculator</a>
-                        <a href="https://moneymindtool.com/nps.html" aria-label="NPS Calculator">NPS Calculator</a>
-                        <a href="https://moneymindtool.com/hra.html" aria-label="HRA Exemption Calculator">HRA Exemption
-                            Calculator</a>
-                        <a href="https://moneymindtool.com/gratuity.html" aria-label="Gratuity Calculator">Gratuity
-                            Calculator</a>
-                        <a href="https://moneymindtool.com/loanemi.html" aria-label="Loan EMI Calculator">Loan EMI
-                            Calculator</a>
-                        <a href="https://moneymindtool.com/home-loan.html" aria-label="Home EMI Calculator">Home EMI
-                            Calculator</a>
-                        <a href="https://moneymindtool.com/capital-gains.html"
-                            aria-label="Capital Gains Calculator">Capital Gains Calculator</a>
-                        <a href="https://moneymindtool.com/gst-calculator.html"
-                            aria-label="GST Interest & Late Fee Calculator">GST Interest & Late Fee Calculator</a>
-                        <a href="https://moneymindtool.com/retirement.html"
-                            aria-label="Retirement Planning Calculator">Retirement Planning Calculator</a>
-                        <a href="https://moneymindtool.com/epf-calculator.html" aria-label="EPF Calculator">EPF
-                            Calculator</a>
-                                            <a href="https://moneymindtool.com/salary-calculator.html">In-Hand Salary Calculator</a>
-                        <a href="https://moneymindtool.com/loan-prepayment.html">Loan Prepayment Calculator</a>
-                        <a href="https://moneymindtool.com/ssy-calculator.html">SSY Calculator</a>
-                        <a href="https://moneymindtool.com/step-up-sip.html">Step-Up SIP Calculator</a>
+                <a href="/blog.html" class="mm-mobile-hide">Blog</a>
+                <div class="mm-dropdown">
+                    <button aria-haspopup="true">Calculators ▾</button>
+                    <div class="mm-dropdown-menu" role="menu">
+                        <a href="/sip.html">SIP Calculator</a>
+                        <a href="/lumpsum.html">Lumpsum Calculator</a>
+                        <a href="/mutual-fund-returns.html">Mutual Fund Returns</a>
+                        <a href="/step-up-sip.html">Step-Up SIP</a>
+                        <a href="/ppf.html">PPF Calculator</a>
+                        <a href="/nps.html">NPS Calculator</a>
+                        <a href="/fixed-deposit.html">FD Calculator</a>
+                        <a href="/recurring-deposit.html">RD Calculator</a>
+                        <a href="/ssy-calculator.html">SSY Calculator</a>
+                        <a href="/income-tax.html">Income Tax</a>
+                        <a href="/salary-calculator.html">Salary Calculator</a>
+                        <a href="/home-loan.html">Home Loan EMI</a>
+                        <a href="/all-calculators.html" class="all">View All →</a>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-    <div class="container">
-        <h1>Compound Interest Calculator FY 2025-26</h1>
-        <div class="intro-section">
-            <p>Plan your investments or loans with our free Compound Interest Calculator for FY 2025-26, designed for
-                Indian users. Estimate the total amount and interest earned by entering your principal amount, annual
-                interest rate, duration, and compounding frequency.</p>
-            <p>Compound interest powers wealth creation through reinvested earnings, ideal for fixed deposits, bonds, or
-                loan planning. Our tool offers flexible monthly, quarterly, half-yearly, or yearly compounding to match
-                your financial needs. Start calculating today!</p>
-        </div>
-        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
-        <div class="card">
-            <h2>Compound Interest Calculator</h2>
-            <div class="progress-bar">
-                <div class="progress" id="ciProgress"></div>
-            </div>
-            <div class="input-group">
-                <div class="input-icon">
-                    <label for="ciPrincipal">Principal Amount (₹): <span class="tooltip"
-                            data-tooltip="Initial investment or loan amount" tabindex="0">?</span></label>
-                    <input type="number" id="ciPrincipal" min="100" value="100000"
-                        aria-label="Principal Amount in Rupees">
+
+    <nav class="mm-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span>
+        <a href="/all-calculators.html">Calculators</a><span class="sep">/</span>
+        <span class="current">Compound Interest Calculator</span>
+    </nav>
+
+    <main class="mm-main">
+        <section class="mm-hero">
+            <span class="pill">FY 2025-26 · India</span>
+            <h1>Compound Interest Calculator</h1>
+            <p>Estimate total amount and interest earned on your investment or loan with flexible monthly, quarterly, half-yearly, or yearly compounding.</p>
+        </section>
+
+        <section class="mm-card">
+            <h2>Calculate Compound Interest</h2>
+            <div class="mm-form-grid">
+                <div class="mm-field">
+                    <label for="ciPrincipal">Principal Amount (₹)</label>
+                    <input type="number" id="ciPrincipal" min="100" value="100000" class="mm-input">
+                    <div class="hint">Minimum ₹100</div>
                 </div>
-                <div class="input-icon percent">
-                    <label for="ciRate">Annual Interest Rate (%): <span class="tooltip"
-                            data-tooltip="Annual interest rate (e.g., 5 for 5%)" tabindex="0">?</span></label>
-                    <input type="number" id="ciRate" min="1" max="20" step="0.1" value="5"
-                        aria-label="Annual Interest Rate in Percent">
+                <div class="mm-field">
+                    <label for="ciRate">Annual Interest Rate (%)</label>
+                    <input type="number" id="ciRate" min="1" max="20" step="0.1" value="5" class="mm-input">
+                    <div class="hint">1% to 20%</div>
                 </div>
-                <div>
-                    <label for="ciYears">Duration (Years): <span class="tooltip"
-                            data-tooltip="Number of years for investment/loan" tabindex="0">?</span></label>
-                    <input type="number" id="ciYears" min="0" max="30" value="1" aria-label="Duration in Years">
+                <div class="mm-field">
+                    <label for="ciYears">Duration (Years)</label>
+                    <input type="number" id="ciYears" min="0" max="30" value="1" class="mm-input">
                 </div>
-                <div>
-                    <label for="ciMonths">Duration (Months): <span class="tooltip"
-                            data-tooltip="Additional months (0-11)" tabindex="0">?</span></label>
-                    <input type="number" id="ciMonths" min="0" max="11" value="0" aria-label="Duration in Months">
+                <div class="mm-field">
+                    <label for="ciMonths">Duration (Months)</label>
+                    <input type="number" id="ciMonths" min="0" max="11" value="0" class="mm-input">
+                    <div class="hint">Additional months (0–11)</div>
                 </div>
-                <div>
-                    <label for="ciFrequency">Compounding Frequency: <span class="tooltip"
-                            data-tooltip="How often interest is compounded" tabindex="0">?</span></label>
-                    <select id="ciFrequency" aria-label="Compounding Frequency">
+                <div class="mm-field">
+                    <label for="ciFrequency">Compounding Frequency</label>
+                    <select id="ciFrequency" class="mm-select">
                         <option value="12">Monthly</option>
                         <option value="4">Quarterly</option>
                         <option value="2">Half-Yearly</option>
@@ -773,112 +121,118 @@
                     </select>
                 </div>
             </div>
-            <div class="input-group">
-                <button id="calcButton" onclick="calcCI()" disabled
-                    aria-label="Calculate Compound Interest">Calculate</button>
-                <button onclick="resetForm()" aria-label="Reset Form">Reset</button>
+            <div class="mm-actions">
+                <button id="calcButton" onclick="calcCI()" class="mm-btn">Calculate</button>
+                <button onclick="resetForm()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
-            <div class="note">Enter principal amount in ₹ (minimum ₹100). Calculations use the compound interest formula
-                with flexible compounding frequencies (monthly, quarterly, half-yearly, yearly). Interest may be taxable
-                depending on the investment type. Consult a financial advisor for FY 2025-26 planning.</div>
-        </div>
-        <div class="card results-card">
-            <div class="error-message" id="errorMessage"></div>
-            <div class="results" id="ciResult"></div>
-        </div>
+        </section>
 
-        <div class="formula-section">
+        <section id="resultsCard" class="mm-result-card hidden">
+            <div class="label">Total Amount</div>
+            <div class="value" id="ciAmountOut">—</div>
+            <div class="subline" id="ciSummary"></div>
+            <div id="ciBreakdown" style="background:rgba(255,255,255,0.06); border-radius:12px; padding:14px 18px; margin-top:16px; max-width:420px; margin-left:auto; margin-right:auto; text-align:left; font-size:0.9rem;"></div>
+            <div id="errorMessage" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
+        </section>
+
+        <section class="mm-card">
+            <h2>What Is Compound Interest?</h2>
+            <p><strong>Compound interest</strong> is interest calculated on the initial principal plus all previously accumulated interest. Unlike simple interest, which only ever earns on the principal, compound interest creates a snowball effect — your money earns money, and that money earns even more.</p>
+            <p>This is why long-horizon investments (PPF, mutual funds, fixed deposits) deliver outsized returns. The more frequently interest compounds (monthly vs yearly), the larger your final corpus.</p>
+        </section>
+
+        <section class="mm-card">
             <h2>The Compound Interest Formula</h2>
-            <p>Compound interest is the foundation of long-term wealth growth, as it calculates interest on both the
-                principal and the accumulated interest from preceding periods. The formula used is:</p>
-            <div class="formula-box">
-                <div class="formula-equation">
-                    A = P x (1 + r/n)^{nt}
-                </div>
+            <p style="background:var(--bg-2); padding:14px; border-radius:8px; font-family:monospace; text-align:center; color:var(--navy); font-weight:600;">A = P × (1 + r/n)<sup>n×t</sup></p>
+            <ul>
+                <li><strong>A</strong> = Final amount (principal + interest)</li>
+                <li><strong>P</strong> = Principal amount invested or borrowed</li>
+                <li><strong>r</strong> = Annual interest rate (decimal, e.g. 5% = 0.05)</li>
+                <li><strong>n</strong> = Number of times interest compounds per year (1, 2, 4, or 12)</li>
+                <li><strong>t</strong> = Time in years</li>
+            </ul>
+            <p>Total interest earned: <strong>I = A − P</strong>.</p>
+        </section>
+
+        <section class="mm-card">
+            <h2>Why Compounding Frequency Matters</h2>
+            <p>On ₹1,00,000 invested at 8% for 10 years, here's how the final amount changes by compounding frequency:</p>
+            <div class="mm-table-wrap">
+                <table class="mm-table">
+                    <thead><tr><th>Frequency</th><th class="num">Final Amount</th><th class="num">Interest Earned</th></tr></thead>
+                    <tbody>
+                        <tr><td>Yearly (n=1)</td><td class="num">₹2,15,892</td><td class="num">₹1,15,892</td></tr>
+                        <tr><td>Half-Yearly (n=2)</td><td class="num">₹2,19,112</td><td class="num">₹1,19,112</td></tr>
+                        <tr><td>Quarterly (n=4)</td><td class="num">₹2,20,804</td><td class="num">₹1,20,804</td></tr>
+                        <tr class="highlight"><td>Monthly (n=12)</td><td class="num">₹2,21,964</td><td class="num">₹1,21,964</td></tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="formula-key">
-                <h3>Key to the Variables:</h3>
-                <ul>
-                    <li>A = Final Amount (Principal + Interest)</li>
-                    <li>P = Principal Amount Invested or Borrowed</li>
-                    <li>r = Annual Interest Rate (as a decimal, e.g., 5% = 0.05)</li>
-                    <li>n = Number of Times Interest is Compounded per Year</li>
-                    <li>t = Time in Years (Total Duration)</li>
-                </ul>
-                <p>The Total Interest Earned is I = A - P.</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">Monthly compounding edges out yearly by about ₹6,000 over 10 years — small per period, meaningful over time.</p>
+        </section>
 
-
-                [Image of compound interest versus simple interest graph]
-
-            </div>
-        </div>
-        <div class="faq-section">
+        <section class="mm-card">
             <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <h3>What is a Compound Interest Calculator?</h3>
-                <p>A Compound Interest Calculator is an online tool that estimates the total amount and interest earned
-                    on an investment or loan, based on the principal amount, annual interest rate, duration, and
-                    compounding frequency.</p>
+            <div class="mm-faq">
+                <details><summary>What is a Compound Interest Calculator?</summary><div>An online tool that estimates total amount and interest earned on an investment or loan, based on principal, annual rate, duration, and compounding frequency.</div></details>
+                <details><summary>How is compound interest calculated?</summary><div>Using A = P × (1 + r/n)<sup>n×t</sup>, where A is the total amount, P is principal, r is annual rate, n is compounding periods per year, and t is time in years.</div></details>
+                <details><summary>What compounding frequencies are available?</summary><div>The calculator supports monthly, quarterly, half-yearly, and yearly compounding to match different deposit and loan structures.</div></details>
+                <details><summary>Is compound interest taxable in FY 2025-26?</summary><div>Yes — FD and bond interest is taxed under your slab. TDS applies if annual interest exceeds ₹40,000 (₹50,000 for senior citizens). Use our <a href="/income-tax.html">Income Tax Calculator</a> for impact.</div></details>
+                <details><summary>How is this different from a SIP calculator?</summary><div>This tool handles a one-time deposit growing over time. A <a href="/sip.html">SIP Calculator</a> handles recurring monthly contributions with monthly compounding.</div></details>
+                <details><summary>Can I use this for loan interest?</summary><div>Yes — input the loan principal and the bank's compounding frequency to see the total payable. For monthly EMIs, use our <a href="/home-loan.html">Home Loan EMI Calculator</a> instead.</div></details>
             </div>
-            <div class="faq-item">
-                <h3>How is compound interest calculated?</h3>
-                <p>Compound interest is calculated using the formula $A = P \times (1 + \frac{r}{n})^{nt}$, where A is
-                    the total amount, P is the principal, r is the annual interest rate, n is the number of compounding
-                    periods per year, and t is the time in years.</p>
+        </section>
+
+        <section class="mm-related">
+            <h2>Related Calculators</h2>
+            <div class="mm-related-grid">
+                <a href="/sip.html">SIP Calculator</a>
+                <a href="/lumpsum.html">Lumpsum</a>
+                <a href="/fixed-deposit.html">Fixed Deposit</a>
+                <a href="/recurring-deposit.html">Recurring Deposit</a>
+                <a href="/ppf.html">PPF</a>
+                <a href="/all-calculators.html" class="primary">View All →</a>
             </div>
-            <div class="faq-item">
-                <h3>What compounding frequencies are available?</h3>
-                <p>The calculator supports monthly, quarterly, half-yearly, and yearly compounding frequencies, allowing
-                    you to match the terms of various investments or loans.</p>
+        </section>
+    </main>
+
+    <footer class="mm-footer">
+        <div class="mm-footer-grid">
+            <div>
+                <div class="brand">Money<span>Mind</span>Tool</div>
+                <p class="tagline">Free, fast, accurate financial calculators for Indian investors. FY 2025-26 updated.</p>
             </div>
-            <div class="faq-item">
-                <h3>Is compound interest taxable in FY 2025-26?</h3>
-                <p>Taxation depends on the investment type. For example, interest from fixed deposits or bonds is
-                    taxable under the investor’s income tax slab in FY 2025-26, with TDS applicable if interest exceeds
-                    ₹40,000 (₹50,000 for senior citizens) annually.</p>
+            <div>
+                <h4>Investments</h4>
+                <ul>
+                    <li><a href="/sip.html">SIP</a></li>
+                    <li><a href="/lumpsum.html">Lumpsum</a></li>
+                    <li><a href="/step-up-sip.html">Step-Up SIP</a></li>
+                    <li><a href="/mutual-fund-returns.html">MF Returns</a></li>
+                    <li><a href="/ppf.html">PPF</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Tax & Salary</h4>
+                <ul>
+                    <li><a href="/income-tax.html">Income Tax</a></li>
+                    <li><a href="/salary-calculator.html">Salary</a></li>
+                    <li><a href="/hra.html">HRA</a></li>
+                    <li><a href="/gst-calculator.html">GST</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Loans</h4>
+                <ul>
+                    <li><a href="/home-loan.html">Home Loan</a></li>
+                    <li><a href="/personal-loan.html">Personal Loan</a></li>
+                    <li><a href="/educational-loan.html">Education Loan</a></li>
+                </ul>
             </div>
         </div>
-    </div>
-    <div id="disclaimerModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
-            <h3>Disclaimer</h3>
-            <p>The calculators on this website are provided for informational and educational purposes only. Results are
-                estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax
-                laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results.
-                Consult a qualified financial advisor or tax professional before making decisions. We are not liable for
-                any losses or damages arising from the use of these calculators.</p>
-        </div>
-    </div>
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
-            <h3>Terms and Conditions</h3>
-            <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal,
-                non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect
-                data. The website and its content are owned by MoneyMindTool and protected by intellectual
-                property laws. Do not reproduce or distribute without permission. We may update or discontinue the
-                website at any time. We are not liable for any direct, indirect, or consequential damages from using
-                this site. Usage is governed by Indian laws.</p>
-        </div>
-    </div>
-    <div id="privacyModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('privacyModal')" aria-label="Close Privacy Policy Modal">×</span>
-            <h3>Privacy Policy</h3>
-            <p>We respect your privacy. This calculator works <strong>100% offline in your browser</strong> — no
-                personal data is collected, stored, or transmitted via the calculator. We use Google Analytics for
-                anonymous traffic analysis to improve user experience only.</p>
-        </div>
-    </div>
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
-            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a> |
-            <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
-        </div>
-        <p class="rights-reserved">© 2026 Digicreature Technologies. All Rights Reserved.</p>
+        <p class="mm-copyright">© 2026 Digicreature Technologies. All Rights Reserved.</p>
     </footer>
+
     <script>
         function formatIndianNumber(num) {
             if (isNaN(num)) return "0";
@@ -894,15 +248,6 @@
             return result + '.' + decimal;
         }
 
-        function updateProgress() {
-            const inputs = ['ciPrincipal', 'ciRate', 'ciYears', 'ciMonths', 'ciFrequency'];
-            let filled = inputs.reduce((count, id) => {
-                let value = document.getElementById(id).value;
-                return count + (value && (id === 'ciFrequency' || parseFloat(value) >= 0) ? 1 : 0);
-            }, 0);
-            document.getElementById('ciProgress').style.width = `${(filled / inputs.length) * 100}%`;
-        }
-
         function validateInputs() {
             let principal = parseFloat(document.getElementById('ciPrincipal').value);
             let rate = parseFloat(document.getElementById('ciRate').value);
@@ -912,17 +257,7 @@
             let totalMonths = (years * 12) + months;
             let errorMessage = document.getElementById('errorMessage');
             let calcButton = document.getElementById('calcButton');
-            let principalInput = document.getElementById('ciPrincipal');
-            let rateInput = document.getElementById('ciRate');
-            let yearsInput = document.getElementById('ciYears');
-            let monthsInput = document.getElementById('ciMonths');
-            let frequencyInput = document.getElementById('ciFrequency');
 
-            principalInput.classList.remove('error');
-            rateInput.classList.remove('error');
-            yearsInput.classList.remove('error');
-            monthsInput.classList.remove('error');
-            frequencyInput.classList.remove('error');
             errorMessage.style.display = 'none';
             errorMessage.innerHTML = '';
 
@@ -930,34 +265,27 @@
 
             if (isNaN(principal) || principal < 100) {
                 errors.push('Please enter a valid principal amount (minimum ₹100).');
-                principalInput.classList.add('error');
             }
             if (isNaN(rate) || rate < 1 || rate > 20) {
                 errors.push('Please enter a valid interest rate (1% to 20%).');
-                rateInput.classList.add('error');
             }
             if (isNaN(years) || years < 0 || years > 30) {
                 errors.push('Please enter a valid number of years (0 to 30).');
-                yearsInput.classList.add('error');
             }
             if (isNaN(months) || months < 0 || months > 11) {
                 errors.push('Please enter a valid number of months (0 to 11).');
-                monthsInput.classList.add('error');
             }
             if (totalMonths < 1) {
                 errors.push('Total duration must be at least 1 month.');
-                yearsInput.classList.add('error');
-                monthsInput.classList.add('error');
             }
             if (!frequency) {
                 errors.push('Please select a compounding frequency.');
-                frequencyInput.classList.add('error');
             }
 
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
                 errorMessage.style.display = 'block';
-                document.querySelector('.results-card').classList.add('visible');
+                document.getElementById('resultsCard').classList.remove('hidden');
                 calcButton.disabled = true;
                 return false;
             }
@@ -969,67 +297,63 @@
         function calcCI() {
             if (!validateInputs()) return;
 
-            let calcButton = document.getElementById('calcButton');
-            calcButton.classList.add('loading');
-            setTimeout(() => {
-                let principal = parseFloat(document.getElementById('ciPrincipal').value);
-                let rate = parseFloat(document.getElementById('ciRate').value) / 100;
-                let years = parseFloat(document.getElementById('ciYears').value) || 0;
-                let months = parseFloat(document.getElementById('ciMonths').value) || 0;
-                let frequency = parseInt(document.getElementById('ciFrequency').value);
-                let duration = years + months / 12;
+            let principal = parseFloat(document.getElementById('ciPrincipal').value);
+            let rate = parseFloat(document.getElementById('ciRate').value) / 100;
+            let years = parseFloat(document.getElementById('ciYears').value) || 0;
+            let months = parseFloat(document.getElementById('ciMonths').value) || 0;
+            let frequency = parseInt(document.getElementById('ciFrequency').value);
+            let duration = years + months / 12;
 
-                // A = P * (1 + r/n)^(n*t)
-                let amount = principal * Math.pow(1 + rate / frequency, frequency * duration);
-                amount = Math.round(amount * 100) / 100; // Round to 2 decimal places
-                let interest = amount - principal;
+            // A = P * (1 + r/n)^(n*t)
+            let amount = principal * Math.pow(1 + rate / frequency, frequency * duration);
+            amount = Math.round(amount * 100) / 100; // Round to 2 decimal places
+            let interest = amount - principal;
 
-                let yearlyBreakdown = '';
-                if (years > 0) {
-                    for (let i = 1; i <= Math.floor(duration); i++) { // Loop through whole years only
-                        let yearAmount = principal * Math.pow(1 + rate / frequency, frequency * i);
-                        yearAmount = Math.round(yearAmount * 100) / 100;
-                        yearlyBreakdown += `<li>Year ${i}: Amount = ₹${formatIndianNumber(yearAmount)}</li>`;
-                    }
+            let yearlyBreakdown = '';
+            if (years > 0) {
+                for (let i = 1; i <= Math.floor(duration); i++) { // Loop through whole years only
+                    let yearAmount = principal * Math.pow(1 + rate / frequency, frequency * i);
+                    yearAmount = Math.round(yearAmount * 100) / 100;
+                    yearlyBreakdown += `<li>Year ${i}: Amount = ₹${formatIndianNumber(yearAmount)}</li>`;
                 }
+            }
 
-                // If there are partial years or duration < 1 year, show final amount only once
-                if (duration < 1 || years !== Math.floor(duration)) {
-                    let finalAmount = principal * Math.pow(1 + rate / frequency, frequency * duration);
-                    finalAmount = Math.round(finalAmount * 100) / 100;
-                    if (duration < 1 || years === 0) {
-                        yearlyBreakdown += `<li>End of Period: Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
-                    } else if (years > 0 && years !== duration) {
-                        yearlyBreakdown += `<li>Final Amount (after ${months} months): Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
-                    }
+            // If there are partial years or duration < 1 year, show final amount only once
+            if (duration < 1 || years !== Math.floor(duration)) {
+                let finalAmount = principal * Math.pow(1 + rate / frequency, frequency * duration);
+                finalAmount = Math.round(finalAmount * 100) / 100;
+                if (duration < 1 || years === 0) {
+                    yearlyBreakdown += `<li>End of Period: Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
+                } else if (years > 0 && years !== duration) {
+                    yearlyBreakdown += `<li>Final Amount (after ${months} months): Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
                 }
+            }
 
 
-                let frequencyText = { 1: 'Yearly', 2: 'Half-Yearly', 4: 'Quarterly', 12: 'Monthly' }[frequency];
-                let result = `
-                    <strong>Compound Interest Results:</strong><br>
-                    Principal Amount: ₹${formatIndianNumber(principal)}<br>
-                    Annual Interest Rate: ${rate * 100}%<br>
-                    Duration: ${years} Years, ${months} Months<br>
-                    Compounding Frequency: ${frequencyText}<br>
-                    Total Interest Earned: <strong>₹${formatIndianNumber(interest)}</strong><br>
-                    Total Amount: <strong>₹${formatIndianNumber(amount)}</strong><br>
-                    <strong>Yearly Growth:</strong><br>
-                    <ul style="list-style: disc; padding-left: 20px; margin-top: 5px;">${yearlyBreakdown || 'No yearly breakdown (duration < 1 year)'}</ul>
-                `;
-                document.getElementById('ciResult').innerHTML = result;
-                document.querySelector('.results-card').classList.add('visible');
-                calcButton.classList.remove('loading');
+            let frequencyText = { 1: 'Yearly', 2: 'Half-Yearly', 4: 'Quarterly', 12: 'Monthly' }[frequency];
 
-                // Scroll to results
-                document.querySelector('.results-card').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('ciAmountOut').textContent = '₹' + formatIndianNumber(amount);
+            document.getElementById('ciSummary').innerHTML = `
+                <div><span>Principal</span><span>₹${formatIndianNumber(principal)}</span></div>
+                <div><span>Annual Rate</span><span>${rate * 100}%</span></div>
+                <div><span>Duration</span><span>${years} Y ${months} M</span></div>
+                <div><span>Compounding</span><span>${frequencyText}</span></div>
+                <div><span>Total Interest</span><span>₹${formatIndianNumber(interest)}</span></div>
+            `;
+            document.getElementById('ciBreakdown').innerHTML = `
+                <strong style="color:#FFFFFF; font-size:0.95rem; display:block; margin-bottom:8px;">Yearly Growth</strong>
+                <ul style="list-style: disc; padding-left: 20px; margin:0; color:rgba(255,255,255,0.85);">${yearlyBreakdown || '<li>No yearly breakdown (duration &lt; 1 year)</li>'}</ul>
+            `;
 
-                // Track calculation event
+            document.getElementById('resultsCard').classList.remove('hidden');
+            document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            if (typeof gtag === 'function') {
                 gtag('event', 'calculate_ci', {
                     'event_category': 'Calculator',
                     'event_label': 'Compound Interest Calculator'
                 });
-            }, 300);
+            }
         }
 
         function resetForm() {
@@ -1038,45 +362,18 @@
             document.getElementById('ciYears').value = '1';
             document.getElementById('ciMonths').value = '0';
             document.getElementById('ciFrequency').value = '1';
-            document.getElementById('ciResult').innerHTML = '';
-            document.getElementById('errorMessage').style.display = 'none';
-            document.querySelector('.results-card').classList.remove('visible');
-            document.getElementById('calcButton').disabled = true;
-            updateProgress();
+            document.getElementById('resultsCard').classList.add('hidden');
             validateInputs();
         }
 
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'flex';
-            modal.classList.add('show');
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'none';
-            modal.classList.remove('show');
-        }
-
         window.onload = function () {
-            updateProgress();
             validateInputs();
             document.querySelectorAll('input, select').forEach(input => {
                 input.addEventListener('input', () => {
                     validateInputs();
-                    updateProgress();
-                });
-            });
-            // Make tooltips keyboard-accessible
-            document.querySelectorAll('.tooltip').forEach(tooltip => {
-                tooltip.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        tooltip.focus();
-                    }
                 });
             });
         };
     </script>
 </body>
-
 </html>
