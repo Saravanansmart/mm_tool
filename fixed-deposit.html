@@ -1,818 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="UE5/pVdJlriCJfcPDhvrWA" async></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-GYW0708DQY');
+        gtag('js', new Date()); gtag('config', 'G-GYW0708DQY');
     </script>
-    <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-W3MR5ZGL');</script>
-    <!-- End Google Tag Manager -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4864427317222127"
-        crossorigin="anonymous"></script>
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W3MR5ZGL');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Calculate FD maturity for FY 2025-26 with our free Fixed Deposit Calculator for India. Estimate maturity amount and interest earned for your FD savings plan with quarterly compounding or simple interest options. Includes Compound Interest Formula.">
-    <meta name="keywords"
-        content="FD calculator India, Fixed Deposit calculator 2025, FD maturity FY 2025-26, FD interest calculator, savings calculator India, fixed deposit interest rates 2025, FD maturity amount calculator, compound interest formula FD, fixed deposit planner, tax on FD interest 2025">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Free FD Calculator India FY 2025-26. Estimate Fixed Deposit maturity, interest earned, and tax impact with quarterly compounding or simple interest options.">
+    <meta name="keywords" content="FD calculator India, Fixed Deposit calculator 2025, FD maturity calculator, FD interest calculator FY 2025-26, quarterly compounding FD, simple interest FD, bank FD calculator India, post office FD calculator, senior citizen FD calculator, tax saver FD India, online FD calculator">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
-    <title>FD Calculator India FY 2025-26 - Calculate Fixed Deposit Maturity</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #E8EAF6, #F5F7FA);
-            min-height: 100vh;
-            color: #212121;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.6;
-            /* Improved readability */
-        }
-
-        header {
-            background: #1A237E;
-            /* Dark Indigo */
-            color: #FFFFFF;
-            padding: 15px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-container .logo {
-            font-size: 1.8em;
-            font-weight: 700;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: #FFFFFF;
-            text-decoration: none;
-            font-size: 1em;
-            margin-left: 20px;
-            font-weight: 600;
-        }
-
-        .nav-menu a:hover {
-            color: #FF6F00;
-            /* Orange highlight */
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: #F9FAFB;
-            min-width: 220px;
-            max-height: 300px;
-            overflow-y: auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            z-index: 1000;
-            top: 100%;
-            right: 0;
-        }
-
-        .dropdown-content a {
-            color: #212121;
-            padding: 12px 16px;
-            display: block;
-            font-weight: 400;
-            margin: 0;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .dropdown-content a:hover {
-            background: #E8EAF6;
-            color: #FF6F00;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            flex: 1;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            font-weight: 800;
-            /* Extra bold for H1 */
-            text-align: center;
-            margin: 20px 0;
-            color: #1A237E;
-        }
-
-        .intro-section {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .intro-section p {
-            font-size: 1em;
-            color: #424242;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-            /* Stronger shadow for prominence */
-            border: 2px solid #1A237E;
-            /* Highlighted border */
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: none;
-            /* Removed lift on hover to keep focus on calculation */
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        h2 {
-            font-size: 1.6em;
-            font-weight: 700;
-            margin: 10px 0;
-            color: #1A237E;
-            border-bottom: 2px solid #E8EAF6;
-            padding-bottom: 5px;
-        }
-
-        label {
-            font-size: 1em;
-            font-weight: 600;
-            margin: 8px 0;
-            display: block;
-            color: #212121;
-        }
-
-        input,
-        select {
-            font-size: 1em;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #BDBDBD;
-            border-radius: 8px;
-            background: #F5F5F5;
-            color: #212121;
-            width: 100%;
-            max-width: 250px;
-            transition: border 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        input:focus,
-        select:focus {
-            outline: none;
-            border: 1px solid #FF6F00;
-            box-shadow: 0 0 8px rgba(255, 111, 0, 0.2);
-        }
-
-        input.error {
-            border: 1px solid #D32F2F;
-            box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
-        }
-
-        .input-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-
-        .input-group>div {
-            flex-grow: 1;
-            min-width: 180px;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        button {
-            font-size: 1em;
-            font-weight: 700;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            background: #FF6F00;
-            color: #FFFFFF;
-            cursor: pointer;
-            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        button:hover {
-            background: #F57C00;
-            transform: scale(1.03);
-            box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
-        }
-
-        button:disabled {
-            background: #B0BEC5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .results {
-            font-size: 1.1em;
-            margin-top: 15px;
-            color: #1A237E;
-            font-weight: 700;
-            padding: 15px;
-            background: #E8EAF6;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .results strong {
-            display: block;
-            font-size: 1.2em;
-            color: #FF6F00;
-            margin-top: 5px;
-        }
-
-        .error-message {
-            font-size: 0.9em;
-            color: #D32F2F;
-            margin: 8px 0;
-            padding: 10px;
-            border: 1px solid #D32F2F;
-            background: #FFEBEE;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .note {
-            font-size: 0.9em;
-            color: #616161;
-            margin: 15px 0 0 0;
-            line-height: 1.5;
-            padding: 10px;
-            border-top: 1px dashed #B0BEC5;
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin: 20px 0;
-            color: #1A237E;
-            text-decoration: none;
-            font-size: 1em;
-            font-weight: 700;
-        }
-
-        .back-link:hover {
-            color: #FF6F00;
-        }
-
-        .results-card {
-            display: none;
-            border-color: #FF6F00;
-            /* Highlight results card */
-        }
-
-        .results-card.visible {
-            display: block;
-        }
-
-        .faq-section {
-            margin: 40px 0;
-        }
-
-        .faq-section h2 {
-            font-size: 2em;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #1A237E;
-            border-bottom: none;
-        }
-
-        .faq-item {
-            margin: 20px 0;
-            padding: 15px;
-            border-left: 5px solid #FF6F00;
-            background: #FFFFFF;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .faq-item h3 {
-            font-size: 1.2em;
-            font-weight: 700;
-            color: #1A237E;
-            margin-bottom: 10px;
-        }
-
-        .faq-item p {
-            font-size: 1em;
-            color: #424242;
-            line-height: 1.6;
-        }
-
-        .formula {
-            margin: 20px 0;
-            padding: 15px;
-            background: #E8EAF6;
-            border-left: 4px solid #1A237E;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 1.1em;
-            font-style: italic;
-        }
-
-        .formula strong {
-            font-weight: 700;
-            color: #FF6F00;
-        }
-
-        .footer {
-            background: #1A237E;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            margin-top: auto;
-        }
-
-        .footer-links a {
-            color: #FFFFFF;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1em;
-            font-weight: 400;
-        }
-
-        .footer-links a:hover {
-            color: #FF6F00;
-        }
-
-        .rights-reserved {
-            font-size: 0.9em;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            animation: scaleIn 0.3s ease;
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        .modal-content {
-            background: #FFFFFF;
-            max-width: 500px;
-            width: 90%;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            color: #212121;
-            position: relative;
-            transform: scale(0.95);
-            transition: transform 0.2s ease;
-        }
-
-        .modal-content h3 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 10px 0;
-            color: #1A237E;
-        }
-
-        .modal-content p {
-            font-size: 0.9em;
-            line-height: 1.5;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5em;
-            color: #212121;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .close:hover {
-            color: #FF6F00;
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            .nav-container .logo {
-                font-size: 1.5em;
-            }
-
-            .container {
-                padding: 10px;
-            }
-
-            .card {
-                padding: 15px;
-            }
-
-            input,
-            select {
-                max-width: 100%;
-            }
-
-            .input-group {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .input-group>div {
-                min-width: 100%;
-            }
-
-            .button-group {
-                flex-direction: column;
-            }
-
-            button {
-                width: 100%;
-                max-width: 100%;
-            }
-
-            .nav-container {
-                flex-direction: column;
-            }
-
-            .nav-menu {
-                margin-top: 10px;
-            }
-
-            .nav-menu a {
-                margin: 5px 10px;
-            }
-
-            .dropdown-content {
-                min-width: 150px;
-            }
-        }
-    </style>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Fixed Deposit Calculator India",
-      "description": "Calculate FD maturity for FY 2025-26 with our free Fixed Deposit Calculator for India. Estimate maturity amount and interest earned for your FD savings plan with quarterly compounding or simple interest options.",
-      "url": "https://moneymindtool.com/fixed-deposit.html",
-      "applicationCategory": "Financial",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Calculator",
-      "name": "Fixed Deposit Maturity Calculator",
-      "url": "https://moneymindtool.com/fixed-deposit.html",
-      "input": [
-        { "name": "Principal", "type": "number", "unit": "INR" },
-        { "name": "Interest Rate", "type": "percentage" },
-        { "name": "Tenure", "type": "duration" }
-      ],
-      "output": [
-        { "name": "Maturity Amount", "type": "currency", "unit": "INR" },
-        { "name": "Interest Earned", "type": "currency", "unit": "INR" }
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is an FD Calculator?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "An FD Calculator is an online tool that estimates the maturity amount and interest earned for a Fixed Deposit (FD) based on the principal amount, annual interest rate, and tenure."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is FD maturity calculated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "FD maturity is typically calculated using the compound interest formula with quarterly compounding. For tenures less than 6 months, simple interest may be used, depending on the bank’s policy. The formula is $A = P(1 + r/n)^{nt}$."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the minimum FD amount in India for FY 2025-26?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The minimum FD amount varies by bank, typically starting at ₹1,000 for most banks in FY 2025-26. Post office FDs may start at ₹100. Check specific bank or post office terms before investing."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is FD interest taxable in FY 2025-26?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, FD interest is taxable under the investor’s income tax slab for FY 2025-26. TDS may apply if interest exceeds ₹40,000 (₹50,000 for senior citizens) annually, as per Income Tax rules."
-          }
-        }
-      ]
-    }
-    </script>
-
+    <title>FD Calculator India FY 2025-26 - Fixed Deposit Maturity & Interest</title>
+    <link rel="canonical" href="https://moneymindtool.com/fixed-deposit.html">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta property="og:type" content="website">
-    <meta property="og:title" content="FD Calculator India FY 2025-26 - Calculate Fixed Deposit Maturity">
-    <meta property="og:description" content="Calculate FD maturity for FY 2025-26 with our free Fixed Deposit Calculator for India. Estimate maturity amount and interest earned for your FD savings plan with quarterly compounding or simple interest options. Includes Compound Interest Formula.">
+    <meta property="og:title" content="FD Calculator India FY 2025-26 - Maturity & Interest">
+    <meta property="og:description" content="Calculate Fixed Deposit maturity and interest for FY 2025-26 with quarterly compounding or simple interest.">
     <meta property="og:url" content="https://moneymindtool.com/fixed-deposit.html">
     <meta property="og:site_name" content="MoneyMindTool">
     <meta property="og:image" content="https://moneymindtool.com/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FD Calculator India FY 2025-26 - Calculate Fixed Deposit Maturity">
-    <meta name="twitter:description" content="Calculate FD maturity for FY 2025-26 with our free Fixed Deposit Calculator for India. Estimate maturity amount and interest earned for your FD savings plan with quarterly compounding or simple interest options. Includes Compound Interest Formula.">
+    <meta name="twitter:title" content="FD Calculator India FY 2025-26">
+    <meta name="twitter:description" content="Free FD maturity calculator with quarterly compounding for FY 2025-26.">
     <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://moneymindtool.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Calculators",
-        "item": "https://moneymindtool.com/all-calculators.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "FD Calculator India FY 2025",
-        "item": "https://moneymindtool.com/fixed-deposit.html"
-      }]
-    }
-    </script>
-</head>
+    <link rel="stylesheet" href="/theme.css">
 
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Fixed Deposit Calculator India","description":"Free Fixed Deposit Calculator to estimate FD maturity and interest with quarterly compounding or simple interest for FY 2025-26 India.","url":"https://moneymindtool.com/fixed-deposit.html","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://moneymindtool.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://moneymindtool.com/all-calculators.html"},{"@type":"ListItem","position":3,"name":"FD Calculator","item":"https://moneymindtool.com/fixed-deposit.html"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How is FD maturity calculated?","acceptedAnswer":{"@type":"Answer","text":"FD maturity uses the compound interest formula A = P(1 + r/n)^(nt) with quarterly compounding (n=4) as is standard with Indian banks. For short tenures under 6 months, simple interest is often used instead."}},
+      {"@type":"Question","name":"What is the minimum FD amount in India for FY 2025-26?","acceptedAnswer":{"@type":"Answer","text":"Most banks accept FDs from ₹1,000 onwards; post office time deposits start at ₹100. Specific minimums vary by bank — check before opening."}},
+      {"@type":"Question","name":"Is FD interest taxable?","acceptedAnswer":{"@type":"Answer","text":"Yes. FD interest is taxable under the depositor's income-tax slab. Banks deduct TDS at 10% if total annual interest exceeds ₹40,000 (₹50,000 for senior citizens)."}},
+      {"@type":"Question","name":"What is the current FD interest rate?","acceptedAnswer":{"@type":"Answer","text":"For FY 2025-26, retail FD rates typically range from 6% to 7.75% for general depositors and 6.5% to 8.25% for senior citizens, depending on bank and tenure."}},
+      {"@type":"Question","name":"Can I prematurely break an FD?","acceptedAnswer":{"@type":"Answer","text":"Yes. Most banks allow premature withdrawal with a penalty of 0.5–1% on the applicable rate. Tax-saver 5-year FDs have a lock-in and cannot be withdrawn early."}},
+      {"@type":"Question","name":"How does compound vs simple interest affect maturity?","acceptedAnswer":{"@type":"Answer","text":"Quarterly compounding earns interest-on-interest, producing a higher maturity than simple interest of the same rate. Most Indian bank FDs use quarterly compounding by default."}}
+    ]}</script>
+</head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3MR5ZGL" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">MoneyMindTool</div>
-            <nav class="nav-menu">
+    <header class="mm-header">
+        <div class="mm-nav-wrap">
+            <a href="/index.html" class="mm-logo">Money<span>Mind</span>Tool</a>
+            <nav class="mm-nav" aria-label="Primary">
                 <a href="/index.html">Home</a>
-                <div class="dropdown">
-                    <a href="#">Calculators</a>
-                    <div class="dropdown-content">
-                        <a href="/all-calculators">All Calculators</a>
-                        <a href="/income-tax.html">Income Tax Calculator</a>
-                        <a href="/simple-interest.html">Simple Interest Calculator</a>
-                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
-                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
-                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
-                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+                <a href="/blog.html" class="mm-mobile-hide">Blog</a>
+                <div class="mm-dropdown">
+                    <button aria-haspopup="true">Calculators ▾</button>
+                    <div class="mm-dropdown-menu" role="menu">
                         <a href="/sip.html">SIP Calculator</a>
-                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/lumpsum.html">Lumpsum Calculator</a>
+                        <a href="/mutual-fund-returns.html">Mutual Fund Returns</a>
+                        <a href="/step-up-sip.html">Step-Up SIP</a>
                         <a href="/ppf.html">PPF Calculator</a>
                         <a href="/nps.html">NPS Calculator</a>
-                        <a href="/hra.html">HRA Exemption Calculator</a>
-                        <a href="/gratuity.html">Gratuity Calculator</a>
-                        <a href="/loanemi.html">Loan EMI Calculator</a>
-                        <a href="/home-loan.html">Home EMI Calculator</a>
-                        <a href="/capital-gains.html">Capital Gains Calculator</a>
-                        <a href="gst-calculator.html">GST Interest & Late Fee Calculator</a>
-                        <a href="/retirement.html">Retirement Planning Calculator</a>
-                        <a href="https://moneymindtool.com/epf-calculators.html">EPF Calculator</a>
-                                            <a href="https://moneymindtool.com/salary-calculator.html">In-Hand Salary Calculator</a>
-                        <a href="https://moneymindtool.com/loan-prepayment.html">Loan Prepayment Calculator</a>
-                        <a href="https://moneymindtool.com/ssy-calculator.html">SSY Calculator</a>
-                        <a href="https://moneymindtool.com/step-up-sip.html">Step-Up SIP Calculator</a>
+                        <a href="/fixed-deposit.html">FD Calculator</a>
+                        <a href="/recurring-deposit.html">RD Calculator</a>
+                        <a href="/ssy-calculator.html">SSY Calculator</a>
+                        <a href="/income-tax.html">Income Tax</a>
+                        <a href="/salary-calculator.html">Salary Calculator</a>
+                        <a href="/home-loan.html">Home Loan EMI</a>
+                        <a href="/all-calculators.html" class="all">View All →</a>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-    <div class="container">
-        <h1>FD Calculator India FY 2025-26: Fixed Deposit Maturity Estimate 📈</h1>
-        <div class="intro-section">
-            <p>Plan your savings with our free <strong>Fixed Deposit (FD) Calculator for FY 2025-26</strong>, tailored
-                for Indian investors. Estimate the <strong>maturity amount</strong> and <strong>interest earned</strong>
-                by entering your principal amount, annual interest rate, and tenure, with options for <strong>quarterly
-                    compounding</strong> or <strong>simple interest</strong>.</p>
-            <p>FDs offer a <strong>secure, fixed-income investment</strong> with guaranteed returns, making them ideal
-                for risk-averse savers. Our tool provides accurate estimates to help you achieve your financial goals in
-                FY 2025-26. Start investing smarter today!</p>
-        </div>
-        <a href="/all-calculators" class="back-link">Back to All Calculators</a>
-        <div class="card">
-            <h2>Calculate Your Fixed Deposit Maturity</h2>
-            <div class="input-group">
-                <div>
-                    <label for="fdPrincipal">Principal Amount (₹):</label>
-                    <input type="number" id="fdPrincipal" min="1000" value="100000">
+
+    <nav class="mm-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span>
+        <a href="/all-calculators.html">Calculators</a><span class="sep">/</span>
+        <span class="current">FD Calculator</span>
+    </nav>
+
+    <main class="mm-main">
+        <section class="mm-hero">
+            <span class="pill">FY 2025-26 · Quarterly Compounding</span>
+            <h1>Fixed Deposit Calculator</h1>
+            <p>Estimate the maturity and interest earned on your FD with quarterly compounding or simple interest. Updated for FY 2025-26 India.</p>
+        </section>
+
+        <section class="mm-card">
+            <h2>Calculate FD Maturity</h2>
+            <div class="mm-form-grid">
+                <div class="mm-field">
+                    <label for="fdPrincipal">Principal Amount (₹)</label>
+                    <input type="number" id="fdPrincipal" min="1000" value="100000" class="mm-input">
+                    <div class="hint">Min ₹1,000 (bank) or ₹100 (post office).</div>
                 </div>
-                <div>
-                    <label for="fdRate">Annual Interest Rate (%):</label>
-                    <input type="number" id="fdRate" min="4" max="8" step="0.1" value="6">
+                <div class="mm-field">
+                    <label for="fdRate">Annual Interest Rate (%)</label>
+                    <input type="number" id="fdRate" min="4" max="8" step="0.1" value="6" class="mm-input">
+                    <div class="hint">Typical range 4–8% in FY 2025-26.</div>
                 </div>
-                <div>
-                    <label for="fdYears">Tenure (Years):</label>
-                    <input type="number" id="fdYears" min="0" max="10" value="1">
+                <div class="mm-field">
+                    <label for="fdYears">Tenure (Years)</label>
+                    <input type="number" id="fdYears" min="0" max="10" value="1" class="mm-input">
                 </div>
-                <div>
-                    <label for="fdMonths">Tenure (Months):</label>
-                    <input type="number" id="fdMonths" min="0" max="11" value="0">
+                <div class="mm-field">
+                    <label for="fdMonths">Tenure (Months)</label>
+                    <input type="number" id="fdMonths" min="0" max="11" value="0" class="mm-input">
                 </div>
-                <div>
-                    <label for="interestType">Interest Type:</label>
-                    <select id="interestType">
+                <div class="mm-field">
+                    <label for="interestType">Interest Type</label>
+                    <select id="interestType" class="mm-select">
                         <option value="compound">Compound (Quarterly)</option>
                         <option value="simple">Simple</option>
                     </select>
+                    <div class="hint">Simple usually applies for tenures under 6 months.</div>
                 </div>
             </div>
-            <div class="button-group">
-                <button id="calcButton" onclick="calcFD()" disabled>Calculate</button>
-                <button onclick="resetForm()">Reset</button>
+            <div class="mm-actions">
+                <button id="calcButton" onclick="calcFD()" class="mm-btn">Calculate Maturity</button>
+                <button onclick="resetForm()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
-            <div class="note">Enter principal amount in ₹ (minimum ₹1,000 for most banks). <strong>FD interest is
-                    typically compounded quarterly</strong>; simple interest may apply for tenures less than 6 months.
-                <strong>Interest rates (4-8% p.a. in FY 2025-26)</strong> vary by bank and tenure. Interest is
-                <strong>taxable</strong> under your income tax slab.
-            </div>
-        </div>
+        </section>
 
+        <section class="mm-result-card hidden" id="resultsCard">
+            <div class="label">FD Maturity Amount</div>
+            <div class="value" id="fdMaturityOut">—</div>
+            <div class="subline" id="fdResultDetail"></div>
+            <div class="error-message" id="errorMessage" style="color:#fca5a5; margin-top:10px;"></div>
+            <div class="results hidden" id="fdResult"></div>
+        </section>
 
+        <section class="mm-card">
+            <h2>What is a Fixed Deposit?</h2>
+            <p>A <strong>Fixed Deposit (FD)</strong> is a deposit product offered by banks, NBFCs, and post offices that locks in your money for a fixed term at a guaranteed interest rate. It is one of the most popular low-risk savings options in India because the principal is secure (insured up to ₹5 lakh by DICGC for bank FDs) and the return is contractually fixed at the time of booking.</p>
+            <p>FDs are ideal for emergency funds, short-term goals (6 months to 3 years), or conservative investors who prefer assured returns over market-linked products. Most banks compound interest quarterly; cumulative FDs reinvest interest until maturity, while non-cumulative FDs pay periodic interest (monthly, quarterly, or annually).</p>
+        </section>
 
-        <div class="card results-card">
-            <div class="error-message" id="errorMessage"></div>
-            <div class="results" id="fdResult"></div>
-        </div>
+        <section class="mm-card">
+            <h2>Key Features at a Glance</h2>
+            <ul>
+                <li><strong>Tenure:</strong> 7 days to 10 years.</li>
+                <li><strong>Interest:</strong> Typically 6%–7.75% for general; senior citizens get 0.25–0.75% extra.</li>
+                <li><strong>Compounding:</strong> Quarterly (standard) — bank pays interest on interest.</li>
+                <li><strong>Safety:</strong> Insured by DICGC up to ₹5 lakh per depositor per bank.</li>
+                <li><strong>Liquidity:</strong> Premature withdrawal allowed with a 0.5–1% penalty (except 5-year tax-saver FDs).</li>
+                <li><strong>Taxation:</strong> Interest fully taxable; TDS at 10% above ₹40,000 (₹50,000 for senior citizens).</li>
+                <li><strong>Tax-saver FD:</strong> 5-year lock-in, qualifies for ₹1.5 lakh deduction under Section 80C.</li>
+            </ul>
+        </section>
 
-        <div class="faq-section">
-            <h2>Frequently Asked Questions ❓</h2>
-            <div class="faq-item">
-                <h3>What is an FD Calculator?</h3>
-                <p>An <strong>FD Calculator</strong> is an online tool that estimates the <strong>maturity
-                        amount</strong> and <strong>interest earned</strong> for a <strong>Fixed Deposit (FD)</strong>
-                    based on the principal amount, annual interest rate, and tenure. It uses standard compound interest
-                    formulas to project your final returns.</p>
+        <section class="mm-card">
+            <h2>How the Calculation Works</h2>
+            <p><strong>Compound (quarterly) formula:</strong> A = P × (1 + r/4)<sup>4t</sup></p>
+            <p><strong>Simple interest formula:</strong> A = P × (1 + r × t)</p>
+            <p>Where A = maturity, P = principal, r = annual rate, t = tenure in years.</p>
+            <p><strong>Worked example:</strong> A ₹1,00,000 FD at 6% p.a. for 1 year with quarterly compounding matures to ~<strong>₹1,06,136</strong> — earning ₹6,136 in interest, slightly more than the ₹6,000 you'd get with simple interest.</p>
+        </section>
+
+        <section class="mm-card">
+            <h2>Sample FD Maturity Table (1 Year)</h2>
+            <div class="mm-table-wrap">
+                <table class="mm-table">
+                    <thead><tr><th>Principal (₹)</th><th class="num">Rate</th><th class="num">Compound (₹)</th><th class="num">Simple (₹)</th></tr></thead>
+                    <tbody>
+                        <tr><td>1,00,000</td><td class="num">6.0%</td><td class="num">1,06,136</td><td class="num">1,06,000</td></tr>
+                        <tr><td>1,00,000</td><td class="num">7.0%</td><td class="num">1,07,186</td><td class="num">1,07,000</td></tr>
+                        <tr><td>5,00,000</td><td class="num">7.0%</td><td class="num">5,35,929</td><td class="num">5,35,000</td></tr>
+                        <tr><td>5,00,000</td><td class="num">7.5%</td><td class="num">5,38,564</td><td class="num">5,37,500</td></tr>
+                        <tr><td>10,00,000</td><td class="num">8.0%</td><td class="num">10,82,432</td><td class="num">10,80,000</td></tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="faq-item">
-                <h3>How is FD maturity calculated?</h3>
-                <p>FD maturity is typically calculated using the <strong>compound interest formula</strong> with
-                    quarterly compounding. This means that every three months, the earned interest is added back to the
-                    principal, and the next interest cycle calculates interest on the new, larger balance. For tenures
-                    less than <strong>6 months</strong>, <strong>simple interest</strong> may be used, depending on the
-                    bank’s policy.</p>
+        </section>
+
+        <section class="mm-card">
+            <h2>Frequently Asked Questions</h2>
+            <div class="mm-faq">
+                <details><summary>How is FD maturity calculated?</summary><div>Most banks use the quarterly-compounded formula A = P(1 + r/4)<sup>4t</sup>. For tenures under 6 months, simple interest is generally applied.</div></details>
+                <details><summary>What is the minimum FD amount?</summary><div>Banks typically start at ₹1,000; post office time deposits begin at ₹100. Online FDs may have higher minimums.</div></details>
+                <details><summary>Is FD interest taxable?</summary><div>Yes — taxable at your income-tax slab rate. TDS at 10% applies if annual interest exceeds ₹40,000 (₹50,000 for senior citizens).</div></details>
+                <details><summary>Can I save tax with an FD?</summary><div>Yes. A 5-year tax-saver FD qualifies for Section 80C deduction up to ₹1.5 lakh, but it has a 5-year lock-in and no premature withdrawal.</div></details>
+                <details><summary>What happens on premature withdrawal?</summary><div>Banks usually deduct 0.5–1% from the applicable rate. The effective rate is the lesser of the booking rate or the card rate for the actual tenure.</div></details>
+                <details><summary>Do senior citizens get higher rates?</summary><div>Yes. Most banks offer 0.25–0.75% additional p.a. to senior citizens (age 60+).</div></details>
             </div>
-            <div class="faq-item">
-                <h3>What is the minimum FD amount in India for FY 2025-26?</h3>
-                <p>The <strong>minimum FD amount</strong> varies by bank, typically starting at <strong>₹1,000</strong>
-                    for most major banks in FY 2025-26. Post office FDs may start at <strong>₹100</strong>. It's always
-                    best to check the specific bank or post office terms before investing.</p>
+        </section>
+
+        <section class="mm-related">
+            <h2>Related Calculators</h2>
+            <div class="mm-related-grid">
+                <a href="/recurring-deposit.html">RD Calculator</a>
+                <a href="/ppf.html">PPF Calculator</a>
+                <a href="/nps.html">NPS Calculator</a>
+                <a href="/epf-calculators.html">EPF Calculator</a>
+                <a href="/ssy-calculator.html">SSY Calculator</a>
+                <a href="/retirement.html">Retirement Planner</a>
+                <a href="/all-calculators.html" class="primary">View All →</a>
             </div>
-            <div class="faq-item">
-                <h3>Is FD interest taxable in FY 2025-26?</h3>
-                <p>Yes, FD interest is considered <strong>Income from Other Sources</strong> and is
-                    <strong>taxable</strong> under the investor’s income tax slab for FY 2025-26 (AY 2026-27).
-                    <strong>TDS</strong> (Tax Deducted at Source) of 10% may apply if the interest earned exceeds
-                    <strong>₹40,000</strong> (or <strong>₹50,000</strong> for senior citizens) annually, as per current
-                    Income Tax rules.
-                </p>
+        </section>
+    </main>
+
+    <footer class="mm-footer">
+        <div class="mm-footer-grid">
+            <div>
+                <div class="brand">Money<span>Mind</span>Tool</div>
+                <p class="tagline">Free, fast, accurate financial calculators for Indian investors. FY 2025-26 updated.</p>
+            </div>
+            <div>
+                <h4>Savings</h4>
+                <ul>
+                    <li><a href="/fixed-deposit.html">FD</a></li>
+                    <li><a href="/recurring-deposit.html">RD</a></li>
+                    <li><a href="/ppf.html">PPF</a></li>
+                    <li><a href="/ssy-calculator.html">SSY</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Investments</h4>
+                <ul>
+                    <li><a href="/sip.html">SIP</a></li>
+                    <li><a href="/lumpsum.html">Lumpsum</a></li>
+                    <li><a href="/nps.html">NPS</a></li>
+                    <li><a href="/epf-calculators.html">EPF</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Tax & Salary</h4>
+                <ul>
+                    <li><a href="/income-tax.html">Income Tax</a></li>
+                    <li><a href="/salary-calculator.html">Salary</a></li>
+                    <li><a href="/hra.html">HRA</a></li>
+                </ul>
             </div>
         </div>
-    </div>
-    <div id="disclaimerModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('disclaimerModal')">×</span>
-            <h3>Disclaimer</h3>
-            <p>The calculators on this website are provided for informational and educational purposes only. Results are
-                estimates based on user inputs and standard formulas, not accounting for individual circumstances, tax
-                laws, or financial regulations. We do not guarantee accuracy, completeness, or applicability of results.
-                Consult a qualified financial advisor or tax professional before making decisions. We are not liable for
-                any losses or damages arising from the use of these calculators.</p>
-        </div>
-    </div>
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('privacyModal')">×</span>
-        <h3>Privacy Policy</h3>
-        <p>We respect your privacy. This calculator works <strong>100% offline in your browser</strong> — no data is
-            collected, stored, or transmitted.</p>
-        <p>No cookies, no tracking, no personal information required.</p>
-        <p>We use only Google Analytics (anonymized) to improve user experience. You can disable it anytime in your
-            browser.</p>
-        <p style="margin-top:20px; font-size:0.9em; color:#666;">Effective: December 2025</p>
-    </div>
-    </div>
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('termsModal')">×</span>
-            <h3>Terms and Conditions</h3>
-            <p>By using this website, you agree to these Terms and Conditions. Calculators are for personal,
-                non-commercial use. You must provide accurate inputs; we are not responsible for errors due to incorrect
-                data. The website and its content are owned by MoneyMindTool and protected by intellectual
-                property laws. Do not reproduce or distribute without permission. We may update or discontinue the
-                website at any time. We are not liable for any direct, indirect, or consequential damages from using
-                this site. Usage is governed by Indian laws.</p>
-        </div>
-    </div>
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="#" onclick="openModal('disclaimerModal')">Disclaimer</a> |
-            <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a> |
-            <a href="#" onclick="openModal('termsModal')">Terms and Conditions</a>
-        </div>
-        <p class="rights-reserved">© 2026 Digicreature Technologies. All Rights Reserved.</p>
+        <p class="mm-copyright">© 2026 Digicreature Technologies. All Rights Reserved.</p>
     </footer>
+
     <script>
         function formatIndianNumber(num) {
             if (isNaN(num)) return "0";
@@ -885,7 +310,7 @@
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
                 errorMessage.style.display = 'block';
-                document.querySelector('.results-card').classList.add('visible');
+                document.getElementById('resultsCard').classList.remove('hidden');
 
                 // Determine if there are critical errors (i.e., not just the simple interest warning)
                 const hasCriticalErrors = errors.some(e => !e.includes('Simple interest'));
@@ -924,7 +349,13 @@
                 Maturity Amount: <strong>₹${formatIndianNumber(amount)}</strong><br>
                 Interest Earned: <strong>₹${formatIndianNumber(interest)}</strong>
             `;
-            document.querySelector('.results-card').classList.add('visible');
+            document.getElementById('fdMaturityOut').textContent = '₹' + formatIndianNumber(amount);
+            document.getElementById('fdResultDetail').innerHTML = `
+                <div><span>Principal Invested</span><span>₹${formatIndianNumber(principal)}</span></div>
+                <div><span>Interest Earned</span><span>₹${formatIndianNumber(interest)}</span></div>
+                <div><span>Tenure</span><span>${years}y ${months}m</span></div>
+                <div><span>Interest Type</span><span>${interestType === 'compound' ? 'Compound (Quarterly)' : 'Simple'}</span></div>`;
+            document.getElementById('resultsCard').classList.remove('hidden');
 
             // Track FD calculation event
             gtag('event', 'calculate_fd', {
@@ -932,7 +363,7 @@
                 'event_label': 'Fixed Deposit Calculator'
             });
 
-            document.querySelector('.results-card').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         function resetForm() {
@@ -943,21 +374,9 @@
             document.getElementById('interestType').value = 'compound';
             document.getElementById('fdResult').innerHTML = '';
             document.getElementById('errorMessage').style.display = 'none';
-            document.querySelector('.results-card').classList.remove('visible');
+            document.getElementById('resultsCard').classList.add('hidden');
             document.getElementById('calcButton').disabled = true;
             validateInputs();
-        }
-
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'flex';
-            modal.classList.add('show');
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'none';
-            modal.classList.remove('show');
         }
 
         window.onload = function () {
@@ -967,10 +386,7 @@
             document.getElementById('fdYears').addEventListener('input', validateInputs);
             document.getElementById('fdMonths').addEventListener('input', validateInputs);
             document.getElementById('interestType').addEventListener('input', validateInputs);
-            // Ensure modals are initially hidden
-            document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
         };
     </script>
 </body>
-
 </html>

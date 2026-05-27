@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-GYW0708DQY"></script>
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="UE5/pVdJlriCJfcPDhvrWA" async></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-GYW0708DQY');
+        gtag('js', new Date()); gtag('config', 'G-GYW0708DQY');
     </script>
-    <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-W3MR5ZGL');</script>
-    <!-- End Google Tag Manager -->
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W3MR5ZGL');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Plan your retirement for FY 2025-26 in India. Calculate your retirement corpus, monthly pension, and shortfall with inflation adjustments.">
-    <meta name="keywords"
-        content="retirement planning calculator India, retirement corpus calculator 2025, pension calculator India, Budget 2025 retirement planning, NPS calculator 2025, FY 2025-26 retirement calculator, retirement savings planner, online pension calculator India, financial planning tools 2025, retirement income calculator, NPS investment calculator, tax-free retirement savings, retirement goal calculator, personal finance India 2025, retirement corpus projection, pension scheme calculator, Section 80C retirement benefits, financial security planner India">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Plan your retirement for FY 2025-26 in India. Calculate your retirement corpus, monthly pension, and shortfall with inflation adjustments.">
+    <meta name="keywords" content="retirement planning calculator India, retirement corpus calculator 2025, pension calculator India, NPS calculator 2025, FY 2025-26 retirement calculator, retirement savings planner, online pension calculator India, financial planning tools 2025, retirement income calculator, NPS investment calculator, retirement goal calculator, personal finance India 2025, retirement corpus projection, pension scheme calculator, Section 80C retirement benefits, financial security planner India">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
     <title>Retirement Planning Calculator India FY 2025-26</title>
     <link rel="canonical" href="https://moneymindtool.com/retirement.html">
-    <meta name="theme-color" content="#2A3EB1">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta property="og:type" content="website">
     <meta property="og:title" content="Retirement Planning Calculator India FY 2025-26">
     <meta property="og:description" content="Plan your retirement for FY 2025-26 in India. Calculate your retirement corpus, monthly pension, and shortfall with inflation adjustments.">
@@ -40,514 +32,238 @@
     <meta property="og:image" content="https://moneymindtool.com/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Retirement Planning Calculator India FY 2025-26">
-    <meta name="twitter:description" content="Plan your retirement for FY 2025-26 in India. Calculate your retirement corpus, monthly pension, and shortfall with inflation adjustments.">
+    <meta name="twitter:description" content="Plan your retirement corpus, monthly pension, and shortfall with inflation adjustments.">
     <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
-    <title>Retirement Planning Calculator India FY 2025-26</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+    <link rel="stylesheet" href="/theme.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #E8F0FE, #F9FAFB);
-            min-height: 100vh;
-            color: #4B5EAA;
-            line-height: 1.6;
-        }
-
-        header {
-            background: #2A3EB1;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .chart-container {
-            max-width: 600px;
-            margin: 20px auto;
-            height: 300px;
-            max-height: 300px;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            margin-left: 5px;
-            cursor: help;
-            outline: none;
-        }
-
-        .tooltip::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translate(-50%, -100%);
-            background: #2A3EB1;
-            color: #FFFFFF;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s, visibility 0.2s;
-            z-index: 10;
-        }
-
-        .tooltip:hover::after,
-        .tooltip:focus::after {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            animation: scaleIn 0.3s ease;
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        .modal-content {
-            transform: scale(0.95);
-            transition: transform 0.2s ease;
-        }
-
-        .modal.show .modal-content {
-            transform: scale(1);
-        }
-
-        .past-deadline {
-            color: #DC2626;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: #F9FAFB;
-            min-width: 220px;
-            max-height: 300px;
-            overflow-y: auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            z-index: 1000;
-            top: 100%;
-            right: 0;
-        }
-
-        .dropdown:hover .dropdown-content,
-        .dropdown:focus-within .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-content a {
-            color: #4B5EAA;
-            padding: 12px 16px;
-            display: block;
-            font-weight: 400;
-            text-decoration: none;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .dropdown-content a:hover {
-            background: #E8F0FE;
-            color: #F57C00;
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .chart-container {
-                max-width: 100%;
-                height: 250px;
-                max-height: 250px;
-            }
-
-            .dropdown-content {
-                min-width: 180px;
-                max-height: 250px;
-            }
-        }
-    </style>
-    <!-- Schema Markup: WebApplication -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Retirement Planning Calculator India FY 2025-26",
-      "description": "Calculate your retirement corpus, monthly pension, and shortfall for FY 2025-26 in India, with inflation and return adjustments.",
-      "url": "https://moneymindtool.com/retirement.html",
-      "applicationCategory": "Financial",
-      "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
-    }
-    </script>
-    <!-- Schema Markup: FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is a retirement corpus?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A retirement corpus is the total savings accumulated by retirement to fund post-retirement expenses, accounting for inflation and investment returns."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does inflation affect retirement planning?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Inflation increases future expenses, requiring a larger corpus to maintain your lifestyle. A 6% inflation rate doubles costs in approximately 12 years."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is NPS in retirement planning?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The National Pension System (NPS) is a government-backed pension scheme offering tax benefits under Sections 80C and 80CCD, with options for equity and debt investments."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much should I save monthly for retirement?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It depends on your current age, retirement age, expected expenses, inflation, and investment returns. Use this calculator to estimate based on your inputs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "When is the ITR filing deadline for FY 2025-26?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "July 31, 2026, for non-audit cases. Late filing incurs a ₹5,000 penalty under Section 234F."
-          }
-        }
-      ]
-    }
-    </script>
-    <!-- Schema Markup: HowTo -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Plan Retirement for FY 2025-26",
-      "description": "Step-by-step guide to calculate your retirement corpus and pension using our free Retirement Planning Calculator.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "text": "Enter your current age, planned retirement age, and expected life expectancy.",
-          "position": 1
-        },
-        {
-          "@type": "HowToStep",
-          "text": "Input your monthly savings, expected investment return rate, and inflation rate.",
-          "position": 2
-        },
-        {
-          "@type": "HowToStep",
-          "text": "Specify your expected monthly expenses in retirement (in today's value).",
-          "position": 3
-        },
-        {
-          "@type": "HowToStep",
-          "text": "Click 'Calculate Plan' to view your retirement corpus, monthly pension, and shortfall/surplus.",
-          "position": 4
-        }
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://moneymindtool.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Calculators",
-        "item": "https://moneymindtool.com/all-calculators.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Retirement Planning Calculator",
-        "item": "https://moneymindtool.com/retirement.html"
-      }]
-    }
-    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Retirement Planning Calculator India FY 2025-26","description":"Calculate your retirement corpus, monthly pension, and shortfall for FY 2025-26 in India, with inflation and return adjustments.","url":"https://moneymindtool.com/retirement.html","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://moneymindtool.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://moneymindtool.com/all-calculators.html"},{"@type":"ListItem","position":3,"name":"Retirement Planning Calculator","item":"https://moneymindtool.com/retirement.html"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is a retirement corpus?","acceptedAnswer":{"@type":"Answer","text":"A retirement corpus is the total savings accumulated by retirement to fund post-retirement expenses, accounting for inflation and investment returns."}},
+      {"@type":"Question","name":"How does inflation affect retirement planning?","acceptedAnswer":{"@type":"Answer","text":"Inflation increases future expenses, requiring a larger corpus to maintain your lifestyle. A 6% inflation rate doubles costs in approximately 12 years."}},
+      {"@type":"Question","name":"What is NPS in retirement planning?","acceptedAnswer":{"@type":"Answer","text":"The National Pension System (NPS) is a government-backed pension scheme offering tax benefits under Sections 80C and 80CCD, with options for equity and debt investments."}},
+      {"@type":"Question","name":"How much should I save monthly for retirement?","acceptedAnswer":{"@type":"Answer","text":"It depends on your current age, retirement age, expected expenses, inflation, and investment returns. Use this calculator to estimate based on your inputs."}},
+      {"@type":"Question","name":"When is the ITR filing deadline for FY 2025-26?","acceptedAnswer":{"@type":"Answer","text":"July 31, 2026, for non-audit cases. Late filing incurs a ₹5,000 penalty under Section 234F."}}
+    ]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to Plan Retirement for FY 2025-26","description":"Step-by-step guide to calculate your retirement corpus and pension using our free Retirement Planning Calculator.","step":[{"@type":"HowToStep","text":"Enter your current age, planned retirement age, and expected life expectancy.","position":1},{"@type":"HowToStep","text":"Input your monthly savings, expected investment return rate, and inflation rate.","position":2},{"@type":"HowToStep","text":"Specify your expected monthly expenses in retirement (in today's value).","position":3},{"@type":"HowToStep","text":"Click 'Calculate Plan' to view your retirement corpus, monthly pension, and shortfall/surplus.","position":4}]}</script>
 </head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3MR5ZGL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<body class="flex flex-col min-h-screen">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3MR5ZGL" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <header class="sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="logo text-2xl font-bold text-white">MoneyMindTool</div>
-            <nav class="flex space-x-4">
-                <a href="/index.html" class="text-white hover:text-orange-500 font-medium">Home</a>
-                <div class="relative dropdown">
-                    <a href="/all-calculators.html" class="text-white hover:text-orange-500 font-medium"
-                        aria-expanded="false">Calculators</a>
-                    <div class="dropdown-content">
-                        <a href="/all-calculators">All Calculators</a>
-                        <a href="/income-tax.html">Income Tax Calculator</a>
-                        <a href="/simple-interest.html">Simple Interest Calculator</a>
-                        <a href="/fixed-deposit.html">Fixed Deposit Calculator</a>
-                        <a href="/recurring-deposit.html">Recurring Deposit Calculator</a>
-                        <a href="/educational-loan.html">Educational Loan EMI Calculator</a>
-                        <a href="/personal-loan.html">Personal Loan EMI Calculator</a>
+    <header class="mm-header">
+        <div class="mm-nav-wrap">
+            <a href="/index.html" class="mm-logo">Money<span>Mind</span>Tool</a>
+            <nav class="mm-nav" aria-label="Primary">
+                <a href="/index.html">Home</a>
+                <a href="/blog.html" class="mm-mobile-hide">Blog</a>
+                <div class="mm-dropdown">
+                    <button aria-haspopup="true">Calculators ▾</button>
+                    <div class="mm-dropdown-menu" role="menu">
                         <a href="/sip.html">SIP Calculator</a>
-                        <a href="/compound-interest.html">Compound Interest Calculator</a>
+                        <a href="/lumpsum.html">Lumpsum Calculator</a>
+                        <a href="/mutual-fund-returns.html">Mutual Fund Returns</a>
+                        <a href="/step-up-sip.html">Step-Up SIP</a>
                         <a href="/ppf.html">PPF Calculator</a>
                         <a href="/nps.html">NPS Calculator</a>
-                        <a href="/hra.html">HRA Exemption Calculator</a>
-                        <a href="/gratuity.html">Gratuity Calculator</a>
-                        <a href="/loanemi.html">Loan EMI Calculator</a>
-                        <a href="/home-loan.html">Home EMI Calculator</a>
-                        <a href="/capital-gains.html">Capital Gains Calculator</a>
-                        <a href="gst-calculator.html">GST Interest & Late Fee Calculator</a>
-                        <a href="/retirement.html">Retirement Planning Calculator</a>
-                                            <a href="https://moneymindtool.com/salary-calculator.html">In-Hand Salary Calculator</a>
-                        <a href="https://moneymindtool.com/loan-prepayment.html">Loan Prepayment Calculator</a>
-                        <a href="https://moneymindtool.com/ssy-calculator.html">SSY Calculator</a>
-                        <a href="https://moneymindtool.com/step-up-sip.html">Step-Up SIP Calculator</a>
+                        <a href="/fixed-deposit.html">FD Calculator</a>
+                        <a href="/recurring-deposit.html">RD Calculator</a>
+                        <a href="/ssy-calculator.html">SSY Calculator</a>
+                        <a href="/income-tax.html">Income Tax</a>
+                        <a href="/salary-calculator.html">Salary Calculator</a>
+                        <a href="/home-loan.html">Home Loan EMI</a>
+                        <a href="/all-calculators.html" class="all">View All →</a>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <section class="mb-8">
-            <h1 class="text-3xl font-semibold text-indigo-900 text-center mb-6">Retirement Planning Calculator India FY
-                2025-26</h1>
-            <p class="text-center text-gray-600 mb-4">Plan your retirement by calculating your corpus, monthly pension,
-                and shortfall with inflation adjustments for FY 2025-26. Explore related tools like our <a
-                    href="/income-tax.html" class="text-indigo-900 hover:text-orange-500">Income Tax Calculator</a> or
-                <a href="/gst-calculator.html" class="text-indigo-900 hover:text-orange-500">GST Calculator</a> for
-                comprehensive financial planning.
-            </p>
-            <div class="text-center">
-                <a href="/all-calculators" class="text-indigo-900 hover:text-orange-500 font-semibold">Back to All
-                    Calculators</a>
+
+    <nav class="mm-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span>
+        <a href="/all-calculators.html">Calculators</a><span class="sep">/</span>
+        <span class="current">Retirement Planning Calculator</span>
+    </nav>
+
+    <main class="mm-main">
+        <section class="mm-hero">
+            <span class="pill">FY 2025-26 · India</span>
+            <h1>Retirement Planning Calculator</h1>
+            <p>Project your retirement corpus, monthly pension, and shortfall (or surplus) — adjusted for inflation and expected investment returns.</p>
+        </section>
+
+        <section class="mm-card">
+            <h2>Calculate Your Retirement Plan</h2>
+            <div class="mm-form-grid">
+                <div class="mm-field">
+                    <label for="currentAge">Current Age</label>
+                    <select id="currentAge" class="mm-select"></select>
+                </div>
+                <div class="mm-field">
+                    <label for="retirementAge">Retirement Age</label>
+                    <select id="retirementAge" class="mm-select"></select>
+                </div>
+                <div class="mm-field">
+                    <label for="lifeExpectancy">Life Expectancy</label>
+                    <select id="lifeExpectancy" class="mm-select"></select>
+                </div>
+                <div class="mm-field">
+                    <label for="monthlySavings">Monthly Savings (₹)</label>
+                    <input type="number" id="monthlySavings" min="0" value="10000" class="mm-input">
+                </div>
+                <div class="mm-field">
+                    <label for="returnRate">Expected Return Rate (%)</label>
+                    <input type="number" id="returnRate" min="1" max="15" value="10" step="0.1" class="mm-input">
+                    <div class="hint">Typical NPS / equity MF: 8-12%</div>
+                </div>
+                <div class="mm-field">
+                    <label for="inflationRate">Inflation Rate (%)</label>
+                    <input type="number" id="inflationRate" min="2" max="8" value="6" step="0.1" class="mm-input">
+                    <div class="hint">India long-term average ~6%</div>
+                </div>
+                <div class="mm-field">
+                    <label for="targetExpenses">Monthly Expenses in Retirement (₹)</label>
+                    <input type="number" id="targetExpenses" min="0" value="50000" class="mm-input">
+                    <div class="hint">In today's value — calculator inflates</div>
+                </div>
+            </div>
+            <div class="mm-actions">
+                <button id="calcButton" onclick="calculateRetirement()" class="mm-btn">Calculate Plan</button>
+                <button onclick="resetForm()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
         </section>
-        <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
-            <h2 class="text-xl font-semibold text-indigo-900 mb-4 text-center">Tax Filing Deadlines (2025-26)</h2>
-            <div class="text-center">
-                <span class="toggle-deadlines text-indigo-900 cursor-pointer hover:text-orange-500 block mb-2"
-                    tabindex="0" role="button">Show Deadlines</span>
-            </div>
-            <div id="deadlinesList" class="hidden text-gray-600 max-w-xl mx-auto">
-                <ul class="list-disc pl-5">
-                    <li id="past-advance-tax"><strong>Advance Tax (Final, FY 2024-25)</strong>: Due March 15, 2025.
-                        <span class="penalty">Penalty: 1% interest per month under Section 234C.</span>
-                    </li>
-                    <li><strong>ITR Filing (Non-Audit, FY 2025-26)</strong>: July 31, 2026. File at <a
-                            href="https://www.incometax.gov.in" target="_blank"
-                            class="text-indigo-900 hover:text-orange-500">incometax.gov.in</a>.</li>
-                </ul>
-            </div>
-        </section>
-        <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50">
-            <h2 class="text-xl font-semibold text-indigo-900 mb-4">Calculate Your Retirement Plan</h2>
-            <div class="w-full bg-indigo-100 rounded-full h-2 mb-4">
-                <div id="taxProgress" class="bg-orange-500 h-2 rounded-full" style="width: 0;"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label for="currentAge" class="block text-gray-800 font-medium">Current Age: <span class="tooltip"
-                            data-tooltip="Your current age in years" tabindex="0">?</span></label>
-                    <select id="currentAge"
-                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
-                        aria-label="Select Current Age">
-                        ${Array.from({length: 31}, (_, i) => `<option value="${20 + i}" ${i===10 ? 'selected' : '' }>
-                            ${20 + i}</option>`).join('')}
-                    </select>
-                </div>
-                <div>
-                    <label for="retirementAge" class="block text-gray-800 font-medium">Retirement Age: <span
-                            class="tooltip" data-tooltip="Age you plan to retire" tabindex="0">?</span></label>
-                    <select id="retirementAge"
-                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
-                        aria-label="Select Retirement Age">
-                        ${Array.from({length: 51}, (_, i) => `<option value="${25 + i}" ${i===35 ? 'selected' : '' }>
-                            ${25 + i}</option>`).join('')}
-                    </select>
-                </div>
-                <div>
-                    <label for="lifeExpectancy" class="block text-gray-800 font-medium">Life Expectancy: <span
-                            class="tooltip" data-tooltip="Expected lifespan in years" tabindex="0">?</span></label>
-                    <select id="lifeExpectancy"
-                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 bg-white"
-                        aria-label="Select Life Expectancy">
-                        ${Array.from({length: 41}, (_, i) => `<option value="${60 + i}" ${i===25 ? 'selected' : '' }>
-                            ${60 + i}</option>`).join('')}
-                    </select>
-                </div>
-                <div>
-                    <label for="monthlySavings" class="block text-gray-800 font-medium">Monthly Savings (₹): <span
-                            class="tooltip" data-tooltip="Amount saved monthly for retirement"
-                            tabindex="0">?</span></label>
-                    <input type="number" id="monthlySavings" min="0" value="10000"
-                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
-                        aria-label="Monthly Savings in Rupees">
-                </div>
-                <div>
-                    <label for="returnRate" class="block text-gray-800 font-medium">Expected Return Rate (%): <span
-                            class="tooltip" data-tooltip="Annual return on investments (e.g., NPS, mutual funds)"
-                            tabindex="0">?</span></label>
-                    <input type="number" id="returnRate" min="1" max="15" value="10" step="0.1"
-                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
-                        aria-label="Expected Return Rate Percentage">
-                </div>
-                <div>
-                    <label for="inflationRate" class="block text-gray-800 font-medium">Inflation Rate (%): <span
-                            class="tooltip" data-tooltip="Expected annual inflation rate" tabindex="0">?</span></label>
-                    <input type="number" id="inflationRate" min="2" max="8" value="6" step="0.1"
-                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
-                        aria-label="Inflation Rate Percentage">
-                </div>
-                <div>
-                    <label for="targetExpenses" class="block text-gray-800 font-medium">Expected Monthly Expenses (₹):
-                        <span class="tooltip" data-tooltip="Post-retirement monthly expenses in today's value"
-                            tabindex="0">?</span></label>
-                    <input type="number" id="targetExpenses" min="0" value="50000"
-                        class="w-full p-2 border border-indigo-200 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
-                        aria-label="Expected Monthly Expenses in Rupees">
-                </div>
-            </div>
-            <div class="flex gap-4 mt-4 justify-center">
-                <button id="calcButton" onclick="calculateRetirement()"
-                    class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 disabled:bg-gray-400 transition-all duration-200"
-                    disabled aria-label="Calculate Retirement Plan">Calculate Plan</button>
-                <button onclick="resetForm()"
-                    class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200"
-                    aria-label="Reset Form">Reset</button>
-            </div>
-            <p class="mt-2 text-sm text-gray-600 text-center">Enter your details to plan your retirement for FY 2025-26.
-                Results are estimates; consult a financial advisor for personalized planning.</p>
-        </section>
-        <section class="bg-white rounded-lg shadow-md p-6 mb-6 border border-indigo-50 hidden" id="resultsCard">
-            <div id="errorMessage" class="text-red-600 hidden mb-4 text-center"></div>
-            <div id="taxResult" class="text-gray-800 mb-4 text-center"></div>
-            <div class="chart-container">
+
+        <section id="resultsCard" class="mm-result-card hidden">
+            <div class="label">Retirement Corpus</div>
+            <div class="value" id="corpusOut">—</div>
+            <div class="subline" id="taxResult"></div>
+            <div style="max-width:560px; margin:24px auto 0; background:rgba(255,255,255,0.06); border-radius:12px; padding:14px; height:280px;">
                 <canvas id="taxChart"></canvas>
             </div>
-            <div class="text-center mt-4">
-                <button onclick="resetForm()"
-                    class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-all duration-200"
-                    aria-label="Calculate Again">Calculate Again</button>
+            <div id="errorMessage" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
+        </section>
+
+        <section class="mm-card">
+            <h2>What Is a Retirement Corpus?</h2>
+            <p>A <strong>retirement corpus</strong> is the lump sum you need at retirement to fund the rest of your life without earned income. It must cover your living expenses, healthcare, and any goals (travel, gifting) while keeping up with inflation, which usually doubles costs roughly every 12 years at 6%.</p>
+            <p>This calculator computes:</p>
+            <ul>
+                <li><strong>Corpus at retirement</strong> — future value of your monthly savings at your chosen return rate.</li>
+                <li><strong>Monthly pension</strong> — annuity-style withdrawal that exhausts the corpus over your post-retirement life.</li>
+                <li><strong>Inflation-adjusted expenses</strong> — how much your target monthly expense will cost in future rupees.</li>
+                <li><strong>Surplus or shortfall</strong> — whether your savings rate is on track.</li>
+            </ul>
+        </section>
+
+        <section class="mm-card">
+            <h2>How the Numbers Work</h2>
+            <p>Three formulas drive the projection:</p>
+            <p style="background:var(--bg-2); padding:14px; border-radius:8px; font-family:monospace; text-align:center; color:var(--navy); font-weight:600;">Corpus = S × [((1 + i)<sup>n</sup> − 1) / i] × (1 + i)</p>
+            <p style="background:var(--bg-2); padding:14px; border-radius:8px; font-family:monospace; text-align:center; color:var(--navy); font-weight:600;">Pension = Corpus × i / [1 − (1 + i)<sup>−m</sup>]</p>
+            <p style="background:var(--bg-2); padding:14px; border-radius:8px; font-family:monospace; text-align:center; color:var(--navy); font-weight:600;">Inflated Expense = E × (1 + π)<sup>y</sup></p>
+            <ul>
+                <li><strong>S</strong> = monthly savings, <strong>i</strong> = monthly return rate, <strong>n</strong> = months to retirement.</li>
+                <li><strong>m</strong> = months in retirement, <strong>E</strong> = current monthly expense.</li>
+                <li><strong>π</strong> = annual inflation, <strong>y</strong> = years to retirement.</li>
+            </ul>
+        </section>
+
+        <section class="mm-card">
+            <h2>Retirement Savings Benchmarks</h2>
+            <div class="mm-table-wrap">
+                <table class="mm-table">
+                    <thead><tr><th>Age</th><th class="num">Savings Target</th><th>Rationale</th></tr></thead>
+                    <tbody>
+                        <tr><td>30</td><td class="num">1× annual salary</td><td>Foundation built; emergency fund + early SIPs</td></tr>
+                        <tr><td>40</td><td class="num">3× annual salary</td><td>Compounding starts to bite; aggressive equity allocation</td></tr>
+                        <tr><td>50</td><td class="num">6× annual salary</td><td>De-risk gradually; rebalance to balanced funds</td></tr>
+                        <tr class="highlight"><td>60</td><td class="num">10× annual salary</td><td>Ready for retirement; mix of annuity, debt, equity</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">Adapted from Fidelity-style benchmarks for an Indian context.</p>
+        </section>
+
+        <section class="mm-card">
+            <h2>Frequently Asked Questions</h2>
+            <div class="mm-faq">
+                <details><summary>What is a retirement corpus?</summary><div>The total savings accumulated by retirement to fund post-retirement expenses, accounting for inflation and investment returns.</div></details>
+                <details><summary>How does inflation affect retirement planning?</summary><div>Inflation increases future expenses, requiring a larger corpus to maintain your lifestyle. A 6% rate doubles costs in ~12 years.</div></details>
+                <details><summary>What is NPS in retirement planning?</summary><div>The <a href="/nps.html">National Pension System</a> is a government-backed pension scheme with tax benefits under Sections 80C and 80CCD(1B), offering equity and debt options.</div></details>
+                <details><summary>How much should I save monthly for retirement?</summary><div>Depends on current age, retirement age, expenses, inflation, and return. Use this calculator with realistic assumptions and iterate.</div></details>
+                <details><summary>What return rate should I assume?</summary><div>For a balanced portfolio (60% equity, 40% debt), 9–11% pre-retirement and 7–8% post-retirement is a defensible long-term assumption for India.</div></details>
+                <details><summary>When is the ITR filing deadline for FY 2025-26?</summary><div>July 31, 2026 for non-audit cases. Late filing incurs a ₹5,000 penalty under Section 234F.</div></details>
             </div>
         </section>
-        <section class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-2xl font-semibold text-indigo-900 text-center mb-4">Frequently Asked Questions</h2>
-            <div class="space-y-4">
-                <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is a retirement corpus?</h3>
-                    <p class="text-gray-600">A retirement corpus is the total savings accumulated by retirement to fund
-                        post-retirement expenses, accounting for inflation and investment returns.</p>
-                </div>
-                <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">How does inflation affect
-                        retirement planning?</h3>
-                    <p class="text-gray-600">Inflation increases future expenses, requiring a larger corpus to maintain
-                        your lifestyle. A 6% inflation rate doubles costs in approximately 12 years.</p>
-                </div>
-                <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">What is NPS in retirement planning?
-                    </h3>
-                    <p class="text-gray-600">The National Pension System (NPS) is a government-backed pension scheme
-                        offering tax benefits under Sections 80C and 80CCD, with options for equity and debt
-                        investments.</p>
-                </div>
-                <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">How much should I save monthly for
-                        retirement?</h3>
-                    <p class="text-gray-600">It depends on your current age, retirement age, expected expenses,
-                        inflation, and investment returns. Use this calculator to estimate based on your inputs.</p>
-                </div>
-                <div class="faq-item">
-                    <h3 class="text-lg font-semibold text-indigo-900 cursor-pointer">When is the ITR filing deadline for
-                        FY 2025-26?</h3>
-                    <p class="text-gray-600">July 31, 2026, for non-audit cases. Late filing incurs a ₹5,000 penalty
-                        under Section 234F.</p>
-                </div>
+
+        <section class="mm-related">
+            <h2>Related Calculators</h2>
+            <div class="mm-related-grid">
+                <a href="/nps.html">NPS</a>
+                <a href="/ppf.html">PPF</a>
+                <a href="/epf-calculators.html">EPF</a>
+                <a href="/sip.html">SIP</a>
+                <a href="/compound-interest.html">Compound Interest</a>
+                <a href="/all-calculators.html" class="primary">View All →</a>
             </div>
         </section>
     </main>
-    <div id="disclaimerModal" class="modal">
-        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
-            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500"
-                onclick="closeModal('disclaimerModal')" aria-label="Close Disclaimer Modal">×</span>
-            <h3 class="text-xl font-semibold text-indigo-900 mb-2">Disclaimer</h3>
-            <p class="text-gray-600">This calculator is for informational purposes only. Results are estimates and may
-                not account for all circumstances, such as market risks or unexpected expenses. Consult a financial
-                advisor for personalized retirement planning.</p>
+
+    <footer class="mm-footer">
+        <div class="mm-footer-grid">
+            <div>
+                <div class="brand">Money<span>Mind</span>Tool</div>
+                <p class="tagline">Free, fast, accurate financial calculators for Indian investors. FY 2025-26 updated.</p>
+            </div>
+            <div>
+                <h4>Investments</h4>
+                <ul>
+                    <li><a href="/sip.html">SIP</a></li>
+                    <li><a href="/lumpsum.html">Lumpsum</a></li>
+                    <li><a href="/step-up-sip.html">Step-Up SIP</a></li>
+                    <li><a href="/mutual-fund-returns.html">MF Returns</a></li>
+                    <li><a href="/ppf.html">PPF</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Tax & Salary</h4>
+                <ul>
+                    <li><a href="/income-tax.html">Income Tax</a></li>
+                    <li><a href="/salary-calculator.html">Salary</a></li>
+                    <li><a href="/hra.html">HRA</a></li>
+                    <li><a href="/gst-calculator.html">GST</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Loans</h4>
+                <ul>
+                    <li><a href="/home-loan.html">Home Loan</a></li>
+                    <li><a href="/personal-loan.html">Personal Loan</a></li>
+                    <li><a href="/educational-loan.html">Education Loan</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div id="termsModal" class="modal">
-        <div class="modal-content bg-white rounded-lg p-6 max-w-md w-full">
-            <span class="close absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-orange-500"
-                onclick="closeModal('termsModal')" aria-label="Close Terms Modal">×</span>
-            <h3 class="text-xl font-semibold text-indigo-900 mb-2">Terms and Conditions</h3>
-            <p class="text-gray-600">By using this website, you agree to these Terms and Conditions. Calculators are for
-                personal, non-commercial use. You must provide accurate inputs; we are not responsible for errors due to
-                incorrect data. The website and its content are owned by MoneyMindTool and protected by
-                intellectual property laws. Usage is governed by Indian laws.</p>
-        </div>
-    </div>
-    <footer class="mt-auto bg-indigo-900 text-white text-center py-6">
-        <div class="flex justify-center space-x-4">
-            <a href="/income-tax.html" class="hover:text-orange-500">Income Tax Calculator</a>
-            <span>|</span>
-            <a href="/loanemi.html" class="hover:text-orange-500">Loan EMI Calculator</a>
-            <span>|</span>
-            <a href="/capital-gains.html" class="hover:text-orange-500">Capital Gains Tax Calculator</a>
-            <span>|</span>
-            <a href="/gst-calculator.html" class="hover:text-orange-500">GST Calculator</a>
-            <span>|</span>
-            <a href="#" onclick="openModal('disclaimerModal')" class="hover:text-orange-500">Disclaimer</a>
-            <span>|</span>
-            <a href="#" onclick="openModal('termsModal')" class="hover:text-orange-500">Terms & Conditions</a>
-        </div>
-        <p class="mt-2 text-sm">© 2026 Digicreature Technologies. All Rights Reserved.</p>
+        <p class="mm-copyright">© 2026 Digicreature Technologies. All Rights Reserved.</p>
     </footer>
+
     <script>
+        // Populate age select dropdowns
+        (function () {
+            function populate(id, start, count, defaultValue) {
+                const sel = document.getElementById(id);
+                if (!sel) return;
+                let html = '';
+                for (let i = 0; i < count; i++) {
+                    const v = start + i;
+                    html += `<option value="${v}"${v === defaultValue ? ' selected' : ''}>${v}</option>`;
+                }
+                sel.innerHTML = html;
+            }
+            populate('currentAge', 20, 31, 30);
+            populate('retirementAge', 25, 51, 60);
+            populate('lifeExpectancy', 60, 41, 85);
+        })();
+
         // Chart.js configuration
         const chartConfig = {
             type: 'line',
@@ -556,8 +272,8 @@
                 datasets: [{
                     label: 'Retirement Corpus (₹)',
                     data: [],
-                    borderColor: '#F57C00',
-                    backgroundColor: 'rgba(245, 124, 0, 0.2)',
+                    borderColor: '#10B981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
                     fill: true,
                     tension: 0.4
                 }]
@@ -570,18 +286,22 @@
                         title: {
                             display: true,
                             text: 'Age',
-                            color: '#4B5EAA',
+                            color: '#FFFFFF',
                             font: { family: 'Inter' }
-                        }
+                        },
+                        ticks: { color: 'rgba(255,255,255,0.7)' },
+                        grid: { color: 'rgba(255,255,255,0.08)' }
                     },
                     y: {
                         beginAtZero: true,
                         title: {
                             display: true,
                             text: 'Corpus (₹)',
-                            color: '#4B5EAA',
+                            color: '#FFFFFF',
                             font: { family: 'Inter' }
-                        }
+                        },
+                        ticks: { color: 'rgba(255,255,255,0.7)' },
+                        grid: { color: 'rgba(255,255,255,0.08)' }
                     }
                 },
                 plugins: {
@@ -589,8 +309,8 @@
                     title: {
                         display: true,
                         text: 'Retirement Corpus Growth',
-                        color: '#2A3EB1',
-                        font: { family: 'Inter', size: 16 }
+                        color: '#FFFFFF',
+                        font: { family: 'Inter', size: 14 }
                     }
                 }
             }
@@ -598,48 +318,17 @@
 
         let taxChart;
         window.onload = function () {
-            const ctx = document.getElementById('taxChart')?.getContext('2d');
-            if (ctx) taxChart = new Chart(ctx, chartConfig);
-            updateDeadlines();
-            updateProgress();
+            const canvas = document.getElementById('taxChart');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                if (typeof Chart !== 'undefined') {
+                    taxChart = new Chart(ctx, chartConfig);
+                }
+            }
             validateInputs();
             document.querySelectorAll('input, select').forEach(input => {
                 input?.addEventListener('input', () => {
                     validateInputs();
-                    updateProgress();
-                });
-            });
-            document.querySelectorAll('.toggle-deadlines').forEach(btn => {
-                btn?.addEventListener('click', toggleDeadlines);
-                btn?.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        toggleDeadlines();
-                    }
-                });
-            });
-            document.querySelectorAll('.faq-item h3').forEach(item => {
-                item?.addEventListener('click', () => {
-                    gtag('event', 'faq_click', {
-                        event_category: 'FAQ',
-                        event_label: item.textContent
-                    });
-                });
-            });
-            document.querySelectorAll('.dropdown-content a').forEach(link => {
-                link?.addEventListener('click', () => {
-                    gtag('event', 'dropdown_click', {
-                        event_category: 'Navigation',
-                        event_label: link.textContent
-                    });
-                });
-            });
-            document.querySelectorAll('.tooltip').forEach(tooltip => {
-                tooltip?.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        tooltip.focus();
-                    }
                 });
             });
         };
@@ -655,12 +344,6 @@
             return result + '.' + decPart;
         }
 
-        function updateProgress() {
-            const inputs = ['currentAge', 'retirementAge', 'lifeExpectancy', 'monthlySavings', 'returnRate', 'inflationRate', 'targetExpenses'];
-            let filled = inputs.reduce((acc, id) => acc + (document.getElementById(id).value !== '' ? 1 : 0), 0);
-            document.getElementById('taxProgress').style.width = `${(filled / inputs.length) * 100}%`;
-        }
-
         function validateInputs() {
             const currentAge = parseInt(document.getElementById('currentAge').value) || 0;
             const retirementAge = parseInt(document.getElementById('retirementAge').value) || 0;
@@ -672,42 +355,33 @@
 
             const errorMessage = document.getElementById('errorMessage');
             const calcButton = document.getElementById('calcButton');
-            const inputs = ['currentAge', 'retirementAge', 'lifeExpectancy', 'monthlySavings', 'returnRate', 'inflationRate', 'targetExpenses'];
-            inputs.forEach(id => document.getElementById(id)?.classList.remove('border-red-600'));
             errorMessage.style.display = 'none';
             errorMessage.innerHTML = '';
 
             let errors = [];
             if (!currentAge || currentAge >= retirementAge) {
                 errors.push('Retirement age must be greater than current age.');
-                document.getElementById('currentAge')?.classList.add('border-red-600');
-                document.getElementById('retirementAge')?.classList.add('border-red-600');
             }
             if (!retirementAge || retirementAge >= lifeExpectancy) {
                 errors.push('Life expectancy must be greater than retirement age.');
-                document.getElementById('retirementAge')?.classList.add('border-red-600');
-                document.getElementById('lifeExpectancy')?.classList.add('border-red-600');
             }
             if (isNaN(monthlySavings) || monthlySavings < 0) {
                 errors.push('Monthly savings must be non-negative.');
-                document.getElementById('monthlySavings')?.classList.add('border-red-600');
             }
             if (isNaN(returnRate) || returnRate < 1 || returnRate > 15) {
                 errors.push('Return rate must be between 1% and 15%.');
-                document.getElementById('returnRate')?.classList.add('border-red-600');
             }
             if (isNaN(inflationRate) || inflationRate < 2 || inflationRate > 8) {
                 errors.push('Inflation rate must be between 2% and 8%.');
-                document.getElementById('inflationRate')?.classList.add('border-red-600');
             }
             if (isNaN(targetExpenses) || targetExpenses < 0) {
                 errors.push('Expected monthly expenses must be non-negative.');
-                document.getElementById('targetExpenses')?.classList.add('border-red-600');
             }
 
             if (errors.length > 0) {
                 errorMessage.innerHTML = errors.join('<br>');
                 errorMessage.style.display = 'block';
+                document.getElementById('resultsCard').classList.remove('hidden');
                 calcButton.disabled = true;
                 return false;
             }
@@ -718,62 +392,62 @@
         function calculateRetirement() {
             if (!validateInputs()) return;
 
-            const calcButton = document.getElementById('calcButton');
-            calcButton.innerHTML = 'Calculating...';
-            calcButton.classList.add('loading');
-            setTimeout(() => {
-                const currentAge = parseInt(document.getElementById('currentAge').value);
-                const retirementAge = parseInt(document.getElementById('retirementAge').value);
-                const lifeExpectancy = parseInt(document.getElementById('lifeExpectancy').value);
-                const monthlySavings = parseFloat(document.getElementById('monthlySavings').value) || 0;
-                const returnRate = parseFloat(document.getElementById('returnRate').value) / 100;
-                const inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100;
-                const targetExpenses = parseFloat(document.getElementById('targetExpenses').value) || 0;
+            const currentAge = parseInt(document.getElementById('currentAge').value);
+            const retirementAge = parseInt(document.getElementById('retirementAge').value);
+            const lifeExpectancy = parseInt(document.getElementById('lifeExpectancy').value);
+            const monthlySavings = parseFloat(document.getElementById('monthlySavings').value) || 0;
+            const returnRate = parseFloat(document.getElementById('returnRate').value) / 100;
+            const inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100;
+            const targetExpenses = parseFloat(document.getElementById('targetExpenses').value) || 0;
 
-                // Calculate years to retirement and post-retirement
-                const yearsToRetirement = retirementAge - currentAge;
-                const pensionYears = lifeExpectancy - retirementAge;
+            // Calculate years to retirement and post-retirement
+            const yearsToRetirement = retirementAge - currentAge;
+            const pensionYears = lifeExpectancy - retirementAge;
 
-                // Calculate corpus (future value of monthly contributions)
-                const monthlyRate = returnRate / 12;
-                const corpus = monthlySavings * ((Math.pow(1 + monthlyRate, 12 * yearsToRetirement) - 1) / monthlyRate) * (1 + monthlyRate);
+            // Calculate corpus (future value of monthly contributions)
+            const monthlyRate = returnRate / 12;
+            const corpus = monthlySavings * ((Math.pow(1 + monthlyRate, 12 * yearsToRetirement) - 1) / monthlyRate) * (1 + monthlyRate);
 
-                // Inflation-adjusted expenses
-                const adjustedExpenses = targetExpenses * Math.pow(1 + inflationRate, yearsToRetirement);
+            // Inflation-adjusted expenses
+            const adjustedExpenses = targetExpenses * Math.pow(1 + inflationRate, yearsToRetirement);
 
-                // Monthly pension (annuity formula)
-                const monthlyPension = corpus * monthlyRate / (1 - Math.pow(1 + monthlyRate, -12 * pensionYears));
+            // Monthly pension (annuity formula)
+            const monthlyPension = corpus * monthlyRate / (1 - Math.pow(1 + monthlyRate, -12 * pensionYears));
 
-                // Shortfall or surplus
-                const shortfallSurplus = monthlyPension - adjustedExpenses;
+            // Shortfall or surplus
+            const shortfallSurplus = monthlyPension - adjustedExpenses;
 
-                // Update results
-                document.getElementById('taxResult').innerHTML = `
-                    <strong class="text-indigo-900">Retirement Plan Summary:</strong><br>
-                    <strong>Retirement Corpus:</strong> ₹${formatIndianNumber(corpus)}<br>
-                    <strong>Monthly Pension:</strong> ₹${formatIndianNumber(monthlyPension)}<br>
-                    <strong>Inflation-Adjusted Expenses:</strong> ₹${formatIndianNumber(adjustedExpenses)}/month<br>
-                    <strong>${shortfallSurplus >= 0 ? 'Surplus' : 'Shortfall'}:</strong> ₹${formatIndianNumber(Math.abs(shortfallSurplus))}/month
-                `;
-                document.getElementById('resultsCard').classList.remove('hidden');
+            // Update results
+            document.getElementById('corpusOut').textContent = '₹' + formatIndianNumber(corpus);
+            document.getElementById('taxResult').innerHTML = `
+                <div><span>Years to Retirement</span><span>${yearsToRetirement}</span></div>
+                <div><span>Years in Retirement</span><span>${pensionYears}</span></div>
+                <div><span>Monthly Pension</span><span>₹${formatIndianNumber(monthlyPension)}</span></div>
+                <div><span>Inflated Monthly Expense</span><span>₹${formatIndianNumber(adjustedExpenses)}</span></div>
+                <div><span>${shortfallSurplus >= 0 ? 'Monthly Surplus' : 'Monthly Shortfall'}</span><span>₹${formatIndianNumber(Math.abs(shortfallSurplus))}</span></div>
+            `;
+            document.getElementById('resultsCard').classList.remove('hidden');
 
-                // Update chart
-                const chartLabels = Array.from({ length: yearsToRetirement + 1 }, (_, i) => currentAge + i);
-                const chartData = chartLabels.map(age => {
-                    const years = age - currentAge;
-                    return monthlySavings * ((Math.pow(1 + monthlyRate, 12 * years) - 1) / monthlyRate) * (1 + monthlyRate);
-                });
+            // Update chart
+            const chartLabels = Array.from({ length: yearsToRetirement + 1 }, (_, i) => currentAge + i);
+            const chartData = chartLabels.map(age => {
+                const years = age - currentAge;
+                return monthlySavings * ((Math.pow(1 + monthlyRate, 12 * years) - 1) / monthlyRate) * (1 + monthlyRate);
+            });
+            if (taxChart) {
                 taxChart.data.labels = chartLabels;
                 taxChart.data.datasets[0].data = chartData;
                 taxChart.update();
+            }
 
-                calcButton.innerHTML = 'Calculate Plan';
-                calcButton.classList.remove('loading');
+            document.getElementById('resultsCard').scrollIntoView({behavior:'smooth', block:'center'});
+
+            if (typeof gtag === 'function') {
                 gtag('event', 'calculate_retirement', {
                     event_category: 'Retirement',
                     event_label: 'Calculate'
                 });
-            }, 300);
+            }
         }
 
         function resetForm() {
@@ -784,49 +458,14 @@
             document.getElementById('returnRate').value = '10';
             document.getElementById('inflationRate').value = '6';
             document.getElementById('targetExpenses').value = '50000';
-            document.getElementById('taxResult').innerHTML = '';
-            document.getElementById('errorMessage').style.display = 'none';
             document.getElementById('resultsCard').classList.add('hidden');
-            taxChart.data.labels = [];
-            taxChart.data.datasets[0].data = [];
-            taxChart.update();
-            updateProgress();
+            if (taxChart) {
+                taxChart.data.labels = [];
+                taxChart.data.datasets[0].data = [];
+                taxChart.update();
+            }
             validateInputs();
-        }
-
-        function updateDeadlines() {
-            const today = new Date();
-            const advanceTaxDue = new Date('2025-03-15');
-            if (today > advanceTaxDue) {
-                const pastLi = document.getElementById('past-advance-tax');
-                pastLi.classList.add('past-deadline');
-                pastLi.innerHTML = '<strong>Advance Tax (Final, FY 2024-25)</strong>: Deadline passed (March 15, 2025). <span class="penalty">Penalty: 1% interest per month under Section 234C.</span>';
-            }
-        }
-
-        function toggleDeadlines() {
-            const deadlinesList = document.getElementById('deadlinesList');
-            const toggleBtn = document.querySelector('.toggle-deadlines');
-            if (deadlinesList.classList.contains('hidden')) {
-                deadlinesList.classList.remove('hidden');
-                toggleBtn.textContent = 'Hide Deadlines';
-            } else {
-                deadlinesList.classList.add('hidden');
-                toggleBtn.textContent = 'Show Deadlines';
-            }
-            gtag('event', 'toggle_deadlines', {
-                event_category: 'Deadlines',
-                event_label: 'Retirement Deadlines'
-            });
-        }
-
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('show');
-        }
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('show');
         }
     </script>
 </body>
-
 </html>

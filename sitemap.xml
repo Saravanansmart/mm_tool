@@ -1,133 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-<url>
-  <loc>https://moneymindtool.com/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/index.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/all-calculators.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/income-tax.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/simple-interest.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/fixed-deposit.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/recurring-deposit.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/educational-loan.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/personal-loan.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/sip.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/compound-interest.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/ppf.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/nps.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/hra.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/gratuity.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/loanemi.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/all-calculators</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/capital-gains.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/gst-calculator.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/retirement.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/blog.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/salary-calculator.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/loan-prepayment.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/ssy-calculator.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://moneymindtool.com/step-up-sip.html</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url><loc>https://moneymindtool.com/</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>1.00</priority></url>
+  <url><loc>https://moneymindtool.com/all-calculators.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://moneymindtool.com/income-tax.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://moneymindtool.com/sip.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://moneymindtool.com/step-up-sip.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://moneymindtool.com/home-loan.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://moneymindtool.com/personal-loan.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://moneymindtool.com/educational-loan.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://moneymindtool.com/loan-prepayment.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://moneymindtool.com/fixed-deposit.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://moneymindtool.com/recurring-deposit.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://moneymindtool.com/ppf.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://moneymindtool.com/nps.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://moneymindtool.com/epf-calculators.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://moneymindtool.com/ssy-calculator.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://moneymindtool.com/retirement.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://moneymindtool.com/gratuity.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://moneymindtool.com/hra.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://moneymindtool.com/salary-calculator.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://moneymindtool.com/gst-calculator.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://moneymindtool.com/capital-gains.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://moneymindtool.com/compound-interest.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://moneymindtool.com/lumpsum.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://moneymindtool.com/mutual-fund-returns.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://moneymindtool.com/blog.html</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.70</priority></url>
 </urlset>
