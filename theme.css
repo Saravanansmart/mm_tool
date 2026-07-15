@@ -588,6 +588,84 @@ footer.mm-footer {
 }
 .mm-modal-close:hover { background: var(--border); }
 
+/* ===== AD SLOTS (AdSense-ready, CLS-safe) ===== */
+.mm-ad-slot {
+  max-width: 728px;
+  margin: 24px auto;
+  padding: 12px;
+  background: var(--bg-2);
+  border: 1px dashed var(--border-2);
+  border-radius: var(--radius);
+  text-align: center;
+  min-height: 100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mm-ad-slot::before {
+  content: "Advertisement";
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  opacity: 0.7;
+}
+.mm-ad-slot .placeholder {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: 20px;
+  font-style: italic;
+}
+.mm-ad-slot ins { display: block; min-width: 300px; min-height: 90px; }
+/* Reserved sizes to prevent CLS */
+.mm-ad-slot.leaderboard { min-height: 100px; }
+.mm-ad-slot.medium-rectangle { min-height: 260px; max-width: 336px; }
+.mm-ad-slot.large-rectangle { min-height: 290px; max-width: 336px; }
+
+/* ===== AFFILIATE BANNER (contextual, non-intrusive) ===== */
+.mm-affiliate {
+  background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(15,23,42,0.03));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.mm-affiliate .aff-content { flex: 1; min-width: 220px; }
+.mm-affiliate .aff-tag { display: inline-block; background: var(--emerald); color: #fff; font-size: 0.68rem; padding: 3px 10px; border-radius: 999px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.mm-affiliate h3 { color: var(--navy); font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+.mm-affiliate p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+.mm-affiliate .aff-cta {
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+}
+.mm-affiliate .aff-cta:hover { background: var(--emerald); transform: translateY(-1px); }
+.mm-affiliate .aff-cta:visited { color: #fff; }
+.mm-affiliate .aff-disclosure { font-size: 0.7rem; color: var(--text-muted); flex-basis: 100%; margin-top: 4px; text-align: right; opacity: 0.7; }
+
+@media (max-width: 640px) {
+  .mm-affiliate { flex-direction: column; text-align: center; }
+  .mm-affiliate .aff-cta { width: 100%; }
+  .mm-ad-slot { padding: 8px; }
+}
+
 /* Utilities */
 .mm-mobile-only { display: none; }
 
