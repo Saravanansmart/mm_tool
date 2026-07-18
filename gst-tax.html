@@ -150,12 +150,7 @@
             <div class="value" id="fvOut">—</div>
             <div class="subline" id="resultDetail"></div>
         </section>
-        <div class="mm-ad-slot leaderboard" aria-label="Advertisement">
-            <!-- AdSense: replace data-ad-client and data-ad-slot with real IDs -->
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <div class="placeholder">Ad slot — connect your Google AdSense to monetise this space.</div>
-        </div>
+</div>
 
 
         <section class="mm-card">
@@ -245,12 +240,7 @@
             <a href="https://cleartax.in/gst" target="_blank" rel="sponsored noopener" class="aff-cta">Learn More →</a>
             <p class="aff-disclosure">We may earn a small commission at no extra cost to you when you use these links. This helps keep our calculators free.</p>
         </div>
-
-        <div class="mm-ad-slot leaderboard" aria-label="Advertisement">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <div class="placeholder">Ad slot — connect your Google AdSense to monetise this space.</div>
-        </div>
+</div>
         <section class="mm-related">
             <h2>Related Calculators</h2>
             <div class="mm-related-grid">
@@ -361,29 +351,6 @@
         }
     </script>
 
-    <!-- Fixed side banner ad — desktop only, dismissable -->
-    <aside class="mm-side-banner" id="mmSideBanner" aria-label="Advertisement">
-        <button class="close-btn" onclick="mmDismissSideBanner()" aria-label="Close ad">×</button>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="vertical" data-full-width-responsive="false"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        <div class="placeholder">Vertical ad slot (160×600) — connect AdSense to monetise.</div>
-    </aside>
-    <script>
-        (function(){
-            var KEY = 'mmSideBannerDismissedAt';
-            var b = document.getElementById('mmSideBanner');
-            if (!b) return;
-            var last = parseInt(localStorage.getItem(KEY) || '0', 10);
-            var oneWeek = 7 * 24 * 60 * 60 * 1000;
-            if (last && (Date.now() - last) < oneWeek) {
-                b.classList.add('dismissed');
-            }
-        })();
-        function mmDismissSideBanner() {
-            var b = document.getElementById('mmSideBanner');
-            if (b) { b.classList.add('dismissed'); localStorage.setItem('mmSideBannerDismissedAt', Date.now()); }
-        }
-    </script>
 
 </body>
 </html>
