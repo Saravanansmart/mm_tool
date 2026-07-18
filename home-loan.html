@@ -62,6 +62,7 @@
       {"@type":"Question","name":"Can I prepay my home loan in 2025?","acceptedAnswer":{"@type":"Answer","text":"Yes, prepayments are allowed. Floating-rate home loans carry no prepayment penalty for individual borrowers per RBI rules. Fixed-rate loans may incur charges up to 2% of the outstanding amount."}},
       {"@type":"Question","name":"What is the maximum home loan tenure in 2025?","acceptedAnswer":{"@type":"Answer","text":"The maximum home loan tenure is typically 30 years, subject to the borrower's age at loan maturity (usually capped at 70 years)."}}
     ]}</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4864427317222127" crossorigin="anonymous"></script>
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3MR5ZGL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -248,7 +249,8 @@
         </div>
 
         <div class="mm-ad-slot leaderboard" aria-label="Advertisement">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             <div class="placeholder">Ad slot — connect your Google AdSense to monetise this space.</div>
         </div>
         <section class="mm-related">
@@ -566,5 +568,30 @@
             });
         };
     </script>
+
+    <!-- Fixed side banner ad — desktop only, dismissable -->
+    <aside class="mm-side-banner" id="mmSideBanner" aria-label="Advertisement">
+        <button class="close-btn" onclick="mmDismissSideBanner()" aria-label="Close ad">×</button>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="vertical" data-full-width-responsive="false"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <div class="placeholder">Vertical ad slot (160×600) — connect AdSense to monetise.</div>
+    </aside>
+    <script>
+        (function(){
+            var KEY = 'mmSideBannerDismissedAt';
+            var b = document.getElementById('mmSideBanner');
+            if (!b) return;
+            var last = parseInt(localStorage.getItem(KEY) || '0', 10);
+            var oneWeek = 7 * 24 * 60 * 60 * 1000;
+            if (last && (Date.now() - last) < oneWeek) {
+                b.classList.add('dismissed');
+            }
+        })();
+        function mmDismissSideBanner() {
+            var b = document.getElementById('mmSideBanner');
+            if (b) { b.classList.add('dismissed'); localStorage.setItem('mmSideBannerDismissedAt', Date.now()); }
+        }
+    </script>
+
 </body>
 </html>

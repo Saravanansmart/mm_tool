@@ -46,6 +46,7 @@
       {"@type":"Question","name":"Is annual bonus part of in-hand salary?","acceptedAnswer":{"@type":"Answer","text":"No. Bonus is usually paid annually or quarterly. The calculator excludes it from monthly gross."}},
       {"@type":"Question","name":"Why does my actual salary differ from this calculator?","acceptedAnswer":{"@type":"Answer","text":"Variable pay, food coupons, NPS, insurance premiums, and other CTC line items vary by employer. This calculator provides a reliable estimate based on standard deductions."}}
     ]}</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4864427317222127" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="mm-header">
@@ -145,7 +146,8 @@
         </section>
         <div class="mm-ad-slot leaderboard" aria-label="Advertisement">
             <!-- AdSense: replace data-ad-client and data-ad-slot with real IDs -->
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             <div class="placeholder">Ad slot — connect your Google AdSense to monetise this space.</div>
         </div>
 
@@ -219,7 +221,8 @@
         </div>
 
         <div class="mm-ad-slot leaderboard" aria-label="Advertisement">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             <div class="placeholder">Ad slot — connect your Google AdSense to monetise this space.</div>
         </div>
         <section class="mm-related">
@@ -310,5 +313,30 @@
             document.getElementById('resultsCard').classList.add('hidden');
         }
     </script>
+
+    <!-- Fixed side banner ad — desktop only, dismissable -->
+    <aside class="mm-side-banner" id="mmSideBanner" aria-label="Advertisement">
+        <button class="close-btn" onclick="mmDismissSideBanner()" aria-label="Close ad">×</button>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="vertical" data-full-width-responsive="false"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <div class="placeholder">Vertical ad slot (160×600) — connect AdSense to monetise.</div>
+    </aside>
+    <script>
+        (function(){
+            var KEY = 'mmSideBannerDismissedAt';
+            var b = document.getElementById('mmSideBanner');
+            if (!b) return;
+            var last = parseInt(localStorage.getItem(KEY) || '0', 10);
+            var oneWeek = 7 * 24 * 60 * 60 * 1000;
+            if (last && (Date.now() - last) < oneWeek) {
+                b.classList.add('dismissed');
+            }
+        })();
+        function mmDismissSideBanner() {
+            var b = document.getElementById('mmSideBanner');
+            if (b) { b.classList.add('dismissed'); localStorage.setItem('mmSideBannerDismissedAt', Date.now()); }
+        }
+    </script>
+
 </body>
 </html>

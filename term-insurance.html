@@ -46,6 +46,7 @@
       {"@type":"Question","name":"What is the difference between term insurance and life insurance?","acceptedAnswer":{"@type":"Answer","text":"Term insurance is pure life cover — pays only on death during the policy term, no maturity benefit. Traditional life insurance (endowment, moneyback, ULIP) bundles investment with insurance and has much higher premiums. For pure protection, term insurance gives 10-20x more cover for the same premium."}},
       {"@type":"Question","name":"Are term insurance premiums tax-deductible?","acceptedAnswer":{"@type":"Answer","text":"Yes, under Section 80C of the Income Tax Act, premiums up to ₹1.5 lakh per year are deductible under the old tax regime. The death benefit received by the nominee is fully tax-free under Section 10(10D). The new tax regime does not allow the Section 80C deduction."}}
     ]}</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4864427317222127" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="mm-header">
@@ -166,7 +167,8 @@
         </section>
         <div class="mm-ad-slot leaderboard" aria-label="Advertisement">
             <!-- AdSense: replace data-ad-client and data-ad-slot with real IDs -->
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             <div class="placeholder">Ad slot — connect your Google AdSense to monetise this space.</div>
         </div>
 
@@ -279,7 +281,8 @@
         </div>
 
         <div class="mm-ad-slot leaderboard" aria-label="Advertisement">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             <div class="placeholder">Ad slot — connect your Google AdSense to monetise this space.</div>
         </div>
         <section class="mm-related">
@@ -434,5 +437,30 @@
             document.getElementById('resultsCard').classList.add('hidden');
         }
     </script>
+
+    <!-- Fixed side banner ad — desktop only, dismissable -->
+    <aside class="mm-side-banner" id="mmSideBanner" aria-label="Advertisement">
+        <button class="close-btn" onclick="mmDismissSideBanner()" aria-label="Close ad">×</button>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4864427317222127" data-ad-slot="XXXXXXXXXX" data-ad-format="vertical" data-full-width-responsive="false"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <div class="placeholder">Vertical ad slot (160×600) — connect AdSense to monetise.</div>
+    </aside>
+    <script>
+        (function(){
+            var KEY = 'mmSideBannerDismissedAt';
+            var b = document.getElementById('mmSideBanner');
+            if (!b) return;
+            var last = parseInt(localStorage.getItem(KEY) || '0', 10);
+            var oneWeek = 7 * 24 * 60 * 60 * 1000;
+            if (last && (Date.now() - last) < oneWeek) {
+                b.classList.add('dismissed');
+            }
+        })();
+        function mmDismissSideBanner() {
+            var b = document.getElementById('mmSideBanner');
+            if (b) { b.classList.add('dismissed'); localStorage.setItem('mmSideBannerDismissedAt', Date.now()); }
+        }
+    </script>
+
 </body>
 </html>

@@ -666,6 +666,92 @@ footer.mm-footer {
   .mm-ad-slot { padding: 8px; }
 }
 
+/* ===== FIXED SIDE BANNER (desktop only, dismissable) ===== */
+/* Breakpoint: 1500px. Main is max 1080 centered = 210px clearance each side.
+   Sidebar takes 160px + 20px margin + 20px gap = 200px → fits with 10px buffer. */
+.mm-side-banner {
+  display: none;
+}
+@media (min-width: 1500px) {
+  .mm-side-banner {
+    display: block;
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    width: 160px;
+    background: var(--bg-2);
+    border: 1px dashed var(--border-2);
+    border-radius: var(--radius);
+    padding: 12px 10px 14px;
+    z-index: 500;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+  .mm-side-banner::before {
+    content: "Advertisement";
+    display: block;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .mm-side-banner {
+    max-height: 640px;
+    overflow: hidden;
+  }
+  .mm-side-banner ins {
+    display: block;
+    width: 100%;
+    min-height: 560px;
+    max-height: 580px;
+    position: relative;
+  }
+  .mm-side-banner .placeholder {
+    position: absolute;
+    inset: 40px 10px 14px 10px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    background: var(--bg-2);
+  }
+  /* Hide placeholder once AdSense fills the ins with real content */
+  .mm-side-banner ins[data-ad-status="filled"] ~ .placeholder,
+  .mm-side-banner ins[data-adsbygoogle-status] ~ .placeholder { display: none; }
+  .mm-side-banner .close-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 22px;
+    height: 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .mm-side-banner .close-btn:hover { color: var(--navy); border-color: var(--navy-3); }
+  .mm-side-banner.dismissed { display: none; }
+}
+@media (min-width: 1700px) {
+  .mm-side-banner { right: 40px; width: 200px; }
+  .mm-side-banner ins { min-width: 180px; }
+}
+
 /* Utilities */
 .mm-mobile-only { display: none; }
 
