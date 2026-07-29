@@ -1,5 +1,6 @@
 /* MoneyMindTool — Modern Fintech Theme (Navy + Emerald) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Inter is loaded via a <link rel="stylesheet"> in each page's <head>, not @import,
+   so the browser can fetch it in parallel with this file instead of after it. */
 
 :root {
   --navy: #0F172A;
@@ -435,6 +436,13 @@ footer.mm-footer {
 .mm-footer li { margin-bottom: 8px; }
 .mm-footer a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.15s; }
 .mm-footer a:hover { color: var(--emerald); }
+
+.mm-link-btn {
+  background: none; border: none; padding: 0; margin: 0; cursor: pointer;
+  font: inherit; text-align: left;
+  color: rgba(255,255,255,0.7); font-size: 0.9rem; transition: color 0.15s;
+}
+.mm-link-btn:hover { color: var(--emerald); }
 
 .mm-footer .brand { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
 .mm-footer .brand span { color: var(--emerald); }
