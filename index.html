@@ -39,6 +39,7 @@
     <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="theme.css">
+    <script src="modals.js" defer></script>
 
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Financial Calculators for India","description":"Free financial calculators for FY 2025-26, including income tax, fixed deposit, SIP, and loan EMI calculators tailored for Indian users.","url":"https://moneymindtool.com/","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"datePublished":"2025-09-01","dateModified":"2026-07-06","inLanguage":"en-IN","author":{"@type":"Organization","name":"MoneyMindTool Editorial Team","url":"https://moneymindtool.com/"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"MoneyMindTool","url":"https://moneymindtool.com/","logo":{"@type":"ImageObject","url":"https://moneymindtool.com/assets/logo.png"},"address":{"@type":"PostalAddress","addressLocality":"Chennai","addressRegion":"Tamil Nadu","addressCountry":"India"},"contactPoint":{"@type":"ContactPoint","email":"support@moneymindtool.com"},"foundingDate":"2025-01-15","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Chennai","addressRegion":"Tamil Nadu","addressCountry":"India"}},"knowsAbout":["Income Tax India","Mutual Fund Investment","Personal Finance","Loan EMI Calculation","Retirement Planning","GST India","PPF","NPS"],"sameAs":["https://twitter.com/moneymindtool","https://www.linkedin.com/company/moneymindtool"]}</script>
@@ -373,25 +374,6 @@
         </div>
         <p class="mm-copyright">© 2026 Digicreature Technologies. All Rights Reserved.</p>
     </footer>
-
-    <script>
-        function openModal(id) {
-            document.getElementById(id).classList.add('show');
-            if (typeof gtag === 'function') gtag('event', 'open_modal', { event_category: 'Modal', event_label: id });
-        }
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('show');
-        }
-        // Close modal on backdrop click
-        document.querySelectorAll('.mm-modal').forEach(m => {
-            m.addEventListener('click', e => { if (e.target === m) m.classList.remove('show'); });
-        });
-        // Close modal on Escape
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') document.querySelectorAll('.mm-modal.show').forEach(m => m.classList.remove('show'));
-        });
-    </script>
-
 
 </body>
 </html>

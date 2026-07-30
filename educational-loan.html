@@ -37,6 +37,7 @@
     <meta name="twitter:image" content="https://moneymindtool.com/assets/og-image.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="theme.css">
+    <script src="modals.js" defer></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <style>
         .results { color: #fff; font-size: 1rem; line-height: 1.85; text-align: center; }
@@ -305,6 +306,42 @@
             </div>
         </section>
     </main>
+    <div id="disclaimerModal" class="mm-modal" role="dialog" aria-modal="true" aria-labelledby="disclaimerModalTitle">
+        <div class="mm-modal-content">
+            <button class="mm-modal-close" onclick="closeModal('disclaimerModal')" aria-label="Close">×</button>
+            <h3 id="disclaimerModalTitle">Disclaimer</h3>
+            <p>The calculators on MoneyMindTool are provided for informational and educational purposes only, tailored for FY 2025-26. Results are estimates based on standard formulas and user inputs, not accounting for individual circumstances, tax laws, or financial regulations. Consult a qualified financial advisor or tax professional before making decisions. MoneyMindTool and DigiCreature Technologies are not liable for any losses or damages arising from the use of these calculators.</p>
+        </div>
+    </div>
+    <div id="privacyModal" class="mm-modal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+        <div class="mm-modal-content">
+            <button class="mm-modal-close" onclick="closeModal('privacyModal')" aria-label="Close">×</button>
+            <h3 id="privacyModalTitle">Privacy Policy</h3>
+            <p>At MoneyMindTool we prioritise your privacy. We collect minimal data, such as anonymised usage statistics via Google Analytics to improve user experience. If you contact us via email, we store your email address securely and use it only to respond to your queries. We do not share your data with third parties unless required by law. Cookies may be used to enhance functionality but can be disabled in your browser. Contact: <a href="mailto:support@moneymindtool.com">support@moneymindtool.com</a>.</p>
+        </div>
+    </div>
+    <div id="aboutModal" class="mm-modal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle">
+        <div class="mm-modal-content">
+            <button class="mm-modal-close" onclick="closeModal('aboutModal')" aria-label="Close">×</button>
+            <h3 id="aboutModalTitle">About Us</h3>
+            <p>MoneyMindTool, operated by DigiCreature Technologies, is dedicated to empowering Indian users with free financial calculators for FY 2025-26. Our tools help you plan taxes, investments, and loans accurately, using the latest tax slabs and interest rates. Based in Chennai, Tamil Nadu, we simplify financial decision-making for salaried professionals, freelancers, and investors.</p>
+        </div>
+    </div>
+    <div id="contactModal" class="mm-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+        <div class="mm-modal-content">
+            <button class="mm-modal-close" onclick="closeModal('contactModal')" aria-label="Close">×</button>
+            <h3 id="contactModalTitle">Contact Us</h3>
+            <p>Reach out with questions, feedback, or suggestions about our calculators. Email us at <a href="mailto:support@moneymindtool.com">support@moneymindtool.com</a>. MoneyMindTool is operated by DigiCreature Technologies, based in Chennai, Tamil Nadu, India. We aim to respond within 48 hours.</p>
+        </div>
+    </div>
+    <div id="termsModal" class="mm-modal" role="dialog" aria-modal="true" aria-labelledby="termsModalTitle">
+        <div class="mm-modal-content">
+            <button class="mm-modal-close" onclick="closeModal('termsModal')" aria-label="Close">×</button>
+            <h3 id="termsModalTitle">Terms and Conditions</h3>
+            <p>By using MoneyMindTool you agree to these Terms. Our calculators are for personal, non-commercial use and provide estimates based on user inputs. We are not responsible for errors due to incorrect data or changes in financial regulations. Content is owned by DigiCreature Technologies and protected by Indian intellectual property laws. Usage is governed by Indian laws.</p>
+        </div>
+    </div>
+
 
     <footer class="mm-footer">
         <div class="mm-footer-grid">
@@ -336,6 +373,16 @@
                     <li><a href="home-loan.html">Home Loan</a></li>
                     <li><a href="personal-loan.html">Personal Loan</a></li>
                     <li><a href="educational-loan.html">Education Loan</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <ul>
+                    <li><button type="button" class="mm-link-btn" onclick="openModal('aboutModal')">About</button></li>
+                    <li><button type="button" class="mm-link-btn" onclick="openModal('contactModal')">Contact</button></li>
+                    <li><button type="button" class="mm-link-btn" onclick="openModal('termsModal')">Terms</button></li>
+                    <li><button type="button" class="mm-link-btn" onclick="openModal('privacyModal')">Privacy</button></li>
+                    <li><button type="button" class="mm-link-btn" onclick="openModal('disclaimerModal')">Disclaimer</button></li>
                 </ul>
             </div>
         </div>
