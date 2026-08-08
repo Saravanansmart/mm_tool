@@ -244,10 +244,10 @@
 
         <section class="mm-card" id="actionsCard">
             <div class="mm-actions">
-                <button id="calcButton" onclick="calcTax()" class="mm-btn" disabled>Calculate Tax</button>
-                <button onclick="resetForm()" class="mm-btn mm-btn-secondary">Reset</button>
+                <button id="calcButton" type="button" onclick="calcTax()" class="mm-btn" disabled>Calculate Tax</button>
+                <button type="button" onclick="resetForm()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
-            <div id="errorMessage" style="display:none;color:var(--danger);margin-top:14px;font-size:0.9rem;text-align:center;"></div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="display:none;color:var(--danger);margin-top:14px;font-size:0.9rem;text-align:center;"></div>
         </section>
 
         <section id="resultsCard" class="mm-result-card hidden">

@@ -139,8 +139,8 @@
                 </div>
             </div>
             <div class="mm-actions">
-                <button id="calcButton" onclick="calcSIP()" class="mm-btn">Calculate</button>
-                <button onclick="resetForm()" class="mm-btn mm-btn-secondary">Reset</button>
+                <button id="calcButton" type="button" onclick="calcSIP()" class="mm-btn">Calculate</button>
+                <button type="button" onclick="resetForm()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
         </section>
 
@@ -151,7 +151,7 @@
             <div style="max-width:340px; margin:24px auto 0; background:rgba(255,255,255,0.06); border-radius:12px; padding:14px;">
                 <canvas id="sipChart" aria-label="Pie chart showing SIP returns breakdown" height="220"></canvas>
             </div>
-            <div id="errorMessage" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
         </section>
 
 

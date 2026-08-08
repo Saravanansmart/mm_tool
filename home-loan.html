@@ -158,13 +158,13 @@
                 </div>
             </div>
             <div class="mm-actions">
-                <button id="calcButton" onclick="calcEMI()" disabled class="mm-btn" aria-label="Calculate Home Loan EMI">Calculate EMI</button>
-                <button onclick="resetForm()" class="mm-btn mm-btn-secondary" aria-label="Reset Form">Reset</button>
+                <button id="calcButton" type="button" onclick="calcEMI()" disabled class="mm-btn" aria-label="Calculate Home Loan EMI">Calculate EMI</button>
+                <button type="button" onclick="resetForm()" class="mm-btn mm-btn-secondary" aria-label="Reset Form">Reset</button>
             </div>
         </section>
 
         <section class="mm-result-card results-card hidden">
-            <div class="error-message" id="errorMessage"></div>
+            <div class="error-message" id="errorMessage" role="alert" aria-live="polite"></div>
             <div class="label">Home Loan Summary</div>
             <div class="results" id="emiResult"></div>
             <div class="amortization-schedule" id="amortizationSchedule">
