@@ -1,0 +1,174 @@
+{
+  "relatedCalculators": {
+    "sip.html": {
+      "category": "investments",
+      "primary": ["lumpsum.html", "mutual-fund-returns.html", "step-up-sip.html"],
+      "secondary": ["ppf.html", "nps.html", "elss-calculator.html", "compound-interest.html"]
+    },
+    "lumpsum.html": {
+      "category": "investments",
+      "primary": ["sip.html", "mutual-fund-returns.html", "step-up-sip.html"],
+      "secondary": ["ppf.html", "nps.html", "elss-calculator.html"]
+    },
+    "step-up-sip.html": {
+      "category": "investments",
+      "primary": ["sip.html", "lumpsum.html", "mutual-fund-returns.html"],
+      "secondary": ["ppf.html", "compound-interest.html", "retirement.html"]
+    },
+    "mutual-fund-returns.html": {
+      "category": "investments",
+      "primary": ["sip.html", "lumpsum.html", "step-up-sip.html"],
+      "secondary": ["elss-calculator.html", "capital-gains.html"]
+    },
+    "ppf.html": {
+      "category": "savings",
+      "primary": ["nps.html", "recurring-deposit.html", "fixed-deposit.html"],
+      "secondary": ["sip.html", "retirement.html", "child-education-corpus.html"]
+    },
+    "nps.html": {
+      "category": "savings",
+      "primary": ["ppf.html", "retirement.html", "fixed-deposit.html"],
+      "secondary": ["sip.html", "recurring-deposit.html", "emergency-fund.html"]
+    },
+    "epf-calculators.html": {
+      "category": "savings",
+      "primary": ["nps.html", "salary-calculator.html", "retirement.html"],
+      "secondary": ["ppf.html", "gratuity.html"]
+    },
+    "fixed-deposit.html": {
+      "category": "savings",
+      "primary": ["recurring-deposit.html", "ppf.html", "nps.html"],
+      "secondary": ["inflation-calculator.html", "emergency-fund.html"]
+    },
+    "recurring-deposit.html": {
+      "category": "savings",
+      "primary": ["fixed-deposit.html", "ppf.html", "sip.html"],
+      "secondary": ["inflation-calculator.html", "nps.html"]
+    },
+    "ssy-calculator.html": {
+      "category": "goals",
+      "primary": ["child-education-corpus.html", "ppf.html"],
+      "secondary": ["sip.html", "lumpsum.html", "baby-savings-goal.html"]
+    },
+    "income-tax.html": {
+      "category": "tax",
+      "primary": ["salary-calculator.html", "hra.html", "capital-gains.html"],
+      "secondary": ["tds-calculator.html", "gratuity.html", "gst-calculator.html"]
+    },
+    "salary-calculator.html": {
+      "category": "tax",
+      "primary": ["income-tax.html", "hra.html", "gratuity.html"],
+      "secondary": ["epf-calculators.html", "tds-calculator.html"]
+    },
+    "hra.html": {
+      "category": "tax",
+      "primary": ["income-tax.html", "salary-calculator.html"],
+      "secondary": ["gratuity.html", "tds-calculator.html"]
+    },
+    "gratuity.html": {
+      "category": "tax",
+      "primary": ["income-tax.html", "salary-calculator.html", "hra.html"],
+      "secondary": ["retirement.html", "epf-calculators.html"]
+    },
+    "capital-gains.html": {
+      "category": "tax",
+      "primary": ["income-tax.html", "mutual-fund-returns.html"],
+      "secondary": ["sip.html", "tds-calculator.html"]
+    },
+    "gst-tax.html": {
+      "category": "tax",
+      "primary": ["gst-calculator.html", "income-tax.html"],
+      "secondary": ["tds-calculator.html"]
+    },
+    "gst-calculator.html": {
+      "category": "tax",
+      "primary": ["gst-tax.html", "income-tax.html"],
+      "secondary": ["tds-calculator.html"]
+    },
+    "tds-calculator.html": {
+      "category": "tax",
+      "primary": ["income-tax.html", "salary-calculator.html"],
+      "secondary": ["capital-gains.html", "gratuity.html"]
+    },
+    "home-loan.html": {
+      "category": "loans",
+      "primary": ["personal-loan.html", "car-loan.html", "loan-prepayment.html"],
+      "secondary": ["educational-loan.html", "stamp-duty.html"]
+    },
+    "car-loan.html": {
+      "category": "loans",
+      "primary": ["home-loan.html", "personal-loan.html", "loan-prepayment.html"],
+      "secondary": ["educational-loan.html"]
+    },
+    "personal-loan.html": {
+      "category": "loans",
+      "primary": ["home-loan.html", "car-loan.html", "loan-prepayment.html"],
+      "secondary": ["educational-loan.html"]
+    },
+    "educational-loan.html": {
+      "category": "loans",
+      "primary": ["home-loan.html", "personal-loan.html", "child-education-corpus.html"],
+      "secondary": ["loan-prepayment.html"]
+    },
+    "loan-prepayment.html": {
+      "category": "loans",
+      "primary": ["home-loan.html", "personal-loan.html", "car-loan.html"],
+      "secondary": ["educational-loan.html"]
+    },
+    "child-education-corpus.html": {
+      "category": "goals",
+      "primary": ["ssy-calculator.html", "sip.html", "lumpsum.html"],
+      "secondary": ["educational-loan.html", "inflation-calculator.html"]
+    },
+    "baby-savings-goal.html": {
+      "category": "goals",
+      "primary": ["ssy-calculator.html", "child-education-corpus.html", "ppf.html"],
+      "secondary": ["emergency-fund.html", "sip.html"]
+    },
+    "maternity-leave-salary.html": {
+      "category": "goals",
+      "primary": ["salary-calculator.html", "hra.html"],
+      "secondary": ["income-tax.html", "epf-calculators.html"]
+    },
+    "maternity-expense-estimator.html": {
+      "category": "goals",
+      "primary": ["baby-savings-goal.html", "child-education-corpus.html"],
+      "secondary": ["emergency-fund.html", "inflation-calculator.html"]
+    },
+    "emergency-fund.html": {
+      "category": "goals",
+      "primary": ["retirement.html", "inflation-calculator.html"],
+      "secondary": ["nps.html", "ppf.html", "term-insurance.html"]
+    },
+    "retirement.html": {
+      "category": "goals",
+      "primary": ["nps.html", "epf-calculators.html", "ppf.html"],
+      "secondary": ["sip.html", "inflation-calculator.html", "emergency-fund.html"]
+    },
+    "term-insurance.html": {
+      "category": "goals",
+      "primary": ["emergency-fund.html", "retirement.html", "child-education-corpus.html"],
+      "secondary": ["income-tax.html"]
+    },
+    "inflation-calculator.html": {
+      "category": "tools",
+      "primary": ["retirement.html", "child-education-corpus.html", "emergency-fund.html"],
+      "secondary": ["fixed-deposit.html", "sip.html"]
+    },
+    "compound-interest.html": {
+      "category": "investments",
+      "primary": ["sip.html", "ppf.html", "fixed-deposit.html"],
+      "secondary": ["recurring-deposit.html", "nps.html"]
+    },
+    "elss-calculator.html": {
+      "category": "investments",
+      "primary": ["sip.html", "lumpsum.html", "income-tax.html"],
+      "secondary": ["capital-gains.html", "mutual-fund-returns.html"]
+    },
+    "stamp-duty.html": {
+      "category": "tools",
+      "primary": ["home-loan.html", "income-tax.html"],
+      "secondary": ["capital-gains.html"]
+    }
+  }
+}

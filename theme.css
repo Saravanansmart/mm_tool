@@ -384,21 +384,27 @@ main.mm-main {
 
 .mm-related-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .mm-related-grid a {
   background: #fff;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: 10px;
-  padding: 14px;
+  padding: 12px;
   color: var(--navy);
   text-decoration: none;
   text-align: center;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: all 0.15s;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  word-break: break-word;
 }
 
 .mm-related-grid a:hover { background: var(--emerald); color: #fff; border-color: var(--emerald); transform: translateY(-2px); }
