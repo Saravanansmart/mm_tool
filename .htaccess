@@ -1,8 +1,14 @@
 # MoneyMindTool Security and Performance Configuration
 
-# Enable HTTPS Redirect
+# URL Standardization & Security
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Remove www subdomain (www → non-www)
+  RewriteCond %{HTTP_HOST} ^www\.moneymindtool\.com$ [NC]
+  RewriteRule ^(.*)$ https://moneymindtool.com/$1 [L,R=301]
+
+  # Enable HTTPS (HTTP → HTTPS)
   RewriteCond %{HTTPS} off
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
