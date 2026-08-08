@@ -244,10 +244,10 @@
 
         <section class="mm-card" id="actionsCard">
             <div class="mm-actions">
-                <button id="calcButton" onclick="calcTax()" class="mm-btn" disabled>Calculate Tax</button>
-                <button onclick="resetForm()" class="mm-btn mm-btn-secondary">Reset</button>
+                <button id="calcButton" type="button" onclick="calcTax()" class="mm-btn" disabled>Calculate Tax</button>
+                <button type="button" onclick="resetForm()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
-            <div id="errorMessage" style="display:none;color:var(--danger);margin-top:14px;font-size:0.9rem;text-align:center;"></div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="display:none;color:var(--danger);margin-top:14px;font-size:0.9rem;text-align:center;"></div>
         </section>
 
         <section id="resultsCard" class="mm-result-card hidden">
@@ -365,14 +365,18 @@
         </div>
         <section class="mm-related">
             <h2>Related Calculators</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">Optimize your tax planning with these complementary tools for salary income, exemptions, and investment gains.</p>
             <div class="mm-related-grid">
-                <a href="hra.html">HRA</a>
-                <a href="salary-calculator.html">Salary</a>
-                <a href="gratuity.html">Gratuity</a>
-                <a href="gst-calculator.html">GST</a>
-                <a href="capital-gains.html">Capital Gains</a>
-                <a href="all-calculators.html" class="primary">View All →</a>
+                <a href="salary-calculator.html" title="Calculate take-home salary after tax">Salary Calculator</a>
+                <a href="hra.html" title="Maximize HRA exemption">HRA Exemption</a>
+                <a href="capital-gains.html" title="Calculate LTCG & STCG tax">Capital Gains Tax</a>
+                <a href="tds-calculator.html" title="Estimate TDS deductions">TDS Calculator</a>
+                <a href="gratuity.html" title="Calculate retirement gratuity">Gratuity Calculator</a>
+                <a href="epf-calculators.html" title="Plan EPF savings">EPF Calculator</a>
+                <a href="gst-tax.html" title="Calculate GST liability">GST Tax Calculator</a>
+                <a href="nps.html" title="Retire with NPS corpus">NPS Calculator</a>
             </div>
+            <a href="all-calculators.html" class="primary" style="display: inline-block; margin-top: 12px;">View All Calculators →</a>
         </section>
     </main>
     <div id="disclaimerModal" class="mm-modal" role="dialog" aria-modal="true" aria-labelledby="disclaimerModalTitle">
