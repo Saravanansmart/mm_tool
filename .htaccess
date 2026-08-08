@@ -1,10 +1,26 @@
 # MoneyMindTool Security and Performance Configuration
 
-# Enable HTTPS Redirect
+# URL Standardization & Security
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Remove www subdomain (www → non-www)
+  RewriteCond %{HTTP_HOST} ^www\.moneymindtool\.com$ [NC]
+  RewriteRule ^(.*)$ https://moneymindtool.com/$1 [L,R=301]
+
+  # Enable HTTPS (HTTP → HTTPS)
   RewriteCond %{HTTPS} off
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Retired URLs → 301 to the page that replaced them.
+  # These also ship as meta-refresh HTML stubs so the redirect still works on
+  # hosts without mod_rewrite; the 301 is preferred because it passes link equity.
+  RewriteRule ^simple-interest\.html$ /compound-interest.html [L,R=301]
+  RewriteRule ^loanemi\.html$ /home-loan.html [L,R=301]
+
+  # Duplicate blog slugs → the canonical article
+  RewriteRule ^blog/fixed-deposit-calculator-2025\.html$ /blog/best-fixed-deposit-plans-2025.html [L,R=301]
+  RewriteRule ^blog/gst-reforms-2025\.html$ /blog/gst-changes-2025.html [L,R=301]
 </IfModule>
 
 # Security Headers
