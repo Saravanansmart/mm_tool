@@ -7,3 +7,6 @@ Disallow: /search/             # Block internal search results
 Disallow: /private/            # Block private directories
 Disallow: *.pdf                # Block PDF files (optional)
 Sitemap: https://moneymindtool.com/sitemap.xml
+
+# llms.txt: structured content map for AI assistants and answer engines
+# See https://llmstxt.org/
