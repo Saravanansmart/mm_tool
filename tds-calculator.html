@@ -576,6 +576,11 @@
                 <div><span>Note</span><span>${notes}</span></div>
                 <div><span>Deposit Deadline</span><span>By 7th of the next month via Challan ITNS-281 (30th April for March)</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_tds', {
+                'event_category': 'Calculator',
+                'event_label': 'TDS Calculator'
+            });
             resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 

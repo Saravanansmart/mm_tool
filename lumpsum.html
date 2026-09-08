@@ -329,6 +329,11 @@
                 <div><span>Wealth Gained</span><span>${inr(gain)}</span></div>
                 <div><span>Period</span><span>${n} years @ ${(r*100).toFixed(1)}%</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_lumpsum', {
+                'event_category': 'Calculator',
+                'event_label': 'Lumpsum Investment Calculator'
+            });
             resultsCard.scrollIntoView({behavior:'smooth', block:'center'});
         }
         function resetLumpsum() {

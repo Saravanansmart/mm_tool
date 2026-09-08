@@ -369,6 +369,11 @@
                 <div><span>Tax Saved / Year</span><span>${inr(taxSavedPerYear)}</span></div>
                 <div><span>Total Tax Saved</span><span>${inr(totalTaxSaved)}</span></div>`;
             document.getElementById('resultsCard').classList.remove('hidden');
+
+            gtag('event', 'calculate_elss', {
+                'event_category': 'Calculator',
+                'event_label': 'ELSS Calculator'
+            });
             document.getElementById('resultsCard').scrollIntoView({behavior:'smooth', block:'center'});
         }
         function resetELSS() {

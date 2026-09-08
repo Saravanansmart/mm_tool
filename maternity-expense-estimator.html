@@ -376,6 +376,11 @@
                 <div><span>Emergency Buffer (10%)</span><span>${inr(emergencyBuffer)}</span></div>
                 <div><span>Total You Should Budget</span><span>${inr(outOfPocket)}</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_maternity_expense', {
+                'event_category': 'Calculator',
+                'event_label': 'Maternity Expense Estimator'
+            });
             resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 

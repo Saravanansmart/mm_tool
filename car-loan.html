@@ -347,6 +347,11 @@
                 <div><span>Total Payable</span><span>${inr(totalPayable)}</span></div>
                 <div><span>Number of EMIs</span><span>${n}</span></div>`;
             document.getElementById('resultsCard').classList.remove('hidden');
+
+            gtag('event', 'calculate_car_loan', {
+                'event_category': 'Calculator',
+                'event_label': 'Car Loan EMI Calculator'
+            });
             document.getElementById('resultsCard').scrollIntoView({behavior:'smooth', block:'center'});
         }
         function resetCarLoan() {

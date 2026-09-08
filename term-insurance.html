@@ -464,6 +464,11 @@
                 <div><span>Approx. Monthly Premium Range</span><span>${inr(monthlyLow)} – ${inr(monthlyHigh)}</span></div>
                 <div><span>Estimated at Age</span><span>${currentAge}, non-smoker</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_term_insurance', {
+                'event_category': 'Calculator',
+                'event_label': 'Term Insurance Cover Calculator'
+            });
             resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 

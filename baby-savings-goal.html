@@ -372,6 +372,11 @@
                 <div><span>Total You'll Invest</span><span>${inr(totalInvested)}</span></div>
                 <div><span>Wealth Gained via Compounding</span><span>${inr(wealthGained)}</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_baby_savings_goal', {
+                'event_category': 'Calculator',
+                'event_label': 'Baby Savings Goal Calculator'
+            });
             resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
