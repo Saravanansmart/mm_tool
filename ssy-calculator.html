@@ -317,6 +317,11 @@
                 <div><span>Wealth Gained</span><span>${inr(balance - totalInvested)}</span></div>
                 <div><span>Tenure</span><span>21 years</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_ssy', {
+                'event_category': 'Calculator',
+                'event_label': 'Sukanya Samriddhi Yojana Calculator'
+            });
             resultsCard.scrollIntoView({behavior:'smooth', block:'center'});
         }
         function resetSSY() {

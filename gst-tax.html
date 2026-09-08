@@ -400,6 +400,11 @@
                 ${splitHTML}
                 <div><span>Total Amount</span><span>${inrPaise(total)}</span></div>`;
             document.getElementById('resultsCard').classList.remove('hidden');
+
+            gtag('event', 'calculate_gst_tax', {
+                'event_category': 'Calculator',
+                'event_label': 'GST Tax Calculator'
+            });
             document.getElementById('resultsCard').scrollIntoView({behavior:'smooth', block:'center'});
         }
         function resetGST() {

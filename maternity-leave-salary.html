@@ -409,6 +409,11 @@
 
             document.getElementById('resultDetail').innerHTML = rows;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_maternity_leave_salary', {
+                'event_category': 'Calculator',
+                'event_label': 'Maternity Leave Salary Calculator'
+            });
             resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 

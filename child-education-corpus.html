@@ -365,6 +365,11 @@
                 <div><span>Corpus Gap to Fund</span><span>${inr(gap)}</span></div>
                 <div><span>Required Monthly SIP</span><span>${inr(requiredSIP)}</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_child_education_corpus', {
+                'event_category': 'Calculator',
+                'event_label': 'Child Education Corpus Calculator'
+            });
             resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 

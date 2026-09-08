@@ -336,6 +336,11 @@
                 <div><span>Estimated Profit</span><span>${inr(balance - invested)}</span></div>
                 <div><span>Period</span><span>${years} years</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_step_up_sip', {
+                'event_category': 'Calculator',
+                'event_label': 'Step-Up SIP Calculator'
+            });
             resultsCard.scrollIntoView({behavior:'smooth', block:'center'});
         }
         function resetStepUp() {

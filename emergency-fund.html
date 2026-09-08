@@ -427,6 +427,11 @@
                 <div><span>Recommended Split — Sweep FD / Liquid Fund</span><span>${inr(shortBucket)}</span></div>
                 <div><span>Recommended Split — Short-Duration Debt / FD</span><span>${inr(longBucket)}</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_emergency_fund', {
+                'event_category': 'Calculator',
+                'event_label': 'Emergency Fund Calculator'
+            });
             resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 

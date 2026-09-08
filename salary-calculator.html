@@ -358,6 +358,11 @@
                 <div><span>Professional Tax</span><span>${inr(pt)}</span></div>
                 <div><span>TDS</span><span>${inr(tds)}</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_salary', {
+                'event_category': 'Calculator',
+                'event_label': 'In-Hand Salary Calculator'
+            });
             resultsCard.scrollIntoView({behavior:'smooth', block:'center'});
         }
         function resetSalary() {

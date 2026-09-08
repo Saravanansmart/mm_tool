@@ -354,6 +354,11 @@
 
             // Show result card
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_gratuity', {
+                'event_category': 'Calculator',
+                'event_label': 'Gratuity Calculator'
+            });
             resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 

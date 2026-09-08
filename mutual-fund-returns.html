@@ -355,6 +355,11 @@
                 <div><span>Absolute Return</span><span>${absRet.toFixed(1)}%</span></div>
                 <div><span>CAGR (effective)</span><span>${cagr.toFixed(2)}%</span></div>`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_mutual_fund_returns', {
+                'event_category': 'Calculator',
+                'event_label': 'Mutual Fund Returns Calculator'
+            });
             resultsCard.scrollIntoView({behavior:'smooth', block:'center'});
         }
         function resetMF() {

@@ -347,6 +347,11 @@
                 <div class="row"><span>New Monthly Payment</span><span>₹${Math.round(emi + prepay).toLocaleString()}</span></div>
             `;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_loan_prepayment', {
+                'event_category': 'Calculator',
+                'event_label': 'Loan Prepayment Calculator'
+            });
             resultsCard.scrollIntoView({behavior:'smooth', block:'center'});
         }
     </script>

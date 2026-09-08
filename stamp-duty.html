@@ -477,6 +477,11 @@
                 <div><span>Total Cost of Ownership</span><span>${inr(totalCost)}</span></div>
                 ${savingsLine}`;
             resultsCard.classList.remove('hidden');
+
+            gtag('event', 'calculate_stamp_duty', {
+                'event_category': 'Calculator',
+                'event_label': 'Stamp Duty & Registration Calculator'
+            });
             resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 

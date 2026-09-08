@@ -348,6 +348,11 @@
                 <div><span>Purchasing Power Lost</span><span>${inr(valueLost)}</span></div>
                 <div><span>% Value Eroded</span><span>${percentLost.toFixed(1)}%</span></div>`;
             document.getElementById('resultsCard').classList.remove('hidden');
+
+            gtag('event', 'calculate_inflation', {
+                'event_category': 'Calculator',
+                'event_label': 'Inflation Calculator'
+            });
             document.getElementById('resultsCard').scrollIntoView({behavior:'smooth', block:'center'});
         }
         function resetInflation() {
