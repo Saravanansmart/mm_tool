@@ -153,6 +153,7 @@
                     <div class="hint">Commercial typically attracts higher rate; agri may be exempt.</div>
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
                 <button onclick="calculateStampDuty()" class="mm-btn">Calculate Stamp Duty</button>
                 <button onclick="resetStampDuty()" class="mm-btn mm-btn-secondary">Reset</button>
@@ -389,8 +390,8 @@
 
         // State x gender rate matrix (stamp duty %)
         const RATES = {
-            maharashtra: { male: 6, female: 5, joint: 6, reg: 1, transfer: 0 },
-            karnataka:   { male: 5, female: 5, joint: 5, reg: 1, transfer: 0 },
+            maharashtra: { male: 6, female: 5, joint: 6, reg: 1, transfer: 0, regCap: 30000 },
+            karnataka:   { male: 5, female: 5, joint: 5, reg: 2, transfer: 0 }, // slab handled below
             delhi:       { male: 6, female: 4, joint: 5, reg: 1, transfer: 0 },
             tamilnadu:   { male: 7, female: 7, joint: 7, reg: 4, transfer: 0 },
             telangana:   { male: 4, female: 4, joint: 4, reg: 0.5, transfer: 1.5 },
@@ -423,10 +424,13 @@
             const gender = document.getElementById('gender').value;
             const propertyType = document.getElementById('propertyType').value;
 
-            if (propertyValue <= 0) {
-                alert('Please enter a valid property value.');
+            const errBox = document.getElementById('errorMessage');
+            if (!(propertyValue > 0)) {
+                if (errBox) { errBox.textContent = 'Please enter a property value greater than zero.'; errBox.style.display = 'block'; }
+                resultsCard.classList.add('hidden');
                 return;
             }
+            if (errBox) { errBox.textContent = ''; errBox.style.display = 'none'; }
 
             const cfg = RATES[stateKey];
             let baseRate = cfg[gender];
@@ -435,6 +439,21 @@
 
             // West Bengal slab: above ₹1 crore charged 6%
             if (stateKey === 'wb' && propertyValue > 10000000) baseRate = 6;
+
+            // UP: the 1% women's concession (Cabinet decision of 22 Jul 2025) applies only to
+            // transactions up to ₹1 crore. Above that the standard male rate applies in full.
+            let upConcessionLost = false;
+            if (stateKey === 'up' && gender !== 'male' && propertyValue > 10000000) {
+                baseRate = cfg.male;
+                upConcessionLost = true;
+            }
+
+            // Karnataka slab: 2% up to ₹20L, 3% ₹20-45L, 5% above ₹45L
+            if (stateKey === 'karnataka') {
+                if (propertyValue <= 2000000) baseRate = 2;
+                else if (propertyValue <= 4500000) baseRate = 3;
+                else baseRate = 5;
+            }
 
             // Property-type modifier
             let typeModifier = 0;
@@ -449,15 +468,17 @@
             const effectiveRate = Math.max(0, baseRate + typeModifier);
 
             const stampDuty = propertyValue * effectiveRate / 100;
-            const registration = propertyValue * regRate / 100;
+            let registration = propertyValue * regRate / 100;
+            if (cfg.regCap != null) registration = Math.min(registration, cfg.regCap);
             const transfer = propertyValue * transferRate / 100;
             const totalCharges = stampDuty + registration + transfer;
             const totalCost = propertyValue + totalCharges;
 
             // Female savings comparison (only if user picked male or joint)
             let savingsLine = '';
-            if (gender !== 'female' && cfg.female < cfg[gender]) {
-                const femaleRate = cfg.female + (propertyType === 'commercial' ? 0.5 : 0);
+            const upAboveCeiling = (stateKey === 'up' && propertyValue > 10000000);
+            if (!upAboveCeiling && gender !== 'female' && cfg.female < cfg[gender]) {
+                const femaleRate = (baseRate - cfg[gender] + cfg.female) + (propertyType === 'commercial' ? 0.5 : 0);
                 const femaleDuty = propertyValue * femaleRate / 100;
                 const saving = stampDuty - femaleDuty;
                 if (saving > 0) {
@@ -470,11 +491,12 @@
                 <div><span>State</span><span>${STATE_LABEL[stateKey]}</span></div>
                 <div><span>Effective Stamp Duty Rate</span><span>${effectiveRate.toFixed(2)}%${typeNote}</span></div>
                 <div><span>Stamp Duty</span><span>${inr(stampDuty)}</span></div>
-                <div><span>Registration Charge (${regRate}%)</span><span>${inr(registration)}</span></div>
+                <div><span>Registration Charge (${regRate}%${cfg.regCap != null ? `, capped at ${inr(cfg.regCap)}` : ''})</span><span>${inr(registration)}</span></div>
                 ${transferRate > 0 ? `<div><span>Transfer Duty (${transferRate}%)</span><span>${inr(transfer)}</span></div>` : ''}
                 <div><span>Total Government Charges</span><span>${inr(totalCharges)}</span></div>
                 <div><span>Property Value</span><span>${inr(propertyValue)}</span></div>
                 <div><span>Total Cost of Ownership</span><span>${inr(totalCost)}</span></div>
+                ${upConcessionLost ? `<div><span>Note</span><span>The UP 1% women's concession applies only to transactions up to ₹1 crore, so the standard ${cfg.male}% rate has been used.</span></div>` : ''}
                 ${savingsLine}`;
             resultsCard.classList.remove('hidden');
 

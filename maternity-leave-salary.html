@@ -144,6 +144,7 @@
                     <div class="hint">Uncheck to see ESIC-only pay for wages ≤ ₹21,000.</div>
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
                 <button onclick="calculateMaternityLeave()" class="mm-btn">Calculate Leave Pay</button>
                 <button onclick="resetMaternityLeave()" class="mm-btn mm-btn-secondary">Reset</button>
@@ -340,6 +341,7 @@
         }
 
         function calculateMaternityLeave() {
+            (function(){var _e=document.getElementById('errorMessage');if(_e){_e.textContent='';_e.style.display='none';}})();
             const resultsCard = document.getElementById('resultsCard');
             const monthlyGross = parseFloat(document.getElementById('monthlyGross').value) || 0;
             const priorChildren = parseInt(document.getElementById('priorChildren').value, 10);
@@ -348,12 +350,12 @@
             const employerFullPay = document.getElementById('employerFullPay').checked;
 
             if (monthlyGross < 10000) {
-                alert('Please enter a monthly gross salary of at least ₹10,000.');
+                { var _e=document.getElementById('errorMessage'); if(_e){_e.textContent='Please enter a monthly gross salary of at least ₹10,000.'; _e.style.display='block';} var _c=document.getElementById('resultsCard'); if(_c)_c.classList.add('hidden'); }
                 return;
             }
             if (priorChildren >= 2 && weeks > 12) weeks = 12;
             if (weeks < 1) {
-                alert('Please enter valid leave weeks.');
+                { var _e=document.getElementById('errorMessage'); if(_e){_e.textContent='Please enter valid leave weeks.'; _e.style.display='block';} var _c=document.getElementById('resultsCard'); if(_c)_c.classList.add('hidden'); }
                 return;
             }
 
@@ -365,25 +367,18 @@
             let employerShortfall = 0;
             if (!employerFullPay && esiEligible) {
                 const dailyWage = (monthlyGross * 12) / 365;
-                esicPay = dailyWage * 26 * 7;
+                esicPay = dailyWage * weeks * 7;
                 employerShortfall = Math.max(0, totalPay - esicPay);
             }
 
             const baselineAnnual = monthlyGross * 12;
-            const annualCtcImpact = employerFullPay
-                ? bonusLost
-                : baselineAnnual - (esicPay > 0 ? esicPay : 0) - (totalPay - (esicPay > 0 ? esicPay : 0)) + bonusLost;
-            // simpler: baseline vs actual received
-            const actualReceived = employerFullPay ? totalPay : (esiEligible ? esicPay : 0);
-            const netCtcImpact = (baselineAnnual - actualReceived - (baselineAnnual - totalPay)) + bonusLost;
-            // Clean recompute for display
             const takeHomeLoss = employerFullPay ? bonusLost : (totalPay - (esiEligible ? esicPay : 0)) + bonusLost;
 
             document.getElementById('fvOut').textContent = inr(employerFullPay ? totalPay : (esiEligible ? esicPay : 0));
 
             let esiMessage;
             if (esiEligible && !employerFullPay) {
-                esiMessage = `Yes — ESIC pays approx. ${inr(esicPay)} over 26 weeks.`;
+                esiMessage = `Yes — ESIC pays approx. ${inr(esicPay)} over ${weeks} weeks.`;
             } else if (esiEligible && employerFullPay) {
                 esiMessage = `Yes (wage ≤ ₹21,000) — employer paying, ESIC not claimed.`;
             } else {

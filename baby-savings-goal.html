@@ -19,7 +19,7 @@
     <meta name="keywords" content="baby savings calculator India, child future planning calculator, kids goal calculator, child marriage fund calculator, baby SIP calculator India 2026, child financial planner, newborn savings India, baby savings goal calculator, child marriage fund planner, how much sip for child goal, 1 crore for child sip calculator, ssy vs sip calculator for girl child, future value goal calculator for kids">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
-    <title>Baby Savings Goal Calculator India 2026 - Plan for Child's Future</title>
+    <title>Baby Savings Goal Calculator India 2026 - Child Fund</title>
     <link rel="canonical" href="https://moneymindtool.com/baby-savings-goal.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="theme-color" content="#0F172A">
@@ -143,6 +143,7 @@
                     <div class="hint">Any corpus already invested for this goal.</div>
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
                 <button onclick="calculateBabySavings()" class="mm-btn">Calculate SIP</button>
                 <button onclick="resetBabySavings()" class="mm-btn mm-btn-secondary">Reset</button>
@@ -326,6 +327,7 @@
         function inr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
 
         function calculateBabySavings() {
+            if (!validateNumericBounds(["currentAge", "targetAge", "goalAmount", "inflation", "returnRate", "currentSavings"], "errorMessage", "resultsCard")) return;
             const resultsCard = document.getElementById('resultsCard');
             const currentAge = parseFloat(document.getElementById('currentAge').value) || 0;
             const targetAge = parseFloat(document.getElementById('targetAge').value) || 0;
@@ -336,11 +338,11 @@
 
             const years = targetAge - currentAge;
             if (years <= 0) {
-                alert('Target age must be greater than current age.');
+                { var _e=document.getElementById('errorMessage'); if(_e){_e.textContent='Target age must be greater than current age.'; _e.style.display='block';} var _c=document.getElementById('resultsCard'); if(_c)_c.classList.add('hidden'); }
                 return;
             }
             if (goalAmount <= 0 || returnRate <= 0) {
-                alert('Please enter a valid goal amount and return rate.');
+                { var _e=document.getElementById('errorMessage'); if(_e){_e.textContent='Please enter a valid goal amount and return rate.'; _e.style.display='block';} var _c=document.getElementById('resultsCard'); if(_c)_c.classList.add('hidden'); }
                 return;
             }
 
@@ -392,5 +394,6 @@
     </script>
 
 
+    <script src="calc-validate.js"></script>
 </body>
 </html>

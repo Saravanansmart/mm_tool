@@ -19,7 +19,7 @@
     <meta name="keywords" content="in hand salary calculator, CTC to salary calculator, salary calculator India, in hand salary calculator India 2026, take home salary calculator, CTC to take home calculator FY 2025-26, monthly salary calculator India, net salary calculator, gross to net salary calculator, how to calculate in hand salary India, CTC breakup calculator">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
-    <title>In Hand Salary Calculator India 2026 - CTC to Take Home | MoneyMindTool</title>
+    <title>In Hand Salary Calculator India 2026 - CTC to Take Home</title>
     <link rel="canonical" href="https://moneymindtool.com/salary-calculator.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="theme-color" content="#0F172A">
@@ -140,6 +140,7 @@
                     </div>
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
                 <button onclick="calculateSalary()" class="mm-btn">Calculate Take-Home</button>
                 <button onclick="resetSalary()" class="mm-btn mm-btn-secondary">Reset</button>
@@ -334,6 +335,27 @@
     <script>
         'use strict';
         function inr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+        function validateSalaryInputs(ctc, basicPercent, bonus, pt, tds) {
+            const errors = [];
+            if (!(ctc > 0)) errors.push('Annual CTC must be greater than zero.');
+            if (!(basicPercent >= 20 && basicPercent <= 80)) errors.push('Basic must be between 20% and 80% of CTC.');
+            if (!(bonus >= 0)) errors.push('Bonus cannot be negative.');
+            if (bonus >= ctc) errors.push('Bonus must be less than your annual CTC.');
+            if (!(pt >= 0)) errors.push('Professional tax cannot be negative.');
+            if (!(tds >= 0)) errors.push('TDS cannot be negative.');
+
+            const box = document.getElementById('errorMessage');
+            if (errors.length) {
+                box.innerHTML = errors.join('<br>');
+                box.style.display = 'block';
+                document.getElementById('resultsCard').classList.add('hidden');
+                return false;
+            }
+            box.style.display = 'none';
+            box.innerHTML = '';
+            return true;
+        }
+
         function calculateSalary() {
             let ctc = parseFloat(document.getElementById('ctc').value) || 0;
             let basicPercent = parseFloat(document.getElementById('basicPercent').value) || 50;
@@ -341,20 +363,26 @@
             let pt = parseFloat(document.getElementById('pt').value) || 200;
             let tds = parseFloat(document.getElementById('tds').value) || 0;
 
-            let gross = ctc - bonus;
-            let monthlyGross = gross / 12;
-            let basic = monthlyGross * (basicPercent / 100);
+            if (!validateSalaryInputs(ctc, basicPercent, bonus, pt, tds)) return;
+
+            // CTC includes the employer's EPF contribution, which never reaches gross salary.
+            let monthlyCtc = (ctc - bonus) / 12;
+            let basic = monthlyCtc * (basicPercent / 100);
 
             let epf = basic * 0.12;
             if(epf > 1800 && document.getElementById('capEpf').checked) epf = 1800;
+            let employerEpf = epf;
 
+            let monthlyGross = monthlyCtc - employerEpf;
             let inHand = monthlyGross - epf - pt - tds;
 
             const resultsCard = document.getElementById('resultsCard');
             document.getElementById('fvOut').textContent = inr(inHand);
             document.getElementById('resultDetail').innerHTML = `
+                <div><span>Monthly CTC (excl. bonus)</span><span>${inr(monthlyCtc)}</span></div>
+                <div><span>Less: Employer EPF</span><span>${inr(employerEpf)}</span></div>
                 <div><span>Monthly Gross</span><span>${inr(monthlyGross)}</span></div>
-                <div><span>EPF Deduction</span><span>${inr(epf)}</span></div>
+                <div><span>Employee EPF Deduction</span><span>${inr(epf)}</span></div>
                 <div><span>Professional Tax</span><span>${inr(pt)}</span></div>
                 <div><span>TDS</span><span>${inr(tds)}</span></div>`;
             resultsCard.classList.remove('hidden');

@@ -19,7 +19,7 @@
     <meta name="keywords" content="step up SIP calculator, step up SIP calculator India, step up SIP calculator 2025, top up SIP calculator, annual SIP increment calculator, mutual fund step up SIP calculator, increasing SIP returns calculator, step up SIP calculator FY 2025-26, how to calculate step up SIP returns, top up SIP returns India">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
-    <title>Step Up SIP Calculator India 2026 - Top-Up SIP | MoneyMindTool</title>
+    <title>Step Up SIP Calculator India 2026 - Top-Up SIP</title>
     <link rel="canonical" href="https://moneymindtool.com/step-up-sip.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="theme-color" content="#0F172A">
@@ -129,8 +129,9 @@
                     <input type="number" id="years" value="15" min="1" max="40" class="mm-input">
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
-                <button onclick="calculateStepUp()" class="mm-btn">Calculate Returns</button>
+                <button id="calcButton" onclick="calculateStepUp()" class="mm-btn">Calculate Returns</button>
                 <button onclick="resetStepUp()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
         </section>
@@ -157,7 +158,8 @@
                 <li>At year-end, the monthly SIP is increased by the step-up percentage.</li>
                 <li>The loop runs for the full investment period.</li>
             </ul>
-            <p><strong>Example:</strong> ₹10,000/month, 10% step-up, 12% returns, 15 years → Total invested ≈ ₹38.1 lakh, Maturity ≈ ₹83.5 lakh, Gain ≈ ₹45.4 lakh.</p>
+            <p><strong>Example:</strong> ₹10,000/month, 10% step-up, 12% returns, 15 years → Total invested ₹38.13 lakh, Maturity ₹86.84 lakh, Gain ₹48.71 lakh.</p>
+            <p style="background:var(--bg-2); padding:14px; border-radius:8px; font-size:0.9rem;"><strong>Why other calculators may differ.</strong> We convert the annual rate to a monthly one as <em>rate ÷ 12</em>, so 12% a year is 1% a month — the same convention Angel One uses. Groww and HDFC Mutual Fund instead use the effective conversion, (1 + annual)<sup>1/12</sup> − 1, which is about 0.949% a month and gives a lower figure — ₹82.75 lakh on the example above. Neither is wrong; both are estimates of an uncertain return.</p>
         </section>
 
         <section class="mm-card">
@@ -310,11 +312,51 @@
     <script>
         'use strict';
         function inr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+        function validateInputs() {
+            let monthly = parseFloat(document.getElementById('monthly').value);
+            let stepup = parseFloat(document.getElementById('stepup').value);
+            let rate = parseFloat(document.getElementById('rate').value);
+            let years = parseFloat(document.getElementById('years').value);
+
+            let errorMessage = document.getElementById('errorMessage');
+            let calcButton = document.getElementById('calcButton');
+
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
+
+            let errors = [];
+
+            if (isNaN(monthly) || monthly < 500 || monthly > 1000000) {
+                errors.push('Please enter a valid initial monthly SIP (₹500 to ₹10 lakh).');
+            }
+            if (isNaN(stepup) || stepup < 0 || stepup > 100) {
+                errors.push('Please enter a valid annual step-up (0% to 100%).');
+            }
+            if (isNaN(rate) || rate < 1 || rate > 30) {
+                errors.push('Please enter a valid expected return (1% to 30%).');
+            }
+            if (isNaN(years) || years < 1 || years > 40) {
+                errors.push('Please enter a valid investment period (1 to 40 years).');
+            }
+
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                calcButton.disabled = true;
+                return false;
+            }
+
+            calcButton.disabled = false;
+            return true;
+        }
+
         function calculateStepUp() {
-            let monthly = parseFloat(document.getElementById('monthly').value) || 0;
-            let stepup = parseFloat(document.getElementById('stepup').value) || 0;
+            if (!validateInputs()) return;
+
+            let monthly = parseFloat(document.getElementById('monthly').value);
+            let stepup = parseFloat(document.getElementById('stepup').value);
             let rate = parseFloat(document.getElementById('rate').value) / 100 / 12;
-            let years = parseFloat(document.getElementById('years').value) || 0;
+            let years = Math.floor(parseFloat(document.getElementById('years').value));
 
             let balance = 0;
             let invested = 0;
@@ -349,7 +391,17 @@
             document.getElementById('rate').value = 12;
             document.getElementById('years').value = 15;
             document.getElementById('resultsCard').classList.add('hidden');
+            validateInputs();
         }
+
+        window.onload = function () {
+            validateInputs();
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', () => {
+                    validateInputs();
+                });
+            });
+        };
     </script>
 
 

@@ -21,7 +21,7 @@
     <meta name="author" content="MoneyMindTool">
     <link rel="canonical" href="https://moneymindtool.com/income-tax.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <title>Income Tax Calculator India FY 2025-26 - New Regime | MoneyMindTool</title>
+    <title>Income Tax Calculator India FY 2026-27 - New Regime</title>
     <meta name="theme-color" content="#0F172A">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,7 +128,8 @@
                 <div class="mm-field">
                     <label for="financialYear">Financial Year</label>
                     <select id="financialYear" class="mm-select">
-                        <option value="fy2025" selected>FY 2025-26 (AY 2026-27)</option>
+                        <option value="fy2026" selected>FY 2026-27 (AY 2027-28)</option>
+                        <option value="fy2025">FY 2025-26 (AY 2026-27)</option>
                         <option value="fy2024">FY 2024-25 (AY 2025-26)</option>
                     </select>
                 </div>
@@ -624,7 +625,7 @@
         }
 
         function calculateOldRegimeTax(taxableIncome, ageGroup) {
-            if (taxableIncome <= 0) return 0;
+            if (taxableIncome <= 0) return { baseTax: 0, surcharge: 0, cess: 0, totalTax: 0 };
             let tax = 0;
             let baseExemption = 250000;
 
@@ -660,13 +661,13 @@
         }
 
         function calculateNewRegimeTax(taxableIncome, financialYear) {
-            if (taxableIncome <= 0) return 0;
+            if (taxableIncome <= 0) return { baseTax: 0, surcharge: 0, cess: 0, totalTax: 0 };
             let tax = 0;
             let slabs = [];
             let rebateLimit = 0;
 
-            if (financialYear === 'fy2025') {
-                // FY 2025-26 (AY 2026-27) Budget 2025 slabs
+            if (financialYear === 'fy2026' || financialYear === 'fy2025') {
+                // FY 2025-26 and FY 2026-27 share the Budget 2025 slab table (unchanged by Budget 2026)
                 slabs = [
                     { limit: 400000, rate: 0 },
                     { limit: 800000, rate: 5 },
@@ -785,7 +786,7 @@
                 if (taxRegime === 'new' || taxRegime === 'compare') {
                     if (applyStdDed) {
                         // Standard deduction increased to 75,000 under new regime from FY 2024-25
-                        let stdDedLimitNew = (financialYear === 'fy2024' || financialYear === 'fy2025') ? 75000 : 50000;
+                        let stdDedLimitNew = 75000; // Rs 75,000 under the new regime from FY 2024-25 onward
                         standardDeductionNew = Math.min(grossSalary, stdDedLimitNew);
                     }
                     let netSalaryNew = grossSalary - standardDeductionNew;

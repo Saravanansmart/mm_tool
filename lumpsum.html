@@ -19,7 +19,7 @@
     <meta name="keywords" content="lumpsum calculator, lumpsum calculator India, lumpsum investment calculator, mutual fund lumpsum calculator, one time investment calculator, lumpsum returns calculator India, lumpsum calculator 2025, lumpsum vs SIP calculator, lumpsum maturity calculator FY 2025-26, how to calculate lumpsum returns">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
-    <title>Lumpsum Calculator India 2026 - Mutual Fund Returns | MoneyMindTool</title>
+    <title>Lumpsum Calculator India 2026 - Mutual Fund Returns</title>
     <link rel="canonical" href="https://moneymindtool.com/lumpsum.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="theme-color" content="#0F172A">
@@ -129,6 +129,7 @@
                 <button onclick="calcLumpsum()" class="mm-btn">Calculate</button>
                 <button onclick="resetLumpsum()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
         </section>
 
         <section id="resultsCard" class="mm-result-card hidden">
@@ -316,7 +317,31 @@
     <script>
         'use strict';
         function inr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+        function validateLumpsumInputs() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const years = parseFloat(document.getElementById('years').value);
+            const el = document.getElementById('errorMessage');
+            el.style.display = 'none';
+            el.innerHTML = '';
+
+            const errors = [];
+            if (isNaN(principal) || principal < 500) errors.push('Please enter a valid investment amount (minimum \u20b9500).');
+            if (isNaN(rate) || rate < 1 || rate > 30) errors.push('Please enter a valid expected return (1% to 30%).');
+            if (isNaN(years) || years < 1 || years > 40) errors.push('Please enter a valid investment period (1 to 40 years).');
+
+            if (errors.length) {
+                el.innerHTML = errors.join('<br>');
+                el.style.display = 'block';
+                document.getElementById('resultsCard').classList.add('hidden');
+                return false;
+            }
+            return true;
+        }
+
         function calcLumpsum() {
+            if (!validateLumpsumInputs()) return;
+
             const p = parseFloat(document.getElementById('principal').value) || 0;
             const r = parseFloat(document.getElementById('rate').value) / 100 || 0;
             const n = parseFloat(document.getElementById('years').value) || 0;
@@ -340,6 +365,7 @@
             document.getElementById('principal').value = 100000;
             document.getElementById('rate').value = 12;
             document.getElementById('years').value = 10;
+            document.getElementById('errorMessage').style.display = 'none';
             document.getElementById('resultsCard').classList.add('hidden');
         }
     </script>

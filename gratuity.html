@@ -19,7 +19,7 @@
     <meta name="keywords" content="gratuity calculator, gratuity calculator India, gratuity formula India, gratuity calculation calculator, gratuity calculator 2025, gratuity calculator FY 2025-26, employee gratuity calculator online, gratuity amount calculator India, 25 lakh tax free gratuity calculator, how to calculate gratuity in India">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
-    <title>Gratuity Calculator India 2026 - Formula & 25L Tax-Free | MoneyMindTool</title>
+    <title>Gratuity Calculator India 2026 - Formula & 25L Tax-Free</title>
     <link rel="canonical" href="https://moneymindtool.com/gratuity.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="theme-color" content="#0F172A">
@@ -130,6 +130,7 @@
                     </div>
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
                 <button onclick="calcGratuity()" class="mm-btn">Calculate Gratuity</button>
                 <button onclick="resetGratuity()" class="mm-btn mm-btn-secondary">Reset</button>
@@ -323,12 +324,13 @@
     <script>
         'use strict';
         function calcGratuity() {
+            (function(){var _e=document.getElementById('errorMessage');if(_e){_e.textContent='';_e.style.display='none';}})();
             let wage = parseFloat(document.getElementById('basicDA').value) || 0;
             let years = parseFloat(document.getElementById('yearsService').value) || 0;
             let isContract = document.getElementById('isContract').checked;
 
             if (wage <= 0 || years < 1) {
-                alert("Please enter valid values");
+                { var _e=document.getElementById('errorMessage'); if(_e){_e.textContent="Please enter valid values"; _e.style.display='block';} var _c=document.getElementById('resultsCard'); if(_c)_c.classList.add('hidden'); }
                 return;
             }
 

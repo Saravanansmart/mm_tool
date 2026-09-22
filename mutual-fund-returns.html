@@ -19,7 +19,7 @@
     <meta name="keywords" content="mutual fund calculator, mutual fund returns calculator, mutual fund calculator India, MF returns calculator, mutual fund CAGR calculator, mutual fund calculator 2025, mutual fund investment calculator India, MF absolute return calculator, equity mutual fund returns calculator FY 2025-26, how to calculate mutual fund returns India">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
-    <title>Mutual Fund Calculator India 2026 - MF Returns | MoneyMindTool</title>
+    <title>Mutual Fund Calculator India 2026 - MF Returns</title>
     <link rel="canonical" href="https://moneymindtool.com/mutual-fund-returns.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="theme-color" content="#0F172A">
@@ -136,6 +136,7 @@
                 <button onclick="calcMF()" class="mm-btn">Calculate Returns</button>
                 <button onclick="resetMF()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
         </section>
 
         <section id="resultsCard" class="mm-result-card hidden">
@@ -327,11 +328,54 @@
             document.getElementById('amountLabel').textContent = mode === 'sip' ? 'Monthly SIP Amount (₹)' : 'Lumpsum Amount (₹)';
             document.getElementById('amount').value = mode === 'sip' ? 10000 : 100000;
         }
+        // Annualised IRR of `months` equal month-start instalments returning `fv`.
+        function sipXirr(instalment, months, fv) {
+            if (!(instalment > 0) || !(months > 0) || !(fv > 0)) return 0;
+            const pv = (i) => {
+                if (Math.abs(i) < 1e-12) return instalment * months;
+                return instalment * ((Math.pow(1 + i, months) - 1) / i) * (1 + i);
+            };
+            let lo = -0.9999, hi = 1.0;
+            if (pv(lo) > fv || pv(hi) < fv) return 0;
+            for (let k = 0; k < 200; k++) {
+                const mid = (lo + hi) / 2;
+                if (pv(mid) < fv) lo = mid; else hi = mid;
+            }
+            const monthly = (lo + hi) / 2;
+            return Math.pow(1 + monthly, 12) - 1;
+        }
+
+        function validateMFInputs() {
+            const amt = parseFloat(document.getElementById('amount').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const years = parseFloat(document.getElementById('years').value);
+            const mode = document.getElementById('mode').value;
+            const el = document.getElementById('errorMessage');
+            el.style.display = 'none';
+            el.innerHTML = '';
+
+            const minAmt = mode === 'sip' ? 500 : 1000;
+            const errors = [];
+            if (isNaN(amt) || amt < minAmt) errors.push('Please enter a valid amount (minimum \u20b9' + minAmt.toLocaleString('en-IN') + ').');
+            if (isNaN(rate) || rate < 1 || rate > 30) errors.push('Please enter a valid expected return (1% to 30%).');
+            if (isNaN(years) || years < 1 || years > 40) errors.push('Please enter a valid investment period (1 to 40 years).');
+
+            if (errors.length) {
+                el.innerHTML = errors.join('<br>');
+                el.style.display = 'block';
+                document.getElementById('resultsCard').classList.add('hidden');
+                return false;
+            }
+            return true;
+        }
+
         function calcMF() {
             const mode = document.getElementById('mode').value;
             const amt = parseFloat(document.getElementById('amount').value) || 0;
             const r = parseFloat(document.getElementById('rate').value) / 100 || 0;
             const n = parseFloat(document.getElementById('years').value) || 0;
+
+            if (!validateMFInputs()) return;
 
             let fv, invested;
             if (mode === 'lumpsum') {
@@ -344,8 +388,18 @@
                 invested = amt * m;
             }
             const gain = fv - invested;
-            const cagr = (Math.pow(fv / invested, 1 / n) - 1) * 100;
-            const absRet = (gain / invested) * 100;
+            const absRet = invested > 0 ? (gain / invested) * 100 : 0;
+
+            // SIP instalments are staggered, so a lumpsum CAGR understates the return.
+            // Solve the IRR of the monthly cash flows instead and annualise it.
+            let annualReturn, returnLabel;
+            if (mode === 'lumpsum') {
+                annualReturn = n > 0 ? (Math.pow(fv / invested, 1 / n) - 1) * 100 : 0;
+                returnLabel = 'CAGR (effective)';
+            } else {
+                annualReturn = sipXirr(amt, n * 12, fv) * 100;
+                returnLabel = 'XIRR (annualised)';
+            }
 
             const resultsCard = document.getElementById('resultsCard');
             document.getElementById('fvOut').textContent = inr(fv);
@@ -353,7 +407,7 @@
                 <div><span>Total Invested</span><span>${inr(invested)}</span></div>
                 <div><span>Wealth Gained</span><span>${inr(gain)}</span></div>
                 <div><span>Absolute Return</span><span>${absRet.toFixed(1)}%</span></div>
-                <div><span>CAGR (effective)</span><span>${cagr.toFixed(2)}%</span></div>`;
+                <div><span>${returnLabel}</span><span>${annualReturn.toFixed(2)}%</span></div>`;
             resultsCard.classList.remove('hidden');
 
             gtag('event', 'calculate_mutual_fund_returns', {
