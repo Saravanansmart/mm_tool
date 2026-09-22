@@ -105,9 +105,10 @@
 
     <main class="mm-main">
         <section class="mm-hero">
-            <span class="pill">Updated Jul 2026 · 8.25% p.a.</span>
+            <span class="pill">Updated Sept 2026 · 8.25% p.a.</span>
             <h1>EPF Calculator</h1>
             <p>Estimate your Employee Provident Fund maturity, employee and employer contributions, and Section 80C tax savings at the current EPFO rate.</p>
+            <p class="rate-verified" style="font-size:0.85rem; color:var(--text-muted); margin-top:10px;"><strong>EPF rate shown as 8.25% p.a., last declared by EPFO for FY 2025-26.</strong> The rate is set annually by the Central Board of Trustees; confirmation for FY 2026-27 was not available at the time of writing. Check <a href="https://www.epfindia.gov.in/" target="_blank" rel="noopener">EPFO</a> before relying on this figure, or edit the rate field above to model a revision.</p>
         </section>
 
         <section class="mm-card">
@@ -128,6 +129,12 @@
                     <input type="number" id="contributionRate" min="10" max="12" step="0.1" value="12" class="mm-input">
                     <div class="hint">Statutory range 10–12%.</div>
                 </div>
+                <div class="mm-field">
+                    <label for="epfRate">EPF Interest Rate (% p.a.)</label>
+                    <input type="number" id="epfRate" min="5" max="12" step="0.05" value="8.25" class="mm-input">
+                    <div class="hint">EPFO-declared rate. Edit it to model a revision.</div>
+                </div>
+
                 <div class="mm-field">
                     <label for="salaryGrowth">Annual Salary Growth (%)</label>
                     <input type="number" id="salaryGrowth" min="0" max="15" step="0.1" value="5" class="mm-input">
@@ -223,7 +230,7 @@
 
         <section class="mm-card">
             <h2>How the Calculation Works</h2>
-            <p>The calculator simulates month-by-month accrual: every month, interest is credited on the running balance at 8.25% / 12, and both employee and employer contributions are added. Salary growth is applied at the start of each new year.</p>
+            <p>The calculator simulates month-by-month accrual: interest accrues each month on the running balance at 8.25% &divide; 12, and both employee and employer contributions are added. Following EPFO practice, the accrued interest is <strong>credited once at the end of each year</strong> rather than compounding within the year. Salary growth is applied at the start of each new year.</p>
             <p><strong>Formula:</strong> B<sub>m</sub> = B<sub>m−1</sub> × (1 + r/12) + C, where C is the combined employee + employer EPF contribution and r is the annual EPF rate.</p>
             <p><strong>Worked example:</strong> Basic salary ₹25,000, contribution 12%, salary growth 5%/year over 10 years gives an approximate corpus of <strong>₹11 lakh</strong>, of which ~₹4.5 lakh comes from interest.</p>
         </section>
@@ -454,6 +461,7 @@
             let basicSalary = parseFloat(document.getElementById('basicSalary').value);
             let currentBalance = parseFloat(document.getElementById('currentBalance').value);
             let contributionRate = parseFloat(document.getElementById('contributionRate').value);
+            let epfRate = parseFloat(document.getElementById('epfRate').value);
             let salaryGrowth = parseFloat(document.getElementById('salaryGrowth').value);
             let tenure = parseFloat(document.getElementById('tenure').value);
             let currentAge = parseFloat(document.getElementById('currentAge').value);
@@ -462,7 +470,7 @@
             let errorMessage = document.getElementById('errorMessage');
             let calcButton = document.getElementById('calcButton');
 
-            const inputs = ['basicSalary', 'currentBalance', 'contributionRate', 'salaryGrowth', 'tenure', 'currentAge', 'retirementAge'];
+            const inputs = ['basicSalary', 'currentBalance', 'contributionRate', 'epfRate', 'salaryGrowth', 'tenure', 'currentAge', 'retirementAge'];
             inputs.forEach(id => document.getElementById(id)?.classList.remove('error'));
             errorMessage.style.display = 'none';
             errorMessage.innerHTML = '';
@@ -476,6 +484,10 @@
             if (isNaN(currentBalance) || currentBalance < 0) {
                 errors.push('Current balance must be 0 or greater.');
                 document.getElementById('currentBalance').classList.add('error');
+            }
+            if (isNaN(epfRate) || epfRate < 5 || epfRate > 12) {
+                errors.push('EPF interest rate must be between 5% and 12%.');
+                document.getElementById('epfRate').classList.add('error');
             }
             if (isNaN(contributionRate) || contributionRate < 10 || contributionRate > 12) {
                 errors.push('Employee contribution rate must be between 10% and 12%.');
@@ -611,9 +623,10 @@
                     let initialSalary = parseFloat(document.getElementById('basicSalary').value);
                     let initialBalance = parseFloat(document.getElementById('currentBalance').value) || 0;
                     let contributionRate = parseFloat(document.getElementById('contributionRate').value);
+            let epfRate = parseFloat(document.getElementById('epfRate').value);
                     let salaryGrowthRate = parseFloat(document.getElementById('salaryGrowth').value);
                     let tenure = parseFloat(document.getElementById('tenure').value);
-                    const interestRate = 8.25;
+                    const interestRate = parseFloat(document.getElementById('epfRate').value);
 
                     let { schedule, totalEmployeeContribution, totalEmployerContribution, totalInterest, maturityAmount } = generateBreakdownSchedule(initialSalary, contributionRate, tenure, initialBalance, salaryGrowthRate, interestRate);
 

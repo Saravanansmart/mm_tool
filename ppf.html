@@ -104,9 +104,10 @@
 
     <main class="mm-main">
         <section class="mm-hero">
-            <span class="pill">Updated Jul 2026 · 7.1% p.a.</span>
+            <span class="pill">Updated Sept 2026 · 7.1% p.a.</span>
             <h1>PPF Calculator</h1>
             <p>Estimate your Public Provident Fund maturity, tax-free interest, and Section 80C savings at the current 7.1% rate.</p>
+            <p class="rate-verified" style="font-size:0.85rem; color:var(--text-muted); margin-top:10px;"><strong>PPF rate verified 7.1% p.a. as of 23 September 2026.</strong> Small-savings rates are notified quarterly; the October–December 2026 notification is due at the end of September. Check the <a href="https://www.dea.gov.in/" target="_blank" rel="noopener">Ministry of Finance small-savings notification</a> before relying on this figure, or edit the rate field above to model a revision.</p>
         </section>
 
         <section class="mm-card">
@@ -129,7 +130,7 @@
                 </div>
                 <div class="mm-field">
                     <label for="interestRate">Interest Rate (% p.a.)</label>
-                    <input type="number" id="interestRate" min="5" max="9" step="0.1" value="7.1" class="mm-input">
+                    <input type="number" id="interestRate" min="5" max="12" step="0.1" value="7.1" class="mm-input">
                     <div class="hint">Currently 7.1% — Govt-fixed, reviewed quarterly.</div>
                 </div>
             </div>
@@ -357,8 +358,8 @@
             if (isNaN(investment) || investment < 500 || investment > 150000) {
                 errors.push('Please enter a valid annual investment (₹500 to ₹1,50,000).');
             }
-            if (isNaN(rate) || rate < 5 || rate > 9) {
-                errors.push('Please enter a valid interest rate (5% to 9%).');
+            if (isNaN(rate) || rate < 5 || rate > 12) {
+                errors.push('Please enter a valid interest rate (5% to 12%).');
             }
             if (isNaN(tenure) || ![15, 20, 25, 30].includes(tenure)) {
                 errors.push('Please select a valid tenure (15, 20, 25, or 30 years).');

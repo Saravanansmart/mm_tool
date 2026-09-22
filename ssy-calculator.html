@@ -104,9 +104,10 @@
 
     <main class="mm-main">
         <section class="mm-hero">
-            <span class="pill">Updated Jul 2026 · 8.2% p.a.</span>
+            <span class="pill">Updated Sept 2026 · 8.2% p.a.</span>
             <h1>Sukanya Samriddhi Yojana Calculator</h1>
             <p>Estimate the tax-free maturity amount of your SSY account at the current 8.2% rate. Updated for FY 2026-27.</p>
+            <p class="rate-verified" style="font-size:0.85rem; color:var(--text-muted); margin-top:10px;"><strong>SSY rate verified 8.2% p.a. as of 23 September 2026.</strong> Small-savings rates are notified quarterly; the October–December 2026 notification is due at the end of September. Check the <a href="https://www.dea.gov.in/" target="_blank" rel="noopener">Ministry of Finance small-savings notification</a> before relying on this figure, or edit the rate field above to model a revision.</p>
         </section>
 
         <section class="mm-card">
@@ -118,9 +119,9 @@
                     <div class="hint">Min ₹250, Max ₹1.5 lakh per year.</div>
                 </div>
                 <div class="mm-field">
-                    <label>Current Interest Rate (% p.a.)</label>
-                    <input type="number" disabled value="8.2" class="mm-input">
-                    <div class="hint">Govt-fixed rate, reviewed quarterly.</div>
+                    <label for="ssyRate">Current Interest Rate (% p.a.)</label>
+                    <input type="number" id="ssyRate" min="5" max="12" step="0.1" value="8.2" class="mm-input">
+                    <div class="hint">Govt-fixed rate, reviewed quarterly. Edit it to model a revision.</div>
                 </div>
             </div>
             <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
@@ -301,6 +302,7 @@
         function inr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
         function validateInputs() {
             let yearly = parseFloat(document.getElementById('yearly').value);
+            let rate = parseFloat(document.getElementById('ssyRate').value);
 
             let errorMessage = document.getElementById('errorMessage');
             let calcButton = document.getElementById('calcButton');
@@ -310,6 +312,13 @@
 
             if (isNaN(yearly) || yearly < 250) {
                 errorMessage.innerHTML = 'Please enter a valid yearly investment (minimum ₹250).';
+                errorMessage.style.display = 'block';
+                calcButton.disabled = true;
+                return false;
+            }
+
+            if (isNaN(rate) || rate < 5 || rate > 12) {
+                errorMessage.innerHTML = 'Interest rate must be between 5% and 12%.';
                 errorMessage.style.display = 'block';
                 calcButton.disabled = true;
                 return false;
@@ -326,7 +335,7 @@
             let yearly = entered;
             let capApplied = false;
             if(yearly > 150000) { yearly = 150000; capApplied = true; }
-            let rate = 8.2 / 100;
+            let rate = parseFloat(document.getElementById('ssyRate').value) / 100;
             let totalInvested = yearly * 15;
             let balance = 0;
 
