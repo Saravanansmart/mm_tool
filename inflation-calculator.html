@@ -128,6 +128,7 @@
                     <div class="hint">1 to 50 years</div>
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
                 <button onclick="calculateInflation()" class="mm-btn">Calculate</button>
                 <button onclick="resetInflation()" class="mm-btn mm-btn-secondary">Reset</button>
@@ -326,12 +327,13 @@
     <script>
         function inr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
         function calculateInflation() {
+            if (!validateNumericBounds(["currentAmount", "inflationRate", "years"], "errorMessage", "resultsCard")) return;
             const PV = parseFloat(document.getElementById('currentAmount').value) || 0;
             const r = parseFloat(document.getElementById('inflationRate').value) || 0;
             const n = parseFloat(document.getElementById('years').value) || 0;
 
             if (PV <= 0 || r <= 0 || n <= 0) {
-                alert('Please enter valid current amount, inflation rate, and years.');
+                { var _e=document.getElementById('errorMessage'); if(_e){_e.textContent='Please enter valid current amount, inflation rate, and years.'; _e.style.display='block';} var _c=document.getElementById('resultsCard'); if(_c)_c.classList.add('hidden'); }
                 return;
             }
 
@@ -364,5 +366,6 @@
     </script>
 
 
+    <script src="calc-validate.js"></script>
 </body>
 </html>

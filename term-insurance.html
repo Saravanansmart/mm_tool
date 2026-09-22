@@ -138,9 +138,9 @@
                     <div class="hint">Term policies you already hold (exclude ULIPs, endowment).</div>
                 </div>
                 <div class="mm-field">
-                    <label for="dependants">Number of Dependents</label>
-                    <input type="number" id="dependants" value="2" min="0" max="10" class="mm-input">
-                    <div class="hint">Spouse, children, dependent parents.</div>
+                    <label for="corpusReturn">Expected Return on Corpus (% p.a.)</label>
+                    <input type="number" id="corpusReturn" value="8" min="1" max="15" step="0.5" class="mm-input">
+                    <div class="hint">Return the payout corpus earns while it is drawn down.</div>
                 </div>
                 <div class="mm-field">
                     <label for="yearsSupport">Years of Financial Support Needed</label>
@@ -153,6 +153,7 @@
                     <div class="hint">India's long-term CPI averages 5-7%.</div>
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
                 <button onclick="calculateTermInsurance()" class="mm-btn">Calculate Cover</button>
                 <button onclick="resetTermInsurance()" class="mm-btn mm-btn-secondary">Reset</button>
@@ -411,6 +412,7 @@
         }
 
         function calculateTermInsurance() {
+            if (!validateNumericBounds(["currentAge", "annualIncome", "monthlyExpenses", "liabilities", "existingCover", "corpusReturn", "yearsSupport", "inflation"], "errorMessage", "resultsCard")) return;
             const resultsCard = document.getElementById('resultsCard');
             const currentAge = parseInt(document.getElementById('currentAge').value) || 30;
             const annualIncome = parseFloat(document.getElementById('annualIncome').value) || 0;
@@ -419,9 +421,12 @@
             const existingCover = parseFloat(document.getElementById('existingCover').value) || 0;
             const yearsSupport = parseInt(document.getElementById('yearsSupport').value) || 25;
             const inflation = parseFloat(document.getElementById('inflation').value) || 6;
+            const corpusReturn = parseFloat(document.getElementById('corpusReturn').value) || 8;
 
             if (annualIncome <= 0) {
-                alert('Please enter a valid annual income.');
+                const _e = document.getElementById('errorMessage');
+                if (_e) { _e.textContent = 'Please enter a valid annual income.'; _e.style.display = 'block'; }
+                resultsCard.classList.add('hidden');
                 return;
             }
 
@@ -431,9 +436,17 @@
             // Method 2: Expense corpus, inflation-adjusted
             // 70% of expenses typically continue after primary earner's death
             const annualDependantExpense = monthlyExpenses * 12 * 0.7;
-            // Inflate over midpoint of support period as an approximation
-            const inflationFactor = Math.pow(1 + inflation / 100, yearsSupport / 2);
-            const expenseCorpus = annualDependantExpense * yearsSupport * inflationFactor;
+            // Lump sum needed today to fund an inflating expense stream while the
+            // corpus itself earns `corpusReturn`: PV of a growing annuity-due.
+            const g = inflation / 100;
+            const r = corpusReturn / 100;
+            let expenseCorpus;
+            if (Math.abs(r - g) < 1e-9) {
+                expenseCorpus = annualDependantExpense * yearsSupport;
+            } else {
+                const ratio = Math.pow((1 + g) / (1 + r), yearsSupport);
+                expenseCorpus = annualDependantExpense * (1 - ratio) / (r - g) * (1 + r);
+            }
 
             // Debt clearance
             const debtClearance = liabilities;
@@ -457,7 +470,7 @@
             document.getElementById('resultDetail').innerHTML = `
                 <div><span>Cover as Multiple of Annual Income</span><span>${multiple}x</span></div>
                 <div><span>Income Replacement (10x)</span><span>${crore(incomeReplacement)}</span></div>
-                <div><span>Expense Corpus (Inflation-adjusted)</span><span>${crore(expenseCorpus)}</span></div>
+                <div><span>Expense Corpus (inflation-adjusted, net of ${corpusReturn}% return)</span><span>${crore(expenseCorpus)}</span></div>
                 <div><span>Debt / Liability Clearance</span><span>${crore(debtClearance)}</span></div>
                 <div><span>Existing Cover Deducted</span><span>${crore(existingCover)}</span></div>
                 <div><span>Approx. Annual Premium (online direct)</span><span>${inr(annualMedian)}</span></div>
@@ -478,7 +491,7 @@
             document.getElementById('monthlyExpenses').value = 40000;
             document.getElementById('liabilities').value = 3000000;
             document.getElementById('existingCover').value = 0;
-            document.getElementById('dependants').value = 2;
+            document.getElementById('corpusReturn').value = 8;
             document.getElementById('yearsSupport').value = 25;
             document.getElementById('inflation').value = 6;
             document.getElementById('resultsCard').classList.add('hidden');
@@ -486,5 +499,6 @@
     </script>
 
 
+    <script src="calc-validate.js"></script>
 </body>
 </html>

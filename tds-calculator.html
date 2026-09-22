@@ -19,7 +19,7 @@
     <meta name="keywords" content="TDS calculator India, TDS calculator FY 2025-26, section 194A TDS calculator, section 192 salary TDS, TDS on FD calculator, TDS on rent calculator, TDS on contractor payment, TDS deduction calculator India 2026, section 194a tds on fd, section 192 tds on salary calculator, tds on rent section 194i calculator, tds return filing due date, tds on professional fees 194j calculator">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="MoneyMindTool">
-    <title>TDS Calculator India FY 2025-26 - Salary, FD, Contractor</title>
+    <title>TDS Calculator India FY 2026-27 - Salary, FD, Contractor</title>
     <link rel="canonical" href="https://moneymindtool.com/tds-calculator.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="theme-color" content="#0F172A">
@@ -41,7 +41,7 @@
 
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"TDS Calculator India","description":"Free TDS Calculator for India FY 2025-26. Compute TDS on salary, fixed deposit interest, contractor payment, professional fees, rent and commission with threshold and no-PAN rules.","url":"https://moneymindtool.com/tds-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"datePublished":"2026-07-06","dateModified":"2026-07-06","author":{"@type":"Organization","name":"MoneyMindTool Editorial Team","url":"https://moneymindtool.com/"},"publisher":{"@type":"Organization","name":"MoneyMindTool","logo":{"@type":"ImageObject","url":"https://moneymindtool.com/assets/logo.png"}},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"2140","bestRating":"5"},"inLanguage":"en-IN"}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://moneymindtool.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://moneymindtool.com/all-calculators.html"},{"@type":"ListItem","position":3,"name":"TDS Calculator","item":"https://moneymindtool.com/tds-calculator.html"}]}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is TDS in India?","acceptedAnswer":{"@type":"Answer","text":"Tax Deducted at Source — payer deducts a fixed % as income tax before paying, and deposits with the government against payee's PAN."}},{"@type":"Question","name":"What is the TDS rate on FD interest?","acceptedAnswer":{"@type":"Answer","text":"Section 194A: 10% on interest above ₹40,000/year (₹50,000 for seniors). 20% if PAN not furnished. Form 15G/15H can waive TDS."}},{"@type":"Question","name":"How is salary TDS calculated?","acceptedAnswer":{"@type":"Answer","text":"Section 192: Employer estimates annual tax under old or new regime, divides by 12 for monthly TDS. Adjusts each month for investments declared."}},{"@type":"Question","name":"What is TDS on professional fees?","acceptedAnswer":{"@type":"Answer","text":"Section 194J: 10% (professional) or 2% (technical). Threshold ₹30,000/year. No PAN = 20%."}},{"@type":"Question","name":"What is TDS on rent?","acceptedAnswer":{"@type":"Answer","text":"Section 194I: 10% for building, 2% for plant. Threshold ₹2.4 lakh/year. Individuals paying > ₹50k/month rent must deduct 5% under Section 194IB."}},{"@type":"Question","name":"When to deposit TDS?","acceptedAnswer":{"@type":"Answer","text":"By 7th of next month via Challan ITNS-281. March TDS by 30th April. Late = 1.5%/month interest."}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is TDS in India?","acceptedAnswer":{"@type":"Answer","text":"Tax Deducted at Source — payer deducts a fixed % as income tax before paying, and deposits with the government against payee's PAN."}},{"@type":"Question","name":"What is the TDS rate on FD interest?","acceptedAnswer":{"@type":"Answer","text":"Section 194A: 10% on interest above ₹50,000/year (₹50,000 for seniors). 20% if PAN not furnished. Form 15G/15H can waive TDS."}},{"@type":"Question","name":"How is salary TDS calculated?","acceptedAnswer":{"@type":"Answer","text":"Section 192: Employer estimates annual tax under old or new regime, divides by 12 for monthly TDS. Adjusts each month for investments declared."}},{"@type":"Question","name":"What is TDS on professional fees?","acceptedAnswer":{"@type":"Answer","text":"Section 194J: 10% (professional) or 2% (technical). Threshold ₹30,000/year. No PAN = 20%."}},{"@type":"Question","name":"What is TDS on rent?","acceptedAnswer":{"@type":"Answer","text":"Section 194I: 10% for building, 2% for plant. Threshold ₹2.4 lakh/year. Individuals paying > ₹50k/month rent must deduct 5% under Section 194IB."}},{"@type":"Question","name":"When to deposit TDS?","acceptedAnswer":{"@type":"Answer","text":"By 7th of next month via Challan ITNS-281. March TDS by 30th April. Late = 1.5%/month interest."}}]}</script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4864427317222127" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -182,6 +182,7 @@
                     <div class="hint">Applies to salary TDS (Section 192).</div>
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
                 <button onclick="calculateTDS()" class="mm-btn">Calculate TDS</button>
                 <button onclick="resetTDS()" class="mm-btn mm-btn-secondary">Reset</button>
@@ -208,15 +209,15 @@
                     <thead><tr><th>Section</th><th>Nature of Payment</th><th class="num">Rate</th><th class="num">Threshold (₹/year)</th><th class="num">No PAN Rate</th></tr></thead>
                     <tbody>
                         <tr><td>192</td><td>Salary</td><td class="num">As per slab</td><td class="num">Basic exemption</td><td class="num">Slab rate</td></tr>
-                        <tr><td>194A</td><td>FD / Interest (bank)</td><td class="num">10%</td><td class="num">₹40,000 (₹50,000 senior)</td><td class="num">20%</td></tr>
+                        <tr><td>194A</td><td>FD / Interest (bank)</td><td class="num">10%</td><td class="num">₹50,000 (₹1,00,000 senior)</td><td class="num">20%</td></tr>
                         <tr><td>194C</td><td>Contractor — Individual / HUF</td><td class="num">1%</td><td class="num">₹30,000 single / ₹1 lakh aggregate</td><td class="num">20%</td></tr>
                         <tr><td>194C</td><td>Contractor — Company / Firm</td><td class="num">2%</td><td class="num">₹30,000 single / ₹1 lakh aggregate</td><td class="num">20%</td></tr>
-                        <tr><td>194J</td><td>Professional fees</td><td class="num">10%</td><td class="num">₹30,000</td><td class="num">20%</td></tr>
-                        <tr><td>194J</td><td>Technical services / Royalty</td><td class="num">2%</td><td class="num">₹30,000</td><td class="num">20%</td></tr>
-                        <tr><td>194I</td><td>Rent — Land / Building</td><td class="num">10%</td><td class="num">₹2.4 lakh</td><td class="num">20%</td></tr>
-                        <tr><td>194I</td><td>Rent — Plant / Machinery</td><td class="num">2%</td><td class="num">₹2.4 lakh</td><td class="num">20%</td></tr>
+                        <tr><td>194J</td><td>Professional fees</td><td class="num">10%</td><td class="num">₹50,000</td><td class="num">20%</td></tr>
+                        <tr><td>194J</td><td>Technical services / Royalty</td><td class="num">2%</td><td class="num">₹50,000</td><td class="num">20%</td></tr>
+                        <tr><td>194I</td><td>Rent — Land / Building</td><td class="num">10%</td><td class="num">₹6 lakh</td><td class="num">20%</td></tr>
+                        <tr><td>194I</td><td>Rent — Plant / Machinery</td><td class="num">2%</td><td class="num">₹6 lakh</td><td class="num">20%</td></tr>
                         <tr><td>194IB</td><td>Rent by individual / HUF</td><td class="num">5%</td><td class="num">₹50,000/month</td><td class="num">20%</td></tr>
-                        <tr><td>194H</td><td>Commission / Brokerage</td><td class="num">5%</td><td class="num">₹15,000</td><td class="num">20%</td></tr>
+                        <tr><td>194H</td><td>Commission / Brokerage</td><td class="num">2%</td><td class="num">₹20,000</td><td class="num">20%</td></tr>
                         <tr><td>194Q</td><td>Purchase of goods</td><td class="num">0.1%</td><td class="num">₹50 lakh</td><td class="num">5%</td></tr>
                         <tr><td>194IA</td><td>Sale of immovable property</td><td class="num">1%</td><td class="num">₹50 lakh</td><td class="num">20%</td></tr>
                     </tbody>
@@ -261,7 +262,7 @@
             <h2>Frequently Asked Questions</h2>
             <div class="mm-faq">
                 <details><summary>What is TDS in India?</summary><div>Tax Deducted at Source — payer deducts a fixed % as income tax before paying, and deposits with the government against payee's PAN.</div></details>
-                <details><summary>What is the TDS rate on FD interest?</summary><div>Section 194A: 10% on interest above ₹40,000/year (₹50,000 for seniors). 20% if PAN not furnished. Form 15G/15H can waive TDS.</div></details>
+                <details><summary>What is the TDS rate on FD interest?</summary><div>Section 194A: 10% on interest above ₹50,000/year (₹50,000 for seniors). 20% if PAN not furnished. Form 15G/15H can waive TDS.</div></details>
                 <details><summary>How is salary TDS calculated?</summary><div>Section 192: Employer estimates annual tax under old or new regime, divides by 12 for monthly TDS. Adjusts each month for investments declared.</div></details>
                 <details><summary>What is TDS on professional fees?</summary><div>Section 194J: 10% (professional) or 2% (technical). Threshold ₹30,000/year. No PAN = 20%.</div></details>
                 <details><summary>What is TDS on rent?</summary><div>Section 194I: 10% for building, 2% for plant. Threshold ₹2.4 lakh/year. Individuals paying &gt; ₹50k/month rent must deduct 5% under Section 194IB.</div></details>
@@ -460,6 +461,7 @@
         }
 
         function calculateTDS() {
+            (function(){var _e=document.getElementById('errorMessage');if(_e){_e.textContent='';_e.style.display='none';}})();
             const resultsCard = document.getElementById('resultsCard');
             const type = document.getElementById('tdsType').value;
             const amount = parseFloat(document.getElementById('amount').value) || 0;
@@ -469,7 +471,7 @@
             const oldRegime = document.getElementById('salaryRegime').checked;
 
             if (amount <= 0) {
-                alert('Please enter a valid amount.');
+                { var _e=document.getElementById('errorMessage'); if(_e){_e.textContent='Please enter a valid amount.'; _e.style.display='block';} var _c=document.getElementById('resultsCard'); if(_c)_c.classList.add('hidden'); }
                 return;
             }
 
@@ -501,7 +503,7 @@
                 monthlyLine = `<div><span>Monthly TDS on Salary</span><span>${inr(tds / 12)}</span></div>`;
             } else if (type === '194A') {
                 sectionName = 'Section 194A — Interest (FD/Recurring)';
-                threshold = (ageGroup === 'senior' || ageGroup === 'super') ? 50000 : 40000;
+                threshold = (ageGroup === 'senior' || ageGroup === 'super') ? 100000 : 50000;
                 rate = hasPAN ? 10 : 20;
                 if (applyThreshold && amount <= threshold) {
                     tds = 0;
@@ -527,7 +529,7 @@
             } else if (type === '194J') {
                 const jType = document.getElementById('jType').value;
                 sectionName = `Section 194J — ${jType === 'professional' ? 'Professional Services' : 'Technical Services / Royalty'}`;
-                threshold = 30000;
+                threshold = 50000;
                 rate = jType === 'professional' ? 10 : 2;
                 if (!hasPAN) rate = 20;
                 if (applyThreshold && amount <= threshold) {
@@ -540,20 +542,20 @@
             } else if (type === '194I') {
                 const rentType = document.getElementById('rentType').value;
                 sectionName = `Section 194I — Rent (${rentType === 'building' ? 'Land/Building' : 'Plant/Machinery'})`;
-                threshold = 240000;
+                threshold = 600000;
                 rate = rentType === 'building' ? 10 : 2;
                 if (!hasPAN) rate = 20;
                 if (applyThreshold && amount <= threshold) {
                     tds = 0;
-                    notes = `Below annual threshold of ${inr(threshold)}. For individuals paying rent > ₹50k/mo, use Section 194IB (5%).`;
+                    notes = `Below annual threshold of ${inr(threshold)} (₹50,000/month). For individuals paying rent > ₹50k/mo, use Section 194IB (5%).`;
                 } else {
                     tds = amount * rate / 100;
                     notes = `Threshold: ${inr(threshold)}/year. TAN required for Section 194I.`;
                 }
             } else if (type === '194H') {
                 sectionName = 'Section 194H — Commission / Brokerage';
-                threshold = 15000;
-                rate = hasPAN ? 5 : 20;
+                threshold = 20000;
+                rate = hasPAN ? 2 : 20;
                 if (applyThreshold && amount <= threshold) {
                     tds = 0;
                     notes = `Below threshold of ${inr(threshold)}. No TDS required.`;

@@ -123,8 +123,9 @@
                     <div class="hint">Govt-fixed rate, reviewed quarterly.</div>
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
-                <button onclick="calculateSSY()" class="mm-btn">Calculate Maturity</button>
+                <button id="calcButton" onclick="calculateSSY()" class="mm-btn">Calculate Maturity</button>
                 <button onclick="resetSSY()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
         </section>
@@ -298,9 +299,33 @@
     <script>
         'use strict';
         function inr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+        function validateInputs() {
+            let yearly = parseFloat(document.getElementById('yearly').value);
+
+            let errorMessage = document.getElementById('errorMessage');
+            let calcButton = document.getElementById('calcButton');
+
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
+
+            if (isNaN(yearly) || yearly < 250) {
+                errorMessage.innerHTML = 'Please enter a valid yearly investment (minimum ₹250).';
+                errorMessage.style.display = 'block';
+                calcButton.disabled = true;
+                return false;
+            }
+
+            calcButton.disabled = false;
+            return true;
+        }
+
         function calculateSSY() {
-            let yearly = parseFloat(document.getElementById('yearly').value) || 0;
-            if(yearly > 150000) yearly = 150000;
+            if (!validateInputs()) return;
+
+            let entered = parseFloat(document.getElementById('yearly').value);
+            let yearly = entered;
+            let capApplied = false;
+            if(yearly > 150000) { yearly = 150000; capApplied = true; }
             let rate = 8.2 / 100;
             let totalInvested = yearly * 15;
             let balance = 0;
@@ -315,7 +340,8 @@
             document.getElementById('resultDetail').innerHTML = `
                 <div><span>Total Invested (15 yrs)</span><span>${inr(totalInvested)}</span></div>
                 <div><span>Wealth Gained</span><span>${inr(balance - totalInvested)}</span></div>
-                <div><span>Tenure</span><span>21 years</span></div>`;
+                <div><span>Tenure</span><span>21 years</span></div>
+                ${capApplied ? `<div><span>Note</span><span>Capped at the ₹1.5 lakh statutory annual limit (you entered ${inr(entered)})</span></div>` : ''}`;
             resultsCard.classList.remove('hidden');
 
             gtag('event', 'calculate_ssy', {
@@ -327,7 +353,17 @@
         function resetSSY() {
             document.getElementById('yearly').value = 150000;
             document.getElementById('resultsCard').classList.add('hidden');
+            validateInputs();
         }
+
+        window.onload = function () {
+            validateInputs();
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', () => {
+                    validateInputs();
+                });
+            });
+        };
     </script>
 
 

@@ -122,25 +122,31 @@
             <div class="mm-form-grid">
                 <div class="mm-field">
                     <label for="loanAmount">Outstanding Loan Amount (₹)</label>
-                    <input type="number" id="loanAmount" value="5000000" class="mm-input" aria-label="Outstanding Loan Amount">
+                    <input type="number" id="loanAmount" value="5000000" min="10000" max="1000000000" class="mm-input" aria-label="Outstanding Loan Amount">
                     <div class="hint">Current principal balance</div>
                 </div>
                 <div class="mm-field">
                     <label for="interestRate">Interest Rate (% p.a.)</label>
-                    <input type="number" id="interestRate" value="8.5" step="0.1" class="mm-input" aria-label="Annual Interest Rate">
+                    <input type="number" id="interestRate" value="8.5" min="0.1" max="30" step="0.1" class="mm-input" aria-label="Annual Interest Rate">
                 </div>
                 <div class="mm-field">
                     <label for="tenure">Remaining Tenure (Years)</label>
-                    <input type="number" id="tenure" value="15" class="mm-input" aria-label="Remaining Tenure">
+                    <input type="number" id="tenure" value="15" min="1" max="40" class="mm-input" aria-label="Remaining Tenure">
                 </div>
                 <div class="mm-field">
                     <label for="prepayAmount">Extra Monthly Prepayment (₹)</label>
-                    <input type="number" id="prepayAmount" value="10000" class="mm-input" aria-label="Extra Monthly Prepayment">
+                    <input type="number" id="prepayAmount" value="10000" min="0" max="10000000" class="mm-input" aria-label="Extra Monthly Prepayment">
                     <div class="hint">Amount above your regular EMI</div>
                 </div>
+                <div class="mm-field">
+                    <label for="lumpSumAmount">One-Time Lump-Sum Prepayment (₹)</label>
+                    <input type="number" id="lumpSumAmount" value="0" min="0" max="1000000000" class="mm-input" aria-label="One-Time Lump-Sum Prepayment">
+                    <div class="hint">A single payment, e.g. a bonus. Leave 0 if none</div>
+                </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
-                <button onclick="calculatePrepayment()" class="mm-btn" aria-label="Calculate Savings">Calculate Savings</button>
+                <button id="calcButton" onclick="calculatePrepayment()" class="mm-btn" aria-label="Calculate Savings">Calculate Savings</button>
             </div>
         </section>
 
@@ -315,20 +321,70 @@
 
     <script>
         'use strict';
+        function validateInputs() {
+            let p = parseFloat(document.getElementById('loanAmount').value);
+            let rate = parseFloat(document.getElementById('interestRate').value);
+            let years = parseFloat(document.getElementById('tenure').value);
+            let prepay = parseFloat(document.getElementById('prepayAmount').value);
+
+            let errorMessage = document.getElementById('errorMessage');
+            let calcButton = document.getElementById('calcButton');
+
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
+
+            let errors = [];
+
+            if (isNaN(p) || p < 10000 || p > 1000000000) {
+                errors.push('Please enter a valid outstanding loan amount (₹10,000 to ₹100 crore).');
+            }
+            if (isNaN(rate) || rate < 0.1 || rate > 30) {
+                errors.push('Please enter a valid interest rate (0.1% to 30%).');
+            }
+            if (isNaN(years) || years < 1 || years > 40) {
+                errors.push('Please enter a valid remaining tenure (1 to 40 years).');
+            }
+            if (isNaN(prepay) || prepay < 0 || prepay > 10000000) {
+                errors.push('Please enter a valid extra monthly prepayment (₹0 to ₹1 crore).');
+            }
+
+            let lumpSum = parseFloat(document.getElementById('lumpSumAmount').value);
+            if (isNaN(lumpSum) || lumpSum < 0 || lumpSum > 1000000000) {
+                errors.push('Please enter a valid one-time lump-sum prepayment (₹0 or more).');
+            } else if (!isNaN(p) && lumpSum >= p) {
+                errors.push('Lump-sum prepayment must be less than the outstanding loan amount.');
+            }
+
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                calcButton.disabled = true;
+                return false;
+            }
+
+            calcButton.disabled = false;
+            return true;
+        }
+
         function calculatePrepayment() {
+            if (!validateInputs()) return;
+
             let p = parseFloat(document.getElementById('loanAmount').value);
             let r = parseFloat(document.getElementById('interestRate').value) / 12 / 100;
-            let n = parseFloat(document.getElementById('tenure').value) * 12;
+            let n = Math.round(parseFloat(document.getElementById('tenure').value) * 12);
             let prepay = parseFloat(document.getElementById('prepayAmount').value) || 0;
+            let lumpSum = parseFloat(document.getElementById('lumpSumAmount').value) || 0;
 
-            let emi = p * r * (Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            let emi = r === 0
+                ? p / n
+                : p * r * (Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
             let totalInterestNormal = (emi * n) - p;
 
-            let balance = p;
+            let balance = p - lumpSum;
             let months = 0;
             let totalInterestPrepay = 0;
 
-            while(balance > 0 && months < 1000) {
+            while(balance > 0 && months < n) {
                 let interest = balance * r;
                 totalInterestPrepay += interest;
                 let principalPaid = emi - interest + prepay;
@@ -345,6 +401,7 @@
                 <div class="tenure-reduced">Tenure Reduced By: ${Math.floor(timeSaved/12)} Yrs & ${timeSaved%12} Mos</div>
                 <div class="row"><span>Original EMI</span><span>₹${Math.round(emi).toLocaleString()}</span></div>
                 <div class="row"><span>New Monthly Payment</span><span>₹${Math.round(emi + prepay).toLocaleString()}</span></div>
+                ${lumpSum > 0 ? `<div class="row"><span>One-Time Lump Sum Applied</span><span>₹${Math.round(lumpSum).toLocaleString()}</span></div>` : ''}
             `;
             resultsCard.classList.remove('hidden');
 
@@ -354,6 +411,15 @@
             });
             resultsCard.scrollIntoView({behavior:'smooth', block:'center'});
         }
+
+        window.onload = function () {
+            validateInputs();
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', () => {
+                    validateInputs();
+                });
+            });
+        };
     </script>
 
 

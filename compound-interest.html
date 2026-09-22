@@ -419,14 +419,15 @@
                 }
             }
 
-            // If there are partial years or duration < 1 year, show final amount only once
-            if (duration < 1 || years !== Math.floor(duration)) {
+            // The loop above only emits whole years, so any leftover months need a final row.
+            if (duration > Math.floor(duration)) {
                 let finalAmount = principal * Math.pow(1 + rate / frequency, frequency * duration);
                 finalAmount = Math.round(finalAmount * 100) / 100;
-                if (duration < 1 || years === 0) {
-                    yearlyBreakdown += `<li>End of Period: Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
-                } else if (years > 0 && years !== duration) {
-                    yearlyBreakdown += `<li>Final Amount (after ${months} months): Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
+                const monthLabel = months === 1 ? 'month' : 'months';
+                if (years === 0) {
+                    yearlyBreakdown += `<li>End of Period (${months} ${monthLabel}): Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
+                } else {
+                    yearlyBreakdown += `<li>Year ${years} + ${months} ${monthLabel} (final, partial year): Amount = ₹${formatIndianNumber(finalAmount)}</li>`;
                 }
             }
 

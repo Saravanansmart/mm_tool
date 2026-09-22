@@ -530,20 +530,28 @@
             return true;
         }
 
-        function generateRepaymentSchedule(amount, rate, repaymentMonths) {
+        function generateRepaymentSchedule(amount, rate, repaymentMonths, emiOverride) {
             let monthlyRate = rate / 100 / 12;
-            let emi = amount * monthlyRate * Math.pow(1 + monthlyRate, repaymentMonths) / (Math.pow(1 + monthlyRate, repaymentMonths) - 1);
+            let emi = (typeof emiOverride === 'number' && isFinite(emiOverride))
+                ? emiOverride
+                : amount * monthlyRate * Math.pow(1 + monthlyRate, repaymentMonths) / (Math.pow(1 + monthlyRate, repaymentMonths) - 1);
             let balance = amount;
             let schedule = [];
 
             for (let month = 1; month <= repaymentMonths; month++) {
                 let interest = balance * monthlyRate;
                 let principal = emi - interest;
+                let payment = emi;
+                // Final instalment absorbs the rounding residual, as lenders do
+                if (month === repaymentMonths || principal > balance) {
+                    principal = balance;
+                    payment = principal + interest;
+                }
                 balance -= principal;
                 if (balance < 0) balance = 0;
                 schedule.push({
                     month,
-                    emi: Math.round(emi),
+                    emi: Math.round(payment),
                     principal: Math.round(principal),
                     interest: Math.round(interest),
                     balance: Math.round(balance)
@@ -586,7 +594,7 @@
                 emiChart.update();
 
                 // Generate Repayment Schedule
-                let schedule = generateRepaymentSchedule(amount, rate, repaymentMonths);
+                let schedule = generateRepaymentSchedule(amount, rate, repaymentMonths, emi);
                 let tbody = document.querySelector('#scheduleTable tbody');
                 tbody.innerHTML = '';
                 schedule.forEach(row => {

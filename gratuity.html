@@ -130,6 +130,7 @@
                     </div>
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
                 <button onclick="calcGratuity()" class="mm-btn">Calculate Gratuity</button>
                 <button onclick="resetGratuity()" class="mm-btn mm-btn-secondary">Reset</button>
@@ -323,12 +324,13 @@
     <script>
         'use strict';
         function calcGratuity() {
+            (function(){var _e=document.getElementById('errorMessage');if(_e){_e.textContent='';_e.style.display='none';}})();
             let wage = parseFloat(document.getElementById('basicDA').value) || 0;
             let years = parseFloat(document.getElementById('yearsService').value) || 0;
             let isContract = document.getElementById('isContract').checked;
 
             if (wage <= 0 || years < 1) {
-                alert("Please enter valid values");
+                { var _e=document.getElementById('errorMessage'); if(_e){_e.textContent="Please enter valid values"; _e.style.display='block';} var _c=document.getElementById('resultsCard'); if(_c)_c.classList.add('hidden'); }
                 return;
             }
 

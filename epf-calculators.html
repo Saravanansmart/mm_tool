@@ -558,10 +558,9 @@
                         // The remaining employer share goes to EPF
                         const monthlyEmployerPfContribution = Math.round((currentSalary * employerRate) - monthlyEpsContribution);
 
-                        // 1. Calculate and accrue interest for the month (on the month's balance)
-                        let monthlyInterest = balance * monthlyRate;
-                        balance += monthlyInterest;
-                        yearlyInterest += monthlyInterest;
+                        // 1. Accrue interest on the month's running balance. EPFO credits this
+                        // only once at year end, so it must not earn interest within the year.
+                        yearlyInterest += balance * monthlyRate;
 
                         // 2. Add contributions to balance for the next month's interest calculation
                         balance += monthlyEmployeeContribution + monthlyEmployerPfContribution;
@@ -570,6 +569,9 @@
                         yearlyEmployeeContribution += monthlyEmployeeContribution;
                         yearlyEmployerContribution += monthlyEmployerPfContribution;
                     }
+
+                    // Interest for the whole year is credited in a single year-end entry
+                    balance += yearlyInterest;
 
                     // The closing balance of the year becomes the opening balance of the next year
                     currentYearBalance = balance;

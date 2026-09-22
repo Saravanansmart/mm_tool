@@ -129,8 +129,9 @@
                     <input type="number" id="years" value="15" min="1" max="40" class="mm-input">
                 </div>
             </div>
+            <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
             <div class="mm-actions">
-                <button onclick="calculateStepUp()" class="mm-btn">Calculate Returns</button>
+                <button id="calcButton" onclick="calculateStepUp()" class="mm-btn">Calculate Returns</button>
                 <button onclick="resetStepUp()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
         </section>
@@ -310,11 +311,51 @@
     <script>
         'use strict';
         function inr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+        function validateInputs() {
+            let monthly = parseFloat(document.getElementById('monthly').value);
+            let stepup = parseFloat(document.getElementById('stepup').value);
+            let rate = parseFloat(document.getElementById('rate').value);
+            let years = parseFloat(document.getElementById('years').value);
+
+            let errorMessage = document.getElementById('errorMessage');
+            let calcButton = document.getElementById('calcButton');
+
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
+
+            let errors = [];
+
+            if (isNaN(monthly) || monthly < 500 || monthly > 1000000) {
+                errors.push('Please enter a valid initial monthly SIP (₹500 to ₹10 lakh).');
+            }
+            if (isNaN(stepup) || stepup < 0 || stepup > 100) {
+                errors.push('Please enter a valid annual step-up (0% to 100%).');
+            }
+            if (isNaN(rate) || rate < 1 || rate > 30) {
+                errors.push('Please enter a valid expected return (1% to 30%).');
+            }
+            if (isNaN(years) || years < 1 || years > 40) {
+                errors.push('Please enter a valid investment period (1 to 40 years).');
+            }
+
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                calcButton.disabled = true;
+                return false;
+            }
+
+            calcButton.disabled = false;
+            return true;
+        }
+
         function calculateStepUp() {
-            let monthly = parseFloat(document.getElementById('monthly').value) || 0;
-            let stepup = parseFloat(document.getElementById('stepup').value) || 0;
+            if (!validateInputs()) return;
+
+            let monthly = parseFloat(document.getElementById('monthly').value);
+            let stepup = parseFloat(document.getElementById('stepup').value);
             let rate = parseFloat(document.getElementById('rate').value) / 100 / 12;
-            let years = parseFloat(document.getElementById('years').value) || 0;
+            let years = Math.floor(parseFloat(document.getElementById('years').value));
 
             let balance = 0;
             let invested = 0;
@@ -349,7 +390,17 @@
             document.getElementById('rate').value = 12;
             document.getElementById('years').value = 15;
             document.getElementById('resultsCard').classList.add('hidden');
+            validateInputs();
         }
+
+        window.onload = function () {
+            validateInputs();
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', () => {
+                    validateInputs();
+                });
+            });
+        };
     </script>
 
 

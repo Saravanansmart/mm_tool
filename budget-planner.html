@@ -316,32 +316,37 @@
         let budgetChart;
 
         function calculateBudget() {
-            const income = parseFloat(document.getElementById('monthlyIncome').value);
-            const housing = parseFloat(document.getElementById('housing').value);
-            const food = parseFloat(document.getElementById('food').value);
-            const utilities = parseFloat(document.getElementById('utilities').value);
-            const transport = parseFloat(document.getElementById('transport').value);
-            const entertainment = parseFloat(document.getElementById('entertainment').value);
-            const insurance = parseFloat(document.getElementById('insurance').value);
-            const savings = parseFloat(document.getElementById('savings').value);
+            if (!validateNumericBounds(["monthlyIncome", "housing", "food", "utilities", "transport", "entertainment", "insurance", "savings"], "errorMessage", "resultsCard")) return;
+            const income = parseFloat(document.getElementById('monthlyIncome').value) || 0;
+            const housing = parseFloat(document.getElementById('housing').value) || 0;
+            const food = parseFloat(document.getElementById('food').value) || 0;
+            const utilities = parseFloat(document.getElementById('utilities').value) || 0;
+            const transport = parseFloat(document.getElementById('transport').value) || 0;
+            const entertainment = parseFloat(document.getElementById('entertainment').value) || 0;
+            const insurance = parseFloat(document.getElementById('insurance').value) || 0;
+            const savings = parseFloat(document.getElementById('savings').value) || 0;
 
-            const totalExpenses = housing + food + utilities + transport + entertainment + insurance + savings;
-            const remaining = income - totalExpenses;
+            const totalExpenses = housing + food + utilities + transport + entertainment + insurance;
+            const allocated = totalExpenses + savings;
+            const remaining = income - allocated;
+            const pct = (v) => income > 0 ? (v / income * 100).toFixed(1) : '0.0';
 
             const categories = [
-                { name: 'Housing', amount: housing, percentage: (housing/income*100).toFixed(1) },
-                { name: 'Food', amount: food, percentage: (food/income*100).toFixed(1) },
-                { name: 'Utilities', amount: utilities, percentage: (utilities/income*100).toFixed(1) },
-                { name: 'Transport', amount: transport, percentage: (transport/income*100).toFixed(1) },
-                { name: 'Entertainment', amount: entertainment, percentage: (entertainment/income*100).toFixed(1) },
-                { name: 'Insurance', amount: insurance, percentage: (insurance/income*100).toFixed(1) },
-                { name: 'Savings', amount: savings, percentage: (savings/income*100).toFixed(1) }
+                { name: 'Housing', amount: housing, percentage: pct(housing) },
+                { name: 'Food', amount: food, percentage: pct(food) },
+                { name: 'Utilities', amount: utilities, percentage: pct(utilities) },
+                { name: 'Transport', amount: transport, percentage: pct(transport) },
+                { name: 'Entertainment', amount: entertainment, percentage: pct(entertainment) },
+                { name: 'Insurance', amount: insurance, percentage: pct(insurance) },
+                { name: 'Savings', amount: savings, percentage: pct(savings) }
             ];
 
             let html = `
                 <div><span>Monthly Income</span><span>₹${income.toLocaleString('en-IN')}</span></div>
                 <div><span>Total Expenses</span><span>₹${totalExpenses.toLocaleString('en-IN')}</span></div>
-                <div><span>Balance / Extra</span><span style="color: ${remaining >= 0 ? '#0ca30c' : '#e34948'};">₹${remaining.toLocaleString('en-IN')}</span></div>
+                <div><span>Planned Savings</span><span>₹${savings.toLocaleString('en-IN')}</span></div>
+                <div><span>Total Allocated</span><span>₹${allocated.toLocaleString('en-IN')}</span></div>
+                <div><span>${remaining >= 0 ? 'Unallocated' : 'Over Budget By'}</span><span style="color: ${remaining >= 0 ? '#0ca30c' : '#e34948'};">₹${Math.abs(remaining).toLocaleString('en-IN')}</span></div>
             `;
 
             document.getElementById('budgetResult').innerHTML = html;
@@ -398,5 +403,6 @@
             if (budgetChart) budgetChart.destroy();
         }
     </script>
+    <script src="calc-validate.js"></script>
 </body>
 </html>

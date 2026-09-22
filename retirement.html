@@ -510,14 +510,38 @@
             const monthlyRate = returnRate / 12;
             const corpus = monthlySavings * ((Math.pow(1 + monthlyRate, 12 * yearsToRetirement) - 1) / monthlyRate) * (1 + monthlyRate);
 
-            // Inflation-adjusted expenses
+            // Inflation-adjusted expenses at the start of retirement
             const adjustedExpenses = targetExpenses * Math.pow(1 + inflationRate, yearsToRetirement);
 
-            // Monthly pension (annuity formula)
-            const monthlyPension = corpus * monthlyRate / (1 - Math.pow(1 + monthlyRate, -12 * pensionYears));
+            // Months the corpus survives while drawing `w`, stepped up once a year for inflation.
+            // Shared by the sustainable-income solve and the depletion age so both agree.
+            const monthsCorpusLasts = (w, capMonths) => {
+                let bal = corpus, draw = w, m = 0;
+                while (bal > 0 && m < capMonths) {
+                    bal = bal * (1 + monthlyRate) - draw;
+                    m++;
+                    if (m % 12 === 0) draw *= (1 + inflationRate);
+                }
+                return m;
+            };
 
-            // Shortfall or surplus
+            // Withdrawals must keep pace with inflation for the whole of retirement. Solve for the
+            // starting withdrawal that makes the corpus last exactly to life expectancy.
+            const targetMonths = 12 * pensionYears;
+            let lo = 0, hi = Math.max(corpus, 1);
+            for (let i = 0; i < 200; i++) {
+                const mid = (lo + hi) / 2;
+                if (monthsCorpusLasts(mid, targetMonths + 1) > targetMonths) lo = mid; else hi = mid;
+            }
+            const monthlyPension = (lo + hi) / 2;
+
+            // Shortfall or surplus, both expressed in first-year-of-retirement rupees
             const shortfallSurplus = monthlyPension - adjustedExpenses;
+
+            // How long the corpus actually lasts if the target expense is drawn and inflated yearly
+            const monthsLasted = monthsCorpusLasts(adjustedExpenses, 12 * (pensionYears + 50));
+            const lastsBeyondPlan = monthsLasted >= targetMonths;
+            const depletionAge = retirementAge + monthsLasted / 12;
 
             // Update results
             const resultsCard = document.getElementById('resultsCard');
@@ -525,9 +549,10 @@
             document.getElementById('taxResult').innerHTML = `
                 <div><span>Years to Retirement</span><span>${yearsToRetirement}</span></div>
                 <div><span>Years in Retirement</span><span>${pensionYears}</span></div>
-                <div><span>Monthly Pension</span><span>₹${formatIndianNumber(monthlyPension)}</span></div>
-                <div><span>Inflated Monthly Expense</span><span>₹${formatIndianNumber(adjustedExpenses)}</span></div>
+                <div><span>Sustainable Monthly Income (rises with inflation)</span><span>₹${formatIndianNumber(monthlyPension)}</span></div>
+                <div><span>Monthly Expense at Age ${retirementAge}</span><span>₹${formatIndianNumber(adjustedExpenses)}</span></div>
                 <div><span>${shortfallSurplus >= 0 ? 'Monthly Surplus' : 'Monthly Shortfall'}</span><span>₹${formatIndianNumber(Math.abs(shortfallSurplus))}</span></div>
+                <div><span>Corpus Lasts Until Age</span><span>${lastsBeyondPlan ? `Beyond ${lifeExpectancy} ✓` : depletionAge.toFixed(1)}</span></div>
             `;
             resultsCard.classList.remove('hidden');
 

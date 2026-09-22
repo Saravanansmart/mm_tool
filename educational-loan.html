@@ -633,7 +633,7 @@
                 emiChart.data.datasets[0].data = [finalPrincipal, totalInterest];
                 emiChart.update();
 
-                const schedule = generateRepaymentSchedule(finalPrincipal, effectiveRate * 12 * 100, repaymentMonths, finalEMI);
+                const schedule = generateRepaymentSchedule(finalPrincipal, effectiveRate, repaymentMonths, finalEMI);
                 const tbody = document.getElementById('scheduleTable');
                 tbody.innerHTML = '';
                 schedule.forEach(row => {

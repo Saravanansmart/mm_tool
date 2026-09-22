@@ -163,6 +163,7 @@
                 </div>
             </div>
             <div class="mm-actions">
+                <div id="errorMessage" role="alert" aria-live="polite" style="color:#FCA5A5; margin-top:14px; font-size:0.9rem; display:none;"></div>
                 <button onclick="calculateMaternityExpense()" class="mm-btn">Estimate Total Cost</button>
                 <button onclick="resetMaternityExpense()" class="mm-btn mm-btn-secondary">Reset</button>
             </div>
@@ -343,7 +344,31 @@
         'use strict';
         function inr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
 
+        function validateMaternityExpense() {
+            const errorMessage = document.getElementById('errorMessage');
+            const errors = [];
+            const fields = [
+                ['prenatal', 'Prenatal care cost'],
+                ['postnatal', 'Postnatal + baby care cost'],
+                ['insurance', 'Health insurance coverage']
+            ];
+            for (const [id, label] of fields) {
+                const raw = document.getElementById(id).value;
+                const v = parseFloat(raw);
+                if (raw.trim() === '' || isNaN(v)) errors.push(label + ' is required.');
+                else if (v < 0) errors.push(label + ' cannot be negative.');
+            }
+            if (errors.length) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                return false;
+            }
+            errorMessage.style.display = 'none';
+            return true;
+        }
+
         function calculateMaternityExpense() {
+            if (!validateMaternityExpense()) return;
             const resultsCard = document.getElementById('resultsCard');
             const deliveryType = document.getElementById('deliveryType').value;
             const hospitalTier = parseFloat(document.getElementById('hospitalTier').value);
