@@ -11,7 +11,11 @@
 
   function show(box, messages) {
     if (!box) return;
-    box.innerHTML = messages.join('<br>');
+    box.textContent = '';
+    messages.forEach(function (msg, idx) {
+      if (idx > 0) box.appendChild(document.createElement('br'));
+      box.appendChild(document.createTextNode(msg));
+    });
     box.style.display = messages.length ? 'block' : 'none';
   }
 
