@@ -400,11 +400,22 @@
             var ratio = (totalInterest / P * 100).toFixed(1);
 
             document.getElementById('emiOut').textContent = inr(emi);
-            document.getElementById('resultDetail').innerHTML =
-                '<div><span>Total Interest</span><span>' + inr(totalInterest) + '</span></div>' +
-                '<div><span>Total Payment</span><span>' + inr(totalPayment) + '</span></div>' +
-                '<div><span>Interest-to-Principal</span><span>' + ratio + '%</span></div>' +
-                '<div><span>Loan Type</span><span>' + loanType + '</span></div>';
+            var resultDetail = document.getElementById('resultDetail');
+            resultDetail.innerHTML = '';
+            function appendResultRow(label, value) {
+                var row = document.createElement('div');
+                var labelSpan = document.createElement('span');
+                var valueSpan = document.createElement('span');
+                labelSpan.textContent = label;
+                valueSpan.textContent = value;
+                row.appendChild(labelSpan);
+                row.appendChild(valueSpan);
+                resultDetail.appendChild(row);
+            }
+            appendResultRow('Total Interest', inr(totalInterest));
+            appendResultRow('Total Payment', inr(totalPayment));
+            appendResultRow('Interest-to-Principal', ratio + '%');
+            appendResultRow('Loan Type', loanType);
             document.getElementById('resultsCard').classList.remove('hidden');
 
             // Year-by-year amortization
