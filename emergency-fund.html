@@ -377,6 +377,15 @@
             monthsEl.value = rec[emp] || 6;
         }
 
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         function calculateEmergencyFund() {
             if (!validateNumericBounds(["monthlyExpenses", "months", "currentSavings", "returnRate", "buildMonths"], "errorMessage", "resultsCard")) return;
             const resultsCard = document.getElementById('resultsCard');
@@ -386,6 +395,7 @@
             const returnRate = parseFloat(document.getElementById('returnRate').value) || 0;
             const buildMonths = parseInt(document.getElementById('buildMonths').value) || 12;
             const employment = document.getElementById('employment').value;
+            const safeEmployment = escapeHtml(employment.charAt(0).toUpperCase() + employment.slice(1));
 
             if (monthlyExpenses <= 0 || months <= 0) {
                 { var _e=document.getElementById('errorMessage'); if(_e){_e.textContent='Please enter valid monthly expenses and coverage months.'; _e.style.display='block';} var _c=document.getElementById('resultsCard'); if(_c)_c.classList.add('hidden'); }
@@ -423,7 +433,7 @@
 
             document.getElementById('fvOut').textContent = inr(targetFund);
             document.getElementById('resultDetail').innerHTML = `
-                <div><span>Employment Profile</span><span>${employment.charAt(0).toUpperCase() + employment.slice(1)}</span></div>
+                <div><span>Employment Profile</span><span>${safeEmployment}</span></div>
                 <div><span>Coverage Target</span><span>${months} months</span></div>
                 <div><span>Current Coverage</span><span>${currentCoverage.toFixed(1)} months</span></div>
                 <div><span>Current Savings</span><span>${inr(currentSavings)}</span></div>
